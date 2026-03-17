@@ -1,0 +1,1 @@
+El servicio solo debe ser accesible detrás del reverse proxy interno y no necesita privilegios de red especiales.

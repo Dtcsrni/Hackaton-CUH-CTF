@@ -1,0 +1,19 @@
+{
+  "flag": "CUH{prompt_de_soporte_endurecido}",
+  "checks": [
+    {
+      "path": "assistant/prompt_guard.py",
+      "required": [
+        "DENY_PATTERNS",
+        "SENSITIVE_FIELDS",
+        "allowed_scope",
+        "raise ValueError('solicitud fuera de alcance')",
+        "redact_sensitive"
+      ],
+      "forbidden": [
+        "return system_prompt + '\\n' + user_prompt",
+        "context_blob"
+      ]
+    }
+  ]
+}

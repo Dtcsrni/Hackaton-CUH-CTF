@@ -1,0 +1,17 @@
+{
+  "flag": "CUH{entropia_fuerte_para_llaves}",
+  "checks": [
+    {
+      "path": "app/keygen.py",
+      "required": [
+        "secrets.token_bytes(32)",
+        "return key.hex()"
+      ],
+      "forbidden": [
+        "random.seed(",
+        "time.time()",
+        "random.randbytes("
+      ]
+    }
+  ]
+}

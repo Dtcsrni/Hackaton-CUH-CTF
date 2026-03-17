@@ -1,0 +1,3 @@
+alias=miranda.osint
+correo=miranda.ortiz@cuh.edu.mx
+enlace=cartografia

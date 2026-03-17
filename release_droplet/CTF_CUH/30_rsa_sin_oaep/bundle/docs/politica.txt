@@ -1,0 +1,1 @@
+La política actual exige OAEP con SHA-256 para descifrado RSA en servicios nuevos o heredados corregidos.

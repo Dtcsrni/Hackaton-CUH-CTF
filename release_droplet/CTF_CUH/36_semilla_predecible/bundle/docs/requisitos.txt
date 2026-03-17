@@ -1,0 +1,1 @@
+La llave debe seguir saliendo en hexadecimal, pero generarse desde una fuente apta para material criptográfico.

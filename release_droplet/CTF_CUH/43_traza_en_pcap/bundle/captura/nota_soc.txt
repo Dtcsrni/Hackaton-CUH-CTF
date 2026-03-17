@@ -1,0 +1,1 @@
+El tráfico relevante ocurrió durante una consulta HTTP aparentemente normal. La descarga útil salió de un host interno con prefijo api.

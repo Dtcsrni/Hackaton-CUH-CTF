@@ -1,0 +1,1 @@
+Las tomas se exportaron varias veces, pero algunos campos de autor y comentario no fueron limpiados.

@@ -1,0 +1,1 @@
+Al modificar unos pocos bytes del bloque cifrado, el backend aceptó el paquete y solo cambió parcialmente el contenido descifrado.

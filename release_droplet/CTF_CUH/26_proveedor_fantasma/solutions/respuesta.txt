@@ -1,0 +1,3 @@
+proveedor=delta_applied_metrics
+dominio=delta-applied.example
+alerta=dominio_creado_despues_de_la_factura

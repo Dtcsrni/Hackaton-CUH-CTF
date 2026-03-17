@@ -1,0 +1,1 @@
+La sección nueva se liberó en la rama 1.6 antes del ajuste visual de 1.7.

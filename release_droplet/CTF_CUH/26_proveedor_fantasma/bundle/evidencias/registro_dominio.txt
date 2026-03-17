@@ -1,0 +1,3 @@
+Domain: delta-applied.example
+Creation Date: 2026-02-28
+Registrant: Delta Applied Metrics

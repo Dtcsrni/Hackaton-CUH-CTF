@@ -1,0 +1,3 @@
+fecha_pivote=2026-02-19T18:30Z
+actor=soporte-cuh-lab
+artefacto=anexo_beta_7

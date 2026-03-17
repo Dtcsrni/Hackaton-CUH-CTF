@@ -1,0 +1,5 @@
+ana_rios:estudiante
+bruno_leal:estudiante
+carla_mena:monitor_laboratorio
+docente_ctf:coordinacion
+invitado_demo:pruebas_internas

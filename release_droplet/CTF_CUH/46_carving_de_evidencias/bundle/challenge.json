@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{foremost_recupera_la_pieza_util}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "herramienta=foremost",
+    "archivo=credencial_turno_b.txt",
+    "detalle=turno_b_habilita_revision_nocturna"
+  ]
+}

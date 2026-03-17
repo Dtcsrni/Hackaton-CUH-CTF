@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{iv_reciclado_detectado_en_reportes}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "problema=iv_reutilizado_en_cbc",
+    "hallazgo=primer_bloque_igual_revela_prefijo_compartido",
+    "mitigacion=usar_iv_aleatorio_y_unico_por_reporte"
+  ]
+}

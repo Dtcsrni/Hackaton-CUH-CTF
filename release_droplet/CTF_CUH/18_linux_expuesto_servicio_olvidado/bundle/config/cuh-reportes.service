@@ -1,0 +1,10 @@
+[Unit]
+Description=CUH reportes legado
+
+[Service]
+User=root
+ExecStart=/usr/bin/python3 /opt/cuh/reportes/server.py --host 0.0.0.0
+AmbientCapabilities=CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target

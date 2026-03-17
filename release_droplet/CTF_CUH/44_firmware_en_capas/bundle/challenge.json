@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{binwalk_descubre_el_resto_olvidado}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "herramienta=binwalk",
+    "artefacto=config-seed.txt",
+    "hallazgo=ruta_de_recuperacion_activa_en_opt_cuh_recovery"
+  ]
+}

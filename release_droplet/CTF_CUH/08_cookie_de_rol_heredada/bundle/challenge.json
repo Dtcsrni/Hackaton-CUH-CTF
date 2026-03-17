@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{cookie_de_rol_endurecida}",
+  "checks": [
+    {
+      "path": "app/cookies.py",
+      "required": [
+        "hmac.new(",
+        "compare_digest(",
+        "ALLOWED_ROLES",
+        "role if role in ALLOWED_ROLES else 'alumno'"
+      ],
+      "forbidden": [
+        "return payload.get('role', 'alumno')",
+        "split('|')"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{john_prioriza_el_contexto}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "herramienta=john",
+    "cuenta=ops_backup",
+    "diccionario=laboratorio-2026.txt"
+  ]
+}

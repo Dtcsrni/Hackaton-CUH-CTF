@@ -1,0 +1,1 @@
+El certificado interno ya fue emitido para portal.cuh.lab, pero el equipo dejó la redirección pendiente.

@@ -1,0 +1,19 @@
+{
+  "flag": "CUH{https_obligatorio_desde_el_borde}",
+  "checks": [
+    {
+      "path": "infra/nginx.conf",
+      "required": [
+        "listen 80;",
+        "return 301 https://$host$request_uri;",
+        "listen 443 ssl;",
+        "ssl_certificate",
+        "ssl_certificate_key"
+      ],
+      "forbidden": [
+        "server_name _;\n    proxy_pass http://app_backend;",
+        "listen 80 default_server;\n    location / {\n        proxy_pass http://app_backend;\n    }"
+      ]
+    }
+  ]
+}

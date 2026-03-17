@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{incidente_de_formularios_reconstruido}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "vector=consulta_concatenada_en_login",
+    "cuenta=admin_reportes",
+    "impacto=lectura_indebida_de_reportes"
+  ]
+}

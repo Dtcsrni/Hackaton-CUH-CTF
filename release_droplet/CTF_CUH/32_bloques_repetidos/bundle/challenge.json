@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{bloques_repetidos_interpretados}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "modo=aes_ecb",
+    "hallazgo=bloques_identicos_revelan_patron_del_contenido",
+    "mitigacion=usar_modo_con_iv_aleatorio_y_no_repetir_bloques_independientes"
+  ]
+}

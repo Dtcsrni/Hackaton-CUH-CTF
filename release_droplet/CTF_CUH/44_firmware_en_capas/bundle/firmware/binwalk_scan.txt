@@ -1,0 +1,3 @@
+0x00000000 uImage header
+0x00000400 Squashfs filesystem
+0x00012000 ASCII text, with CRLF line terminators, filename: config-seed.txt

@@ -1,0 +1,2 @@
+#241 referencia a migration docs en mahi-labs/cuh-lab-sync
+#245 pendiente para release candidate v0.9.7-rc1

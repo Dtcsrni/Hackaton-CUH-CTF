@@ -1,0 +1,1 @@
+La clave del servicio de reportes firma comprobantes internos desde el nodo batch-2.

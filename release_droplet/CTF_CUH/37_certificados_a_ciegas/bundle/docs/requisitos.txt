@@ -1,0 +1,1 @@
+El contexto TLS debe validar cadena y hostname usando la CA interna entregada en `certs/cuh_root_ca.pem`.

@@ -1,0 +1,1 @@
+La exportación se cifró bloque a bloque sin aleatoriedad suficiente entre secciones equivalentes.

@@ -1,0 +1,17 @@
+{
+  "flag": "CUH{jwt_con_validacion_completa}",
+  "checks": [
+    {
+      "path": "app/jwt_validator.py",
+      "required": [
+        "ALLOWED_ALGORITHMS",
+        "expected_issuer",
+        "expected_audience",
+        "if header.get('alg') not in ALLOWED_ALGORITHMS",
+        "payload.get('aud')",
+        "payload.get('iss')"
+      ],
+      "forbidden": []
+    }
+  ]
+}

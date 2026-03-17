@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{consulta_concatenada_corregida}",
+  "checks": [
+    {
+      "path": "app/login.php",
+      "required": [
+        "prepare(",
+        "execute([",
+        ":usuario",
+        ":clave"
+      ],
+      "forbidden": [
+        "$query = \"SELECT * FROM usuarios WHERE usuario = '$usuario' AND clave = '$clave'\"",
+        "query($query)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+grupo=Authenticated_Users
+permiso=Modify
+accion=retirar_modify_al_grupo_amplio_y_delegar_solo_a_equipo_operativo

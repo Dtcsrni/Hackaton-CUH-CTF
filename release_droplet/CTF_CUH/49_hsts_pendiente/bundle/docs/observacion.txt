@@ -1,0 +1,1 @@
+El equipo de plataformas cerró TLS, pero el navegador todavía puede llegar a portal.cuh.lab sin política persistente.

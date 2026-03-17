@@ -1,0 +1,4 @@
+User_Alias OPERADORES = analista, monitoreo
+Cmnd_Alias REPORTES = /usr/bin/journalctl, /usr/bin/systemctl status cuh-reportes
+%admin ALL=(ALL:ALL) ALL
+OPERADORES ALL=(root) NOPASSWD: REPORTES

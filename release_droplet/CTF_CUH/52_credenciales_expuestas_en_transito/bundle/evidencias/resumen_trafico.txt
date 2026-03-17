@@ -1,0 +1,4 @@
+10:14:22 192.168.50.23 -> portal.cuh.lab:80 POST /login HTTP/1.1
+Host: portal.cuh.lab
+Content-Type: application/x-www-form-urlencoded
+Body: usuario=analista.cuh&clave=TurnoBeta2026

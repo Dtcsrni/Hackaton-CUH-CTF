@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{contexto_filtrado_y_mitigado}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "causa=mezcla_directa_de_contexto_sensible_en_prompt_final",
+    "dato=token_de_servicio_interno",
+    "mitigacion=redactar_contexto_y_restringir_alcance_antes_de_construir_el_prompt"
+  ]
+}

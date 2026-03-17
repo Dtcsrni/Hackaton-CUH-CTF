@@ -1,0 +1,1 @@
+<Task><Principals><Principal id="Author"><UserId>SYSTEM</UserId></Principal></Principals><Actions Context="Author"><Exec><Command>C:\ProgramData\cuh-updater\sync.exe</Command></Exec></Actions></Task>

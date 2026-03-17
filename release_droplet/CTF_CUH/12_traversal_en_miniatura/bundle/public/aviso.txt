@@ -1,0 +1,1 @@
+Solo deberían servirse archivos desde este directorio.

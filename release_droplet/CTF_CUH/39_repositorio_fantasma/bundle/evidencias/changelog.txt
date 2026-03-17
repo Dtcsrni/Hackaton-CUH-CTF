@@ -1,0 +1,2 @@
+RC notes: sync module moved to private repo under same org.
+Tag pendiente: v0.9.7-rc1

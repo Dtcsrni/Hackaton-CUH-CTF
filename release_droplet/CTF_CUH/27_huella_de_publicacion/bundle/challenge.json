@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{huella_de_publicacion_reconstruida}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "contenido=seccion_de_proveedores_externos",
+    "version=v1.6.2",
+    "ruta=/docs/proveedores/externos.html"
+  ]
+}

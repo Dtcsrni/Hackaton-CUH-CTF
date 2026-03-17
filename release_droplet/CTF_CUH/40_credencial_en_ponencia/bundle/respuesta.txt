@@ -1,0 +1,6 @@
+Completa este archivo con las respuestas finales del reto.
+        No cambies los nombres de las claves.
+
+        nombre=
+alias=
+track=

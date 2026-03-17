@@ -1,0 +1,2 @@
+recovery_path=/opt/cuh/recovery
+fallback_profile=legacy-sync

@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{rol_de_sesion_validado_en_backend}",
+  "checks": [
+    {
+      "path": "app/session.py",
+      "required": [
+        "ALLOWED_ROLES",
+        "stored_role",
+        "if stored_role not in ALLOWED_ROLES",
+        "session['role'] = stored_role"
+      ],
+      "forbidden": [
+        "role = request.json.get('role')",
+        "session['role'] = role"
+      ]
+    }
+  ]
+}

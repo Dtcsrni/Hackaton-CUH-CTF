@@ -1,0 +1,4 @@
+1 0.000000 10.10.4.20 -> 10.10.4.11 HTTP GET /status
+2 0.210000 10.10.4.20 -> 10.10.4.11 HTTP GET /health
+3 0.640000 10.10.4.20 -> 10.10.4.11 HTTP GET /exports/beta-keys.json Host: api.cuh-lab.local
+4 0.830000 10.10.4.11 -> 10.10.4.20 HTTP 200 application/json

@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{persistencia_en_tareas_reconstruida}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "binario=C:\\ProgramData\\cuh-updater\\sync.exe",
+    "cuenta=SYSTEM",
+    "accion=deshabilitar_tarea_aislar_host_y_recolectar_binario"
+  ]
+}

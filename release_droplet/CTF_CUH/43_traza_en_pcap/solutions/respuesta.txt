@@ -1,0 +1,3 @@
+herramienta=tshark
+host=api.cuh-lab.local
+recurso=/exports/beta-keys.json

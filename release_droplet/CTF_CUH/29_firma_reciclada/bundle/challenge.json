@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{firma_con_nonce_repetido_detectada}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "causa=nonce_repetido_en_firmas_ecdsa",
+    "clave=svc_reportes_firma",
+    "mitigacion=nonce_unico_por_firma_y_rotacion_de_clave"
+  ]
+}

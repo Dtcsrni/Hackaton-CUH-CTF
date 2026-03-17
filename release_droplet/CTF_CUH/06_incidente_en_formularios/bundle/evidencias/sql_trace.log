@@ -1,0 +1,1 @@
+SELECT reporte FROM usuarios WHERE usuario = 'admin_reportes' AND clave = '' OR '1'='1';

@@ -1,0 +1,1 @@
+TaskScheduler registered task UpdateTelemetry at boot.

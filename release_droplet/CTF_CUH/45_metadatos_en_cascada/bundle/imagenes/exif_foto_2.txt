@@ -1,0 +1,3 @@
+Author: Lucia Varela
+Software: Darktable 4.8
+XPComment: toma secundaria sala-beta-norte

@@ -1,0 +1,3 @@
+vector=consulta_concatenada_en_login
+cuenta=admin_reportes
+impacto=lectura_indebida_de_reportes

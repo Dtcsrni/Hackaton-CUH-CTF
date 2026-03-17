@@ -1,0 +1,3 @@
+ops_backup:$6$rounds=656000$abc123$resto_del_hash
+qa_turno:$6$rounds=656000$def456$resto_del_hash
+archivo_legacy:$6$rounds=656000$ghi789$resto_del_hash

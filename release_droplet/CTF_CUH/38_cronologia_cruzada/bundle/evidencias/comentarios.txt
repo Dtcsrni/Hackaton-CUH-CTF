@@ -1,0 +1,2 @@
+Comentario 1: 'el archivo correcto era el beta 7'
+Comentario 2: 'lo publicó soporte, no el canal general'

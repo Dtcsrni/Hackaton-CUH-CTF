@@ -1,0 +1,1 @@
+Las cuentas operativas del laboratorio usan diccionarios internos por lote y año cuando se preparan entornos de práctica.

@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{gateway_hmac_verificado_completo}",
+  "checks": [
+    {
+      "path": "app/verifier.py",
+      "required": [
+        "hmac.compare_digest(",
+        "expected = hmac.new(",
+        "len(signature) == 64"
+      ],
+      "forbidden": [
+        "[:8]",
+        "startswith(expected[:8])",
+        "signature == expected[:8]"
+      ]
+    }
+  ]
+}

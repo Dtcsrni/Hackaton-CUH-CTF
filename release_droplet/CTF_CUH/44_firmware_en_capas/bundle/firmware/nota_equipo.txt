@@ -1,0 +1,1 @@
+La primera extracción ya mostró un txt residual incrustado en el firmware. El equipo de análisis recomienda revisar artefactos embebidos antes de asumir que todo está en el filesystem principal.

@@ -1,0 +1,1 @@
+Issuer esperado: cuh-auth. Audience esperada: panel-interno. Algoritmo aceptado: HS256.

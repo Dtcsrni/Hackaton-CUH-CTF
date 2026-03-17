@@ -1,0 +1,1 @@
+El portal ya pasó a HTTPS, pero las sesiones siguen arrastrando una configuración pensada para entorno de pruebas por HTTP.

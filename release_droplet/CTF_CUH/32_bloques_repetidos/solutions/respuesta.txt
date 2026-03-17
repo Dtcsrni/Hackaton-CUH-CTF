@@ -1,0 +1,3 @@
+modo=aes_ecb
+hallazgo=bloques_identicos_revelan_patron_del_contenido
+mitigacion=usar_modo_con_iv_aleatorio_y_no_repetir_bloques_independientes

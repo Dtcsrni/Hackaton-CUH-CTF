@@ -1,0 +1,1 @@
+La captura del perfil omitía el nombre completo, pero el issue exportado conserva la ruta exacta del repo.

@@ -1,0 +1,3 @@
+credencial: turno_b
+alcance: revision_nocturna
+nota: ingreso restringido al bloque azul
