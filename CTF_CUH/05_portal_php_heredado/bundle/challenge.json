@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{portal_php_heredado_endurecido}",
+  "checks": [
+    {
+      "path": "app/auth.php",
+      "required": [
+        "prepare(",
+        "password_verify(",
+        ":usuario"
+      ],
+      "forbidden": [
+        "md5(",
+        "SELECT * FROM usuarios WHERE usuario = '$usuario'",
+        "query($sql)"
+      ]
+    }
+  ]
+}

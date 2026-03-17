@@ -1,0 +1,3 @@
+Share: \\CUH-FILES\publico
+Authenticated Users:(OI)(CI)(M)
+Equipo-Operativo:(OI)(CI)(F)

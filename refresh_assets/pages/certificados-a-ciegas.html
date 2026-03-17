@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">TLS y confianza</span>
+      <h1>Certificados a ciegas</h1>
+      <p>Usar TLS sin validar certificados equivale a conservar el canal sin su promesa principal de autenticidad. Este reto se centra en arreglar esa confianza rota desde el cliente.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se crea el contexto SSL actual.</li><li>Qué indicadores revelan que no se valida la cadena.</li><li>Qué archivo de CA entrega el bundle para la solución correcta.</li><li>Qué papel juega `check_hostname` además de la verificación de certificados.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Confiar en cualquier certificado autofirmado.</li><li>Activar la CA pero dejar hostname checking apagado.</li><li>Mantener `CERT_NONE` por compatibilidad.</li><li>Cambiar la petición de red en vez del contexto TLS.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Corrige `app/client_tls.py` para usar la CA entregada.</li><li>Activa verificación de cadena y hostname.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando el cliente deja de confiar a ciegas.</li></ul></article>
+    </div>
+  </section>
+</div>

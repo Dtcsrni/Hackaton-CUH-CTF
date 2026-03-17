@@ -1,0 +1,1123 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+window.ctfcuChallengeTheme = {
+  slug(category) {
+    return String(category || "general")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  },
+  accent(category) {
+    const map = {
+      "Web": "#46627f",
+      "Calentamiento": "#7b92ac",
+      "Criptografía": "#6d8298",
+      "Forense": "#90a3b5",
+      "OSINT": "#7c8fa3",
+      "Linux": "#5f748a",
+      "Cracking": "#4c6278",
+      "Reconocimiento": "#9aaebe",
+    };
+    return map[category] || "#46627f";
+  },
+  soft(category) {
+    const map = {
+      "Web": "rgba(70,98,127,.16)",
+      "Calentamiento": "rgba(123,146,172,.14)",
+      "Criptografía": "rgba(109,130,152,.16)",
+      "Forense": "rgba(144,163,181,.14)",
+      "OSINT": "rgba(124,143,163,.14)",
+      "Linux": "rgba(95,116,138,.13)",
+      "Cracking": "rgba(76,98,120,.16)",
+      "Reconocimiento": "rgba(154,174,190,.16)",
+    };
+    return map[category] || "rgba(79,101,125,.14)";
+  },
+  icon(category) {
+    const map = {
+      "Web": "fa-solid fa-globe",
+      "Calentamiento": "fa-solid fa-seedling",
+      "Criptografía": "fa-solid fa-key",
+      "Forense": "fa-solid fa-magnifying-glass-chart",
+      "OSINT": "fa-solid fa-binoculars",
+      "Linux": "fa-brands fa-linux",
+      "Cracking": "fa-solid fa-hammer-crash",
+      "Reconocimiento": "fa-solid fa-radar",
+    };
+    return map[category] || "fa-solid fa-cube";
+  },
+  level(value) {
+    const points = Number(value || 0);
+    if (points >= 320) return "Critico";
+    if (points >= 220) return "Avanzado";
+    if (points >= 120) return "Intermedio";
+    return "Base";
+  },
+  status(challenge) {
+    return challenge && challenge.solved_by_me ? "Resuelto" : "Disponible";
+  },
+  solveLabel(count) {
+    const n = Number(count || 0);
+    return `${n} solve${n === 1 ? "" : "s"}`;
+  }
+};
+</script>
+
+<style id="ctfcu-challenges-radical">
+[x-cloak]{display:none!important}
+.ctfcu-challenges-page{max-width:1680px;margin:0 auto;padding:28px 20px 84px;color:var(--cuhv-text,#f1ece4)}
+.ctfcu-challenges-shell{position:relative;overflow:hidden;padding:28px;border-radius:32px;border:1px solid rgba(177,190,204,.16);background:radial-gradient(circle at 14% 16%,rgba(79,101,125,.14),transparent 24%),radial-gradient(circle at 85% 12%,rgba(127,147,168,.12),transparent 22%),linear-gradient(145deg,rgba(68,76,86,.96),rgba(31,35,40,.98));box-shadow:0 26px 72px rgba(0,0,0,.32)}
+.ctfcu-challenges-shell:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(183,197,211,.04),rgba(183,197,211,0) 22%,rgba(255,255,255,0) 100%),repeating-linear-gradient(90deg,rgba(183,197,211,.05) 0,rgba(183,197,211,.05) 1px,transparent 1px,transparent 56px);opacity:.54;pointer-events:none}
+.ctfcu-challenges-hero,.ctfcu-challenges-board,.ctfcu-category-section{position:relative;z-index:1}
+.ctfcu-challenges-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:18px;align-items:stretch}
+.ctfcu-challenges-card,.ctfcu-challenge-stat,.ctfcu-category-nav,.ctfcu-category-shell,.ctfcu-board-empty{border-radius:28px;border:1px solid rgba(186,180,173,.14);background:linear-gradient(180deg,rgba(79,88,100,.88),rgba(34,38,43,.94));box-shadow:0 16px 42px rgba(0,0,0,.24)}
+.ctfcu-challenges-card,.ctfcu-category-nav,.ctfcu-category-shell,.ctfcu-board-empty{padding:24px}
+.ctfcu-challenges-kicker,.ctfcu-stat-eyebrow,.ctfcu-category-chip,.ctfcu-category-meta,.ctfcu-card-chip,.ctfcu-card-tag{display:inline-flex;align-items:center;gap:8px;border-radius:999px}
+.ctfcu-challenges-kicker{padding:7px 13px;background:linear-gradient(135deg,rgba(79,101,125,.94),rgba(127,147,168,.90));color:#eef2f6;font-weight:800;font-size:.82rem;letter-spacing:.11em;text-transform:uppercase}
+.ctfcu-challenges-card h1{margin:14px 0 12px;color:#fff;font-size:clamp(2.5rem,4.4vw,4.9rem);line-height:.96;letter-spacing:-.05em}
+.ctfcu-challenges-card p{margin:0;color:rgba(210,227,248,.84);line-height:1.74;max-width:66ch}
+.ctfcu-challenges-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.ctfcu-challenges-mini{padding:14px;border-radius:18px;border:1px solid rgba(165,210,255,.13);background:linear-gradient(180deg,rgba(16,31,60,.82),rgba(8,16,33,.92))}
+.ctfcu-challenges-mini strong{display:block;color:#fff;font-size:.98rem}
+.ctfcu-challenges-mini span{display:block;margin-top:4px;color:rgba(204,221,242,.76);font-size:.88rem;line-height:1.55}
+.ctfcu-challenge-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ctfcu-challenge-stat{position:relative;overflow:hidden;padding:18px}
+.ctfcu-challenge-stat:before{content:"";position:absolute;inset:auto -20% -30% auto;width:132px;height:132px;border-radius:999px;filter:blur(10px);opacity:.32;pointer-events:none}
+.ctfcu-challenge-stat.total:before{background:radial-gradient(circle,rgba(70,98,127,.42) 0,rgba(70,98,127,0) 70%)}
+.ctfcu-challenge-stat.solved:before{background:radial-gradient(circle,rgba(123,146,172,.40) 0,rgba(123,146,172,0) 70%)}
+.ctfcu-challenge-stat.remaining:before{background:radial-gradient(circle,rgba(145,165,184,.34) 0,rgba(145,165,184,0) 70%)}
+.ctfcu-challenge-stat.categories:before{background:radial-gradient(circle,rgba(180,194,207,.34) 0,rgba(180,194,207,0) 70%)}
+.ctfcu-stat-eyebrow{padding:6px 11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.78rem;font-weight:800;color:rgba(214,228,246,.86)}
+.ctfcu-stat-value{margin-top:12px;color:#fff;font-size:clamp(1.9rem,3vw,2.9rem);font-weight:900;line-height:1}
+.ctfcu-stat-copy{margin-top:8px;color:rgba(204,221,242,.76);font-size:.88rem;line-height:1.55}
+.ctfcu-category-nav{margin-top:20px}
+.ctfcu-category-nav-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:14px}
+.ctfcu-category-nav-head h2{margin:0;color:#fff;font-size:clamp(1.45rem,2.1vw,2rem);letter-spacing:-.03em}
+.ctfcu-category-nav-head p{margin:0;color:rgba(204,221,242,.72);max-width:62ch}
+.ctfcu-category-chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.ctfcu-category-chip{min-height:44px;padding:0 15px;border:1px solid rgba(181,222,255,.12);background:linear-gradient(180deg,rgba(18,31,58,.84),rgba(8,15,30,.96));color:#eef6ff;font-weight:800;text-decoration:none;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.ctfcu-category-chip:hover{color:#d9e4ef;border-color:rgba(79,101,125,.24);transform:translateY(-1px)}
+.ctfcu-category-chip-count{padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.08);font-size:.74rem;color:rgba(210,227,248,.86)}
+.ctfcu-challenges-board{margin-top:24px}
+.ctfcu-category-section + .ctfcu-category-section{margin-top:22px}
+.ctfcu-category-shell{padding:20px}
+.ctfcu-category-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:16px}
+.ctfcu-category-title{display:flex;align-items:center;gap:14px}
+.ctfcu-category-icon{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;color:#fff;font-size:1.3rem;background:linear-gradient(145deg,var(--ctfcu-accent-soft),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 14px 28px rgba(0,0,0,.18)}
+.ctfcu-category-head h3{margin:0;color:#fff;font-size:clamp(1.45rem,2vw,2rem);letter-spacing:-.03em}
+.ctfcu-category-head p{margin:4px 0 0;color:rgba(204,221,242,.72)}
+.ctfcu-category-meta{padding:8px 12px;border:1px solid rgba(181,222,255,.12);background:rgba(255,255,255,.04);font-size:.82rem;font-weight:800;color:#eef6ff}
+.ctfcu-challenges-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ctfcu-challenge-card{position:relative;z-index:2;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:14px;min-height:220px;padding:18px;border:none;border-radius:24px;background:linear-gradient(180deg,rgba(17,31,60,.94),rgba(8,15,30,.98));box-shadow:0 16px 34px rgba(0,0,0,.24);text-align:left;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;color:#eef6ff;cursor:pointer}
+.ctfcu-challenge-card:before,.ctfcu-challenge-card:after{content:"";position:absolute;pointer-events:none}
+.ctfcu-challenge-card:before{inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(140deg,color-mix(in srgb,var(--ctfcu-accent) 70%,white),rgba(255,255,255,0) 44%,rgba(255,255,255,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.54}
+.ctfcu-challenge-card:after{width:160px;height:160px;right:-46px;top:-54px;border-radius:999px;background:radial-gradient(circle,color-mix(in srgb,var(--ctfcu-accent) 34%,white) 0,rgba(255,255,255,0) 72%);filter:blur(14px);opacity:.42}
+.ctfcu-challenge-card:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(0,0,0,.30)}
+.ctfcu-challenge-card.challenge-solved{background:linear-gradient(180deg,rgba(18,39,38,.96),rgba(8,22,22,.98))}
+.ctfcu-card-top,.ctfcu-card-bottom,.ctfcu-card-tags{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px}
+.ctfcu-card-top{justify-content:space-between;align-items:flex-start}
+.ctfcu-card-chip{min-height:30px;padding:0 11px;border:1px solid rgba(181,222,255,.12);background:rgba(255,255,255,.06);font-size:.76rem;font-weight:800;color:#eef6ff}
+.ctfcu-card-chip i{color:var(--ctfcu-accent)}
+.ctfcu-card-title{position:relative;z-index:1}
+.ctfcu-card-title h4{margin:0;color:#fff;font-size:1.12rem;line-height:1.2;letter-spacing:-.02em}
+.ctfcu-card-title p{margin:8px 0 0;color:rgba(204,221,242,.72);font-size:.88rem;line-height:1.58}
+.ctfcu-card-tag{min-height:28px;padding:0 10px;border:1px solid rgba(181,222,255,.10);background:rgba(255,255,255,.04);font-size:.72rem;font-weight:800;color:rgba(214,228,246,.84)}
+.ctfcu-card-bottom{justify-content:space-between;align-items:flex-end}
+.ctfcu-card-score{display:flex;align-items:baseline;gap:6px}
+.ctfcu-card-score strong{color:#fff;font-size:2rem;font-weight:900;line-height:1}
+.ctfcu-card-score span{color:rgba(204,221,242,.70);font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.ctfcu-card-solves{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ctfcu-card-solves small{color:rgba(204,221,242,.74);font-size:.78rem}
+.ctfcu-card-progress{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:.78rem;font-weight:800;color:#eef6ff}
+.ctfcu-card-progress.is-solved{background:linear-gradient(135deg,rgba(123,146,172,.18),rgba(70,98,127,.12));border-color:rgba(123,146,172,.28);color:#eef1f3}
+.ctfcu-board-empty{text-align:center}
+.ctfcu-board-empty h3{margin:0;color:#fff;font-size:1.8rem}
+.ctfcu-board-empty p{margin:12px auto 0;max-width:58ch;color:rgba(204,221,242,.76);line-height:1.68}
+.ctfcu-evidence-banner{margin-bottom:18px;padding:16px 18px;border-radius:20px;border:1px solid rgba(172,185,198,.16);background:linear-gradient(135deg,rgba(72,86,101,.96),rgba(34,42,50,.99));color:#fff}
+.ctfcu-evidence-banner strong{display:block;font-size:1rem}
+.ctfcu-evidence-banner span{display:block;margin-top:6px;color:rgba(222,229,235,.82);line-height:1.55}
+.ctfcu-evidence-banner a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.ctfcu-notification-lock{padding:26px;border-radius:28px;border:1px solid rgba(235,92,92,.28);background:radial-gradient(circle at top right,rgba(255,92,92,.24),transparent 28%),linear-gradient(135deg,rgba(92,18,18,.96),rgba(39,10,10,.99));box-shadow:0 22px 44px rgba(66,8,8,.28);color:#fff4f4}
+.ctfcu-notification-lock strong{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);font-size:.82rem;letter-spacing:.09em;text-transform:uppercase}
+.ctfcu-notification-lock h2{margin:16px 0 10px;color:#fff;font-size:clamp(2rem,3vw,3rem);letter-spacing:-.04em}
+.ctfcu-notification-lock p{margin:0;color:rgba(255,232,232,.9);line-height:1.72;max-width:68ch}
+.ctfcu-notification-lock-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.ctfcu-notification-lock-link{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 18px;border-radius:16px;border:1px solid rgba(255,150,150,.24);background:linear-gradient(135deg,#ff7a7a,#e13a3a);color:#2b0808;font-weight:900;text-decoration:none;box-shadow:0 12px 24px rgba(92,10,10,.24)}
+.ctfcu-notification-lock-note{display:inline-flex;align-items:center;min-height:50px;padding:0 16px;border-radius:16px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.06);color:rgba(255,232,232,.88);font-weight:700}
+.ctfcu-challenge-evidence-note{margin:0 0 18px;padding:14px 16px;border-radius:18px;border:1px solid rgba(172,185,198,.14);background:linear-gradient(135deg,rgba(72,86,101,.56),rgba(34,42,50,.76));color:#fff}
+.ctfcu-challenge-evidence-note strong{display:block;font-size:.95rem}
+.ctfcu-challenge-evidence-note span{display:block;margin-top:6px;color:rgba(222,229,235,.82);line-height:1.55}
+.ctfcu-challenge-evidence-note code{padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff}
+.ctfcu-challenge-evidence-note a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+#challenge-window .modal-dialog{max-width:min(1100px,96vw)}
+#challenge-window .modal-content{border-radius:30px;border:1px solid rgba(171,214,255,.16);background:linear-gradient(180deg,rgba(12,26,52,.98),rgba(5,12,25,.99));box-shadow:0 28px 80px rgba(0,0,0,.48)}
+#challenge-window .modal-body{padding:24px 28px 28px!important;max-height:min(calc(100vh - 96px),980px);overflow-y:auto;overflow-x:hidden}
+#challenge-window .nav-tabs{gap:8px;border:none}
+#challenge-window .nav-tabs .nav-link{border:none;border-radius:999px;background:rgba(255,255,255,.05);color:#eef6ff;font-weight:800}
+#challenge-window .nav-tabs .nav-link.active{background:linear-gradient(135deg,#46627f,#7b92ac);color:#eef1f3}
+#challenge-window .challenge-name{margin:18px 0 6px;color:#fff;font-size:clamp(2rem,3.2vw,3rem);letter-spacing:-.04em}
+#challenge-window .challenge-value{color:#d9e4ef;font-size:1.2rem;font-weight:900}
+#challenge-window .challenge-tag{border-radius:999px;padding:7px 12px;background:rgba(79,101,125,.14)!important;border:1px solid rgba(79,101,125,.22);color:#eef2f6!important}
+#challenge-window .challenge-desc{display:block;margin-top:20px;color:rgba(223,236,251,.90);line-height:1.72}
+#challenge-window .challenge-desc h1,#challenge-window .challenge-desc h2,#challenge-window .challenge-desc h3,#challenge-window .challenge-desc h4{color:#fff}
+#challenge-window .challenge-desc code,#challenge-window .challenge-connection-info code{padding:3px 8px;border-radius:10px;background:rgba(255,255,255,.07);color:#d9e4ef}
+#challenge-window details{margin-bottom:10px;padding:12px 14px;border-radius:18px;border:1px solid rgba(181,222,255,.10);background:rgba(255,255,255,.03)}
+#challenge-window summary{cursor:pointer;color:#fff;font-weight:800}
+#challenge-window .btn-file,#challenge-window .btn-info,#challenge-window .btn-primary,#challenge-window .btn-outline-secondary{border-radius:16px}
+#challenge-window .challenge-input,#challenge-window textarea.form-control{min-height:52px;border-radius:16px;border:1px solid rgba(181,222,255,.14);background:rgba(255,255,255,.05);color:#fff}
+#challenge-window .challenge-submit{min-height:52px;border-radius:16px;border:1px solid rgba(79,101,125,.24);background:linear-gradient(135deg,rgba(76,89,103,.96),rgba(34,38,43,.98));color:#eef2f6;font-weight:800}
+#challenge-window .challenge-submit:hover{border-color:rgba(79,101,125,.34);color:#d9e4ef}
+#challenge-window .alert{border:none;border-radius:18px}
+#challenge-window .ctfcu-modal-shell{display:grid;gap:22px;margin-top:18px}
+#challenge-window .ctfcu-modal-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:18px;align-items:stretch}
+#challenge-window .ctfcu-modal-panel,#challenge-window .ctfcu-modal-hero-card,#challenge-window .ctfcu-modal-stat-card{border-radius:24px;border:1px solid rgba(177,190,204,.14);background:linear-gradient(180deg,rgba(76,89,103,.34),rgba(31,35,40,.34));box-shadow:0 16px 36px rgba(0,0,0,.22)}
+#challenge-window .ctfcu-modal-hero-card{padding:24px 24px 22px}
+#challenge-window .ctfcu-modal-kicker,#challenge-window .ctfcu-modal-chip,#challenge-window .ctfcu-modal-inline-chip{display:inline-flex;align-items:center;gap:8px;border-radius:999px}
+#challenge-window .ctfcu-modal-kicker{padding:7px 12px;background:linear-gradient(135deg,#46627f,#7b92ac);color:#eef1f3;font-size:.78rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
+#challenge-window .ctfcu-modal-hero-title{margin:14px 0 8px;color:#fff;font-size:clamp(2.1rem,3vw,3rem);line-height:.96;letter-spacing:-.04em}
+#challenge-window .ctfcu-modal-hero-copy{margin:0;color:rgba(223,236,251,.82);line-height:1.72}
+#challenge-window .ctfcu-modal-chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+#challenge-window .ctfcu-modal-chip{min-height:34px;padding:0 12px;border:1px solid rgba(177,190,204,.14);background:rgba(248,250,252,.05);color:#eef2f6;font-size:.8rem;font-weight:800}
+#challenge-window .ctfcu-modal-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#challenge-window .ctfcu-modal-stat-card{position:relative;overflow:hidden;padding:16px 16px 14px}
+#challenge-window .ctfcu-modal-stat-card:before{content:"";position:absolute;right:-22px;top:-18px;width:96px;height:96px;border-radius:999px;background:radial-gradient(circle,rgba(127,147,168,.28) 0,rgba(127,147,168,0) 72%);filter:blur(10px);pointer-events:none}
+#challenge-window .ctfcu-modal-stat-label{display:block;color:rgba(223,236,251,.68);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+#challenge-window .ctfcu-modal-stat-value{display:block;margin-top:8px;color:#fff;font-size:1.35rem;font-weight:900;line-height:1.1}
+#challenge-window .ctfcu-modal-stat-copy{display:block;margin-top:6px;color:rgba(223,236,251,.74);font-size:.84rem;line-height:1.45}
+#challenge-window .ctfcu-modal-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.8fr);gap:18px}
+#challenge-window .ctfcu-modal-layout > *,#challenge-window .ctfcu-modal-hero > *{min-width:0}
+#challenge-window .ctfcu-modal-main,#challenge-window .ctfcu-modal-side{display:grid;gap:18px;align-content:start;min-width:0}
+#challenge-window .ctfcu-modal-panel{padding:20px;min-width:0;overflow:hidden}
+#challenge-window .ctfcu-modal-panel h3{margin:0 0 10px;color:#fff;font-size:1.22rem;letter-spacing:-.02em}
+#challenge-window .ctfcu-modal-subsection + .ctfcu-modal-subsection{margin-top:18px}
+#challenge-window .ctfcu-modal-subsection h4{margin:0 0 10px;color:#fff;font-size:1rem;letter-spacing:-.01em}
+#challenge-window .ctfcu-modal-panel p{margin:0;color:rgba(223,236,251,.80);line-height:1.68}
+#challenge-window .ctfcu-modal-section-copy{margin-bottom:14px;color:rgba(223,236,251,.70);font-size:.92rem;line-height:1.62}
+#challenge-window .ctfcu-modal-richtext{display:grid;gap:10px}
+#challenge-window .ctfcu-modal-richtext > :first-child{margin-top:0!important}
+#challenge-window .ctfcu-modal-richtext > :last-child{margin-bottom:0!important}
+#challenge-window .ctfcu-modal-richtext ul,#challenge-window .ctfcu-modal-richtext ol{margin:0;padding-left:18px}
+#challenge-window .ctfcu-modal-richtext li{margin-bottom:8px;color:rgba(223,236,251,.82);line-height:1.62}
+#challenge-window .ctfcu-modal-material-list{display:grid;gap:10px}
+#challenge-window .ctfcu-modal-material-list .file-button-wrapper{width:100%;max-width:none;display:block}
+#challenge-window .ctfcu-modal-material-empty{padding:14px 16px;border-radius:18px;border:1px dashed rgba(177,190,204,.18);background:rgba(248,250,252,.04);color:rgba(223,236,251,.76);line-height:1.58}
+#challenge-window .ctfcu-modal-inline-chip{min-height:28px;padding:0 10px;border:1px solid rgba(177,190,204,.14);background:rgba(248,250,252,.04);color:#eef2f6;font-size:.76rem;font-weight:800}
+#challenge-window .ctfcu-modal-guidance-list{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+#challenge-window .ctfcu-modal-guidance-list li{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:16px;border:1px solid rgba(177,190,204,.12);background:rgba(248,250,252,.04);color:rgba(223,236,251,.82);line-height:1.58}
+#challenge-window .ctfcu-modal-guidance-list i{margin-top:2px;color:#d9e4ef}
+#challenge-window .ctfcu-modal-submit .submit-row{margin-top:0}
+#challenge-window .ctfcu-modal-submit .notification-row{margin-top:12px}
+#challenge-window .ctfcu-modal-submit .challenge-input{margin-bottom:0}
+#challenge-window .ctfcu-modal-panel .challenge-files{margin:0}
+#challenge-window .ctfcu-modal-panel .file-button-wrapper{padding:0}
+#challenge-window .ctfcu-modal-panel .btn-file{display:flex!important;align-items:center;justify-content:center;min-height:48px;background:linear-gradient(135deg,rgba(76,89,103,.96),rgba(34,38,43,.98));border:1px solid rgba(79,101,125,.24);color:#eef2f6}
+#challenge-window .ctfcu-modal-panel .btn-file:hover{color:#d9e4ef;border-color:rgba(79,101,125,.34)}
+#challenge-window .ctfcu-modal-panel .challenge-hints{margin:0}
+#challenge-window .ctfcu-modal-panel .challenge-hints .col-12{margin-bottom:0!important;padding:0}
+#challenge-window .ctfcu-modal-panel .challenge-connection-info{display:block}
+#challenge-window .tab-pane#submissions .table,#challenge-window .tab-pane#solves .table{margin-top:18px}
+@media (max-width:1320px){.ctfcu-challenges-hero,.ctfcu-challenges-mini-grid{grid-template-columns:1fr}.ctfcu-challenges-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:980px){.ctfcu-challenges-page{padding:22px 14px 72px}.ctfcu-challenges-shell{padding:18px}.ctfcu-challenge-stat-grid,.ctfcu-challenges-grid,#challenge-window .ctfcu-modal-hero,#challenge-window .ctfcu-modal-layout{grid-template-columns:repeat(2,minmax(0,1fr))}.ctfcu-category-head{display:block}.ctfcu-category-head p{margin-top:6px}#challenge-window .ctfcu-modal-hero,#challenge-window .ctfcu-modal-layout{grid-template-columns:1fr}}
+@media (max-width:680px){.ctfcu-challenges-grid,.ctfcu-challenge-stat-grid,.ctfcu-challenges-mini-grid,#challenge-window .ctfcu-modal-stat-grid{grid-template-columns:1fr}.ctfcu-category-title{align-items:flex-start}.ctfcu-challenge-card{min-height:200px}#challenge-window .modal-body{padding:20px 18px 22px!important}#challenge-window .ctfcu-modal-hero-card,#challenge-window .ctfcu-modal-panel{padding:18px}}
+@media (prefers-reduced-motion:reduce){.ctfcu-category-chip,.ctfcu-challenge-card{transition:none!important}}
+</style>
+<style id="ctfcu-challenges-palette-reset">
+.ctfcu-challenges-page{color:#f2ece2!important}
+.ctfcu-challenges-shell{border-color:rgba(177,190,204,.16)!important;background:radial-gradient(circle at 14% 16%,rgba(79,101,125,.12),transparent 24%),radial-gradient(circle at 85% 12%,rgba(127,147,168,.10),transparent 22%),linear-gradient(145deg,rgba(68,76,86,.97),rgba(31,35,40,.99))!important}
+.ctfcu-challenges-shell:before{background:linear-gradient(90deg,rgba(183,197,211,.04),rgba(183,197,211,0) 24%,rgba(255,255,255,0) 100%),repeating-linear-gradient(90deg,rgba(183,197,211,.05) 0,rgba(183,197,211,.05) 1px,transparent 1px,transparent 56px)!important}
+.ctfcu-challenges-card,.ctfcu-challenge-stat,.ctfcu-category-nav,.ctfcu-category-shell,.ctfcu-board-empty{border-color:rgba(177,190,204,.14)!important;background:linear-gradient(180deg,rgba(79,88,100,.9),rgba(34,38,43,.96))!important}
+.ctfcu-challenges-kicker{background:linear-gradient(135deg,rgba(79,101,125,.94),rgba(127,147,168,.9))!important;color:#eef2f6!important}
+.ctfcu-challenges-card p,.ctfcu-challenges-mini span,.ctfcu-stat-copy,.ctfcu-category-nav-head p,.ctfcu-category-head p,.ctfcu-card-title p,.ctfcu-board-empty p{color:rgba(222,229,235,.78)!important}
+.ctfcu-challenges-mini,.ctfcu-category-chip,.ctfcu-category-meta,.ctfcu-card-progress,.ctfcu-card-chip,.ctfcu-card-tag{border-color:rgba(172,185,198,.12)!important;background:linear-gradient(180deg,rgba(77,92,108,.86),rgba(34,42,50,.96))!important;color:#eef1f3!important}
+.ctfcu-category-chip:hover{color:#d9e4ef!important;border-color:rgba(79,101,125,.26)!important}
+.ctfcu-challenge-card{background:linear-gradient(180deg,rgba(73,87,102,.94),rgba(31,38,46,.98))!important;color:#eef1f3!important}
+.ctfcu-challenge-card.challenge-solved{background:linear-gradient(180deg,rgba(62,74,84,.96),rgba(28,33,38,.98))!important}
+.ctfcu-challenge-card:hover{box-shadow:0 22px 48px rgba(0,0,0,.24)!important}
+.ctfcu-evidence-banner{border-color:rgba(172,185,198,.14)!important;background:linear-gradient(135deg,rgba(73,87,102,.96),rgba(33,41,50,.99))!important;color:#eef1f3!important}
+.ctfcu-notification-lock{border-color:rgba(235,92,92,.3)!important;background:radial-gradient(circle at top right,rgba(255,92,92,.22),transparent 28%),linear-gradient(135deg,rgba(92,18,18,.96),rgba(39,10,10,.99))!important;color:#fff4f4!important}
+.ctfcu-challenge-evidence-note{border-color:rgba(172,185,198,.14)!important;background:linear-gradient(135deg,rgba(73,87,102,.76),rgba(33,41,50,.86))!important;color:#eef1f3!important}
+#challenge-window .alert-warning{background:linear-gradient(135deg,rgba(73,87,102,.96),rgba(33,41,50,.99))!important;color:#eef1f3!important}
+#challenge-window .modal-content{border-color:rgba(177,190,204,.16)!important;background:linear-gradient(180deg,rgba(59,68,79,.98),rgba(24,28,33,.99))!important}
+#challenge-window .nav-tabs .nav-link{background:rgba(255,248,240,.06)!important;color:#f2ece2!important}
+#challenge-window .nav-tabs .nav-link.active{background:linear-gradient(135deg,#46627f,#7b92ac)!important;color:#eef1f3!important}
+#challenge-window .challenge-value,#challenge-window .challenge-desc code,#challenge-window .challenge-connection-info code,#challenge-window .challenge-submit:hover{color:#d9e4ef!important}
+#challenge-window .challenge-tag{background:rgba(79,101,125,.15)!important;border-color:rgba(79,101,125,.24)!important}
+#challenge-window .challenge-input,#challenge-window textarea.form-control,#challenge-window details{border-color:rgba(177,190,204,.12)!important;background:rgba(248,250,252,.05)!important;color:#eef2f6!important}
+#challenge-window .challenge-submit{border-color:rgba(79,101,125,.24)!important;background:linear-gradient(135deg,rgba(76,89,103,.96),rgba(34,38,43,.98))!important;color:#eef2f6!important}
+</style>
+
+<div class="ctfcu-challenges-page">
+  <div class="ctfcu-challenges-shell">
+    <div class="row">
+      <div class="col-12">
+        {% include "components/errors.html" %}
+        <div id="ctfcu-evidence-guard-banner" class="ctfcu-evidence-banner" hidden></div>
+        <div id="ctfcu-challenges-notification-block" class="ctfcu-notification-lock" hidden></div>
+      </div>
+    </div>
+
+    <div
+      id="ctfcu-challenges-board-root"
+      x-data="ChallengeBoard"
+      @load-challenges.window="loadChallenges()"
+      @load-challenge.window="loadChallenge($event.detail)"
+    >
+      <div
+        x-ref="challengeWindow"
+        id="challenge-window"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        x-data=""
+        x-html="$store.challenge.data.view"
+      ></div>
+
+      <div x-show="!loaded" x-cloak>
+        <div class="min-vh-50 d-flex align-items-center">
+          <div class="text-center w-100">
+            <i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+          </div>
+        </div>
+      </div>
+
+      <div x-show="loaded" x-cloak>
+        <section class="ctfcu-challenges-hero">
+          <article class="ctfcu-challenges-card">
+            <span class="ctfcu-challenges-kicker"><i class="fa-solid fa-flask-vial"></i> zona de operaciones</span>
+            <h1>Tablero de desafíos</h1>
+            <p>Esta vista reúne los retos por frentes de trabajo, deja ver tu avance real y te ayuda a decidir con más criterio qué conviene abrir después. La idea es que puedas orientarte rápido, distinguir dificultad aproximada y detectar sin ruido qué ya cerraste.</p>
+            <div class="ctfcu-challenges-mini-grid">
+              <div class="ctfcu-challenges-mini">
+                <strong>Recorrido claro</strong>
+                <span>Los retos se agrupan por categoria y cada bloque muestra progreso real dentro de ese frente.</span>
+              </div>
+              <div class="ctfcu-challenges-mini">
+                <strong>Lectura rapida</strong>
+                <span>Cada tarjeta muestra valor, estado, dificultad aproximada y volumen de solves sin abrir el modal.</span>
+              </div>
+              <div class="ctfcu-challenges-mini">
+                <strong>Entrada directa</strong>
+                <span>Sigues usando el mismo flujo de CTFd para abrir, enviar flags y pasar al siguiente desafio.</span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="ctfcu-challenge-stat-grid">
+            <article class="ctfcu-challenge-stat total">
+              <span class="ctfcu-stat-eyebrow"><i class="fa-solid fa-cubes"></i> Totales</span>
+              <div class="ctfcu-stat-value" x-text="challenges.length"></div>
+              <div class="ctfcu-stat-copy">Cantidad de desafios visibles en esta edicion.</div>
+            </article>
+            <article class="ctfcu-challenge-stat solved">
+              <span class="ctfcu-stat-eyebrow"><i class="fa-solid fa-circle-check"></i> Resueltos</span>
+              <div class="ctfcu-stat-value" x-text="challenges.filter(c => c.solved_by_me).length"></div>
+              <div class="ctfcu-stat-copy">Retos que ya quedaron validados en tu cuenta.</div>
+            </article>
+            <article class="ctfcu-challenge-stat remaining">
+              <span class="ctfcu-stat-eyebrow"><i class="fa-solid fa-bullseye"></i> Pendientes</span>
+              <div class="ctfcu-stat-value" x-text="challenges.filter(c => !c.solved_by_me).length"></div>
+              <div class="ctfcu-stat-copy">Espacios donde todavia puedes sumar puntos directos.</div>
+            </article>
+            <article class="ctfcu-challenge-stat categories">
+              <span class="ctfcu-stat-eyebrow"><i class="fa-solid fa-layer-group"></i> Categorias</span>
+              <div class="ctfcu-stat-value" x-text="getCategories().length"></div>
+              <div class="ctfcu-stat-copy">Frentes activos para orientar la siguiente decision.</div>
+            </article>
+          </aside>
+        </section>
+
+        <section class="ctfcu-category-nav">
+          <div class="ctfcu-category-nav-head">
+            <div>
+              <h2>Navegacion por categorias</h2>
+              <p>Salta directo al bloque que quieras revisar y compara en un vistazo cuantos retos ya cerraste en cada categoria.</p>
+            </div>
+          </div>
+          <div class="ctfcu-category-chip-row">
+            <template x-for="(category, idx) in getCategories()" :key="`nav-${idx}`">
+              <button
+                type="button"
+                class="ctfcu-category-chip"
+                @click="document.getElementById(`ctfcu-category-${window.ctfcuChallengeTheme.slug(category)}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+              >
+                <i :class="window.ctfcuChallengeTheme.icon(category)"></i>
+                <span x-text="category"></span>
+                <span
+                  class="ctfcu-category-chip-count"
+                  x-text="`${getChallenges(category).filter(c => c.solved_by_me).length}/${getChallenges(category).length}`"
+                ></span>
+              </button>
+            </template>
+          </div>
+        </section>
+
+        <section class="ctfcu-challenges-board">
+          <template x-if="challenges.length === 0">
+            <div class="ctfcu-board-empty">
+              <h3>No hay desafios visibles</h3>
+              <p>Cuando el tablero publique retos, apareceran aqui agrupados por categoria con acceso directo a cada modal.</p>
+            </div>
+          </template>
+
+          <template x-for="(category, idx) in getCategories()" :key="`category-${idx}`">
+            <section
+              class="ctfcu-category-section"
+              :id="`ctfcu-category-${window.ctfcuChallengeTheme.slug(category)}`"
+              :style="{ '--ctfcu-accent': window.ctfcuChallengeTheme.accent(category), '--ctfcu-accent-soft': window.ctfcuChallengeTheme.soft(category) }"
+            >
+              <div class="ctfcu-category-shell">
+                <div class="ctfcu-category-head">
+                  <div class="ctfcu-category-title">
+                    <div class="ctfcu-category-icon">
+                      <i :class="window.ctfcuChallengeTheme.icon(category)"></i>
+                    </div>
+                    <div>
+                      <h3 x-text="category"></h3>
+                      <p x-text="`${getChallenges(category).filter(c => c.solved_by_me).length} resueltos de ${getChallenges(category).length} visibles en esta categoria.`"></p>
+                    </div>
+                  </div>
+                  <div class="ctfcu-category-meta">
+                    <i class="fa-solid fa-signal"></i>
+                    <span x-text="`${getChallenges(category).reduce((sum, c) => sum + (Number(c.value) || 0), 0)} pts visibles`"></span>
+                  </div>
+                </div>
+
+                <div class="ctfcu-challenges-grid">
+                  <template x-for="c in getChallenges(category)" :key="c.id">
+                    <button
+                      type="button"
+                      class="challenge-button ctfcu-challenge-card"
+                      :class="[c.solved_by_me ? 'challenge-solved' : '', ...c.tags.map(tag => `tag-${tag.value.replace(/ /g, '-')}`)]"
+                      :style="{ '--ctfcu-accent': window.ctfcuChallengeTheme.accent(c.category), '--ctfcu-accent-soft': window.ctfcuChallengeTheme.soft(c.category) }"
+                      :value="c.id"
+                      @click="loadChallenge(c.id)"
+                    >
+                      <div class="ctfcu-card-top">
+                        <span class="ctfcu-card-chip">
+                          <i :class="window.ctfcuChallengeTheme.icon(c.category)"></i>
+                          <span x-text="window.ctfcuChallengeTheme.level(c.value)"></span>
+                        </span>
+                        <span class="ctfcu-card-chip" :class="c.solved_by_me ? 'is-solved' : ''">
+                          <i :class="c.solved_by_me ? 'fa-solid fa-circle-check' : 'fa-solid fa-bolt'"></i>
+                          <span x-text="window.ctfcuChallengeTheme.status(c)"></span>
+                        </span>
+                      </div>
+
+                      <div class="ctfcu-card-title">
+                        <h4 x-text="c.name"></h4>
+                        <p x-text="`Categoria ${c.category}. ${window.ctfcuChallengeTheme.solveLabel(c.solves)} registrados hasta ahora.`"></p>
+                      </div>
+
+                      <div class="ctfcu-card-tags" x-show="c.tags && c.tags.length">
+                        <template x-for="tag in c.tags.slice(0, 3)" :key="tag.value">
+                          <span class="ctfcu-card-tag" x-text="tag.value"></span>
+                        </template>
+                      </div>
+
+                      <div class="ctfcu-card-bottom">
+                        <div class="ctfcu-card-score">
+                          <strong x-text="c.value"></strong>
+                          <span>pts</span>
+                        </div>
+                        <div class="ctfcu-card-solves">
+                          <small x-text="window.ctfcuChallengeTheme.solveLabel(c.solves)"></small>
+                          <span class="ctfcu-card-progress" :class="c.solved_by_me ? 'is-solved' : ''">
+                            <i :class="c.solved_by_me ? 'fa-solid fa-trophy' : 'fa-solid fa-arrow-up-right-dots'"></i>
+                            <span x-text="c.solved_by_me ? 'Completado' : 'Abrir reto'"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  </template>
+                </div>
+              </div>
+            </section>
+          </template>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/challenges.js") }}
+  <script id="ctfcu-first-blood-feedback">
+    (() => {
+      const BONUS_PREFIX = "Primer solve · ";
+      const RECENT_WINDOW_MS = 5 * 60 * 1000;
+      const EVIDENCE_ENDPOINT = "/plugins/solve_evidence_guard/api/status";
+      const EVIDENCE_LINK = "/user";
+      const EVIDENCE_THRESHOLD = 300;
+      const EVIDENCE_MIN_FILES = 4;
+
+      function awardsEndpoint() {
+        const mode = window.CTFd?.config?.userMode;
+        return mode === "teams" ? "/api/v1/teams/me/awards" : "/api/v1/users/me/awards";
+      }
+
+      function currentChallengeName() {
+        try {
+          return window.Alpine?.store("challenge")?.data?.name || "";
+        } catch (error) {
+          return "";
+        }
+      }
+
+      function isRecent(dateValue) {
+        const ts = Date.parse(dateValue || "");
+        if (Number.isNaN(ts)) return false;
+        return Math.abs(Date.now() - ts) <= RECENT_WINDOW_MS;
+      }
+
+      async function loadRecentAwards() {
+        const response = await fetch(awardsEndpoint(), { credentials: "same-origin" });
+        if (!response.ok) {
+          return [];
+        }
+        const payload = await response.json();
+        return Array.isArray(payload?.data) ? payload.data : [];
+      }
+
+      async function loadEvidenceStatus() {
+        const response = await fetch(EVIDENCE_ENDPOINT, { credentials: "same-origin" });
+        if (!response.ok) {
+          return null;
+        }
+        const payload = await response.json();
+        return payload?.data || null;
+      }
+
+      async function loadNotificationAckStatus() {
+        const response = await fetch("/plugins/admin_notifications_console/api/pending-ack", { credentials: "same-origin" });
+        if (!response.ok) {
+          return null;
+        }
+        const payload = await response.json();
+        return payload?.data || null;
+      }
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function renderNotificationBlock(status) {
+        const block = document.getElementById("ctfcu-challenges-notification-block");
+        const board = document.getElementById("ctfcu-challenges-board-root");
+        if (!block || !board) return;
+
+        const notification = status?.notification;
+        const locked = Boolean(status?.pending && notification?.block_challenges && !notification?.accepted_at);
+        board.hidden = locked;
+        block.hidden = !locked;
+
+        if (!locked || !notification) {
+          block.innerHTML = "";
+          return;
+        }
+
+        block.innerHTML = `
+          <strong><i class="fa-solid fa-triangle-exclamation"></i> notificación pendiente</strong>
+          <h2>Antes de seguir, revisa tus notificaciones</h2>
+          <p>${escapeHtml(notification.content || "Tienes una notificación pendiente de confirmación.")}</p>
+          <div class="ctfcu-notification-lock-actions">
+            <a class="ctfcu-notification-lock-link" href="/notifications">Ir a notificaciones</a>
+            <span class="ctfcu-notification-lock-note">Las misiones se desbloquean cuando pulses "${escapeHtml(notification.ack_label || "Acepto")}".</span>
+          </div>
+        `;
+      }
+
+      function renderEvidenceBanner(status) {
+        const banner = document.getElementById("ctfcu-evidence-guard-banner");
+        if (!banner) return;
+        const requirement = status?.pending_requirements?.[0];
+        if (!status?.blocked || !requirement) {
+          banner.hidden = true;
+          banner.innerHTML = "";
+          return;
+        }
+        banner.hidden = false;
+        banner.innerHTML = `
+          <strong>Evidencias pendientes antes de seguir</strong>
+          <span>
+            Debes cargar al menos ${requirement.minimum_files} evidencias para <b>${requirement.challenge_name}</b>.
+            Llevas ${requirement.uploaded_files}/${requirement.minimum_files}. Sube el material desde
+            <a href="${EVIDENCE_LINK}">/user</a> antes de enviar nuevas flags.
+          </span>
+        `;
+      }
+
+      function renderChallengeEvidenceNote() {
+        const body = document.querySelector("#challenge-window .modal-body");
+        if (!body) return;
+
+        const challenge = window.Alpine?.store("challenge")?.data;
+        const value = Number(challenge?.value || 0);
+        const currentId = challenge?.id ? String(challenge.id) : "";
+        const existing = body.querySelector(".ctfcu-challenge-evidence-note");
+        if (!challenge?.id || value <= EVIDENCE_THRESHOLD) {
+          existing?.remove();
+          return;
+        }
+
+        if (existing?.dataset.challengeId === currentId) {
+          return;
+        }
+
+        existing?.remove();
+
+        const note = document.createElement("div");
+        note.className = "ctfcu-challenge-evidence-note";
+        note.dataset.challengeId = currentId;
+        note.innerHTML = `
+          <strong>Validación documental requerida</strong>
+          <span>
+            Este reto supera <code>${EVIDENCE_THRESHOLD} puntos</code>, así que al cerrarlo tendrás que subir al menos
+            <code>${EVIDENCE_MIN_FILES} evidencias</code> del proceso desde <a href="${EVIDENCE_LINK}">/user</a>
+            antes de poder seguir enviando nuevas flags.
+          </span>
+        `;
+
+        body.insertBefore(note, body.firstElementChild || null);
+      }
+
+      function modalLevel(value) {
+        const points = Number(value || 0);
+        if (points >= 500) return "Laboratorio mayor";
+        if (points >= 320) return "Avanzado";
+        if (points >= 200) return "Intermedio";
+        return "Entrada";
+      }
+
+      function modalSummaryFromDescription(desc) {
+        const firstParagraph = desc?.querySelector("p");
+        if (firstParagraph?.textContent?.trim()) {
+          return firstParagraph.textContent.trim();
+        }
+        const raw = desc?.textContent?.replace(/\s+/g, " ").trim() || "";
+        return raw.slice(0, 220);
+      }
+
+      function createModalStat(label, value, copy) {
+        const card = document.createElement("article");
+        card.className = "ctfcu-modal-stat-card";
+        card.innerHTML = `
+          <span class="ctfcu-modal-stat-label">${label}</span>
+          <span class="ctfcu-modal-stat-value">${value}</span>
+          <span class="ctfcu-modal-stat-copy">${copy}</span>
+        `;
+        return card;
+      }
+
+      function createModalPanel(title, copy = "") {
+        const panel = document.createElement("section");
+        panel.className = "ctfcu-modal-panel";
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        panel.appendChild(heading);
+        if (copy) {
+          const intro = document.createElement("p");
+          intro.className = "ctfcu-modal-section-copy";
+          intro.textContent = copy;
+          panel.appendChild(intro);
+        }
+        return panel;
+      }
+
+      function createSectionBlock(title, nodes, fallbackText = "") {
+        const section = document.createElement("section");
+        section.className = "ctfcu-modal-subsection";
+        const heading = document.createElement("h4");
+        heading.textContent = title;
+        section.appendChild(heading);
+        const content = document.createElement("div");
+        content.className = "ctfcu-modal-richtext";
+        if (Array.isArray(nodes) && nodes.length) {
+          nodes.forEach((node) => content.appendChild(node));
+        } else if (fallbackText) {
+          const p = document.createElement("p");
+          p.textContent = fallbackText;
+          content.appendChild(p);
+        }
+        section.appendChild(content);
+        return section;
+      }
+
+      function cloneNodeList(nodes) {
+        return Array.from(nodes || []).map((node) => node.cloneNode(true));
+      }
+
+      function extractDescriptionSections(desc) {
+        const sections = {
+          intro: [],
+          insumos: [],
+          objetivo: [],
+          archivos: [],
+          aclaraciones: [],
+          other: [],
+        };
+        if (!desc) {
+          return sections;
+        }
+
+        const clones = cloneNodeList(desc.childNodes);
+        const headingMap = {
+          "insumos disponibles": "insumos",
+          "objetivo de cierre": "objetivo",
+          "archivos del reto": "archivos",
+          "aclaraciones clave": "aclaraciones",
+        };
+
+        let current = "intro";
+        clones.forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent?.trim()) {
+              const p = document.createElement("p");
+              p.textContent = node.textContent.trim();
+              sections[current].push(p);
+            }
+            return;
+          }
+
+          const tag = String(node.tagName || "").toLowerCase();
+          if (/^h[1-6]$/.test(tag)) {
+            const key = headingMap[(node.textContent || "").trim().toLowerCase()];
+            if (key) {
+              current = key;
+              return;
+            }
+          }
+
+          sections[current].push(node);
+        });
+
+        if (!sections.intro.length && desc.textContent?.trim()) {
+          const p = document.createElement("p");
+          p.textContent = desc.textContent.replace(/\s+/g, " ").trim();
+          sections.intro.push(p);
+        }
+
+        return sections;
+      }
+
+      function buildMaterialsList(fileButtons) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "ctfcu-modal-material-list";
+        fileButtons.forEach((button) => {
+          const item = document.createElement("div");
+          item.className = "file-button-wrapper";
+          item.appendChild(button.cloneNode(true));
+          wrapper.appendChild(item);
+        });
+        return wrapper;
+      }
+
+      function normalizeModalTabs(body) {
+        const buttons = Array.from(body.querySelectorAll(".nav-tabs .nav-link"));
+        buttons.forEach((button) => {
+          const raw = button.textContent.replace(/\s+/g, " ").trim();
+          const lower = raw.toLowerCase();
+          if (lower === "challenge") {
+            button.textContent = "Misión";
+            return;
+          }
+          if (lower === "submissions") {
+            button.textContent = "Intentos";
+            return;
+          }
+          if (lower === "solution") {
+            button.textContent = "Solución";
+            return;
+          }
+          const solvesMatch = raw.match(/^(\d+)\s+(?:solve|solves|resolver)$/i);
+          if (solvesMatch) {
+            button.textContent = `${solvesMatch[1]} solves`;
+          }
+        });
+      }
+
+      function buildGuidanceItems(challenge, fileCount, hintCount) {
+        const items = [];
+        const category = String(challenge?.category || "").toLowerCase();
+        items.push("Lee primero la descripción completa y separa contexto, insumos y criterio de cierre antes de intentar enviar una flag.");
+        if (fileCount > 0) {
+          items.push("Descarga y revisa todos los archivos adjuntos antes de asumir que el dato útil está visible solo en el modal.");
+        } else {
+          items.push("Este reto no depende de adjuntos: el material útil está en la plataforma, en el flujo mostrado o en la respuesta del propio reto.");
+        }
+        if (category.includes("web") || category.includes("auth")) {
+          items.push("Observa HTML, respuestas HTTP, consola, cookies y comportamiento del flujo; normalmente la pista útil está en uno de esos niveles.");
+        } else if (category.includes("forense") || category.includes("osint")) {
+          items.push("Trabaja por evidencias: valida una pista con otra y evita cerrar la respuesta con una sola coincidencia aislada.");
+        } else if (category.includes("cript")) {
+          items.push("Confirma primero qué transformación o propiedad criptográfica estás viendo; muchas pérdidas de tiempo vienen de asumir un esquema equivocado.");
+        } else if (category.includes("linux") || category.includes("windows")) {
+          items.push("Parte del artefacto o configuración dada por el reto. No inventes infraestructura externa que el laboratorio no haya declarado.");
+        } else if (category.includes("cracking") || category.includes("reversing")) {
+          items.push("Identifica formato, contexto y estrategia antes de lanzar procesos pesados; la elección correcta del punto de partida suele ahorrar más que la fuerza bruta.");
+        }
+        if (hintCount > 0) {
+          items.push("Los hints ya están escalonados: compra uno solo cuando hayas agotado el material principal y necesites acotar la búsqueda con criterio.");
+        }
+        if (Number(challenge?.value || 0) > EVIDENCE_THRESHOLD) {
+          items.push(`Como este reto supera ${EVIDENCE_THRESHOLD} puntos, la plataforma pedirá ${EVIDENCE_MIN_FILES} evidencias antes de aceptar nuevas entregas posteriores.`);
+        }
+        return items.slice(0, 4);
+      }
+
+      function enhanceChallengeModal() {
+        const body = document.querySelector("#challenge-window .modal-body");
+        const challengePane = body?.querySelector("#challenge");
+        const challenge = window.Alpine?.store("challenge")?.data;
+        const currentId = challenge?.id ? String(challenge.id) : "";
+        if (!body || !challengePane || !currentId) {
+          return;
+        }
+        if (challengePane.dataset.ctfcuEnhancedFor === currentId) {
+          return;
+        }
+
+        const title = challengePane.querySelector(".challenge-name");
+        const value = challengePane.querySelector(".challenge-value");
+        const tags = challengePane.querySelector(".challenge-tags");
+        const attribution = challengePane.querySelector(".challenge-attribution");
+        const desc = challengePane.querySelector(".challenge-desc");
+        const connectionBlock = challengePane.querySelector(".challenge-connection-info")?.closest(".mb-2");
+        const hints = challengePane.querySelector(".challenge-hints");
+        const files = challengePane.querySelector(".challenge-files");
+        const attemptsNode = Array.from(challengePane.querySelectorAll("template[x-if]")).find((node) =>
+          String(node.getAttribute("x-if") || "").includes("max_attempts")
+        );
+        const submitRow = challengePane.querySelector(".submit-row");
+        const notificationRow = challengePane.querySelector(".notification-row");
+        const evidenceNote = challengePane.querySelector(".ctfcu-challenge-evidence-note");
+        const fileButtons = files ? Array.from(files.querySelectorAll(".btn-file")) : [];
+        const hintDetails = hints ? Array.from(hints.querySelectorAll("details")) : [];
+        const sections = extractDescriptionSections(desc);
+
+        normalizeModalTabs(body);
+
+        title?.classList.remove("text-center", "pt-3");
+        value?.classList.remove("text-center");
+        tags?.classList.remove("text-center", "pt-2", "pb-3");
+        attribution?.classList.remove("text-center", "text-muted", "d-block");
+        if (title) title.className = "challenge-name ctfcu-modal-hero-title";
+        if (value) value.className = "challenge-value";
+
+        const summary = modalSummaryFromDescription(desc);
+        const shell = document.createElement("div");
+        shell.className = "ctfcu-modal-shell";
+
+        const hero = document.createElement("section");
+        hero.className = "ctfcu-modal-hero";
+
+        const heroCard = document.createElement("article");
+        heroCard.className = "ctfcu-modal-hero-card";
+        const kicker = document.createElement("span");
+        kicker.className = "ctfcu-modal-kicker";
+        kicker.innerHTML = '<i class="fa-solid fa-crosshairs"></i> misión en curso';
+        heroCard.appendChild(kicker);
+        if (title) heroCard.appendChild(title);
+        if (value) heroCard.appendChild(value);
+        if (summary) {
+          const copy = document.createElement("p");
+          copy.className = "ctfcu-modal-hero-copy";
+          copy.textContent = summary;
+          heroCard.appendChild(copy);
+        }
+
+        const chipRow = document.createElement("div");
+        chipRow.className = "ctfcu-modal-chip-row";
+        const chips = [
+          { icon: "fa-solid fa-layer-group", label: challenge?.category || "General" },
+          { icon: "fa-solid fa-signal", label: modalLevel(challenge?.value) },
+          { icon: "fa-solid fa-paperclip", label: `${fileButtons.length} material${fileButtons.length === 1 ? "" : "es"}` },
+          { icon: "fa-regular fa-lightbulb", label: `${hintDetails.length} hint${hintDetails.length === 1 ? "" : "s"}` },
+        ];
+        chips.forEach((item) => {
+          const chip = document.createElement("span");
+          chip.className = "ctfcu-modal-chip";
+          chip.innerHTML = `<i class="${item.icon}"></i> ${item.label}`;
+          chipRow.appendChild(chip);
+        });
+        heroCard.appendChild(chipRow);
+        if (tags) heroCard.appendChild(tags);
+        if (attribution?.textContent?.trim()) heroCard.appendChild(attribution);
+        hero.appendChild(heroCard);
+
+        const statGrid = document.createElement("div");
+        statGrid.className = "ctfcu-modal-stat-grid";
+        statGrid.appendChild(createModalStat("Dificultad", modalLevel(challenge?.value), "Escala aproximada a partir del valor del reto."));
+        statGrid.appendChild(createModalStat("Materiales", fileButtons.length || "Sin adjuntos", fileButtons.length ? "El reto entrega material descargable y conviene revisarlo completo." : "Todo el insumo está en la plataforma o en el flujo del reto."));
+        statGrid.appendChild(createModalStat("Hints", hintDetails.length || "Sin hints", hintDetails.length ? "Las pistas están escalonadas y valen la pena cuando ya agotaste el material principal." : "Este reto no depende de pistas desbloqueables." ));
+        statGrid.appendChild(createModalStat("Entrega", Number(challenge?.value || 0) > EVIDENCE_THRESHOLD ? "Flag + evidencias" : "Flag final", Number(challenge?.value || 0) > EVIDENCE_THRESHOLD ? `Este reto requiere ${EVIDENCE_MIN_FILES} evidencias al resolverse por superar ${EVIDENCE_THRESHOLD} puntos.` : "Solo necesitas entregar la flag correcta del reto." ));
+        hero.appendChild(statGrid);
+        shell.appendChild(hero);
+
+        const layout = document.createElement("div");
+        layout.className = "ctfcu-modal-layout";
+        const main = document.createElement("div");
+        main.className = "ctfcu-modal-main";
+        const side = document.createElement("aside");
+        side.className = "ctfcu-modal-side";
+
+        const contextPanel = createModalPanel(
+          "Contexto e insumos",
+          "Aquí queda reunido el contexto completo del reto. La descripción ya incluye qué material está disponible, cómo se cierra la misión y cualquier aclaración importante."
+        );
+        contextPanel.appendChild(
+          createSectionBlock(
+            "Resumen operativo",
+            sections.intro,
+            "Este reto debe poder entenderse y completarse solo con el material y el flujo que la propia misión expone."
+          )
+        );
+        contextPanel.appendChild(
+          createSectionBlock(
+            "Insumos disponibles",
+            sections.insumos,
+            fileButtons.length
+              ? "El reto entrega material adjunto y ese material forma parte de la resolución esperada."
+              : "No hay adjuntos obligatorios: el insumo útil está en la propia plataforma o en el comportamiento del reto."
+          )
+        );
+        contextPanel.appendChild(
+          createSectionBlock(
+            "Objetivo de cierre",
+            sections.objetivo,
+            "Entrega la flag final cuando el criterio técnico correcto ya esté validado."
+          )
+        );
+        if (sections.aclaraciones.length) {
+          contextPanel.appendChild(
+            createSectionBlock("Aclaraciones clave", sections.aclaraciones)
+          );
+        }
+        main.appendChild(contextPanel);
+
+        if (hintDetails.length) {
+          const hintsPanel = createModalPanel(
+            "Pistas escalonadas",
+            "Las pistas deben servir para destrabar el análisis, no para saltarte el reto. Revísalas en orden si de verdad ya agotaste el material principal."
+          );
+          hintsPanel.appendChild(hints);
+          main.appendChild(hintsPanel);
+        }
+
+        const materialsPanel = createModalPanel(
+          "Materiales del reto",
+          fileButtons.length
+            ? "Todo archivo adjunto forma parte de la resolución prevista. Descárgalo antes de asumir que la flag está visible solo en el modal."
+            : "Este reto no depende de descargas externas. El punto de partida correcto está dentro de la propia plataforma."
+        );
+        if (sections.archivos.length) {
+          materialsPanel.appendChild(createSectionBlock("Qué incluye la misión", sections.archivos));
+        }
+        if (fileButtons.length) {
+          materialsPanel.appendChild(buildMaterialsList(fileButtons));
+        } else {
+          const empty = document.createElement("div");
+          empty.className = "ctfcu-modal-material-empty";
+          empty.textContent = "No hay adjuntos pendientes: revisa el flujo, la respuesta del reto y las aclaraciones de la descripción.";
+          materialsPanel.appendChild(empty);
+        }
+        side.appendChild(materialsPanel);
+
+        if (connectionBlock) {
+          const connectionPanel = createModalPanel(
+            "Acceso o conexión",
+            "Si este reto declara una URL, un host, un puerto o un dato de conexión, ese es el único punto de entrada previsto por el laboratorio."
+          );
+          connectionPanel.appendChild(connectionBlock);
+          side.appendChild(connectionPanel);
+        }
+
+        const guidancePanel = createModalPanel(
+          "Qué conviene revisar primero",
+          "Esta guía rápida resume el recorrido sensato antes de comprar hints o probar envíos a ciegas."
+        );
+        const guidanceList = document.createElement("ul");
+        guidanceList.className = "ctfcu-modal-guidance-list";
+        buildGuidanceItems(challenge, fileButtons.length, hintDetails.length).forEach((item) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<i class="fa-solid fa-angle-right"></i><span>${item}</span>`;
+          guidanceList.appendChild(li);
+        });
+        guidancePanel.appendChild(guidanceList);
+        side.appendChild(guidancePanel);
+
+        const submitPanel = createModalPanel(
+          "Entrega y validación",
+          "Envía la flag solo cuando el hallazgo ya esté comprobado. Si el reto supera el umbral documental, la plataforma te indicará aquí mismo la carga de evidencias."
+        );
+        submitPanel.classList.add("ctfcu-modal-submit");
+        if (evidenceNote) submitPanel.appendChild(evidenceNote);
+        if (attemptsNode) submitPanel.appendChild(attemptsNode);
+        if (submitRow) submitPanel.appendChild(submitRow);
+        if (notificationRow) submitPanel.appendChild(notificationRow);
+        side.appendChild(submitPanel);
+
+        layout.appendChild(main);
+        layout.appendChild(side);
+        shell.appendChild(layout);
+
+        challengePane.innerHTML = "";
+        challengePane.appendChild(shell);
+        challengePane.dataset.ctfcuEnhancedFor = currentId;
+      }
+
+      async function decorateFirstBlood(response) {
+        if (!response?.success) {
+          return response;
+        }
+
+        const status = response?.data?.status;
+        if (status === "notification_ack_required") {
+          try {
+            renderNotificationBlock(await loadNotificationAckStatus());
+          } catch (error) {
+            console.warn("ctfcu notification lock refresh failed", error);
+          }
+          return response;
+        }
+
+        if (status === "evidence_required") {
+          try {
+            renderEvidenceBanner(await loadEvidenceStatus());
+          } catch (error) {
+            console.warn("ctfcu evidence banner refresh failed", error);
+          }
+          return response;
+        }
+
+        if (status !== "correct") {
+          return response;
+        }
+
+        const challengeName = currentChallengeName();
+        if (!challengeName) {
+          return response;
+        }
+
+        const targetName = `${BONUS_PREFIX}${challengeName}`;
+        const awards = await loadRecentAwards();
+        const award = awards.find((entry) => entry?.category === "Primer solve" && entry?.name === targetName && isRecent(entry?.date));
+
+        if (award) {
+          const bonus = Number(award.value || 0);
+          const firstBloodLine = `Fuiste el primero en resolver este desafío y recibiste ${bonus} pts extra.`;
+          response.data.first_blood = true;
+          response.data.first_blood_bonus = bonus;
+          response.data.message = response.data.message ? `${response.data.message}. ${firstBloodLine}` : firstBloodLine;
+        }
+
+        try {
+          const evidence = await loadEvidenceStatus();
+          renderEvidenceBanner(evidence);
+          const pending = evidence?.pending_requirements?.[0];
+          if (pending && Number(pending.challenge_id) === Number(window.Alpine?.store("challenge")?.data?.id)) {
+            const evidenceLine = `Este reto requiere ${pending.minimum_files} evidencias en /user antes de abrir nuevas entregas.`;
+            response.data.message = response.data.message ? `${response.data.message}. ${evidenceLine}` : evidenceLine;
+          }
+        } catch (error) {
+          console.warn("ctfcu evidence status lookup failed", error);
+        }
+        return response;
+      }
+
+      function patchSubmitChallenge() {
+        const original = window.CTFd?.pages?.challenge?.submitChallenge;
+        if (!original || original.__ctfcuFirstBloodWrapped) {
+          return !!original;
+        }
+
+        const wrapped = async function (...args) {
+          const response = await original.apply(this, args);
+          try {
+            return await decorateFirstBlood(response);
+          } catch (error) {
+            console.warn("ctfcu first blood feedback failed", error);
+            return response;
+          }
+        };
+
+        wrapped.__ctfcuFirstBloodWrapped = true;
+        window.CTFd.pages.challenge.submitChallenge = wrapped;
+        return true;
+      }
+
+      let attempts = 0;
+      let evidenceNoteQueued = false;
+      let observerPaused = false;
+
+      function isAuthenticated() {
+        try {
+          return !!(window.CTFd?.user?.id || window.init?.userId);
+        } catch (e) {
+          return false;
+        }
+      }
+
+      function isChallengeModalVisible() {
+        const modal = document.getElementById("challenge-window");
+        return modal && (modal.classList.contains("show") || modal.style.display === "block");
+      }
+
+      function queueChallengeModalRefresh() {
+        if (evidenceNoteQueued || observerPaused) {
+          return;
+        }
+        evidenceNoteQueued = true;
+        window.requestAnimationFrame(() => {
+          evidenceNoteQueued = false;
+          observerPaused = true;
+          try {
+            renderChallengeEvidenceNote();
+            enhanceChallengeModal();
+          } catch (e) {
+            console.warn("ctfcu modal refresh error", e);
+          }
+          setTimeout(() => { observerPaused = false; }, 100);
+        });
+      }
+
+      const timer = window.setInterval(() => {
+        attempts += 1;
+        if (patchSubmitChallenge() || attempts > 80) {
+          window.clearInterval(timer);
+        }
+        if (isChallengeModalVisible()) {
+          queueChallengeModalRefresh();
+        }
+      }, 250);
+
+      const evidenceNoteObserver = new MutationObserver(() => {
+        if (!observerPaused && isChallengeModalVisible()) {
+          queueChallengeModalRefresh();
+        }
+      });
+      const challengeWindow = document.getElementById("challenge-window");
+      if (challengeWindow) {
+        evidenceNoteObserver.observe(challengeWindow, { childList: true, subtree: true });
+      }
+
+      if (isAuthenticated()) {
+        loadEvidenceStatus()
+          .then(renderEvidenceBanner)
+          .catch((error) => console.warn("ctfcu evidence guard init failed", error));
+        loadNotificationAckStatus()
+          .then(renderNotificationBlock)
+          .catch((error) => console.warn("ctfcu notification lock init failed", error));
+      }
+    })();
+  </script>
+{% endblock %}

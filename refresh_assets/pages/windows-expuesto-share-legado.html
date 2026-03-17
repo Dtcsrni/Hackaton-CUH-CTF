@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Windows y comparticiones</span>
+      <h1>Windows expuesto: share legado</h1>
+      <p>Este reto trabaja con artefactos exportados de Windows. No hace falta una máquina viva: basta con leer ACLs y política operativa para decidir qué está demasiado abierto y cómo reducirlo.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué grupo tiene permisos amplios sobre el share.</li><li>Qué nivel de permiso conserva ese grupo.</li><li>Cuál parece ser el grupo legítimo de operación.</li><li>Qué ajuste reduce más riesgo sin romper el uso previsto.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>less</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Responder con la ruta y no con el grupo realmente expuesto.</li><li>Confundir lectura con modificación.</li><li>Quitar todo acceso sin pensar en la operación real.</li><li>Olvidar que el share y el uso declarado deben seguir siendo compatibles.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Rellena `respuesta.txt` con grupo, permiso y acción.</li><li>Usa el formato exacto del bundle.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando el análisis apunta a la reducción de permisos correcta.</li></ul></article>
+    </div>
+  </section>
+</div>

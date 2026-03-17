@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{tshark_reconstruye_la_pista}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "herramienta=tshark",
+    "host=api.cuh-lab.local",
+    "recurso=/exports/beta-keys.json"
+  ]
+}

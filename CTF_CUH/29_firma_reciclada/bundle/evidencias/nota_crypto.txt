@@ -1,0 +1,1 @@
+En ECDSA, repetir el valor efímero entre firmas distintas compromete el esquema aunque la librería siga 'funcionando'.

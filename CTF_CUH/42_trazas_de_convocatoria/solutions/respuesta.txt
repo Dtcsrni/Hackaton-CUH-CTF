@@ -1,0 +1,3 @@
+documento=convocatoria_cg_2026_master.pdf
+editor=marcela quintero
+lote=CG26-Q4-BETA

@@ -1,0 +1,1 @@
+La licencia correcta sigue un formato con segmentos separados por guiones. No parches el binario; razona sobre su validación.

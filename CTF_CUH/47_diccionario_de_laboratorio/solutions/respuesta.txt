@@ -1,0 +1,3 @@
+herramienta=john
+cuenta=ops_backup
+diccionario=laboratorio-2026.txt

@@ -1,0 +1,3 @@
+herramienta=binwalk
+artefacto=config-seed.txt
+hallazgo=ruta_de_recuperacion_activa_en_opt_cuh_recovery

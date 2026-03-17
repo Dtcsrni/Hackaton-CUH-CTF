@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Autenticación heredada</span>
+      <h1>Portal PHP heredado</h1>
+      <p>A veces un portal arrastra dos decisiones viejas al mismo tiempo: una consulta mal construida y una verificación de contraseña desfasada. Aquí se corrigen ambas cosas para dejar un flujo defensible.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se consulta el usuario antes de validar la contraseña.</li><li>Si la comparación de contraseñas sigue dependiendo de hashes inseguros.</li><li>Qué parte del flujo debe seguir siendo simple tras el parche.</li><li>Si el backend separa claramente consulta y validación de credenciales.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>python</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Arreglar solo la consulta y dejar md5 intacto.</li><li>Cambiar md5 sin corregir la obtención del usuario.</li><li>Introducir lógica extra innecesaria.</li><li>Reemplazar md5 por otra comparación manual en lugar de password_verify.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca prepare en la consulta del usuario.</li><li>Busca password_verify en la validación final.</li><li>Ejecuta el validador del bundle.</li><li>La flag solo aparece cuando ambas capas quedan corregidas.</li></ul></article>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Persistencia en Windows</span>
+      <h1>Windows expuesto: tareas persistentes</h1>
+      <p>El valor del reto está en leer una tarea programada como artefacto forense. La meta es reconstruir qué corría, con qué privilegios y cuál debería ser la respuesta inicial del equipo.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué binario está configurado en la acción.</li><li>Con qué cuenta se ejecuta la tarea.</li><li>Qué indica el evento resumido sobre su activación.</li><li>Qué acción de contención tiene sentido antes de intentar limpieza profunda.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>less</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Responder con el nombre de la tarea y no con el binario real.</li><li>Olvidar la cuenta de ejecución.</li><li>Proponer borrado inmediato sin aislar ni recolectar evidencia.</li><li>Buscar explotación cuando ya tienes la persistencia capturada.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Rellena `respuesta.txt` con binario, cuenta y acción.</li><li>Usa el formato exacto del bundle.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando la reconstrucción forense es consistente.</li></ul></article>
+    </div>
+  </section>
+</div>

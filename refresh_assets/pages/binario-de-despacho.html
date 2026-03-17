@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Reversing básico</span>
+      <h1>Binario de despacho</h1>
+      <p>Este binario no está para ejecutarse a ciegas, sino para leerse con método. La idea es reconstruir la clave válida a partir de comparaciones simples y del formato esperado.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué strings y mensajes deja visibles el binario.</li><li>Cómo valida la longitud y el formato.</li><li>Qué segmentos parecen fijos y cuáles calculados.</li><li>Qué comparación termina aceptando el código final.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>strings</code></li><li><code>ghidra</code></li><li><code>cutter</code></li><li><code>radare2</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Parchar el binario en vez de entender la lógica.</li><li>Quedarse solo con strings sin revisar comparaciones.</li><li>Ignorar la estructura de guiones y bloques.</li><li>Probar códigos sin documentar qué parte del flujo los respalda.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con el código recuperado.</li><li>Ejecuta el validador del bundle.</li><li>Opcionalmente prueba el binario con la clave reconstruida.</li><li>La flag aparece cuando el código coincide exactamente con la lógica del ejecutable.</li></ul></article>
+    </div>
+  </section>
+</div>

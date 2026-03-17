@@ -1,0 +1,19 @@
+{
+  "flag": "CUH{servicio_olvidado_documentado_y_limitado}",
+  "checks": [
+    {
+      "path": "config/cuh-reportes.service",
+      "required": [
+        "User=cuh-reportes",
+        "ExecStart=/usr/bin/python3 /opt/cuh/reportes/server.py --host 127.0.0.1",
+        "NoNewPrivileges=true",
+        "PrivateTmp=true"
+      ],
+      "forbidden": [
+        "User=root",
+        "--host 0.0.0.0",
+        "AmbientCapabilities=CAP_NET_ADMIN"
+      ]
+    }
+  ]
+}

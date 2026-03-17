@@ -1,0 +1,1 @@
+El portal se migró desde una versión que almacenaba hashes inseguros.

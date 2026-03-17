@@ -1,0 +1,7 @@
+{
+  "flag": "CUH{clave_de_despacho_recuperada}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "codigo=DESP-4729-CUH"
+  ]
+}

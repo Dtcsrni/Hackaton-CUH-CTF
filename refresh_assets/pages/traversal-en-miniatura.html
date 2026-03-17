@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Rutas y alcance</span>
+      <h1>Traversal en miniatura</h1>
+      <p>Cuando una ruta se construye desde parámetros del cliente, el verdadero problema no es el join, sino dónde acaba apuntando el path resuelto. Este reto se centra en cerrar ese alcance.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué directorio debería considerarse raíz autorizada.</li><li>Cómo se forma la ruta candidata.</li><li>Si el código comprueba el path resuelto o solo el texto recibido.</li><li>Qué debe ocurrir cuando el archivo pedido queda fuera del alcance permitido.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Filtrar secuencias concretas sin resolver la ruta final.</li><li>Comprobar el string y no el path resuelto.</li><li>Olvidar el caso de la propia raíz.</li><li>Devolver el archivo antes de verificar alcance.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Confirma que BASE_DIR se resuelva antes de usarla.</li><li>Confirma que la ruta candidata también se resuelva.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando el servidor ya no acepta rutas fuera del directorio permitido.</li></ul></article>
+    </div>
+  </section>
+</div>

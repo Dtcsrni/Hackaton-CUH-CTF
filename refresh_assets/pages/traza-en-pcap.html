@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Kali y tráfico</span>
+      <h1>Traza en PCAP</h1>
+      <p>Este reto está pensado para quien ya usa Kali como caja de herramientas de análisis. Aquí toca leer una captura de red con método y extraer justo la petición que cambia el caso.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué host aparece asociado a la descarga interesante.</li><li>Qué recurso se pidió y qué respuesta recibió.</li><li>Qué tráfico es rutinario y cuál rompe el patrón.</li><li>Qué herramienta de Kali te da esta lectura rápida sin interfaz pesada.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>tshark</code></li><li><code>wireshark</code></li><li><code>grep</code></li><li><code>notes</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Leer el archivo como un log genérico sin filtrar host ni recurso.</li><li>Quedarte con `/status` o `/health` por aparecer antes.</li><li>Confundir dirección IP con host lógico cuando el bundle da ambos contextos.</li><li>Responder solo con el recurso y olvidar la herramienta pedida.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con herramienta, host y recurso.</li><li>Usa exactamente el path del recurso del bundle.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la reconstrucción del tráfico es consistente.</li></ul></article>
+    </div>
+  </section>
+</div>

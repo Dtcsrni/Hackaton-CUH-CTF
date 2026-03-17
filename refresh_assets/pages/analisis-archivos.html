@@ -1,0 +1,34 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Análisis de archivos</span>
+      <h1>Ruta exacta para retos que entregan evidencia descargable</h1>
+      <p>Esta página acompaña retos concretos del paquete CUH: <em>Comandos Linux - búsqueda básica</em>, <em>Logo en observación</em>, <em>Portada con pista</em>, <em>Bitácora del proxy</em>, <em>Hash filtrado</em> y <em>ZIP bajo llave</em>. En todos ellos la pregunta correcta no es “qué herramienta avanzada existe”, sino qué archivo abriste, qué estructura viste y qué texto útil dejaste pasar.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Secuencia mínima que sí funciona</h3>
+        <ol class="cuhv-list">
+          <li>Descarga el adjunto desde CTFd y ubícalo en <code>~/Descargas</code> o <code>~/Downloads</code>.</li>
+          <li>Confirma el tipo real con <code>file</code> si la extensión no basta.</li>
+          <li>Si es ZIP, extrae el contenido y lista la estructura con <code>find . -type f</code>.</li>
+          <li>Busca texto útil con <code>grep -R "CUH{" .</code> o con cadenas concretas como <code>admin</code>, <code>proxy</code>, <code>usuario</code> o <code>clave</code>.</li>
+          <li>Solo después abre archivos específicos con <code>cat</code> o usa <code>strings</code> para imágenes y binarios.</li>
+        </ol>
+      </article>
+      <article class="cuhv-card">
+        <h3>Cómo se comporta cada reto de este bloque</h3>
+        <ul class="cuhv-list">
+          <li><strong>Comandos Linux - búsqueda básica:</strong> la flag vive en una ruta menos obvia dentro del ZIP.</li>
+          <li><strong>Logo en observación</strong> y <strong>Portada con pista:</strong> el valor útil no está en un texto visible de la UI, sino en el propio archivo de imagen.</li>
+          <li><strong>Bitácora del proxy:</strong> la respuesta sale de leer eventos, rutas y contenido textual en un paquete de evidencia.</li>
+          <li><strong>Hash filtrado:</strong> el adjunto acota el espacio de búsqueda; no necesitas inventar un ataque fuera del material entregado.</li>
+          <li><strong>ZIP bajo llave:</strong> primero identifica la contraseña correcta; la flag está después de abrir el contenedor protegido.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

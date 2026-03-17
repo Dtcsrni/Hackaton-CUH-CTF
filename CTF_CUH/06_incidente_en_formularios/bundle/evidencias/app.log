@@ -1,0 +1,3 @@
+2026-03-10T18:43:11Z POST /login user=analista result=fail
+2026-03-10T18:43:32Z POST /login user=admin_reportes result=sql_error
+2026-03-10T18:43:58Z POST /login user=admin_reportes result=ok report=finanzas_q1

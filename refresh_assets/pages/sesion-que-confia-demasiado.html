@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Sesión y backend</span>
+      <h1>Sesión que confía demasiado</h1>
+      <p>Aquí el fallo no está en el login, sino en la sesión. El backend acepta el rol desde la entrada del cliente y lo copia tal cual, cuando debería derivarlo desde datos ya confiables del lado del servidor.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se construye la sesión tras autenticar al usuario.</li><li>Qué dato viene de la petición y cuál debería venir del registro interno.</li><li>Si existe una lista cerrada de roles permitidos.</li><li>Qué valor por defecto tendría sentido cuando el rol almacenado es inválido.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Renombrar variables sin mover la decisión al backend.</li><li>Copiar el rol del cliente y solo cambiarle el nombre.</li><li>No definir un conjunto válido de roles.</li><li>Dejar el flujo sin un valor seguro por defecto.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca una lista cerrada de roles válidos.</li><li>Comprueba que el rol final provenga del registro del usuario.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando la sesión deja de confiar en el cliente para decidir privilegios.</li></ul></article>
+    </div>
+  </section>
+</div>

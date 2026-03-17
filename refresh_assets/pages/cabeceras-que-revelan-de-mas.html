@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Cabeceras y borde web</span>
+      <h1>Cabeceras que revelan de más</h1>
+      <p>Muchas aplicaciones filtran información o dejan políticas demasiado abiertas desde el reverse proxy. Este reto pide revisar el bloque de cabeceras con criterio defensivo y sin convertir la configuración en una caja negra.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué cabeceras revelan más información de la necesaria.</li><li>Qué política CSP está realmente aplicada.</li><li>Si hay control de framing y caché para contenido sensible.</li><li>Qué parte del bloque es configuración y qué parte es exposición innecesaria.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>less</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Añadir nuevas cabeceras sin retirar las inseguras.</li><li>Dejar CSP con comodines.</li><li>Olvidar que caché importa para pantallas sensibles.</li><li>Cambiar el proxy_pass cuando el reto solo pide endurecer cabeceras.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Confirma que server_tokens quede deshabilitado.</li><li>Confirma que CSP, framing y caché estén definidos.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando la configuración refleja un endurecimiento real y legible.</li></ul></article>
+    </div>
+  </section>
+</div>

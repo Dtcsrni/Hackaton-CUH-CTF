@@ -1,0 +1,25 @@
+{
+  "flag": "CUH{todos_los_recursos_van_por_https}",
+  "checks": [
+    {
+      "path": "web/dashboard.html",
+      "required": [
+        "https://static.cuh.lab/assets/app.js",
+        "https://static.cuh.lab/assets/logo.png"
+      ],
+      "forbidden": [
+        "http://static.cuh.lab/assets/app.js",
+        "http://static.cuh.lab/assets/logo.png"
+      ]
+    },
+    {
+      "path": "web/app.js",
+      "required": [
+        "https://api.cuh.lab/status"
+      ],
+      "forbidden": [
+        "http://api.cuh.lab/status"
+      ]
+    }
+  ]
+}

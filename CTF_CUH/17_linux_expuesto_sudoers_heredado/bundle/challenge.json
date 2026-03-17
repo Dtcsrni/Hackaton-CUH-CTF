@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{sudoers_heredado_corregido}",
+  "checks": [
+    {
+      "path": "config/sudoers",
+      "required": [
+        "User_Alias OPERADORES = analista, monitoreo",
+        "Cmnd_Alias REPORTES = /usr/bin/journalctl, /usr/bin/systemctl status cuh-reportes",
+        "%admin ALL=(ALL:ALL) ALL",
+        "OPERADORES ALL=(root) NOPASSWD: REPORTES"
+      ],
+      "forbidden": [
+        "analista ALL=(ALL) NOPASSWD:ALL",
+        "monitoreo ALL=(ALL) NOPASSWD:ALL"
+      ]
+    }
+  ]
+}

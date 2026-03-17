@@ -1,0 +1,3 @@
+analista ALL=(ALL) NOPASSWD:ALL
+monitoreo ALL=(ALL) NOPASSWD:ALL
+%admin ALL=(ALL:ALL) ALL

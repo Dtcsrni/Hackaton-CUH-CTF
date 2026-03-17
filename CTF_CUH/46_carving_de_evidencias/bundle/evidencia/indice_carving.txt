@@ -1,0 +1,4 @@
+jpg/header_001.jpg
+pdf/spec_legacy.pdf
+txt/credencial_turno_b.txt
+wav/nota_voz_02.wav

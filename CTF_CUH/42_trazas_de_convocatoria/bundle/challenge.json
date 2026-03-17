@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{convocatoria_atribuida_y_validada}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "documento=convocatoria_cg_2026_master.pdf",
+    "editor=marcela quintero",
+    "lote=CG26-Q4-BETA"
+  ]
+}

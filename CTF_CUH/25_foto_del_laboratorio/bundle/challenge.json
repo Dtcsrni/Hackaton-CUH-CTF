@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{foto_del_laboratorio_interpretada}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "equipo=camara_b12",
+    "ala=ala_norte",
+    "detalle=sticker_verde_b12"
+  ]
+}

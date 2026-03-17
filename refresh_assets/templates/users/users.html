@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style id="ctfcu-users-directory">
+  .ctfcu-users-page{max-width:1680px;margin:0 auto;padding:28px 20px 84px;color:#eef1f3}
+  .ctfcu-users-shell{position:relative;overflow:hidden;padding:28px;border-radius:32px;border:1px solid rgba(172,185,198,.16);background:radial-gradient(circle at 12% 14%,rgba(70,98,127,.12),transparent 24%),radial-gradient(circle at 84% 16%,rgba(123,146,172,.10),transparent 20%),linear-gradient(145deg,rgba(73,87,102,.97),rgba(31,38,46,.99));box-shadow:0 26px 72px rgba(0,0,0,.24)}
+  .ctfcu-users-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(183,197,211,.04),rgba(183,197,211,0) 24%,rgba(255,255,255,0) 100%),repeating-linear-gradient(90deg,rgba(183,197,211,.05) 0,rgba(183,197,211,.05) 1px,transparent 1px,transparent 56px)}
+  .ctfcu-users-hero,.ctfcu-users-toolbar,.ctfcu-users-directory-grid,.ctfcu-users-pagination{position:relative;z-index:1}
+  .ctfcu-users-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:18px;align-items:stretch}
+  .ctfcu-users-card,.ctfcu-users-stat,.ctfcu-users-toolbar,.ctfcu-user-card{border-radius:28px;border:1px solid rgba(172,185,198,.14);background:linear-gradient(180deg,rgba(79,93,109,.9),rgba(34,42,50,.96));box-shadow:0 16px 42px rgba(0,0,0,.22)}
+  .ctfcu-users-card,.ctfcu-users-toolbar{padding:24px}
+  .ctfcu-users-kicker,.ctfcu-users-stat-label,.ctfcu-user-chip,.ctfcu-user-presence{display:inline-flex;align-items:center;gap:8px;border-radius:999px}
+  .ctfcu-users-kicker{padding:7px 13px;background:linear-gradient(135deg,rgba(70,98,127,.94),rgba(123,146,172,.9));color:#eef1f3;font-weight:800;font-size:.82rem;letter-spacing:.11em;text-transform:uppercase}
+  .ctfcu-users-card h1{margin:14px 0 12px;color:#fff;font-size:clamp(2.3rem,4vw,4.4rem);line-height:.98;letter-spacing:-.05em}
+  .ctfcu-users-card p{margin:0;color:rgba(222,229,235,.8);line-height:1.72;max-width:64ch}
+  .ctfcu-users-mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+  .ctfcu-users-mini{padding:14px;border-radius:18px;border:1px solid rgba(172,185,198,.12);background:linear-gradient(180deg,rgba(77,92,108,.84),rgba(34,42,50,.96))}
+  .ctfcu-users-mini strong{display:block;color:#fff;font-size:.98rem}
+  .ctfcu-users-mini span{display:block;margin-top:4px;color:rgba(222,229,235,.78);font-size:.88rem;line-height:1.55}
+  .ctfcu-users-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .ctfcu-users-stat{position:relative;overflow:hidden;padding:18px}
+  .ctfcu-users-stat:before{content:"";position:absolute;inset:auto -20% -34% auto;width:132px;height:132px;border-radius:999px;filter:blur(12px);opacity:.3;pointer-events:none}
+  .ctfcu-users-stat.total:before{background:radial-gradient(circle,rgba(79,101,125,.52) 0,rgba(79,101,125,0) 70%)}
+  .ctfcu-users-stat.online:before{background:radial-gradient(circle,rgba(127,147,168,.52) 0,rgba(127,147,168,0) 70%)}
+  .ctfcu-users-stat.recent:before{background:radial-gradient(circle,rgba(144,163,181,.52) 0,rgba(144,163,181,0) 70%)}
+  .ctfcu-users-stat.page:before{background:radial-gradient(circle,rgba(95,116,138,.52) 0,rgba(95,116,138,0) 70%)}
+  .ctfcu-users-stat-label{padding:6px 11px;background:rgba(248,250,252,.06);border:1px solid rgba(177,190,204,.1);font-size:.78rem;font-weight:800;color:rgba(238,242,246,.86)}
+  .ctfcu-users-stat-value{margin-top:12px;color:#fff;font-size:clamp(1.9rem,3vw,2.9rem);font-weight:900;line-height:1}
+  .ctfcu-users-stat-copy{margin-top:8px;color:rgba(222,229,235,.76);font-size:.88rem;line-height:1.55}
+  .ctfcu-users-toolbar{margin-top:20px}
+  .ctfcu-users-toolbar-top{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:14px}
+  .ctfcu-users-toolbar-top h2{margin:0;color:#fff;font-size:clamp(1.45rem,2vw,1.9rem);letter-spacing:-.03em}
+  .ctfcu-users-toolbar-top p{margin:0;color:rgba(222,229,235,.74);max-width:64ch}
+  .ctfcu-users-search{display:grid;grid-template-columns:180px minmax(0,1fr) 90px;gap:12px}
+  .ctfcu-users-search .form-select,.ctfcu-users-search .form-control{min-height:52px;border-radius:16px;border:1px solid rgba(177,190,204,.12);background:rgba(248,250,252,.05);color:#eef2f6}
+  .ctfcu-users-search .btn{min-height:52px;border-radius:16px;border:1px solid rgba(79,101,125,.24);background:linear-gradient(135deg,rgba(76,89,103,.96),rgba(34,38,43,.98));color:#eef2f6;font-weight:800}
+  .ctfcu-users-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+  .ctfcu-user-card{position:relative;overflow:hidden;padding:22px;display:flex;flex-direction:column;gap:16px}
+  .ctfcu-user-card:before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(127,147,168,.64),rgba(255,255,255,0) 44%,rgba(255,255,255,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.54;pointer-events:none}
+  .ctfcu-user-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .ctfcu-user-identity h3{margin:0;color:#fff;font-size:1.22rem;line-height:1.15;letter-spacing:-.02em}
+  .ctfcu-user-identity a{color:#fff;text-decoration:none}
+  .ctfcu-user-identity a:hover{color:#d9e4ef}
+  .ctfcu-user-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .ctfcu-user-chip{min-height:30px;padding:0 11px;border:1px solid rgba(177,190,204,.12);background:rgba(248,250,252,.06);font-size:.76rem;font-weight:800;color:#eef2f6}
+  .ctfcu-user-chip i{color:#d9e4ef}
+  .ctfcu-user-presence{min-height:34px;padding:0 12px;border:1px solid rgba(177,190,204,.12);background:rgba(248,250,252,.05);font-size:.78rem;font-weight:800;color:#eef2f6}
+  .ctfcu-user-presence-dot{width:10px;height:10px;border-radius:999px;box-shadow:0 0 0 5px rgba(255,255,255,.04)}
+  .ctfcu-user-presence.online .ctfcu-user-presence-dot{background:#667789;box-shadow:0 0 0 5px rgba(102,119,137,.12)}
+  .ctfcu-user-presence.recent .ctfcu-user-presence-dot{background:#7b92ac;box-shadow:0 0 0 5px rgba(123,146,172,.12)}
+  .ctfcu-user-presence.today .ctfcu-user-presence-dot{background:#46627f;box-shadow:0 0 0 5px rgba(70,98,127,.12)}
+  .ctfcu-user-presence.away .ctfcu-user-presence-dot,.ctfcu-user-presence.unknown .ctfcu-user-presence-dot{background:#7f8a82;box-shadow:0 0 0 5px rgba(127,138,130,.12)}
+  .ctfcu-user-presence-block strong{display:block;color:#fff;font-size:.98rem}
+  .ctfcu-user-presence-block span{display:block;margin-top:4px;color:rgba(222,229,235,.78);font-size:.88rem;line-height:1.55}
+  .ctfcu-user-links{display:flex;flex-wrap:wrap;gap:10px}
+  .ctfcu-user-link{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid rgba(177,190,204,.12);background:linear-gradient(180deg,rgba(79,88,100,.84),rgba(34,38,43,.96));color:#eef2f6;text-decoration:none;font-size:.82rem;font-weight:800}
+  .ctfcu-user-link:hover{color:#d9e4ef}
+  .ctfcu-users-pagination{margin-top:26px;text-align:center;color:rgba(222,229,235,.78)}
+  .ctfcu-users-pagination .page-select{min-height:42px;margin:0 10px;border-radius:12px;border:1px solid rgba(172,185,198,.12);background:rgba(248,250,252,.05);color:#eef1f3}
+  .ctfcu-users-pagination a{color:#eef1f3;text-decoration:none}
+  .ctfcu-users-empty{margin-top:22px;padding:26px;border-radius:24px;border:1px solid rgba(172,185,198,.12);background:linear-gradient(180deg,rgba(76,90,105,.9),rgba(33,41,50,.96));color:rgba(222,229,235,.78);text-align:center}
+  @media (max-width:1320px){.ctfcu-users-hero,.ctfcu-users-mini-grid{grid-template-columns:1fr}.ctfcu-users-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:860px){.ctfcu-users-page{padding:22px 14px 72px}.ctfcu-users-shell{padding:18px}.ctfcu-users-stat-grid,.ctfcu-users-directory-grid,.ctfcu-users-search{grid-template-columns:1fr}.ctfcu-users-toolbar-top,.ctfcu-user-head{display:block}.ctfcu-user-head .ctfcu-user-presence{margin-top:12px;display:inline-flex}}
+</style>
+
+<div class="ctfcu-users-page">
+  <div class="ctfcu-users-shell">
+    <section class="ctfcu-users-hero">
+      <article class="ctfcu-users-card">
+        <span class="ctfcu-users-kicker"><i class="fa-solid fa-users-viewfinder"></i> directorio activo</span>
+        <h1>Participantes del laboratorio</h1>
+        <p>Esta vista deja de ser un listado plano. Ahora muestra quién sigue activo, quién estuvo conectado hace poco y cuál fue la última actividad registrada de cada participante visible para que el tablero social del hackatón tenga contexto real.</p>
+        <div class="ctfcu-users-mini-grid">
+          <div class="ctfcu-users-mini">
+            <strong>Estados visibles</strong>
+            <span>`En línea`, `activo hace poco`, `activo hoy` o `sin movimiento reciente`, calculado con actividad real del sitio.</span>
+          </div>
+          <div class="ctfcu-users-mini">
+            <strong>Última conexión</strong>
+            <span>Cada tarjeta muestra la marca temporal más reciente observada para ese participante.</span>
+          </div>
+        </div>
+      </article>
+
+      <aside class="ctfcu-users-stat-grid">
+        <article class="ctfcu-users-stat total">
+          <span class="ctfcu-users-stat-label"><i class="fa-solid fa-address-book"></i> visibles</span>
+          <div class="ctfcu-users-stat-value">{{ users.total }}</div>
+          <div class="ctfcu-users-stat-copy">Participantes listados actualmente en el directorio público.</div>
+        </article>
+        <article class="ctfcu-users-stat online">
+          <span class="ctfcu-users-stat-label"><i class="fa-solid fa-circle"></i> en línea</span>
+          <div class="ctfcu-users-stat-value" id="ctfcu-users-online-count">--</div>
+          <div class="ctfcu-users-stat-copy">Actividad observada durante los últimos diez minutos.</div>
+        </article>
+        <article class="ctfcu-users-stat recent">
+          <span class="ctfcu-users-stat-label"><i class="fa-solid fa-clock-rotate-left"></i> recientes</span>
+          <div class="ctfcu-users-stat-value" id="ctfcu-users-recent-count">--</div>
+          <div class="ctfcu-users-stat-copy">Participantes con actividad dentro de la última hora.</div>
+        </article>
+        <article class="ctfcu-users-stat page">
+          <span class="ctfcu-users-stat-label"><i class="fa-solid fa-layer-group"></i> en esta página</span>
+          <div class="ctfcu-users-stat-value">{{ users.items | length }}</div>
+          <div class="ctfcu-users-stat-copy">Tarjetas visibles en la página actual del directorio.</div>
+        </article>
+      </aside>
+    </section>
+
+    <section class="ctfcu-users-toolbar">
+      <div class="ctfcu-users-toolbar-top">
+        <div>
+          <h2>Buscar y filtrar participantes</h2>
+          <p>La búsqueda sigue funcionando igual, pero la salida ahora pone el foco en estado de actividad, identidad visible y enlaces útiles de cada perfil.</p>
+        </div>
+        {% if q and field %}
+          <p>Buscando por <strong>{{ field }}</strong> con coincidencia en <strong>{{ q }}</strong>.</p>
+        {% endif %}
+      </div>
+
+      {% with form = Forms.users.PublicUserSearchForm(field=field, q=q) %}
+        <form method="GET" class="ctfcu-users-search">
+          <div>{{ form.field(class="form-select w-100") }}</div>
+          <div>{{ form.q(class="form-control w-100", placeholder=form.q.description) }}</div>
+          <div>
+            <button type="submit" class="btn w-100">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+      {% endwith %}
+    </section>
+
+    {% if users.items %}
+      <section class="ctfcu-users-directory-grid" id="ctfcu-users-directory-grid">
+        {% for user in users.items %}
+          <article class="ctfcu-user-card" data-user-id="{{ user.id }}">
+            <div class="ctfcu-user-head">
+              <div class="ctfcu-user-identity">
+                <h3>
+                  {% if scores_visible() %}
+                    <a href="{{ url_for('users.public', user_id=user.id) }}">{{ user.name | truncate(50) }}</a>
+                  {% else %}
+                    <span>{{ user.name | truncate(50) }}</span>
+                  {% endif %}
+                </h3>
+                <div class="ctfcu-user-meta">
+                  {% if user.bracket_id %}
+                    <span class="ctfcu-user-chip"><i class="fa-solid fa-layer-group"></i>{{ user.bracket.name }}</span>
+                  {% endif %}
+                  {% if user.affiliation %}
+                    <span class="ctfcu-user-chip"><i class="fa-solid fa-building-columns"></i>{{ user.affiliation | truncate(42) }}</span>
+                  {% endif %}
+                  {% if user.country %}
+                    <span class="ctfcu-user-chip"><i class="fa-solid fa-location-dot"></i>{{ lookup_country_code(user.country) }}</span>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="ctfcu-user-presence unknown" data-user-presence>
+                <span class="ctfcu-user-presence-dot"></span>
+                <span data-user-presence-label>Consultando actividad</span>
+              </div>
+            </div>
+
+            <div class="ctfcu-user-presence-block">
+              <strong data-user-last-seen-title>Última conexión no disponible aún</strong>
+              <span data-user-last-seen-copy>En cuanto cargue la telemetría, aquí se mostrará la última actividad observada del participante.</span>
+            </div>
+
+            <div class="ctfcu-user-links">
+              {% if scores_visible() %}
+                <a class="ctfcu-user-link" href="{{ url_for('users.public', user_id=user.id) }}">
+                  <i class="fa-solid fa-id-card"></i> Ver perfil
+                </a>
+              {% endif %}
+              {% if user.website and (user.website.startswith('http://') or user.website.startswith('https://')) %}
+                <a class="ctfcu-user-link" href="{{ user.website }}" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Sitio
+                </a>
+              {% endif %}
+              {% if user.oauth_id %}
+                <a class="ctfcu-user-link" href="https://majorleaguecyber.org/u/{{ user.name }}" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-shield-halved"></i> Perfil oficial
+                </a>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </section>
+    {% else %}
+      <div class="ctfcu-users-empty">No se encontraron participantes con ese criterio de búsqueda.</div>
+    {% endif %}
+
+    {% if users.pages > 1 %}
+      <div class="ctfcu-users-pagination">
+        {% trans %}Page{% endtrans %}<br>
+        {% if users.page != 1 %}
+          <a href="{{ prev_page }}">&lt;&lt;&lt;</a>
+        {% endif %}
+        <select class="page-select">
+          {% for page in range(1, users.pages + 1) %}
+            <option {% if users.page == page %}selected{% endif %}>{{ page }}</option>
+          {% endfor %}
+        </select>
+        {% if users.next_num %}
+          <a href="{{ next_page }}">&gt;&gt;&gt;</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/users/list.js") }}
+  <script id="ctfcu-users-presence-board">
+    (() => {
+      const cards = Array.from(document.querySelectorAll("[data-user-id]"));
+      if (!cards.length) return;
+
+      const ids = cards.map((card) => card.getAttribute("data-user-id")).filter(Boolean);
+      const endpoint = `/plugins/user_presence_board/api/users?ids=${ids.join(",")}`;
+
+      function formatAbsolute(value) {
+        if (!value) return "Sin actividad reciente registrada";
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return "Sin actividad reciente registrada";
+        return new Intl.DateTimeFormat("es-MX", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        }).format(date);
+      }
+
+      function applyUserActivity(item) {
+        const card = document.querySelector(`[data-user-id="${item.user_id}"]`);
+        if (!card) return;
+
+        const presence = card.querySelector("[data-user-presence]");
+        const label = card.querySelector("[data-user-presence-label]");
+        const title = card.querySelector("[data-user-last-seen-title]");
+        const copy = card.querySelector("[data-user-last-seen-copy]");
+
+        if (presence) {
+          presence.classList.remove("unknown", "online", "recent", "today", "away");
+          presence.classList.add(item.status || "unknown");
+        }
+        if (label) {
+          label.textContent = item.label || "Sin actividad reciente";
+        }
+        if (title) {
+          if (item.status === "online") {
+            title.textContent = "Conexión detectada en este momento";
+          } else if (item.status === "recent") {
+            title.textContent = "Actividad reciente confirmada";
+          } else if (item.status === "today") {
+            title.textContent = "Actividad vista durante hoy";
+          } else if (item.last_seen) {
+            title.textContent = "Última conexión registrada";
+          } else {
+            title.textContent = "Sin actividad reciente registrada";
+          }
+        }
+        if (copy) {
+          copy.textContent = item.last_seen
+            ? `Última señal observada: ${formatAbsolute(item.last_seen)}.`
+            : "No hay trazas recientes suficientes para estimar la última conexión.";
+        }
+      }
+
+      function applySummary(counts) {
+        const online = document.getElementById("ctfcu-users-online-count");
+        const recent = document.getElementById("ctfcu-users-recent-count");
+        if (online) online.textContent = counts?.online ?? 0;
+        if (recent) recent.textContent = counts?.recent ?? 0;
+      }
+
+      fetch(endpoint, { credentials: "same-origin" })
+        .then((response) => response.ok ? response.json() : null)
+        .then((payload) => {
+          const data = payload?.data;
+          if (!data) return;
+          applySummary(data.counts || {});
+          (data.users || []).forEach(applyUserActivity);
+        })
+        .catch((error) => console.warn("ctfcu users presence failed", error));
+    })();
+  </script>
+{% endblock %}

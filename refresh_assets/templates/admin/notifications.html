@@ -1,0 +1,337 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<style id="ctfcu-admin-notifications">
+  .ctfcu-admin-shell{max-width:1440px;margin:0 auto;padding:24px 20px 56px}
+  .ctfcu-admin-hero{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);gap:18px;margin-bottom:20px}
+  .ctfcu-admin-card,.ctfcu-admin-stat,.ctfcu-admin-panel,.ctfcu-admin-feed-card{border-radius:26px;border:1px solid rgba(193,170,142,.14);background:linear-gradient(180deg,rgba(72,58,48,.94),rgba(31,26,23,.98));box-shadow:0 16px 42px rgba(0,0,0,.18)}
+  .ctfcu-admin-card,.ctfcu-admin-panel{padding:24px}
+  .ctfcu-admin-kicker,.ctfcu-admin-chip,.ctfcu-admin-stat-label{display:inline-flex;align-items:center;gap:8px;border-radius:999px}
+  .ctfcu-admin-kicker{padding:7px 13px;background:linear-gradient(135deg,rgba(195,163,110,.94),rgba(181,106,67,.9));color:#241a14;font-weight:800;font-size:.82rem;letter-spacing:.11em;text-transform:uppercase}
+  .ctfcu-admin-card h1{margin:14px 0 10px;color:#fff;font-size:clamp(2rem,3.4vw,3.6rem);line-height:.98;letter-spacing:-.04em}
+  .ctfcu-admin-card p,.ctfcu-admin-stat-copy,.ctfcu-admin-feed-copy{color:rgba(224,212,197,.78);line-height:1.68}
+  .ctfcu-admin-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .ctfcu-admin-stat{padding:18px;position:relative;overflow:hidden}
+  .ctfcu-admin-stat:before{content:"";position:absolute;inset:auto -18% -34% auto;width:132px;height:132px;border-radius:999px;filter:blur(12px);opacity:.32;pointer-events:none}
+  .ctfcu-admin-stat.total:before{background:radial-gradient(circle,rgba(181,106,67,.52) 0,rgba(181,106,67,0) 70%)}
+  .ctfcu-admin-stat.personal:before{background:radial-gradient(circle,rgba(139,152,87,.52) 0,rgba(139,152,87,0) 70%)}
+  .ctfcu-admin-stat-label{padding:6px 11px;background:rgba(255,248,240,.06);border:1px solid rgba(193,170,142,.1);font-size:.78rem;font-weight:800;color:rgba(242,236,226,.86)}
+  .ctfcu-admin-stat-value{margin-top:12px;color:#fff;font-size:2.3rem;font-weight:900;line-height:1}
+  .ctfcu-admin-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(360px,.85fr);gap:18px}
+  .ctfcu-admin-panel h2{margin:0 0 12px;color:#fff;font-size:1.5rem;letter-spacing:-.03em}
+  .ctfcu-admin-panel p{margin:0 0 18px;color:rgba(224,212,197,.78)}
+  .ctfcu-admin-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .ctfcu-admin-field{display:flex;flex-direction:column;gap:8px}
+  .ctfcu-admin-field-full{grid-column:1/-1}
+  .ctfcu-admin-field label{color:#fff;font-weight:800;font-size:.92rem}
+  .ctfcu-admin-input,.ctfcu-admin-select,.ctfcu-admin-textarea{min-height:50px;border-radius:16px;border:1px solid rgba(193,170,142,.12);background:rgba(255,248,240,.05);color:#f2ece2;padding:12px 14px}
+  .ctfcu-admin-textarea{min-height:140px;resize:vertical}
+  .ctfcu-admin-radio-row,.ctfcu-admin-actions{display:flex;flex-wrap:wrap;gap:10px}
+  .ctfcu-admin-chip{min-height:38px;padding:0 14px;border:1px solid rgba(193,170,142,.12);background:linear-gradient(180deg,rgba(82,66,54,.84),rgba(35,30,26,.96));color:#f2ece2;font-weight:800}
+  .ctfcu-admin-chip input{accent-color:#c3a36e}
+  .ctfcu-admin-button{min-height:48px;padding:0 18px;border:none;border-radius:16px;background:linear-gradient(135deg,rgba(195,163,110,.94),rgba(181,106,67,.9));color:#241a14;font-weight:900}
+  .ctfcu-admin-button.secondary{background:linear-gradient(135deg,rgba(96,69,43,.96),rgba(46,33,24,.99));color:#f2ece2;border:1px solid rgba(193,170,142,.14)}
+  .ctfcu-admin-help{font-size:.84rem;color:rgba(224,212,197,.72)}
+  .ctfcu-admin-ack-shell{padding:16px;border-radius:18px;border:1px solid rgba(181,106,67,.22);background:linear-gradient(135deg,rgba(87,44,38,.72),rgba(42,23,20,.92))}
+  .ctfcu-admin-feed{display:grid;gap:12px}
+  .ctfcu-admin-feed-card{padding:18px 18px 16px}
+  .ctfcu-admin-feed-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .ctfcu-admin-feed-card h3{margin:0;color:#fff;font-size:1rem}
+  .ctfcu-admin-feed-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .ctfcu-admin-empty{padding:20px;border-radius:18px;border:1px dashed rgba(193,170,142,.18);color:rgba(224,212,197,.78);text-align:center}
+  .ctfcu-admin-status{margin-top:14px;display:none;padding:14px 16px;border-radius:16px}
+  .ctfcu-admin-status.show{display:block}
+  .ctfcu-admin-status.success{background:rgba(139,152,87,.18);border:1px solid rgba(139,152,87,.28);color:#edf3db}
+  .ctfcu-admin-status.error{background:rgba(147,79,70,.18);border:1px solid rgba(147,79,70,.28);color:#ffe5de}
+  @media (max-width:1180px){.ctfcu-admin-hero,.ctfcu-admin-layout,.ctfcu-admin-form-grid,.ctfcu-admin-stat-grid{grid-template-columns:1fr}}
+</style>
+
+<div class="ctfcu-admin-shell">
+  <section class="ctfcu-admin-hero">
+    <article class="ctfcu-admin-card">
+      <span class="ctfcu-admin-kicker"><i class="fa-solid fa-bell"></i> comunicaciones</span>
+      <h1>Centro de notificaciones</h1>
+      <p>Desde aquí el administrador puede enviar avisos generales a toda la plataforma o notificaciones dirigidas a un participante específico. También puedes limpiar el historial previo para evitar ruido acumulado.</p>
+    </article>
+    <aside class="ctfcu-admin-stat-grid">
+      <article class="ctfcu-admin-stat total">
+        <span class="ctfcu-admin-stat-label"><i class="fa-solid fa-inbox"></i> historial</span>
+        <div class="ctfcu-admin-stat-value" id="ctfcu-admin-notification-count">{{ notifications|length }}</div>
+        <div class="ctfcu-admin-stat-copy">Notificaciones guardadas actualmente en la base.</div>
+      </article>
+      <article class="ctfcu-admin-stat personal">
+        <span class="ctfcu-admin-stat-label"><i class="fa-solid fa-user-check"></i> alcance</span>
+        <div class="ctfcu-admin-stat-value" id="ctfcu-admin-user-count">--</div>
+        <div class="ctfcu-admin-stat-copy">Participantes disponibles para envío individual.</div>
+      </article>
+    </aside>
+  </section>
+
+  <section class="ctfcu-admin-layout">
+    <article class="ctfcu-admin-panel">
+      <h2>Enviar notificación</h2>
+      <p>Elige si el mensaje será general o dirigido. Las notificaciones previas se pueden limpiar por completo con el botón inferior.</p>
+      <form id="ctfcu-admin-notifications-form">
+        <div class="ctfcu-admin-form-grid">
+          <div class="ctfcu-admin-field">
+            <label for="ctfcu-notif-title">Título</label>
+            <input id="ctfcu-notif-title" name="title" class="ctfcu-admin-input" maxlength="120" required />
+          </div>
+          <div class="ctfcu-admin-field">
+            <label>Destino</label>
+            <div class="ctfcu-admin-radio-row">
+              <label class="ctfcu-admin-chip"><input type="radio" name="target_mode" value="broadcast" checked> General</label>
+              <label class="ctfcu-admin-chip"><input type="radio" name="target_mode" value="user"> Participante</label>
+            </div>
+          </div>
+          <div class="ctfcu-admin-field ctfcu-admin-field-full" id="ctfcu-user-select-wrapper" hidden>
+            <label for="ctfcu-notif-user">Participante</label>
+            <select id="ctfcu-notif-user" name="user_id" class="ctfcu-admin-select">
+              <option value="">Cargando participantes...</option>
+            </select>
+          </div>
+          <div class="ctfcu-admin-field ctfcu-admin-field-full">
+            <label for="ctfcu-notif-content">Contenido</label>
+            <textarea id="ctfcu-notif-content" name="content" class="ctfcu-admin-textarea" required></textarea>
+            <div class="ctfcu-admin-help">Usa texto claro. Este panel está pensado para avisos operativos, académicos o de coordinación.</div>
+          </div>
+          <div class="ctfcu-admin-field">
+            <label>Tipo visual</label>
+            <div class="ctfcu-admin-radio-row">
+              <label class="ctfcu-admin-chip"><input type="radio" name="type" value="alert" checked> Alerta</label>
+              <label class="ctfcu-admin-chip"><input type="radio" name="type" value="success"> Éxito</label>
+              <label class="ctfcu-admin-chip"><input type="radio" name="type" value="warning"> Aviso</label>
+              <label class="ctfcu-admin-chip"><input type="radio" name="type" value="info"> Info</label>
+            </div>
+          </div>
+          <div class="ctfcu-admin-field">
+            <label>Sonido</label>
+            <div class="ctfcu-admin-radio-row">
+              <label class="ctfcu-admin-chip"><input type="radio" name="sound" value="true" checked> Con sonido</label>
+              <label class="ctfcu-admin-chip"><input type="radio" name="sound" value="false"> Silenciosa</label>
+            </div>
+          </div>
+          <div class="ctfcu-admin-field ctfcu-admin-field-full">
+            <div class="ctfcu-admin-ack-shell">
+              <label class="ctfcu-admin-chip"><input type="checkbox" id="ctfcu-requires-ack" name="requires_ack" value="true"> Requiere "Acepto" y bloquea misiones</label>
+              <div class="ctfcu-admin-help" style="margin-top:10px">Usa esta opción para avisos individuales que deban confirmarse antes de permitir nuevas entregas.</div>
+              <div class="ctfcu-admin-form-grid" id="ctfcu-ack-settings" hidden style="margin-top:14px">
+                <div class="ctfcu-admin-field">
+                  <label for="ctfcu-ack-label">Texto del botón</label>
+                  <input id="ctfcu-ack-label" name="ack_label" class="ctfcu-admin-input" maxlength="48" value="Acepto" />
+                </div>
+                <div class="ctfcu-admin-field">
+                  <label for="ctfcu-ack-accent">Color</label>
+                  <select id="ctfcu-ack-accent" name="accent" class="ctfcu-admin-select">
+                    <option value="red" selected>Rojo</option>
+                    <option value="warning">Ámbar</option>
+                    <option value="info">Info</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ctfcu-admin-actions" style="margin-top:18px">
+          <button type="submit" class="ctfcu-admin-button">Enviar notificación</button>
+          <button type="button" id="ctfcu-clear-notifications" class="ctfcu-admin-button secondary">Limpiar todas las notificaciones previas</button>
+        </div>
+        <div id="ctfcu-admin-status" class="ctfcu-admin-status"></div>
+      </form>
+    </article>
+
+    <aside class="ctfcu-admin-panel">
+      <h2>Historial reciente</h2>
+      <p>Se muestran primero las más nuevas. Los mensajes dirigidos aparecen con el destinatario visible.</p>
+      <div id="ctfcu-admin-feed" class="ctfcu-admin-feed">
+        {% if notifications %}
+          {% for notification in notifications %}
+            <article class="ctfcu-admin-feed-card" data-notification-id="{{ notification.id }}">
+              <div class="ctfcu-admin-feed-head">
+                <div>
+                  <h3>{{ notification.title }}</h3>
+                  <div class="ctfcu-admin-feed-meta">
+                    <span class="ctfcu-admin-chip">
+                      <i class="fa-solid fa-bullhorn"></i>
+                      {% if notification.user_id %}
+                        Usuario #{{ notification.user_id }}
+                      {% elif notification.team_id %}
+                        Equipo #{{ notification.team_id }}
+                      {% else %}
+                        General
+                      {% endif %}
+                    </span>
+                    <span class="ctfcu-admin-chip"><i class="fa-regular fa-clock"></i><span data-time="{{ notification.date | isoformat }}"></span></span>
+                  </div>
+                </div>
+              </div>
+              <p class="ctfcu-admin-feed-copy">{{ notification.content }}</p>
+            </article>
+          {% endfor %}
+        {% else %}
+          <div class="ctfcu-admin-empty" id="ctfcu-admin-empty-feed">No hay notificaciones guardadas ahora mismo.</div>
+        {% endif %}
+      </div>
+    </aside>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(() => {
+  const usersEndpoint = "/plugins/admin_notifications_console/api/users";
+  const sendEndpoint = "/plugins/admin_notifications_console/api/send";
+  const clearEndpoint = "/plugins/admin_notifications_console/api/clear-all";
+  const form = document.getElementById("ctfcu-admin-notifications-form");
+  const feed = document.getElementById("ctfcu-admin-feed");
+  const statusBox = document.getElementById("ctfcu-admin-status");
+  const targetWrapper = document.getElementById("ctfcu-user-select-wrapper");
+  const userSelect = document.getElementById("ctfcu-notif-user");
+  const userCount = document.getElementById("ctfcu-admin-user-count");
+  const countNode = document.getElementById("ctfcu-admin-notification-count");
+  const clearButton = document.getElementById("ctfcu-clear-notifications");
+  const requiresAck = document.getElementById("ctfcu-requires-ack");
+  const ackSettings = document.getElementById("ctfcu-ack-settings");
+  const csrfNonce = window.init?.csrfNonce || "";
+
+  function showStatus(kind, message) {
+    statusBox.className = `ctfcu-admin-status show ${kind}`;
+    statusBox.textContent = message;
+  }
+
+  function updateTargetMode() {
+    const mode = form.querySelector('input[name="target_mode"]:checked')?.value || "broadcast";
+    targetWrapper.hidden = mode !== "user";
+    if (requiresAck?.checked && mode !== "user") {
+      showStatus("error", "Las notificaciones con Acepto solo pueden enviarse a un participante.");
+    }
+  }
+
+  function updateAckMode() {
+    const enabled = Boolean(requiresAck?.checked);
+    ackSettings.hidden = !enabled;
+    if (enabled) {
+      form.querySelector('input[name="target_mode"][value="user"]').checked = true;
+      updateTargetMode();
+    }
+  }
+
+  function renderNotification(item) {
+    const article = document.createElement("article");
+    article.className = "ctfcu-admin-feed-card";
+    article.setAttribute("data-notification-id", item.id);
+    article.innerHTML = `
+      <div class="ctfcu-admin-feed-head">
+        <div>
+          <h3>${item.title}</h3>
+          <div class="ctfcu-admin-feed-meta">
+            <span class="ctfcu-admin-chip"><i class="fa-solid fa-bullhorn"></i>${item.target_label || "General"}</span>
+            <span class="ctfcu-admin-chip"><i class="fa-regular fa-clock"></i>${new Intl.DateTimeFormat("es-MX", { dateStyle: "medium", timeStyle: "short" }).format(new Date(item.date))}</span>
+          </div>
+        </div>
+      </div>
+      <p class="ctfcu-admin-feed-copy">${item.content}</p>
+    `;
+    return article;
+  }
+
+  async function loadUsers() {
+    const response = await fetch(usersEndpoint, { credentials: "same-origin" });
+    if (!response.ok) {
+      throw new Error("No se pudo cargar la lista de participantes.");
+    }
+    const payload = await response.json();
+    const users = payload?.data || [];
+    userSelect.innerHTML = '<option value="">Selecciona un participante</option>';
+    users.forEach((user) => {
+      const option = document.createElement("option");
+      option.value = String(user.id);
+      option.textContent = user.affiliation ? `${user.name} · ${user.affiliation}` : user.name;
+      userSelect.appendChild(option);
+    });
+    userCount.textContent = users.length;
+  }
+
+  async function sendNotification(event) {
+    event.preventDefault();
+    const mode = form.querySelector('input[name="target_mode"]:checked')?.value || "broadcast";
+    const payload = {
+      title: form.title.value.trim(),
+      content: form.content.value.trim(),
+      target_mode: mode,
+      user_id: userSelect.value,
+      type: form.querySelector('input[name="type"]:checked')?.value || "alert",
+      sound: (form.querySelector('input[name="sound"]:checked')?.value || "true") === "true",
+      requires_ack: Boolean(requiresAck?.checked),
+      block_challenges: Boolean(requiresAck?.checked),
+      ack_label: form.ack_label?.value?.trim() || "Acepto",
+      accent: form.accent?.value || "red",
+    };
+
+    const response = await fetch(sendEndpoint, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "CSRF-Token": csrfNonce },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json();
+    if (!response.ok || !result?.success) {
+      throw new Error(result?.message || "No se pudo enviar la notificación.");
+    }
+
+    document.getElementById("ctfcu-admin-empty-feed")?.remove();
+    feed.prepend(renderNotification(result.data));
+    countNode.textContent = String((Number(countNode.textContent || 0) || 0) + 1);
+    form.reset();
+    form.querySelector('input[name="target_mode"][value="broadcast"]').checked = true;
+    form.querySelector('input[name="type"][value="alert"]').checked = true;
+    form.querySelector('input[name="sound"][value="true"]').checked = true;
+    if (requiresAck) {
+      requiresAck.checked = false;
+    }
+    if (form.ack_label) {
+      form.ack_label.value = "Acepto";
+    }
+    if (form.accent) {
+      form.accent.value = "red";
+    }
+    updateTargetMode();
+    updateAckMode();
+    showStatus("success", `Notificación enviada a ${result.data.target_label}.`);
+  }
+
+  async function clearNotifications() {
+    if (!window.confirm("Se eliminarán todas las notificaciones previas. ¿Continuar?")) {
+      return;
+    }
+    const response = await fetch(clearEndpoint, {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json", "CSRF-Token": csrfNonce },
+    });
+    const result = await response.json();
+    if (!response.ok || !result?.success) {
+      throw new Error(result?.message || "No se pudo limpiar el historial.");
+    }
+    feed.innerHTML = '<div class="ctfcu-admin-empty" id="ctfcu-admin-empty-feed">No hay notificaciones guardadas ahora mismo.</div>';
+    countNode.textContent = "0";
+    showStatus("success", `Se eliminaron ${result.data.deleted} notificaciones previas.`);
+  }
+
+  form.addEventListener("submit", (event) => {
+    sendNotification(event).catch((error) => showStatus("error", error.message));
+  });
+  clearButton.addEventListener("click", () => {
+    clearNotifications().catch((error) => showStatus("error", error.message));
+  });
+  form.querySelectorAll('input[name="target_mode"]').forEach((radio) => {
+    radio.addEventListener("change", updateTargetMode);
+  });
+  requiresAck?.addEventListener("change", updateAckMode);
+  updateTargetMode();
+  updateAckMode();
+  loadUsers().catch((error) => showStatus("error", error.message));
+})();
+</script>
+{% endblock %}

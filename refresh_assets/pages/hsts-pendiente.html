@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Política de transporte</span>
+      <h1>HSTS pendiente</h1>
+      <p>TLS sin una política persistente deja una ventana innecesaria para accesos futuros por HTTP. Este reto se centra en ese detalle: decirle al navegador, de forma explícita, que este sitio solo debe visitarse por el canal cifrado.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Si el virtual host ya escucha en HTTPS pero aún carece de política persistente.</li><li>Qué parámetros mínimos debe llevar la cabecera HSTS para ser útil aquí.</li><li>En qué bloque debe declararse la política para que tenga sentido.</li><li>Qué comentarios o configuraciones heredadas siguen indicando trabajo pendiente.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>curl</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Poner HSTS en un bloque HTTP en vez del bloque HTTPS.</li><li>Añadir `max-age=0` o una directiva de prueba que no endurece nada.</li><li>Olvidar `always` y dejar la política aplicada solo en respuestas parciales.</li><li>Suponer que el redirect sustituye a HSTS.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Confirma que la cabecera `Strict-Transport-Security` existe en el host HTTPS.</li><li>Revisa que incluya `max-age=31536000; includeSubDomains` y `always`.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando el sitio ya comunica una política fuerte de transporte.</li></ul></article>
+    </div>
+  </section>
+</div>

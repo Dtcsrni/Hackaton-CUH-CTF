@@ -1,0 +1,20 @@
+{
+  "flag": "CUH{subida_de_archivos_endurecida}",
+  "checks": [
+    {
+      "path": "app/upload_handler.py",
+      "required": [
+        "ALLOWED_EXTENSIONS",
+        "MAX_BYTES",
+        "uuid4()",
+        "PRIVATE_UPLOAD_DIR",
+        "if extension not in ALLOWED_EXTENSIONS",
+        "if size > MAX_BYTES"
+      ],
+      "forbidden": [
+        "filename = upload.filename",
+        "target = PUBLIC_DIR / filename"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style id="ctfcu-notifications-page">
+  .ctfcu-notifications-shell{max-width:1180px;margin:0 auto;padding:30px 20px 64px}
+  .ctfcu-notifications-head{margin-bottom:22px}
+  .ctfcu-notifications-head h1{margin:0;color:#fff;font-size:clamp(2.1rem,3vw,3rem);letter-spacing:-.04em}
+  .ctfcu-notifications-head p{margin:10px 0 0;color:rgba(223,236,251,.74);line-height:1.65}
+  .ctfcu-notifications-empty{padding:28px;border-radius:24px;border:1px dashed rgba(177,190,204,.18);background:rgba(255,255,255,.04);color:rgba(223,236,251,.76);text-align:center}
+  .ctfcu-notification-card{margin-bottom:18px;border-radius:24px;border:1px solid rgba(177,190,204,.14);background:linear-gradient(180deg,rgba(73,87,102,.88),rgba(31,38,46,.96));box-shadow:0 16px 34px rgba(0,0,0,.18)}
+  .ctfcu-notification-card .card-body{padding:18px 20px 20px}
+  .ctfcu-notification-card .card-title{margin:0 0 10px;color:#fff;font-size:1.15rem}
+  .ctfcu-notification-card blockquote{margin:0;padding-left:14px;border-left:3px solid rgba(255,255,255,.16)}
+  .ctfcu-notification-card p{margin:0;color:rgba(223,236,251,.84);line-height:1.68}
+  .ctfcu-notification-card small{display:block;margin-top:10px;color:rgba(223,236,251,.58)!important}
+  @media (max-width:680px){.ctfcu-notifications-shell{padding:24px 14px 54px}}
+</style>
+
+<section class="ctfcu-notifications-shell">
+  <header class="ctfcu-notifications-head">
+    <h1>{% trans %}Notifications{% endtrans %}</h1>
+    <p>Revisa aquí tus avisos generales y cualquier notificación que requiera confirmación antes de seguir avanzando.</p>
+  </header>
+
+  {% if not notifications %}
+    <div class="ctfcu-notifications-empty">
+      {% trans %}There are no notifications yet{% endtrans %}
+    </div>
+  {% endif %}
+
+  {% for notification in notifications %}
+    <div class="card ctfcu-notification-card" data-notification-id="{{ notification.id }}">
+      <div class="card-body">
+        <h3 class="card-title">{{ notification.title }}</h3>
+        <blockquote class="blockquote mb-0">
+          <p>{{ notification.html }}</p>
+          <small class="text-muted"><span data-time="{{ notification.date | isoformat }}"></span></small>
+        </blockquote>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/notifications.js") }}
+{% endblock %}

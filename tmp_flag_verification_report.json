@@ -1,0 +1,772 @@
+[
+  {
+    "id": 1,
+    "name": "Calentamiento - Bienvenida",
+    "category": "Calentamiento",
+    "state": "visible",
+    "flag": "CUH{cuh_ctf_2026_ok}",
+    "status": "verified_source_script",
+    "evidence": "refresh_assets/normalizar_formato_flags_y_reset.sh",
+    "other_matches": ""
+  },
+  {
+    "id": 2,
+    "name": "Leer también es hacking",
+    "category": "Calentamiento",
+    "state": "visible",
+    "flag": "CUH{leer_hasta_el_final_tiene_premio}",
+    "status": "verified_source_script",
+    "evidence": "refresh_assets/pages/index.html",
+    "other_matches": "tmp_update_leer_flag.py; tmp_update_leer_flag_sql.py"
+  },
+  {
+    "id": 3,
+    "name": "Robots curiosos",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{robots_no_guardan_secretos}",
+    "status": "registered_only",
+    "evidence": "page_overhaul_remote.py",
+    "other_matches": ""
+  },
+  {
+    "id": 4,
+    "name": "Base64 no es cifrado",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{base64_es_solo_codificacion}",
+    "status": "registered_only",
+    "evidence": "audit_description_flag_alignment.py",
+    "other_matches": ""
+  },
+  {
+    "id": 5,
+    "name": "César escolar",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{cesar_es_inicio}",
+    "status": "registered_only",
+    "evidence": "audit_description_flag_alignment.py",
+    "other_matches": ""
+  },
+  {
+    "id": 6,
+    "name": "Puertas abiertas",
+    "category": "Reconocimiento",
+    "state": "visible",
+    "flag": "CUH{escanear_antes_de_interpretar}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/01_escaneo_de_puertos_puertas_abiertas/server_31337.py",
+    "other_matches": "CTF_CUH/01_escaneo_de_puertos_puertas_abiertas/DATOS_CTFD.md; CTF_CUH/01_escaneo_de_puertos_puertas_abiertas/README_ORGANIZADOR.md"
+  },
+  {
+    "id": 7,
+    "name": "Metadatos indiscretos",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{los_metadatos_hablan}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 8,
+    "name": "Comandos Linux - búsqueda básica",
+    "category": "Linux",
+    "state": "visible",
+    "flag": "CUH{linux_tambien_se_investiga}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/02_comandos_linux_busqueda_basica/reto_linux/evidencia/oculto/flag.txt",
+    "other_matches": "CTF_CUH/02_comandos_linux_busqueda_basica/verify_organizer.py; CTF_CUH/02_comandos_linux_busqueda_basica/DATOS_CTFD.md"
+  },
+  {
+    "id": 9,
+    "name": "Logo en observación",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{el_logo_tambien_documenta}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 10,
+    "name": "Portada con pista",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{la_portada_si_tenia_pistas}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 11,
+    "name": "Cabeceras del laboratorio",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{las_cabeceras_tambien_informan}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 12,
+    "name": "JSON de prueba",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{las_respuestas_json_tambien_guian}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 13,
+    "name": "Bitácora del proxy",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{los_logs_tambien_cuentan}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 14,
+    "name": "Hash filtrado",
+    "category": "Cracking",
+    "state": "visible",
+    "flag": "CUH{pin_2603}",
+    "status": "verified_source_script",
+    "evidence": "refresh_assets/normalizar_formato_flags_y_reset.sh",
+    "other_matches": ""
+  },
+  {
+    "id": 15,
+    "name": "ZIP bajo llave",
+    "category": "Cracking",
+    "state": "visible",
+    "flag": "CUH{zip_con_clave_debil}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 16,
+    "name": "Acceso heredado",
+    "category": "Cracking",
+    "state": "visible",
+    "flag": "CUH{basic_auth_tambien_se_audita}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 17,
+    "name": "Registro sin servidor",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{el_servidor_tambien_debe_validar}",
+    "status": "verified_source_script",
+    "evidence": ".tmp_deploy_forms_remote.sh",
+    "other_matches": ""
+  },
+  {
+    "id": 18,
+    "name": "Encuesta confiada",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{nunca_confies_en_campos_ocultos}",
+    "status": "verified_source_script",
+    "evidence": ".tmp_deploy_forms_remote.sh",
+    "other_matches": ""
+  },
+  {
+    "id": 19,
+    "name": "Invitado privilegiado",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{el_payload_no_se_debe_confiar}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 20,
+    "name": "Secreto compartido debil",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{hs256_necesita_secretos_reales}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 21,
+    "name": "Fuente principal",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{el_codigo_fuente_tambien_orienta}",
+    "status": "verified_source_script",
+    "evidence": "refresh_assets/validar_fuente_principal.sh",
+    "other_matches": "user-preview.html"
+  },
+  {
+    "id": 22,
+    "name": "Consola curiosa",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{la_consola_tambien_revela_pistas}",
+    "status": "registered_only",
+    "evidence": "user-preview.html",
+    "other_matches": ""
+  },
+  {
+    "id": 23,
+    "name": "Cookie de rol",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{las_cookies_tambien_autorizan}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 24,
+    "name": "Cookie firmada debil",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{firmar_cookies_importa}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  },
+  {
+    "id": 25,
+    "name": "Acceso por defecto",
+    "category": "Cracking",
+    "state": "visible",
+    "flag": "CUH{la_fuerza_bruta_tambien_es_contexto}",
+    "status": "verified_source_script",
+    "evidence": "make_bruteforce_assets.py",
+    "other_matches": "bruteforce_deploy.sh"
+  },
+  {
+    "id": 29,
+    "name": "Formulario de acceso",
+    "category": "Cracking",
+    "state": "visible",
+    "flag": "CUH{hydra_tambien_necesita_precision}",
+    "status": "verified_source_script",
+    "evidence": "make_bruteforce_assets.py",
+    "other_matches": "bruteforce_deploy.sh"
+  },
+  {
+    "id": 30,
+    "name": "Consulta concatenada",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{consulta_concatenada_corregida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/03_consulta_concatenada/bundle/challenge.json",
+    "other_matches": "CTF_CUH/03_consulta_concatenada/verify_organizer.py; CTF_CUH/03_consulta_concatenada/DATOS_CTFD.md"
+  },
+  {
+    "id": 31,
+    "name": "Reportes sin parámetros",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{reportes_filtrados_con_parametros}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/04_reportes_sin_parametros/bundle/challenge.json",
+    "other_matches": "CTF_CUH/04_reportes_sin_parametros/verify_organizer.py; CTF_CUH/04_reportes_sin_parametros/DATOS_CTFD.md"
+  },
+  {
+    "id": 32,
+    "name": "Portal PHP heredado",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{portal_php_heredado_endurecido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/05_portal_php_heredado/bundle/challenge.json",
+    "other_matches": "CTF_CUH/05_portal_php_heredado/verify_organizer.py; CTF_CUH/05_portal_php_heredado/DATOS_CTFD.md"
+  },
+  {
+    "id": 33,
+    "name": "Incidente en formularios",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{incidente_de_formularios_reconstruido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/06_incidente_en_formularios/bundle/challenge.json",
+    "other_matches": "CTF_CUH/06_incidente_en_formularios/verify_organizer.py; CTF_CUH/06_incidente_en_formularios/DATOS_CTFD.md"
+  },
+  {
+    "id": 34,
+    "name": "Sesión que confía demasiado",
+    "category": "Auth",
+    "state": "visible",
+    "flag": "CUH{rol_de_sesion_validado_en_backend}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/07_sesion_que_confia_demasiado/bundle/challenge.json",
+    "other_matches": "CTF_CUH/07_sesion_que_confia_demasiado/verify_organizer.py; CTF_CUH/07_sesion_que_confia_demasiado/DATOS_CTFD.md"
+  },
+  {
+    "id": 35,
+    "name": "Cookie de rol heredada",
+    "category": "Auth",
+    "state": "visible",
+    "flag": "CUH{cookie_de_rol_endurecida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/08_cookie_de_rol_heredada/bundle/challenge.json",
+    "other_matches": "CTF_CUH/08_cookie_de_rol_heredada/verify_organizer.py; CTF_CUH/08_cookie_de_rol_heredada/DATOS_CTFD.md"
+  },
+  {
+    "id": 36,
+    "name": "JWT sin audiencia",
+    "category": "Auth",
+    "state": "visible",
+    "flag": "CUH{jwt_con_validacion_completa}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/09_jwt_sin_audiencia/bundle/challenge.json",
+    "other_matches": "CTF_CUH/09_jwt_sin_audiencia/verify_organizer.py; CTF_CUH/09_jwt_sin_audiencia/DATOS_CTFD.md"
+  },
+  {
+    "id": 37,
+    "name": "Restablecimiento abierto",
+    "category": "Auth",
+    "state": "visible",
+    "flag": "CUH{token_de_reset_endurecido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/10_restablecimiento_abierto/bundle/challenge.json",
+    "other_matches": "CTF_CUH/10_restablecimiento_abierto/verify_organizer.py; CTF_CUH/10_restablecimiento_abierto/DATOS_CTFD.md"
+  },
+  {
+    "id": 38,
+    "name": "Subida de archivos ansiosa",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{subida_de_archivos_endurecida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/11_subida_de_archivos_ansiosa/bundle/challenge.json",
+    "other_matches": "CTF_CUH/11_subida_de_archivos_ansiosa/verify_organizer.py; CTF_CUH/11_subida_de_archivos_ansiosa/DATOS_CTFD.md"
+  },
+  {
+    "id": 39,
+    "name": "Traversal en miniatura",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{rutas_normalizadas_y_resueltas}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/12_traversal_en_miniatura/bundle/challenge.json",
+    "other_matches": "CTF_CUH/12_traversal_en_miniatura/verify_organizer.py; CTF_CUH/12_traversal_en_miniatura/DATOS_CTFD.md"
+  },
+  {
+    "id": 40,
+    "name": "Portal defaceado en PHP",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{deface_reconstruido_y_contenido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/13_portal_defaceado_en_php/bundle/challenge.json",
+    "other_matches": "CTF_CUH/13_portal_defaceado_en_php/verify_organizer.py; CTF_CUH/13_portal_defaceado_en_php/DATOS_CTFD.md"
+  },
+  {
+    "id": 41,
+    "name": "Cabeceras que revelan de más",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{cabeceras_endurecidas}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/14_cabeceras_que_revelan_de_mas/bundle/challenge.json",
+    "other_matches": "CTF_CUH/14_cabeceras_que_revelan_de_mas/verify_organizer.py; CTF_CUH/14_cabeceras_que_revelan_de_mas/DATOS_CTFD.md"
+  },
+  {
+    "id": 42,
+    "name": "Prompt de soporte indiscreto",
+    "category": "IA defensiva",
+    "state": "visible",
+    "flag": "CUH{prompt_de_soporte_endurecido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/15_prompt_de_soporte_indiscreto/bundle/challenge.json",
+    "other_matches": "CTF_CUH/15_prompt_de_soporte_indiscreto/verify_organizer.py; CTF_CUH/15_prompt_de_soporte_indiscreto/DATOS_CTFD.md"
+  },
+  {
+    "id": 43,
+    "name": "Recuperación de contexto",
+    "category": "IA defensiva",
+    "state": "visible",
+    "flag": "CUH{contexto_filtrado_y_mitigado}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/16_recuperacion_de_contexto/bundle/challenge.json",
+    "other_matches": "CTF_CUH/16_recuperacion_de_contexto/verify_organizer.py; CTF_CUH/16_recuperacion_de_contexto/DATOS_CTFD.md"
+  },
+  {
+    "id": 44,
+    "name": "Linux expuesto: sudoers heredado",
+    "category": "Linux",
+    "state": "visible",
+    "flag": "CUH{sudoers_heredado_corregido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/17_linux_expuesto_sudoers_heredado/bundle/challenge.json",
+    "other_matches": "CTF_CUH/17_linux_expuesto_sudoers_heredado/verify_organizer.py; CTF_CUH/17_linux_expuesto_sudoers_heredado/DATOS_CTFD.md"
+  },
+  {
+    "id": 45,
+    "name": "Linux expuesto: servicio olvidado",
+    "category": "Linux",
+    "state": "visible",
+    "flag": "CUH{servicio_olvidado_documentado_y_limitado}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/18_linux_expuesto_servicio_olvidado/bundle/challenge.json",
+    "other_matches": "CTF_CUH/18_linux_expuesto_servicio_olvidado/verify_organizer.py; CTF_CUH/18_linux_expuesto_servicio_olvidado/DATOS_CTFD.md"
+  },
+  {
+    "id": 46,
+    "name": "Windows expuesto: share legado",
+    "category": "Windows",
+    "state": "visible",
+    "flag": "CUH{share_legado_reducido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/19_windows_expuesto_share_legado/bundle/challenge.json",
+    "other_matches": "CTF_CUH/19_windows_expuesto_share_legado/verify_organizer.py; CTF_CUH/19_windows_expuesto_share_legado/DATOS_CTFD.md"
+  },
+  {
+    "id": 47,
+    "name": "Windows expuesto: tareas persistentes",
+    "category": "Windows",
+    "state": "visible",
+    "flag": "CUH{persistencia_en_tareas_reconstruida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/20_windows_expuesto_tareas_persistentes/bundle/challenge.json",
+    "other_matches": "CTF_CUH/20_windows_expuesto_tareas_persistentes/verify_organizer.py; CTF_CUH/20_windows_expuesto_tareas_persistentes/DATOS_CTFD.md"
+  },
+  {
+    "id": 48,
+    "name": "Binario de despacho",
+    "category": "Reversing",
+    "state": "visible",
+    "flag": "CUH{clave_de_despacho_recuperada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/21_binario_de_despacho/bundle/challenge.json",
+    "other_matches": "CTF_CUH/21_binario_de_despacho/verify_organizer.py; CTF_CUH/21_binario_de_despacho/DATOS_CTFD.md"
+  },
+  {
+    "id": 49,
+    "name": "Licencia bajo revisión",
+    "category": "Reversing",
+    "state": "visible",
+    "flag": "CUH{licencia_reconstruida_sin_parche}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/22_licencia_bajo_revision/bundle/challenge.json",
+    "other_matches": "CTF_CUH/22_licencia_bajo_revision/verify_organizer.py; CTF_CUH/22_licencia_bajo_revision/DATOS_CTFD.md"
+  },
+  {
+    "id": 50,
+    "name": "Perfil disperso",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{perfil_disperso_correlacionado}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/23_perfil_disperso/bundle/challenge.json",
+    "other_matches": "CTF_CUH/23_perfil_disperso/verify_organizer.py; CTF_CUH/23_perfil_disperso/DATOS_CTFD.md"
+  },
+  {
+    "id": 51,
+    "name": "Agenda filtrada",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{agenda_filtrada_reconstruida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/24_agenda_filtrada/bundle/challenge.json",
+    "other_matches": "CTF_CUH/24_agenda_filtrada/verify_organizer.py; CTF_CUH/24_agenda_filtrada/DATOS_CTFD.md"
+  },
+  {
+    "id": 52,
+    "name": "Foto del laboratorio",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{foto_del_laboratorio_interpretada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/25_foto_del_laboratorio/bundle/challenge.json",
+    "other_matches": "CTF_CUH/25_foto_del_laboratorio/verify_organizer.py; CTF_CUH/25_foto_del_laboratorio/DATOS_CTFD.md"
+  },
+  {
+    "id": 53,
+    "name": "Proveedor fantasma",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{proveedor_fantasma_correlacionado}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/26_proveedor_fantasma/bundle/challenge.json",
+    "other_matches": "CTF_CUH/26_proveedor_fantasma/verify_organizer.py; CTF_CUH/26_proveedor_fantasma/DATOS_CTFD.md"
+  },
+  {
+    "id": 54,
+    "name": "Huella de publicación",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{huella_de_publicacion_reconstruida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/27_huella_de_publicacion/bundle/challenge.json",
+    "other_matches": "CTF_CUH/27_huella_de_publicacion/verify_organizer.py; CTF_CUH/27_huella_de_publicacion/DATOS_CTFD.md"
+  },
+  {
+    "id": 55,
+    "name": "XOR de respaldo",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{xor_reutilizado_identificado}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/28_xor_de_respaldo/bundle/challenge.json",
+    "other_matches": "CTF_CUH/28_xor_de_respaldo/verify_organizer.py; CTF_CUH/28_xor_de_respaldo/DATOS_CTFD.md"
+  },
+  {
+    "id": 56,
+    "name": "Firma reciclada",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{firma_con_nonce_repetido_detectada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/29_firma_reciclada/bundle/challenge.json",
+    "other_matches": "CTF_CUH/29_firma_reciclada/verify_organizer.py; CTF_CUH/29_firma_reciclada/DATOS_CTFD.md"
+  },
+  {
+    "id": 57,
+    "name": "RSA sin OAEP",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{rsa_con_oaep_y_sha256}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/30_rsa_sin_oaep/bundle/challenge.json",
+    "other_matches": "CTF_CUH/30_rsa_sin_oaep/verify_organizer.py; CTF_CUH/30_rsa_sin_oaep/DATOS_CTFD.md"
+  },
+  {
+    "id": 58,
+    "name": "Derivación lenta",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{kdf_endurecida_con_pbkdf2}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/31_derivacion_lenta/bundle/challenge.json",
+    "other_matches": "CTF_CUH/31_derivacion_lenta/verify_organizer.py; CTF_CUH/31_derivacion_lenta/DATOS_CTFD.md"
+  },
+  {
+    "id": 59,
+    "name": "Bloques repetidos",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{bloques_repetidos_interpretados}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/32_bloques_repetidos/bundle/challenge.json",
+    "other_matches": "CTF_CUH/32_bloques_repetidos/verify_organizer.py; CTF_CUH/32_bloques_repetidos/DATOS_CTFD.md"
+  },
+  {
+    "id": 60,
+    "name": "CBC sin integridad",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{cbc_sin_integridad_identificada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/33_cbc_sin_integridad/bundle/challenge.json",
+    "other_matches": "CTF_CUH/33_cbc_sin_integridad/verify_organizer.py; CTF_CUH/33_cbc_sin_integridad/DATOS_CTFD.md"
+  },
+  {
+    "id": 61,
+    "name": "IV reciclado en reportes",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{iv_reciclado_detectado_en_reportes}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/34_iv_reciclado_en_reportes/bundle/challenge.json",
+    "other_matches": "CTF_CUH/34_iv_reciclado_en_reportes/verify_organizer.py; CTF_CUH/34_iv_reciclado_en_reportes/DATOS_CTFD.md"
+  },
+  {
+    "id": 62,
+    "name": "HMAC truncado en gateway",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{gateway_hmac_verificado_completo}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/35_hmac_truncado_en_gateway/bundle/challenge.json",
+    "other_matches": "CTF_CUH/35_hmac_truncado_en_gateway/verify_organizer.py; CTF_CUH/35_hmac_truncado_en_gateway/DATOS_CTFD.md"
+  },
+  {
+    "id": 63,
+    "name": "Semilla predecible",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{entropia_fuerte_para_llaves}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/36_semilla_predecible/bundle/challenge.json",
+    "other_matches": "CTF_CUH/36_semilla_predecible/verify_organizer.py; CTF_CUH/36_semilla_predecible/DATOS_CTFD.md"
+  },
+  {
+    "id": 64,
+    "name": "Certificados a ciegas",
+    "category": "Criptografía",
+    "state": "visible",
+    "flag": "CUH{tls_validado_con_ca_y_hostname}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/37_certificados_a_ciegas/bundle/challenge.json",
+    "other_matches": "CTF_CUH/37_certificados_a_ciegas/verify_organizer.py; CTF_CUH/37_certificados_a_ciegas/DATOS_CTFD.md"
+  },
+  {
+    "id": 65,
+    "name": "Cronología cruzada",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{cronologia_cruzada_reconstruida}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/38_cronologia_cruzada/bundle/challenge.json",
+    "other_matches": "CTF_CUH/38_cronologia_cruzada/verify_organizer.py; CTF_CUH/38_cronologia_cruzada/DATOS_CTFD.md"
+  },
+  {
+    "id": 66,
+    "name": "Repositorio fantasma",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{repositorio_fantasma_atribuido}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/39_repositorio_fantasma/bundle/challenge.json",
+    "other_matches": "CTF_CUH/39_repositorio_fantasma/verify_organizer.py; CTF_CUH/39_repositorio_fantasma/DATOS_CTFD.md"
+  },
+  {
+    "id": 67,
+    "name": "Credencial en ponencia",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{credencial_en_ponencia_correlacionada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/40_credencial_en_ponencia/bundle/challenge.json",
+    "other_matches": "CTF_CUH/40_credencial_en_ponencia/verify_organizer.py; CTF_CUH/40_credencial_en_ponencia/DATOS_CTFD.md"
+  },
+  {
+    "id": 68,
+    "name": "Red de proveedores",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{red_de_proveedores_mapeada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/41_red_de_proveedores/bundle/challenge.json",
+    "other_matches": "CTF_CUH/41_red_de_proveedores/verify_organizer.py; CTF_CUH/41_red_de_proveedores/DATOS_CTFD.md"
+  },
+  {
+    "id": 69,
+    "name": "Trazas de convocatoria",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{convocatoria_atribuida_y_validada}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/42_trazas_de_convocatoria/bundle/challenge.json",
+    "other_matches": "CTF_CUH/42_trazas_de_convocatoria/verify_organizer.py; CTF_CUH/42_trazas_de_convocatoria/DATOS_CTFD.md"
+  },
+  {
+    "id": 70,
+    "name": "Traza en PCAP",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{tshark_reconstruye_la_pista}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/43_traza_en_pcap/bundle/challenge.json",
+    "other_matches": "CTF_CUH/43_traza_en_pcap/verify_organizer.py; CTF_CUH/43_traza_en_pcap/DATOS_CTFD.md"
+  },
+  {
+    "id": 71,
+    "name": "Firmware en capas",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{binwalk_descubre_el_resto_olvidado}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/44_firmware_en_capas/bundle/challenge.json",
+    "other_matches": "CTF_CUH/44_firmware_en_capas/verify_organizer.py; CTF_CUH/44_firmware_en_capas/DATOS_CTFD.md"
+  },
+  {
+    "id": 72,
+    "name": "Metadatos en cascada",
+    "category": "OSINT",
+    "state": "visible",
+    "flag": "CUH{exiftool_enlaza_la_historia}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/45_metadatos_en_cascada/bundle/challenge.json",
+    "other_matches": "CTF_CUH/45_metadatos_en_cascada/verify_organizer.py; CTF_CUH/45_metadatos_en_cascada/DATOS_CTFD.md"
+  },
+  {
+    "id": 73,
+    "name": "Carving de evidencias",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{foremost_recupera_la_pieza_util}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/46_carving_de_evidencias/bundle/challenge.json",
+    "other_matches": "CTF_CUH/46_carving_de_evidencias/verify_organizer.py; CTF_CUH/46_carving_de_evidencias/DATOS_CTFD.md"
+  },
+  {
+    "id": 74,
+    "name": "Diccionario de laboratorio",
+    "category": "Cracking",
+    "state": "visible",
+    "flag": "CUH{john_prioriza_el_contexto}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/47_diccionario_de_laboratorio/bundle/challenge.json",
+    "other_matches": "CTF_CUH/47_diccionario_de_laboratorio/verify_organizer.py; CTF_CUH/47_diccionario_de_laboratorio/DATOS_CTFD.md"
+  },
+  {
+    "id": 75,
+    "name": "Portal sin redirección segura",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{https_obligatorio_desde_el_borde}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/48_portal_sin_redireccion_segura/bundle/challenge.json",
+    "other_matches": "CTF_CUH/48_portal_sin_redireccion_segura/verify_organizer.py; CTF_CUH/48_portal_sin_redireccion_segura/DATOS_CTFD.md"
+  },
+  {
+    "id": 76,
+    "name": "HSTS pendiente",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{hsts_define_la_politica_de_transporte}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/49_hsts_pendiente/bundle/challenge.json",
+    "other_matches": "CTF_CUH/49_hsts_pendiente/verify_organizer.py; CTF_CUH/49_hsts_pendiente/DATOS_CTFD.md"
+  },
+  {
+    "id": 77,
+    "name": "Cookie de sesión sin Secure",
+    "category": "Auth",
+    "state": "visible",
+    "flag": "CUH{cookies_de_sesion_solo_por_https}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/50_cookie_de_sesion_sin_secure/bundle/challenge.json",
+    "other_matches": "CTF_CUH/50_cookie_de_sesion_sin_secure/verify_organizer.py; CTF_CUH/50_cookie_de_sesion_sin_secure/DATOS_CTFD.md"
+  },
+  {
+    "id": 78,
+    "name": "Contenido mixto heredado",
+    "category": "Web",
+    "state": "visible",
+    "flag": "CUH{todos_los_recursos_van_por_https}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/51_contenido_mixto_heredado/bundle/challenge.json",
+    "other_matches": "CTF_CUH/51_contenido_mixto_heredado/verify_organizer.py; CTF_CUH/51_contenido_mixto_heredado/DATOS_CTFD.md"
+  },
+  {
+    "id": 79,
+    "name": "Credenciales expuestas en tránsito",
+    "category": "Forense",
+    "state": "visible",
+    "flag": "CUH{credenciales_expuestas_por_http_reconstruidas}",
+    "status": "verified_effective_source",
+    "evidence": "CTF_CUH/52_credenciales_expuestas_en_transito/bundle/challenge.json",
+    "other_matches": "CTF_CUH/52_credenciales_expuestas_en_transito/verify_organizer.py; CTF_CUH/52_credenciales_expuestas_en_transito/DATOS_CTFD.md"
+  },
+  {
+    "id": 80,
+    "name": "Rompe el sistema",
+    "category": "Reconocimiento",
+    "state": "hidden",
+    "flag": "CUH{rompe_el_sistema_reportado_con_responsabilidad}",
+    "status": "registered_only",
+    "evidence": "",
+    "other_matches": ""
+  }
+]

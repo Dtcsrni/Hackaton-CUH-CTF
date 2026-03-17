@@ -1,0 +1,1 @@
+El equipo de respuesta acostumbra revisar estas capturas con tshark antes de abrir Wireshark para no perder tiempo en sesiones pequeñas.

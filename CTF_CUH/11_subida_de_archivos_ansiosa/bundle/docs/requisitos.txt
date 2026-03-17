@@ -1,0 +1,1 @@
+Solo deben aceptarse .png, .jpg y .pdf, hasta 2 MB, con nombre generado por el servidor.

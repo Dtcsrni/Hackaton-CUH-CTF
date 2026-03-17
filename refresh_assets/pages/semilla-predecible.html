@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Entropía y material secreto</span>
+      <h1>Semilla predecible</h1>
+      <p>Una llave no se vuelve segura por medir 32 bytes si su origen es predecible. Este reto trabaja la diferencia entre un generador general y una fuente adecuada para material criptográfico.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se inicializa el generador actual.</li><li>Qué dependencia introduce el reloj del sistema.</li><li>Qué módulo estándar está pensado para secretos.</li><li>Cómo mantener el mismo formato de salida tras el parche.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Cambiar solo el tamaño de la llave.</li><li>Seguir dependiendo de `random` con otra semilla.</li><li>Olvidar mantener la salida hexadecimal.</li><li>Dejar restos del generador anterior en el código.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Corrige `app/keygen.py`.</li><li>Elimina la semilla basada en tiempo.</li><li>Usa una fuente apta para secretos.</li><li>Ejecuta el validador local para obtener la flag.</li></ul></article>
+    </div>
+  </section>
+</div>

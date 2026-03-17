@@ -1,0 +1,1 @@
+La carpeta compartida se usa para intercambio de documentos de laboratorio, no para edición por cualquier usuario autenticado.

@@ -1,0 +1,3 @@
+equipo=camara_b12
+ala=ala_norte
+detalle=sticker_verde_b12

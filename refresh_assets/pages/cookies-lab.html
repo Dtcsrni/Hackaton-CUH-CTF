@@ -1,0 +1,37 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Cookies</span>
+      <h1>Cookies de rol, integridad débil y decisiones del servidor</h1>
+      <p>Esta página sirve para <em>Cookie de rol</em> y <em>Cookie firmada debil</em>. Ambos retos parecen parecidos, pero no piden lo mismo: uno muestra un privilegio decidido casi por completo en el cliente y el otro exige entender cómo se construye y valida una cookie firmada.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Cookie de rol</h3>
+        <p>Revisa primero qué cookie entrega el servidor y qué pasa si el valor cambia a <code>admin</code>. El aprendizaje aquí no es “editar cookies por editar”, sino detectar cuándo el backend delega una decisión sensible al navegador.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Cookie firmada debil</h3>
+        <p>Este reto se resuelve cruzando la cookie observada con el paquete <code>cookie_materiales.zip</code>. Si no identificas formato, secreto candidato y mecanismo de firma, no vas a distinguir entre una simple cookie editable y una cookie que sí exige recomputar integridad.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Comandos útiles</h3>
+        <pre class="cuhv-codeblock">curl -i http://45.55.49.111:8088/
+curl -H "Cookie: role=admin" http://45.55.49.111:8088/panel
+curl -i http://45.55.49.111:8089/</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué debes revisar en DevTools</h3>
+        <ul class="cuhv-list">
+          <li>Nombre exacto de la cookie.</li>
+          <li>Valor original antes de cualquier cambio.</li>
+          <li>Si la respuesta cambia solo por el valor o también por una firma.</li>
+          <li>Si el backend devuelve un error de integridad, de autenticación o de privilegio.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

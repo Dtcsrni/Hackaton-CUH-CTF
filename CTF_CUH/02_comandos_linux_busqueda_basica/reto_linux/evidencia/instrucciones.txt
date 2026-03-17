@@ -1,0 +1,6 @@
+Instrucciones para la revisión inicial
+
+1. Descomprima el material y observe su estructura completa.
+2. Revise nombres de archivos, extensiones y directorios antes de asumir que algo no sirve.
+3. Cuando encuentre una evidencia relevante, valide su contenido directamente.
+4. Trabaje con comandos básicos de Linux y documente la ruta final que le permitió resolver el reto.

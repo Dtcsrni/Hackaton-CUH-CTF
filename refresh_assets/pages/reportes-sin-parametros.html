@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Buscadores y filtros</span>
+      <h1>Reportes sin parámetros</h1>
+      <p>El problema aquí no es de autenticación, sino de filtrado. Cuando un backend construye un LIKE concatenando el término entregado por el usuario, el patrón queda tan frágil como la consulta que lo contiene.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se arma la cláusula WHERE.</li><li>Si el wildcard se construye dentro del SQL o fuera, como dato.</li><li>Si la ejecución sigue llamando a query directa.</li><li>Qué parte del código debe seguir siendo legible tras el parche.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>python</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Reemplazar el LIKE por otro string interpolado.</li><li>Olvidar que el wildcard puede ir en el valor y no en el SQL.</li><li>Mantener query directa tras escribir prepare.</li><li>Ocultar el parche con demasiada lógica lateral.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Asegúrate de que el filtro use placeholder.</li><li>Valida que el término se asigne como valor aparte.</li><li>Ejecuta el validador del bundle.</li><li>Si la flag aparece, el backend ya no depende de concatenación directa.</li></ul></article>
+    </div>
+  </section>
+</div>

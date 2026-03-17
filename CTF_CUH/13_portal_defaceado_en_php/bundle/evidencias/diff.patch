@@ -1,0 +1,5 @@
+--- a/index.php
++++ b/index.php
+@@
+-<h1>Portal interno CUH</h1>
++<h1>owned by lab-mock</h1>

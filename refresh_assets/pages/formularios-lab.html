@@ -1,0 +1,39 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Formularios</span>
+      <h1>Campos ocultos, validación ausente y lógica confiada en el cliente</h1>
+      <p>Esta guía acompaña <em>Registro sin servidor</em> y <em>Encuesta confiada</em>. Los dos retos parecen formularios comunes, pero la clave está en revisar qué datos manda realmente el navegador y qué acepta el backend sin validar de forma robusta.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Registro sin servidor</h3>
+        <p>Prueba la ruta <code>http://45.55.49.111:8084/</code>, inspecciona el formulario y observa qué parámetros se envían a <code>/registro</code>. El reto no está en escribir bonito en la página, sino en detectar qué valores especiales acepta el backend.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Encuesta confiada</h3>
+        <p>En <code>http://45.55.49.111:8085/</code> revisa el POST hacia <code>/evaluacion</code>. La pista real suele estar en campos que la interfaz no considera relevantes pero que el servidor sigue aceptando.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Comandos guía</h3>
+        <pre class="cuhv-codeblock">curl -fsS http://45.55.49.111:8084/
+curl -fsS -X POST http://45.55.49.111:8084/registro -d 'nombre=Prueba&correo=test@alumnos.cuh.edu.mx&matricula=20261234&area=soporte&perfil=coordinacion&modo=interno'
+
+curl -fsS http://45.55.49.111:8085/
+curl -fsS -X POST http://45.55.49.111:8085/evaluacion -d 'nombre=Prueba&equipo=verde&comentarios=revision+controlada&estado=interno&revision=aprobada'</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué mirar en DevTools</h3>
+        <ul class="cuhv-list">
+          <li>Nombres exactos de los campos.</li>
+          <li>Inputs ocultos o deshabilitados.</li>
+          <li>Diferencia entre validación visual del navegador y aceptación real del servidor.</li>
+          <li>Códigos de respuesta y mensajes devueltos por el backend.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

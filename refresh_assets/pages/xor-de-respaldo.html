@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Criptografía aplicada</span>
+      <h1>XOR de respaldo</h1>
+      <p>Este reto no trata de romper un cifrado moderno, sino de reconocer una mala práctica clásica: reutilizar el mismo material sobre mensajes relacionados. La solución sale de correlación, no de fuerza bruta.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué parte de ambos mensajes parece compartir estructura.</li><li>Qué indica la nota sobre el encabezado común.</li><li>Cómo dos cifrados similares delatan reutilización de keystream.</li><li>Qué frase de alto valor queda mencionada en el contexto del lote.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li><li><code>hex editor</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Intentar tratarlo como si fuera un hash.</li><li>Ignorar la pista del encabezado repetido.</li><li>Responder con una técnica genérica sin el indicador concreto.</li><li>Entregar todo el mensaje en vez de la frase pedida.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con problema, frase e indicador.</li><li>Usa exactamente las claves del bundle.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando el razonamiento criptográfico es consistente.</li></ul></article>
+    </div>
+  </section>
+</div>

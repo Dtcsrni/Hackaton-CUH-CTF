@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Análisis de firmware</span>
+      <h1>Firmware en capas</h1>
+      <p>Aquí el foco está en descomponer un firmware y no perder de vista qué artefacto interno tiene verdadero valor operativo. El reto premia un uso inteligente de herramientas de Kali para extracción y triage.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué tipos de contenido aparecen embebidos en el scan.</li><li>Qué artefacto destaca por contener configuración legible.</li><li>Qué ruta o parámetro residual cambia la lectura del caso.</li><li>Qué herramienta de Kali suele usarse primero para este tipo de inspección.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>binwalk</code></li><li><code>strings</code></li><li><code>hexdump</code></li><li><code>notes</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Quedarte en el encabezado del firmware y no bajar al artefacto incrustado.</li><li>Responder con el filesystem general y no con el archivo concreto.</li><li>No expresar el hallazgo operativo derivado del artefacto.</li><li>Ignorar que el bundle ya sugiere una extracción parcial.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con herramienta, artefacto y hallazgo.</li><li>Usa el nombre exacto del archivo embebido.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la extracción relevante queda bien interpretada.</li></ul></article>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,2 @@
+usuario=analista
+ruta=/panel

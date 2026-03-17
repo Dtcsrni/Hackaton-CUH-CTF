@@ -1,0 +1,3 @@
+portal=portal.cuh.lab
+ruta=/login
+impacto=credenciales_observables_en_texto_plano

@@ -1,0 +1,723 @@
+<style id="cuhv-index-special">
+  .cuhv-page {
+    --cuhv-text: #eef1f3;
+    --cuhv-soft: rgba(222, 229, 235, 0.78);
+    --cuhv-panel-top: rgba(75, 90, 106, 0.94);
+    --cuhv-panel-bottom: rgba(33, 41, 50, 0.98);
+    --cuhv-border: rgba(172, 185, 198, 0.16);
+    --cuhv-accent: #46627f;
+    --cuhv-accent-soft: #7b92ac;
+    --cuhv-highlight: #b4c2cf;
+    color: var(--cuhv-text);
+  }
+
+  .cuhv-hero-index {
+    display: block;
+    padding: 34px;
+  }
+
+  .cuhv-hero-stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+    grid-template-areas: "copy side";
+    gap: clamp(24px, 4vw, 54px);
+    align-items: stretch;
+  }
+
+  .cuhv-hero-stage::after {
+    content: "";
+    position: absolute;
+    inset: 10% 6% auto auto;
+    width: 240px;
+    height: 240px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(70, 98, 127, 0.20) 0%, rgba(70, 98, 127, 0) 68%);
+    filter: blur(6px);
+    pointer-events: none;
+    animation: cuhvPulseOrb 5.5s ease-in-out infinite;
+  }
+
+  .cuhv-hero-side {
+    grid-area: side;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    align-content: start;
+    gap: 18px;
+    min-width: 0;
+    padding-top: 12px;
+  }
+
+  .cuhv-hero-emblem {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: auto;
+    margin-top: 0;
+    padding: 20px 18px 12px;
+    border-radius: 30px;
+    border: 1px solid var(--cuhv-border);
+    background:
+      radial-gradient(circle at 50% 18%, rgba(123, 146, 172, 0.14), rgba(123, 146, 172, 0) 58%),
+      linear-gradient(180deg, rgba(78, 92, 108, 0.94), rgba(32, 38, 46, 0.98));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+  }
+
+  .cuhv-hero-emblem img {
+    display: block;
+    width: min(300px, 100%);
+    min-width: 0;
+    height: auto;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 10px rgba(255, 255, 255, 0.24))
+      drop-shadow(0 0 22px rgba(70, 98, 127, 0.14))
+      drop-shadow(0 0 34px rgba(123, 146, 172, 0.12));
+    animation: cuhvLogoFloat 4.8s ease-in-out infinite;
+  }
+
+  .cuhv-hero-copy {
+    grid-area: copy;
+    position: relative;
+    z-index: 2;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .cuhv-hero-copy h1 {
+    max-width: 11.2ch;
+    margin-bottom: 14px;
+    font-size: clamp(3.5rem, 6vw, 5.8rem);
+    line-height: 0.96;
+  }
+
+  .cuhv-hero-copy > p {
+    max-width: 78ch;
+  }
+
+  .cuhv-hero-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .cuhv-hero-mini {
+    padding: 14px 14px 12px;
+    border-radius: 18px;
+    border: 1px solid var(--cuhv-border);
+    background: linear-gradient(180deg, rgba(78, 92, 108, 0.88), rgba(34, 42, 50, 0.96));
+  }
+
+  .cuhv-hero-mini strong,
+  .cuhv-hero-mini span {
+    display: block;
+  }
+
+  .cuhv-hero-mini strong {
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  .cuhv-hero-mini span {
+    margin-top: 4px;
+    color: var(--cuhv-soft);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .cuhv-hero-side-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .cuhv-hero-side-card {
+    padding: 16px 16px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--cuhv-border);
+    background: linear-gradient(180deg, rgba(74, 88, 104, 0.92), rgba(31, 38, 46, 0.98));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+  }
+
+  .cuhv-hero-side-card[data-live-stat] {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cuhv-hero-side-card[data-live-stat]::after {
+    content: "";
+    position: absolute;
+    inset: auto -18% -34% auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(127, 147, 168, 0.18), rgba(127, 147, 168, 0));
+    pointer-events: none;
+  }
+
+  .cuhv-hero-side-card strong,
+  .cuhv-hero-side-card span {
+    display: block;
+  }
+
+  .cuhv-hero-side-card strong {
+    color: #fff;
+    font-size: 1.18rem;
+    line-height: 1.05;
+  }
+
+  .cuhv-hero-side-card span {
+    margin-top: 6px;
+    color: rgba(222, 229, 235, 0.82);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .cuhv-live-value {
+    font-size: 1.34rem;
+    letter-spacing: -0.03em;
+  }
+
+  .cuhv-live-label {
+    color: rgba(238, 244, 250, 0.96);
+  }
+
+  .cuhv-hero-side-note {
+    padding: 18px 18px 16px;
+    border-radius: 22px;
+    border: 1px solid var(--cuhv-border);
+    background:
+      linear-gradient(135deg, rgba(73, 87, 102, 0.96), rgba(32, 39, 47, 0.98));
+  }
+
+  .cuhv-hero-side-note strong {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .cuhv-hero-side-note p {
+    margin: 8px 0 0;
+    color: rgba(223, 232, 240, 0.8);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .cuhv-reader-reward {
+    margin-top: 30px;
+    padding: 18px 20px;
+    border-radius: 22px;
+    border: 1px solid var(--cuhv-border);
+    background: linear-gradient(180deg, rgba(70, 83, 98, 0.88), rgba(29, 36, 43, 0.96));
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+  }
+
+  .cuhv-reader-reward p {
+    margin: 0;
+    max-width: 84ch;
+    color: rgba(220, 230, 238, 0.78);
+    font-size: 0.86rem;
+    line-height: 1.72;
+  }
+
+  .cuhv-reader-flag {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    word-break: break-word;
+  }
+
+  .cuhv-final-cover {
+    margin: 34px 0 0;
+    width: 100%;
+    max-width: none;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid var(--cuhv-border);
+    background: linear-gradient(180deg, rgba(73, 87, 102, 0.94), rgba(31, 38, 46, 0.99));
+    box-shadow: 0 26px 62px rgba(0, 0, 0, 0.34);
+  }
+
+  .cuhv-final-cover figure {
+    margin: 0;
+  }
+
+  .cuhv-final-cover img {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+  }
+
+  .cuhv-final-cover figcaption {
+    padding: 22px 26px 24px;
+    background: linear-gradient(180deg, rgba(58, 71, 85, 0.92), rgba(28, 35, 43, 0.98));
+  }
+
+  .cuhv-final-cover strong,
+  .cuhv-final-cover span {
+    display: block;
+  }
+
+  .cuhv-final-cover strong {
+    color: #fff;
+    font-size: 1.18rem;
+    line-height: 1.2;
+  }
+
+  .cuhv-final-cover span {
+    margin-top: 8px;
+    color: var(--cuhv-soft);
+    line-height: 1.7;
+  }
+
+  @keyframes cuhvLogoFloat {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-1.3deg); }
+    100% { transform: translateY(0) rotate(0.8deg); }
+  }
+
+  @keyframes cuhvPulseOrb {
+    0% { transform: scale(0.92); opacity: 0.64; }
+    50% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+  }
+
+  @media (max-width: 1100px) {
+    .cuhv-hero-index {
+      padding: 24px;
+    }
+
+    .cuhv-hero-stage {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "side"
+        "copy";
+      gap: 20px;
+    }
+
+    .cuhv-hero-side {
+      padding-top: 0;
+    }
+
+    .cuhv-hero-emblem {
+      margin: 0 auto;
+      width: min(420px, 100%);
+    }
+
+    .cuhv-hero-copy h1,
+    .cuhv-hero-copy > p {
+      max-width: none;
+    }
+
+    .cuhv-hero-mini-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cuhv-final-cover img {
+      max-height: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .cuhv-hero-index {
+      padding: 18px;
+    }
+
+    .cuhv-hero-copy h1 {
+      font-size: clamp(2rem, 13vw, 3.5rem);
+      line-height: 0.98;
+    }
+
+    .cuhv-hero-emblem img {
+      width: min(260px, 62vw);
+      min-width: 0;
+    }
+
+    .cuhv-hero-side-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cuhv-reader-reward {
+      margin-top: 24px;
+      padding: 18px;
+    }
+
+    .cuhv-final-cover figcaption {
+      padding: 18px 18px 20px;
+    }
+
+    .cuhv-final-cover img {
+      max-height: none;
+      padding: 0;
+    }
+
+    .cuhv-reader-flag {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      font-size: inherit;
+      word-break: break-word;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cuhv-hero-stage::after,
+    .cuhv-hero-emblem img {
+      animation: none !important;
+    }
+  }
+</style>
+
+<style id="cuhv-index-palette-reset">
+  .cuhv-page {
+    background:
+      radial-gradient(circle at 10% 14%, rgba(127, 147, 168, 0.08), transparent 22%),
+      radial-gradient(circle at 84% 16%, rgba(79, 101, 125, 0.10), transparent 24%),
+      linear-gradient(180deg, #232a32 0%, #171b21 100%);
+  }
+
+  .cuhv-hero,
+  .cuhv-section,
+  .cuhv-reader-reward,
+  .cuhv-final-cover {
+    border-color: rgba(172, 185, 198, 0.16) !important;
+    background:
+      radial-gradient(circle at top right, rgba(127, 147, 168, 0.12), transparent 28%),
+      linear-gradient(180deg, rgba(73, 87, 102, 0.96), rgba(31, 38, 46, 0.99)) !important;
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .cuhv-section-head {
+    max-width: 76ch;
+  }
+
+  .cuhv-grid {
+    gap: 18px;
+  }
+
+  .cuhv-kicker {
+    background: linear-gradient(135deg, rgba(79, 101, 125, 0.95), rgba(127, 147, 168, 0.9)) !important;
+    color: #eef2f6 !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  .cuhv-button,
+  .cuhv-button:visited {
+    border-color: rgba(70, 98, 127, 0.24) !important;
+    background: linear-gradient(135deg, #46627f, #7b92ac) !important;
+    color: #eef1f3 !important;
+    box-shadow: 0 18px 30px rgba(24, 30, 38, 0.28) !important;
+  }
+
+  .cuhv-button:hover,
+  .cuhv-button:focus {
+    border-color: rgba(79, 101, 125, 0.4) !important;
+    background: linear-gradient(135deg, #5f748a, #90a3b5) !important;
+  }
+
+  .cuhv-button-alt,
+  .cuhv-button-alt:visited {
+    border-color: var(--cuhv-border) !important;
+    background: linear-gradient(180deg, rgba(73, 87, 102, 0.94), rgba(30, 37, 45, 0.98)) !important;
+    color: var(--cuhv-text) !important;
+  }
+
+  .cuhv-hero-mini,
+  .cuhv-hero-side-card,
+  .cuhv-card,
+  .cuhv-step,
+  .cuhv-note {
+    border-color: var(--cuhv-border) !important;
+    background: linear-gradient(180deg, rgba(77, 92, 108, 0.88), rgba(34, 42, 50, 0.97)) !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  .cuhv-hero-side-note,
+  .cuhv-reader-reward p {
+    color: rgba(222, 229, 235, 0.8) !important;
+  }
+
+  .cuhv-card h3,
+  .cuhv-step strong,
+  .cuhv-section-head h2,
+  .cuhv-note strong {
+    color: #f4f8fb !important;
+  }
+
+  .cuhv-card p,
+  .cuhv-step p,
+  .cuhv-section-head p,
+  .cuhv-note,
+  .cuhv-note a {
+    color: var(--cuhv-soft) !important;
+  }
+
+  .cuhv-hero-copy > p,
+  .cuhv-live-label,
+  .cuhv-hero-mini span {
+    color: rgba(222, 229, 235, 0.82) !important;
+  }
+
+  .cuhv-page a {
+    color: #d7e4ef;
+  }
+
+  .cuhv-page a:hover,
+  .cuhv-page a:focus {
+    color: #f5f9fc;
+  }
+
+  .cuhv-final-cover img {
+    border-radius: 22px;
+  }
+
+  @media (max-width: 980px) {
+    .cuhv-grid {
+      gap: 14px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .cuhv-section-head {
+      margin-bottom: 14px;
+    }
+  }
+</style>
+
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-index">
+    <div class="cuhv-hero-stage">
+      <div class="cuhv-hero-side">
+        <div class="cuhv-hero-emblem">
+          <img src="/files/d9eba859f48c5dfd456d35c2f61e339d/logo_hackaton_cuh.png" alt="Logo del Hackatón CTF CUH 2026">
+        </div>
+        <div class="cuhv-hero-side-grid">
+          <div class="cuhv-hero-side-card" data-live-stat="challenges">
+            <strong class="cuhv-live-value">76 desafíos activos</strong>
+            <span class="cuhv-live-label">Catálogo vivo con retos visibles en la plataforma.</span>
+          </div>
+          <div class="cuhv-hero-side-card" data-live-stat="categories">
+            <strong class="cuhv-live-value">12 categorías activas</strong>
+            <span class="cuhv-live-label">Recorrido repartido entre web, forense, auth, OSINT y más.</span>
+          </div>
+          <div class="cuhv-hero-side-card" data-live-stat="solves">
+            <strong class="cuhv-live-value">134 solves registrados</strong>
+            <span class="cuhv-live-label">Actividad real ya consolidada dentro del hackatón.</span>
+          </div>
+          <div class="cuhv-hero-side-card" data-live-stat="points">
+            <strong class="cuhv-live-value">31,060 pts en juego</strong>
+            <span class="cuhv-live-label">Volumen actual de puntos distribuidos en el tablero.</span>
+          </div>
+        </div>
+        <div class="cuhv-hero-side-note">
+          <strong>Recorrido sugerido</strong>
+          <p>Empieza por observación, luego pasa a autenticación, archivos, configuración y binarios. El objetivo es interpretar mejor cada superficie antes de tocarla.</p>
+        </div>
+      </div>
+      <div class="cuhv-hero-copy">
+        <span class="cuhv-kicker">Hackatón OSINT + CTF CUH 2026</span>
+        <h1>Bienvenido al laboratorio del Hackatón CUH</h1>
+        <p>Este hackatón está pensado como un laboratorio universitario para observar, interpretar y validar evidencias. Algunos retos se resuelven solo con el navegador; otros te piden abrir Kali, usar terminal, revisar respuestas HTTP, analizar archivos o hacer cracking controlado.</p>
+        <p>Aquí conviene avanzar con método. La portada te orienta, las guías te ordenan el recorrido y cada reto abre una superficie concreta: un archivo, una respuesta HTTP, una cookie, un JWT, una bitácora o un servicio que merece leerse antes de tocarse.</p>
+        <div class="cuhv-actions">
+          <a class="cuhv-button" href="/inicio-rapido">Empezar el recorrido</a>
+          <a class="cuhv-button cuhv-button-alt" href="/laboratorio-visual">Ver atlas visual</a>
+        </div>
+        <div class="cuhv-hero-mini-grid">
+          <div class="cuhv-hero-mini">
+            <strong>Del texto al tráfico</strong>
+            <span>El recorrido empieza con lectura visible y HTML, y después avanza hacia puertos, cabeceras, formularios, autenticación y tokens firmados.</span>
+          </div>
+          <div class="cuhv-hero-mini">
+            <strong>Evidencia concreta</strong>
+            <span>Los retos ya publicados trabajan con banners TCP, JSON, bitácoras, imágenes, ZIP, cookies, JWT y listas de credenciales acotadas.</span>
+          </div>
+          <div class="cuhv-hero-mini">
+            <strong>Práctica delimitada</strong>
+            <span>Todo ocurre dentro de la plataforma, sus adjuntos y los servicios expuestos para el evento; no hay shell, SSH ni infraestructura fuera del alcance definido.</span>
+          </div>
+        </div>
+        <div class="cuhv-note">
+          <strong>Si vas empezando:</strong> no intentes forzar técnicas complejas desde el primer minuto. Lee la portada, pasa por <a href="/inicio-rapido">Inicio rápido</a>, revisa <a href="/faq">FAQ</a> y elige primero retos con una superficie clara: texto visible, archivos simples o servicios bien delimitados.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Ruta del evento</span>
+        <h2>Cómo conviene usar esta plataforma</h2>
+        <p>La portada te da contexto, <a href="/inicio-rapido">Inicio rápido</a> te ayuda a arrancar, <a href="/faq">FAQ</a> concentra puertos y comandos, y las rutas de apoyo aterrizan temas concretos como cracking, formularios, JWT, cookies o análisis de archivos. La idea es que puedas avanzar sin depender de instrucciones improvisadas.</p>
+    </div>
+    <div class="cuhv-grid cuhv-grid-4">
+      <article class="cuhv-card"><h3>Inicio guiado</h3><p><a href="/inicio-rapido">Inicio rápido</a> te ayuda a preparar Kali, distinguir si un reto usa IP, URL o adjunto y arrancar con una secuencia útil desde el principio.</p></article>
+      <article class="cuhv-card"><h3>Atlas visual</h3><p><a href="/laboratorio-visual">Laboratorio visual</a> conecta cada familia de retos con ejemplos claros de red, archivos, cracking, autenticación y frontend.</p></article>
+      <article class="cuhv-card"><h3>Mapa de progresión</h3><p><a href="/mapa-retos">Mapa de retos</a> te ayuda a decidir qué conviene resolver antes de meterte con JWT, cookies o fuerza bruta.</p></article>
+      <article class="cuhv-card"><h3>Soporte operativo</h3><p><a href="/faq">FAQ</a> y <a href="/guia-herramientas">Guía de herramientas</a> reúnen comandos, puertos, errores esperados, tipos de archivo y criterios de validación.</p></article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Bloques del hackatón</span>
+      <h2>Temas que vas a encontrar en la plataforma</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Reconocimiento y observación de red</h3><p><em>Puertas abiertas</em>, <em>Cabeceras del laboratorio</em> y <em>JSON de prueba</em> recompensan a quien enumera primero y luego interpreta puertos, banners, cabeceras y respuestas.</p></article>
+      <article class="cuhv-card"><h3>Linux y análisis de archivos</h3><p><em>Comandos Linux - búsqueda básica</em>, <em>Logo en observación</em>, <em>Portada con pista</em> y <em>Bitácora del proxy</em> refuerzan el uso de <code>find</code>, <code>grep</code>, <code>cat</code>, <code>file</code> y la lectura cuidadosa de evidencias.</p></article>
+      <article class="cuhv-card"><h3>Cracking y secretos débiles</h3><p><em>Hash filtrado</em>, <em>ZIP bajo llave</em>, <em>Acceso por defecto</em> y <em>Formulario de acceso</em> muestran que muchas veces el problema real está en un PIN corto, una clave repetida o un diccionario demasiado obvio.</p></article>
+      <article class="cuhv-card"><h3>Frontend, formularios, cookies y JWT</h3><p><em>Fuente principal</em>, <em>Consola curiosa</em>, <em>Registro sin servidor</em>, <em>Cookie de rol</em> e <em>Invitado privilegiado</em> dejan claro qué pasa cuando el cliente termina decidiendo más de lo que debería.</p></article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Cómo usar el sitio</span>
+      <h2>Qué conviene revisar primero para avanzar con orden</h2>
+        <p>Si entras por primera vez, este es el recorrido más útil para no perder tiempo: reglas, arranque de Kali, FAQ operativa, mapa de retos y después la categoría que mejor encaje con tu nivel.</p>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>1. Reglas</h3>
+        <p>Empieza por <a href="/reglas">Reglas</a> para entender el alcance del evento, qué está permitido y qué forma de trabajo se espera durante el hackatón.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>2. Inicio rápido</h3>
+        <p>Luego abre <a href="/inicio-rapido">Inicio rápido</a>. Ahí está el flujo mínimo para preparar Kali, ubicar descargas y distinguir retos de red, archivos y navegador.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>3. FAQ</h3>
+        <p>Usa <a href="/faq">FAQ</a> como referencia operativa: acceso, herramientas, errores comunes, rutas, endpoints y criterios para pedir ayuda.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>4. Guía de herramientas y mapa</h3>
+        <p>Consulta <a href="/guia-herramientas">Guía de herramientas</a> y <a href="/mapa-retos">Mapa de retos</a> para elegir mejor los comandos y el orden de progresión.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Ruta de trabajo</span>
+      <h2>Una secuencia simple para resolver con método</h2>
+    </div>
+    <div class="cuhv-timeline">
+      <div class="cuhv-step"><strong>Lee</strong><p>Entiende el enunciado, la categoría, el recurso entregado y el tipo de respuesta que parece pedir el reto.</p></div>
+      <div class="cuhv-step"><strong>Enumera</strong><p>Si es red, revisa puertos o rutas. Si es archivo, inspecciona la estructura. Si es web, observa lo visible y lo que realmente recibe el navegador.</p></div>
+      <div class="cuhv-step"><strong>Interpreta</strong><p>Relaciona lo encontrado con la lógica del reto. Un puerto abierto, una cabecera, una cookie o un archivo oculto solo sirven cuando entiendes qué significan.</p></div>
+      <div class="cuhv-step"><strong>Valida</strong><p>Antes de enviar una respuesta, comprueba que encaja con el reto. Si la flag no valida, revisa formato, contexto y la superficie que analizaste.</p></div>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Lo que puedes encontrar</span>
+      <h2>Superficies reales con las que vas a trabajar</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3>Texto visible</h3>
+        <p>Algunos retos se resuelven leyendo con atención el contenido visible de la portada o de páginas de apoyo.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Servicios publicados</h3>
+        <p>Otros dependen de banners, puertos, endpoints, formularios o recursos HTTP concretos del laboratorio.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Archivos y adjuntos</h3>
+        <p>También hay retos centrados en ZIP, imágenes, bitácoras, listas de usuarios, materiales JWT o ficheros protegidos.</p>
+      </article>
+    </div>
+  </section>
+
+    <section class="cuhv-reader-reward cuhv-reveal">
+      <p>
+        Antes de salir de la portada conviene recordar algo simple: en un entorno académico controlado, los textos introductorios no están ahí solo para decorar. Resumen alcance, método, superficie de trabajo, lenguaje esperado y criterio de validación. Quien lee con calma suele avanzar más rápido porque entiende contexto, herramientas y límites antes de improvisar. Dentro de esa misma lógica, una línea pequeña al final puede guardar una referencia operativa aparentemente secundaria,
+        <span class="cuhv-reader-flag">CUH{leer_hasta_el_final_tiene_premio}</span>,
+        útil para quien realmente revisó el contenido completo y no solo la parte más vistosa de la interfaz.
+      </p>
+    </section>
+
+    <section class="cuhv-final-cover cuhv-reveal">
+      <figure>
+        <img src="/files/6a6f62b3ac1aa2196733deafd287ac3b/portqada_cuh_hack.png" alt="Portada oficial ampliada del Hackatón OSINT + CTF CUH 2026">
+      </figure>
+    </section>
+
+    <script id="cuhv-live-catalog-stats">
+      (async function () {
+        const defaults = {
+          challenges: { value: "76 desafíos activos", copy: "Catálogo vivo con retos visibles en la plataforma." },
+          categories: { value: "12 categorías activas", copy: "Recorrido repartido entre web, forense, auth, OSINT y más." },
+          solves: { value: "134 solves registrados", copy: "Actividad real ya consolidada dentro del hackatón." },
+          points: { value: "31,060 pts en juego", copy: "Volumen actual de puntos distribuidos en el tablero." },
+        };
+
+        const formatNumber = (value) => new Intl.NumberFormat("es-MX").format(value);
+        const cards = Array.from(document.querySelectorAll("[data-live-stat]"));
+
+        const paint = (stats) => {
+          cards.forEach((card) => {
+            const kind = card.getAttribute("data-live-stat");
+            const strong = card.querySelector(".cuhv-live-value");
+            const copy = card.querySelector(".cuhv-live-label");
+            if (!strong || !copy || !stats[kind]) return;
+            strong.textContent = stats[kind].value;
+            copy.textContent = stats[kind].copy;
+          });
+        };
+
+        paint(defaults);
+
+        try {
+          const response = await fetch("/api/v1/challenges", { credentials: "same-origin" });
+          if (!response.ok) return;
+          const payload = await response.json();
+          const challenges = Array.isArray(payload?.data) ? payload.data : [];
+          if (!challenges.length) return;
+
+          const categories = new Set();
+          let solves = 0;
+          let points = 0;
+
+          challenges.forEach((challenge) => {
+            if (challenge.category) categories.add(challenge.category);
+            solves += Number(challenge.solves || 0);
+            points += Number(challenge.value || 0);
+          });
+
+          paint({
+            challenges: {
+              value: `${formatNumber(challenges.length)} desafíos activos`,
+              copy: "Catálogo recalculado al abrir la portada.",
+            },
+            categories: {
+              value: `${formatNumber(categories.size)} categorías activas`,
+              copy: "Áreas reales detectadas desde el catálogo publicado.",
+            },
+            solves: {
+              value: `${formatNumber(solves)} solves registrados`,
+              copy: "Resultados válidos ya reflejados en el marcador del evento.",
+            },
+            points: {
+              value: `${formatNumber(points)} pts en juego`,
+              copy: "Suma actual de puntajes visibles dentro del tablero.",
+            },
+          });
+        } catch (error) {
+          console.debug("No fue posible recalcular métricas del catálogo", error);
+        }
+      })();
+    </script>
+</div>

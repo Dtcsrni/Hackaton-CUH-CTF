@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">SQL seguro</span>
+      <h1>Consulta concatenada</h1>
+      <p>Este reto parte de un login que ya no debería existir en producción: la consulta se construye concatenando texto del usuario dentro del SQL. La meta es revisar el archivo, entender por qué esa decisión es frágil y dejar la autenticación en un formato parametrizado y validable.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Dónde se arma la consulta y cómo entran usuario y clave al SQL.</li><li>Si la lógica de autenticación depende de query directa o de una sentencia preparada.</li><li>Qué nombres de parámetros son más claros para mantener el parche legible.</li><li>Si el archivo corregido separa completamente consulta y datos.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>python</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Cambiar solo el texto del SQL sin tocar la ejecución.</li><li>Dejar variables interpoladas dentro de la nueva consulta.</li><li>Parchear el HTML y no el backend real.</li><li>Corregir de forma opaca hasta volver el archivo difícil de revisar.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Ejecuta el validador del bundle.</li><li>Confirma que ya no hay concatenación de variables dentro del SQL.</li><li>Revisa que aparezcan placeholders y una llamada separada a execute.</li><li>Si el validador imprime la flag, la corrección es consistente con el objetivo.</li></ul></article>
+    </div>
+  </section>
+</div>

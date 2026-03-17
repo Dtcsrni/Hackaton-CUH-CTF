@@ -1,0 +1,1 @@
+Portal público servido por nginx y backend PHP 8.2. El acceso de despliegue quedó expuesto en un lote anterior.

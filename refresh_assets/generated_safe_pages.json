@@ -1,0 +1,556 @@
+{
+  "pages": [
+    {
+      "route": "consulta-concatenada",
+      "title": "Consulta concatenada",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "consulta-concatenada.html"
+    },
+    {
+      "route": "reportes-sin-parametros",
+      "title": "Reportes sin parámetros",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "reportes-sin-parametros.html"
+    },
+    {
+      "route": "portal-php-heredado",
+      "title": "Portal PHP heredado",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "portal-php-heredado.html"
+    },
+    {
+      "route": "incidente-en-formularios",
+      "title": "Incidente en formularios",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "incidente-en-formularios.html"
+    },
+    {
+      "route": "sesion-que-confia-demasiado",
+      "title": "Sesión que confía demasiado",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "sesion-que-confia-demasiado.html"
+    },
+    {
+      "route": "cookie-de-rol-heredada",
+      "title": "Cookie de rol heredada",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "cookie-de-rol-heredada.html"
+    },
+    {
+      "route": "jwt-sin-audiencia",
+      "title": "JWT sin audiencia",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "jwt-sin-audiencia.html"
+    },
+    {
+      "route": "restablecimiento-abierto",
+      "title": "Restablecimiento abierto",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "restablecimiento-abierto.html"
+    },
+    {
+      "route": "subida-de-archivos-ansiosa",
+      "title": "Subida de archivos ansiosa",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "subida-de-archivos-ansiosa.html"
+    },
+    {
+      "route": "traversal-en-miniatura",
+      "title": "Traversal en miniatura",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "traversal-en-miniatura.html"
+    },
+    {
+      "route": "portal-defaceado-en-php",
+      "title": "Portal defaceado en PHP",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "portal-defaceado-en-php.html"
+    },
+    {
+      "route": "cabeceras-que-revelan-de-mas",
+      "title": "Cabeceras que revelan de más",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "cabeceras-que-revelan-de-mas.html"
+    },
+    {
+      "route": "prompt-de-soporte-indiscreto",
+      "title": "Prompt de soporte indiscreto",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "prompt-de-soporte-indiscreto.html"
+    },
+    {
+      "route": "recuperacion-de-contexto",
+      "title": "Recuperación de contexto",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "recuperacion-de-contexto.html"
+    },
+    {
+      "route": "linux-expuesto-sudoers-heredado",
+      "title": "Linux expuesto sudoers heredado",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "linux-expuesto-sudoers-heredado.html"
+    },
+    {
+      "route": "linux-expuesto-servicio-olvidado",
+      "title": "Linux expuesto servicio olvidado",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "linux-expuesto-servicio-olvidado.html"
+    },
+    {
+      "route": "windows-expuesto-share-legado",
+      "title": "Windows expuesto share legado",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "windows-expuesto-share-legado.html"
+    },
+    {
+      "route": "windows-expuesto-tareas-persistentes",
+      "title": "Windows expuesto tareas persistentes",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "windows-expuesto-tareas-persistentes.html"
+    },
+    {
+      "route": "binario-de-despacho",
+      "title": "Binario de despacho",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "binario-de-despacho.html"
+    },
+    {
+      "route": "licencia-bajo-revision",
+      "title": "Licencia bajo revisión",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "licencia-bajo-revision.html"
+    },
+    {
+      "route": "perfil-disperso",
+      "title": "Perfil disperso",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "perfil-disperso.html"
+    },
+    {
+      "route": "agenda-filtrada",
+      "title": "Agenda filtrada",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "agenda-filtrada.html"
+    },
+    {
+      "route": "foto-del-laboratorio",
+      "title": "Foto del laboratorio",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "foto-del-laboratorio.html"
+    },
+    {
+      "route": "proveedor-fantasma",
+      "title": "Proveedor fantasma",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "proveedor-fantasma.html"
+    },
+    {
+      "route": "huella-de-publicacion",
+      "title": "Huella de publicación",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "huella-de-publicacion.html"
+    },
+    {
+      "route": "xor-de-respaldo",
+      "title": "XOR de respaldo",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "xor-de-respaldo.html"
+    },
+    {
+      "route": "firma-reciclada",
+      "title": "Firma reciclada",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "firma-reciclada.html"
+    },
+    {
+      "route": "rsa-sin-oaep",
+      "title": "RSA sin OAEP",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "rsa-sin-oaep.html"
+    },
+    {
+      "route": "derivacion-lenta",
+      "title": "Derivación lenta",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "derivacion-lenta.html"
+    },
+    {
+      "route": "bloques-repetidos",
+      "title": "Bloques repetidos",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "bloques-repetidos.html"
+    },
+    {
+      "route": "cbc-sin-integridad",
+      "title": "CBC sin integridad",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "cbc-sin-integridad.html"
+    },
+    {
+      "route": "iv-reciclado-en-reportes",
+      "title": "IV reciclado en reportes",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "iv-reciclado-en-reportes.html"
+    },
+    {
+      "route": "hmac-truncado-en-gateway",
+      "title": "HMAC truncado en gateway",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "hmac-truncado-en-gateway.html"
+    },
+    {
+      "route": "semilla-predecible",
+      "title": "Semilla predecible",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "semilla-predecible.html"
+    },
+    {
+      "route": "certificados-a-ciegas",
+      "title": "Certificados a ciegas",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "certificados-a-ciegas.html"
+    },
+    {
+      "route": "cronologia-cruzada",
+      "title": "Cronología cruzada",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "cronologia-cruzada.html"
+    },
+    {
+      "route": "repositorio-fantasma",
+      "title": "Repositorio fantasma",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "repositorio-fantasma.html"
+    },
+    {
+      "route": "credencial-en-ponencia",
+      "title": "Credencial en ponencia",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "credencial-en-ponencia.html"
+    },
+    {
+      "route": "red-de-proveedores",
+      "title": "Red de proveedores",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "red-de-proveedores.html"
+    },
+    {
+      "route": "trazas-de-convocatoria",
+      "title": "Trazas de convocatoria",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "trazas-de-convocatoria.html"
+    },
+    {
+      "route": "traza-en-pcap",
+      "title": "Traza en PCAP",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "traza-en-pcap.html"
+    },
+    {
+      "route": "firmware-en-capas",
+      "title": "Firmware en capas",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "firmware-en-capas.html"
+    },
+    {
+      "route": "metadatos-en-cascada",
+      "title": "Metadatos en cascada",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "metadatos-en-cascada.html"
+    },
+    {
+      "route": "carving-de-evidencias",
+      "title": "Carving de evidencias",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "carving-de-evidencias.html"
+    },
+    {
+      "route": "diccionario-de-laboratorio",
+      "title": "Diccionario de laboratorio",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "diccionario-de-laboratorio.html"
+    },
+    {
+      "route": "portal-sin-redireccion-segura",
+      "title": "Portal sin redirección segura",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "portal-sin-redireccion-segura.html"
+    },
+    {
+      "route": "hsts-pendiente",
+      "title": "HSTS pendiente",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "hsts-pendiente.html"
+    },
+    {
+      "route": "cookie-de-sesion-sin-secure",
+      "title": "Cookie de sesión sin Secure",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "cookie-de-sesion-sin-secure.html"
+    },
+    {
+      "route": "contenido-mixto-heredado",
+      "title": "Contenido mixto heredado",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "contenido-mixto-heredado.html"
+    },
+    {
+      "route": "credenciales-expuestas-en-transito",
+      "title": "Credenciales expuestas en tránsito",
+      "hidden": true,
+      "auth_required": false,
+      "filename": "credenciales-expuestas-en-transito.html"
+    }
+  ],
+  "links": {
+    "Consulta concatenada": {
+      "route": "consulta-concatenada",
+      "label": "Guía interna: Consulta concatenada"
+    },
+    "Reportes sin parámetros": {
+      "route": "reportes-sin-parametros",
+      "label": "Guía interna: Reportes sin parámetros"
+    },
+    "Portal PHP heredado": {
+      "route": "portal-php-heredado",
+      "label": "Guía interna: Portal PHP heredado"
+    },
+    "Incidente en formularios": {
+      "route": "incidente-en-formularios",
+      "label": "Guía interna: Incidente en formularios"
+    },
+    "Sesión que confía demasiado": {
+      "route": "sesion-que-confia-demasiado",
+      "label": "Guía interna: Sesión que confía demasiado"
+    },
+    "Cookie de rol heredada": {
+      "route": "cookie-de-rol-heredada",
+      "label": "Guía interna: Cookie de rol heredada"
+    },
+    "JWT sin audiencia": {
+      "route": "jwt-sin-audiencia",
+      "label": "Guía interna: JWT sin audiencia"
+    },
+    "Restablecimiento abierto": {
+      "route": "restablecimiento-abierto",
+      "label": "Guía interna: Restablecimiento abierto"
+    },
+    "Subida de archivos ansiosa": {
+      "route": "subida-de-archivos-ansiosa",
+      "label": "Guía interna: Subida de archivos ansiosa"
+    },
+    "Traversal en miniatura": {
+      "route": "traversal-en-miniatura",
+      "label": "Guía interna: Traversal en miniatura"
+    },
+    "Portal defaceado en PHP": {
+      "route": "portal-defaceado-en-php",
+      "label": "Guía interna: Portal defaceado en PHP"
+    },
+    "Cabeceras que revelan de más": {
+      "route": "cabeceras-que-revelan-de-mas",
+      "label": "Guía interna: Cabeceras que revelan de más"
+    },
+    "Prompt de soporte indiscreto": {
+      "route": "prompt-de-soporte-indiscreto",
+      "label": "Guía interna: Prompt de soporte indiscreto"
+    },
+    "Recuperación de contexto": {
+      "route": "recuperacion-de-contexto",
+      "label": "Guía interna: Recuperación de contexto"
+    },
+    "Linux expuesto: sudoers heredado": {
+      "route": "linux-expuesto-sudoers-heredado",
+      "label": "Guía interna: Linux expuesto sudoers heredado"
+    },
+    "Linux expuesto: servicio olvidado": {
+      "route": "linux-expuesto-servicio-olvidado",
+      "label": "Guía interna: Linux expuesto servicio olvidado"
+    },
+    "Windows expuesto: share legado": {
+      "route": "windows-expuesto-share-legado",
+      "label": "Guía interna: Windows expuesto share legado"
+    },
+    "Windows expuesto: tareas persistentes": {
+      "route": "windows-expuesto-tareas-persistentes",
+      "label": "Guía interna: Windows expuesto tareas persistentes"
+    },
+    "Binario de despacho": {
+      "route": "binario-de-despacho",
+      "label": "Guía interna: Binario de despacho"
+    },
+    "Licencia bajo revisión": {
+      "route": "licencia-bajo-revision",
+      "label": "Guía interna: Licencia bajo revisión"
+    },
+    "Perfil disperso": {
+      "route": "perfil-disperso",
+      "label": "Guía interna: Perfil disperso"
+    },
+    "Agenda filtrada": {
+      "route": "agenda-filtrada",
+      "label": "Guía interna: Agenda filtrada"
+    },
+    "Foto del laboratorio": {
+      "route": "foto-del-laboratorio",
+      "label": "Guía interna: Foto del laboratorio"
+    },
+    "Proveedor fantasma": {
+      "route": "proveedor-fantasma",
+      "label": "Guía interna: Proveedor fantasma"
+    },
+    "Huella de publicación": {
+      "route": "huella-de-publicacion",
+      "label": "Guía interna: Huella de publicación"
+    },
+    "XOR de respaldo": {
+      "route": "xor-de-respaldo",
+      "label": "Guía interna: XOR de respaldo"
+    },
+    "Firma reciclada": {
+      "route": "firma-reciclada",
+      "label": "Guía interna: Firma reciclada"
+    },
+    "RSA sin OAEP": {
+      "route": "rsa-sin-oaep",
+      "label": "Guía interna: RSA sin OAEP"
+    },
+    "Derivación lenta": {
+      "route": "derivacion-lenta",
+      "label": "Guía interna: Derivación lenta"
+    },
+    "Bloques repetidos": {
+      "route": "bloques-repetidos",
+      "label": "Guía interna: Bloques repetidos"
+    },
+    "CBC sin integridad": {
+      "route": "cbc-sin-integridad",
+      "label": "Guía interna: CBC sin integridad"
+    },
+    "IV reciclado en reportes": {
+      "route": "iv-reciclado-en-reportes",
+      "label": "Guía interna: IV reciclado en reportes"
+    },
+    "HMAC truncado en gateway": {
+      "route": "hmac-truncado-en-gateway",
+      "label": "Guía interna: HMAC truncado en gateway"
+    },
+    "Semilla predecible": {
+      "route": "semilla-predecible",
+      "label": "Guía interna: Semilla predecible"
+    },
+    "Certificados a ciegas": {
+      "route": "certificados-a-ciegas",
+      "label": "Guía interna: Certificados a ciegas"
+    },
+    "Cronología cruzada": {
+      "route": "cronologia-cruzada",
+      "label": "Guía interna: Cronología cruzada"
+    },
+    "Repositorio fantasma": {
+      "route": "repositorio-fantasma",
+      "label": "Guía interna: Repositorio fantasma"
+    },
+    "Credencial en ponencia": {
+      "route": "credencial-en-ponencia",
+      "label": "Guía interna: Credencial en ponencia"
+    },
+    "Red de proveedores": {
+      "route": "red-de-proveedores",
+      "label": "Guía interna: Red de proveedores"
+    },
+    "Trazas de convocatoria": {
+      "route": "trazas-de-convocatoria",
+      "label": "Guía interna: Trazas de convocatoria"
+    },
+    "Traza en PCAP": {
+      "route": "traza-en-pcap",
+      "label": "Guía interna: Traza en PCAP"
+    },
+    "Firmware en capas": {
+      "route": "firmware-en-capas",
+      "label": "Guía interna: Firmware en capas"
+    },
+    "Metadatos en cascada": {
+      "route": "metadatos-en-cascada",
+      "label": "Guía interna: Metadatos en cascada"
+    },
+    "Carving de evidencias": {
+      "route": "carving-de-evidencias",
+      "label": "Guía interna: Carving de evidencias"
+    },
+    "Diccionario de laboratorio": {
+      "route": "diccionario-de-laboratorio",
+      "label": "Guía interna: Diccionario de laboratorio"
+    },
+    "Portal sin redirección segura": {
+      "route": "portal-sin-redireccion-segura",
+      "label": "Guía interna: Portal sin redirección segura"
+    },
+    "HSTS pendiente": {
+      "route": "hsts-pendiente",
+      "label": "Guía interna: HSTS pendiente"
+    },
+    "Cookie de sesión sin Secure": {
+      "route": "cookie-de-sesion-sin-secure",
+      "label": "Guía interna: Cookie de sesión sin Secure"
+    },
+    "Contenido mixto heredado": {
+      "route": "contenido-mixto-heredado",
+      "label": "Guía interna: Contenido mixto heredado"
+    },
+    "Credenciales expuestas en tránsito": {
+      "route": "credenciales-expuestas-en-transito",
+      "label": "Guía interna: Credenciales expuestas en tránsito"
+    }
+  }
+}

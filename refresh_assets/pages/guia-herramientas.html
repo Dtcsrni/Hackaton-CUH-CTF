@@ -1,0 +1,195 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Guía de herramientas</span>
+      <h1>Qué herramienta usar, cuándo usarla y cómo no perder tiempo</h1>
+      <p>Esta guía está cruzada con retos reales del evento. Si dudas entre abrir <em>Puertas abiertas</em> con <code>nc</code>, revisar <em>Cabeceras del laboratorio</em> con <code>curl -i</code>, buscar una ruta dentro de <em>Comandos Linux - búsqueda básica</em> con <code>find</code> o lanzar <code>hydra</code> sobre <em>Acceso por defecto</em>, esta página te da el criterio exacto.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Antes de correr comandos</span>
+      <h2>Hazte estas preguntas primero</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3>¿Tengo una IP?</h3>
+        <p>Si sí, probablemente estás ante <em>Puertas abiertas</em>, <em>Cabeceras del laboratorio</em> o <em>JSON de prueba</em>. Empieza por <code>nmap</code>, <code>nc</code> o <code>curl</code>, no por Hydra ni por scripts aleatorios.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>¿Tengo un archivo?</h3>
+        <p>Si sí, probablemente estás ante <em>Comandos Linux - búsqueda básica</em>, <em>Bitácora del proxy</em>, <em>Hash filtrado</em> o <em>ZIP bajo llave</em>. Empieza por <code>unzip</code>, <code>find</code>, <code>grep</code>, <code>file</code> y <code>strings</code>.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>¿Tengo una página web?</h3>
+        <p>Si sí, además de <code>curl</code> necesitas navegador y DevTools para revisar retos como <em>Fuente principal</em>, <em>Consola curiosa</em>, <em>Registro sin servidor</em>, <em>Cookie de rol</em> o <em>Invitado privilegiado</em>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Reconocimiento y servicios</span>
+      <h2>Herramientas para IP, puertos, banners y respuestas HTTP</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3><code>nmap</code></h3>
+        <p>Es la herramienta base cuando un enunciado te deja solo la IP <code>45.55.49.111</code> o cuando el puerto útil no aparece en texto. Ese es exactamente el caso de <em>Puertas abiertas</em>.</p>
+        <pre class="cuhv-codeblock">nmap -sS -Pn 45.55.49.111
+nmap -sV -p 31337 45.55.49.111</pre>
+        <p><strong>Cuándo usarlo:</strong> cuando el reto habla de observación de red, puertos o conectividad.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>nc</code></h3>
+        <p>Sirve para conectarte manualmente a un servicio TCP y leer lo que responde. Si el reto tiene un banner o un servicio de texto, esta es la forma directa de validarlo.</p>
+        <pre class="cuhv-codeblock">nc 45.55.49.111 31337</pre>
+        <p><strong>Cuándo usarlo:</strong> después de descubrir un puerto interesante.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>curl</code></h3>
+        <p>Te permite revisar respuestas HTTP, cabeceras, redirecciones, cookies, formularios y endpoints JSON en retos como <em>Cabeceras del laboratorio</em>, <em>JSON de prueba</em>, <em>Cookie de rol</em> o <em>Registro sin servidor</em>.</p>
+        <pre class="cuhv-codeblock">curl http://45.55.49.111:8082/
+curl -i http://45.55.49.111:8088/
+curl -X POST http://45.55.49.111:8085/evaluacion -d 'campo=valor'</pre>
+        <p><strong>Cuándo usarlo:</strong> cuando el reto usa páginas, endpoints o formularios.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Archivos</span>
+      <h2>Herramientas para ZIP, directorios, logs, imágenes y materiales adjuntos</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3><code>unzip</code></h3>
+        <p>Extrae archivos ZIP. Nunca asumas lo que hay dentro antes de listarlo.</p>
+        <pre class="cuhv-codeblock">unzip reto_archivos_linux.zip
+cd reto_linux</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>find</code></h3>
+        <p>Lista archivos y rutas dentro de una carpeta. Es la forma más rápida de entender estructura.</p>
+        <pre class="cuhv-codeblock">find . -type f
+find . -type d</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>grep</code></h3>
+        <p>Busca texto recursivamente. Es útil para ubicar flags, palabras clave, usuarios, rutas o notas internas.</p>
+        <pre class="cuhv-codeblock">grep -R "CUH{" .
+grep -R "admin" .</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>cat</code></h3>
+        <p>Muestra el contenido de archivos de texto. Úsalo cuando ya sabes qué archivo quieres leer.</p>
+        <pre class="cuhv-codeblock">cat README.txt
+cat ./evidencia/oculto/flag.txt</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>file</code></h3>
+        <p>Identifica el tipo real de un archivo. Es útil cuando una extensión no te dice toda la verdad.</p>
+        <pre class="cuhv-codeblock">file imagen.png
+file evidencia_protegida.zip</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>strings</code></h3>
+        <p>Extrae texto legible de binarios, imágenes o formatos no estrictamente de texto. Puede revelar nombres, rutas o flags embebidas.</p>
+        <pre class="cuhv-codeblock">strings logo_cuh_reto.png | head
+strings portada_cuh_reto.png | grep CUH</pre>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Navegador y cliente</span>
+      <h2>Herramientas para formularios, cookies, HTML y tokens</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>DevTools</h3>
+        <ul class="cuhv-list">
+          <li><strong>Elements:</strong> HTML renderizado, comentarios, atributos y campos ocultos.</li>
+          <li><strong>Console:</strong> mensajes y pistas cargadas por scripts.</li>
+          <li><strong>Network:</strong> peticiones, respuestas, cabeceras y cookies.</li>
+          <li><strong>Application:</strong> cookies, almacenamiento local y valores persistentes.</li>
+        </ul>
+        <p><strong>Cuándo usarlo:</strong> siempre que el reto viva en una página o dependa del comportamiento del cliente.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué buscar en retos web</h3>
+        <ul class="cuhv-list">
+          <li>Comentarios HTML o texto fuera del diseño visible.</li>
+          <li>Mensajes de consola.</li>
+          <li>Campos ocultos en formularios.</li>
+          <li>Cookies con roles, estados o firmas débiles.</li>
+          <li>JWT donde el cliente aparenta tener más control del debido.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Cracking y fuerza bruta</span>
+      <h2>Herramientas que requieren más cuidado operativo</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3><code>hydra</code></h3>
+        <p>Úsala solo en <em>Acceso por defecto</em> y <em>Formulario de acceso</em>. Antes de ejecutar nada debes identificar si el objetivo usa Basic Auth o login POST, porque el comando cambia por completo.</p>
+        <pre class="cuhv-codeblock">hydra -l operador -P claves.txt 45.55.49.111 http-get /panel
+hydra -l analista -P claves.txt 45.55.49.111 http-post-form "/login:username=^USER^&password=^PASS^:Credenciales invalidas"</pre>
+        <p><strong>Error común:</strong> tratar un Basic Auth como si fuera formulario o viceversa.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué revisar antes de lanzar cracking</h3>
+        <ol class="cuhv-list">
+          <li>Formato real del reto: hash, ZIP, Basic Auth, formulario, cookie firmada o JWT.</li>
+          <li>Usuario esperado o nombre de cuenta.</li>
+          <li>Cadena de error cuando una prueba falla.</li>
+          <li>Ruta correcta del endpoint.</li>
+          <li>Volumen razonable de pruebas dentro del entorno del laboratorio.</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Selección rápida</span>
+      <h2>Tabla mental para elegir herramienta</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3>Si el reto muestra una IP</h3>
+        <p>Empieza por <code>nmap</code>. Si detectas un puerto interesante, prueba <code>nc</code> o <code>curl</code> según el protocolo.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Si el reto trae un ZIP</h3>
+        <p>Empieza por <code>unzip</code>, <code>find</code>, <code>grep</code> y <code>cat</code>. Solo después usa algo más específico si la estructura lo justifica.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Si el reto abre una página</h3>
+        <p>Empieza por navegador, DevTools y <code>curl</code>. Ese patrón resuelve retos como <em>Fuente principal</em>, <em>Consola curiosa</em>, <em>Registro sin servidor</em>, <em>Cookie de rol</em> o <em>Invitado privilegiado</em>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <figure class="cuhv-photo-card">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Digital_forensics_lab.jpg" alt="Laboratorio forense digital">
+        <figcaption>El enfoque del hackatón es observar, registrar y validar, no improvisar ruido. Fuente externa: Wikimedia Commons.</figcaption>
+      </figure>
+      <article class="cuhv-card">
+        <h3>Criterio operativo final</h3>
+        <p>Una herramienta no es “mejor” por ser más compleja. Si <code>find</code> ya te enseña la ruta de <em>Comandos Linux - búsqueda básica</em>, si <code>curl -i</code> ya te muestra un header en <em>Cabeceras del laboratorio</em> o si DevTools ya te revela un valor en <em>Cookie de rol</em>, el siguiente paso correcto es interpretar esa evidencia, no saltar a una técnica más agresiva.</p>
+        <div class="cuhv-note"><strong>Regla práctica:</strong> primero entiende qué superficie tienes enfrente; luego usa la herramienta mínima que responda a esa superficie.</div>
+      </article>
+    </div>
+  </section>
+</div>

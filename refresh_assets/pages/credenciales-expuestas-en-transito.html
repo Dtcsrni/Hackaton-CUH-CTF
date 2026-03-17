@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Forense de transporte</span>
+      <h1>Credenciales expuestas en tránsito</h1>
+      <p>Este reto no trata de explotar nada, sino de reconstruir un problema muy concreto de despliegue: credenciales que todavía viajaban por HTTP cuando el resto del portal ya estaba a medio camino de una migración a HTTPS.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué host aparece en la traza y en el log del proxy.</li><li>Qué ruta recibió credenciales en un POST por HTTP.</li><li>Qué diferencia hay entre el login heredado y otras rutas ya redirigidas.</li><li>Cómo describir el impacto principal sin inventar efectos no observados.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>notes</code></li><li><code>grep</code></li><li><code>spreadsheets</code></li><li><code>tshark</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Responder con una ruta distinta al login visible en la traza.</li><li>Confundir redirección posterior con protección previa del envío de credenciales.</li><li>Describir el impacto como intrusión cuando la evidencia solo muestra exposición en tránsito.</li><li>Ignorar la nota del SOC sobre la ventana de migración.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con portal, ruta e impacto.</li><li>Usa exactamente el formato de impacto esperado por el bundle.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la reconstrucción del incidente de transporte es consistente.</li></ul></article>
+    </div>
+  </section>
+</div>

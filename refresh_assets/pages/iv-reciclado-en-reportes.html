@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">IV y correlación</span>
+      <h1>IV reciclado en reportes</h1>
+      <p>Un IV no solo tiene que existir: también debe ser único cuando el modo de operación lo exige. Este reto se centra en detectar esa reutilización a partir de artefactos muy pequeños.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Si ambos reportes declaran el mismo IV.</li><li>Qué bloque coincide exactamente entre los ciphertexts.</li><li>Qué parte del contexto explica esa coincidencia.</li><li>Qué política de generación del IV habría evitado la fuga.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>hex editor</code></li><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Confundirlo con reutilización de clave sin hablar del IV.</li><li>Ignorar que el contexto ya anticipa un prefijo común.</li><li>Responder con un modo distinto a CBC sin evidencia.</li><li>Dar una mitigación demasiado genérica.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con problema, hallazgo y mitigación.</li><li>Usa las claves exactas del template.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando identificas bien la fuga observable.</li></ul></article>
+    </div>
+  </section>
+</div>

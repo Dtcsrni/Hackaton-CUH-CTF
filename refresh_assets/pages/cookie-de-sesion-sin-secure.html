@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Sesiones y transporte</span>
+      <h1>Cookie de sesión sin Secure</h1>
+      <p>Mover un portal a HTTPS no sirve de mucho si la cookie de sesión todavía puede viajar sin la marca correcta o queda demasiado expuesta a código del cliente. Este reto endurece justo ese punto.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué atributos de la cookie siguen en modo de pruebas o compatibilidad excesiva.</li><li>Si la aplicación obliga a que la sesión se entregue solo por HTTPS.</li><li>Qué atributos complementarios ayudan a reducir exposición del lado cliente.</li><li>Qué relación tiene esta corrección con un portal que ya migró a TLS.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>python</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Activar solo `Secure` y olvidar `HttpOnly` o `SameSite`.</li><li>Dejar `SameSite=None` sin una necesidad real del flujo.</li><li>Tocar cookies auxiliares pero no la de sesión principal.</li><li>Corregir la app pensando en HTTP cuando el escenario ya es HTTPS.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Revisa que la cookie de sesión principal tenga `Secure = True`.</li><li>Confirma `HttpOnly = True` y `SameSite = "Lax"`.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la sesión deja de depender de parámetros inseguros de transporte.</li></ul></article>
+    </div>
+  </section>
+</div>

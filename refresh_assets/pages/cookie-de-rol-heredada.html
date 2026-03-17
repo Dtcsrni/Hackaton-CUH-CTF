@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Cookies y autorización</span>
+      <h1>Cookie de rol heredada</h1>
+      <p>No todas las cookies sensibles están bien tratadas. Cuando el backend toma un rol desde la cookie sin verificar integridad ni lista de valores, la decisión de privilegios queda demasiado abierta.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se interpreta la cookie y en qué momento se decide el rol.</li><li>Si hay firma verificable o solo una separación superficial de campos.</li><li>Qué valores de rol deberían ser válidos.</li><li>Si la comparación de firma evita comprobaciones débiles o triviales.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Mantener una firma aparente que nunca se compara de forma segura.</li><li>Aceptar cualquier rol incluso con firma válida.</li><li>Cambiar el parser pero no la decisión sensible.</li><li>Olvidar un rol por defecto seguro.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Revisa que aparezca HMAC y compare_digest.</li><li>Revisa que el rol final esté limitado por ALLOWED_ROLES.</li><li>Ejecuta el validador del bundle.</li><li>La flag solo aparece cuando integridad y autorización quedan endurecidas.</li></ul></article>
+    </div>
+  </section>
+</div>

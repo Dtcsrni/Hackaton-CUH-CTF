@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{rutas_normalizadas_y_resueltas}",
+  "checks": [
+    {
+      "path": "app/file_server.py",
+      "required": [
+        "BASE_DIR = Path('public').resolve()",
+        "candidate = (BASE_DIR / requested_path).resolve()",
+        "if BASE_DIR not in candidate.parents and candidate != BASE_DIR",
+        "raise ValueError"
+      ],
+      "forbidden": [
+        "target = BASE_DIR / requested_path",
+        "return target.read_text("
+      ]
+    }
+  ]
+}

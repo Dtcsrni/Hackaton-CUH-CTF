@@ -1,0 +1,173 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Inicio rápido</span>
+      <h1>Secuencia guiada para arrancar sin perder tiempo</h1>
+      <p>Esta guía está pensada para que pases de abrir la plataforma a resolver retos concretos como <em>Leer también es hacking</em>, <em>Comandos Linux - búsqueda básica</em> y <em>Puertas abiertas</em> sin improvisar. Si todavía no distingues cuándo usar navegador, terminal, <code>curl</code> o <code>nmap</code>, empieza aquí.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Primeros 10 minutos</span>
+      <h2>Checklist de arranque</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3>1. Entra a la plataforma</h3>
+        <p>Abre <code>https://45.55.49.111</code>, inicia sesión y verifica que puedes abrir la lista de desafíos.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>2. Lee reglas y FAQ</h3>
+        <p>Antes de tocar cualquier reto, abre <a href="/reglas">Reglas</a> y <a href="/faq">FAQ</a>. Eso evita errores de alcance y tiempo perdido.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>3. Prepara Kali</h3>
+        <p>Confirma que puedes abrir terminal, navegador, carpeta de descargas y que tienes a mano <code>nmap</code>, <code>curl</code>, <code>nc</code>, <code>unzip</code>, <code>find</code> y <code>grep</code>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Orden sugerido</span>
+      <h2>Qué resolver primero si eres principiante</h2>
+      <p>La secuencia propuesta baja el riesgo de que saltes directo a <em>JWT</em>, <em>cookies</em> o <em>Hydra</em> sin haber resuelto antes lectura visible, ZIP, banners o cabeceras.</p>
+    </div>
+    <div class="cuhv-timeline">
+      <div class="cuhv-step">
+        <strong>Bloque 1. Lectura y observación básica</strong>
+        <p>Empieza por <em>Leer también es hacking</em>, <em>Fuente principal</em>, <em>Consola curiosa</em> o <em>Comandos Linux - búsqueda básica</em>. Ahí practicas lectura, HTML visible, consola, rutas y envío correcto de flags.</p>
+      </div>
+      <div class="cuhv-step">
+        <strong>Bloque 2. Servicios y red</strong>
+        <p>Cuando ya distingas bien descripción, pista y flag, pasa a <em>Puertas abiertas</em>, <em>Cabeceras del laboratorio</em> y <em>JSON de prueba</em> para practicar puertos, banners, headers y endpoints.</p>
+      </div>
+      <div class="cuhv-step">
+        <strong>Bloque 3. Archivos y análisis local</strong>
+        <p>Luego aborda <em>Logo en observación</em>, <em>Portada con pista</em>, <em>Bitácora del proxy</em>, <em>Hash filtrado</em> y <em>ZIP bajo llave</em> con <code>unzip</code>, <code>find</code>, <code>grep</code>, <code>file</code> y <code>strings</code>.</p>
+      </div>
+      <div class="cuhv-step">
+        <strong>Bloque 4. Formularios, cookies, JWT y cracking</strong>
+        <p>Deja para después <em>Registro sin servidor</em>, <em>Encuesta confiada</em>, <em>Cookie de rol</em>, <em>Invitado privilegiado</em>, <em>Acceso por defecto</em> y <em>Formulario de acceso</em>, donde ya necesitas correlacionar navegador, backend, token o fuerza bruta controlada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Comandos de supervivencia</span>
+      <h2>Comandos que probablemente usarás muchas veces</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Red, servicios y web</h3>
+        <pre class="cuhv-codeblock">ping -c 3 45.55.49.111
+nmap -sS -Pn 45.55.49.111
+nmap -sV -p 31337 45.55.49.111
+nc 45.55.49.111 31337
+curl http://45.55.49.111:8082/
+curl http://45.55.49.111:8082/api/status
+curl -i http://45.55.49.111:8088/</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Archivos y exploración local</h3>
+        <pre class="cuhv-codeblock">cd ~/Descargas || cd ~/Downloads
+ls -la
+unzip reto_archivos_linux.zip
+cd reto_linux
+find . -type f
+grep -R "CUH{" .
+cat ./evidencia/oculto/flag.txt
+file nombre_de_archivo
+strings archivo.bin | head</pre>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Cómo decidir</span>
+      <h2>Qué hacer cuando abres un reto nuevo</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Si ves una IP o una URL</h3>
+        <p>Piensa en infraestructura. Pregúntate:</p>
+        <ul class="cuhv-list">
+          <li>¿Debo enumerar puertos?</li>
+          <li>¿La descripción ya me da un puerto o una ruta?</li>
+          <li>¿La respuesta se obtiene con navegador, <code>curl</code> o <code>nc</code>?</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Si ves un archivo adjunto</h3>
+        <p>Piensa en análisis local. La secuencia correcta suele ser:</p>
+        <ol class="cuhv-list">
+          <li>Descargar.</li>
+          <li>Ubicar en tu sistema.</li>
+          <li>Extraer o identificar formato.</li>
+          <li>Listar contenido.</li>
+          <li>Buscar texto, rutas, nombres y relaciones.</li>
+        </ol>
+      </article>
+      <article class="cuhv-card">
+        <h3>Si ves una página web</h3>
+        <p>Piensa en navegador y protocolo. No te quedes solo con lo visible en pantalla. Revisa código fuente, cookies, DevTools, formularios y respuestas de red.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Si el reto menciona cracking o fuerza bruta</h3>
+        <p>No empieces lanzando <code>hydra</code> ciegamente. Primero identifica el tipo exacto de objetivo: hash, ZIP, Basic Auth o login POST.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Ruta mínima recomendada</span>
+      <h2>Un recorrido razonable para tus primeras resoluciones</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Paso 1</h3>
+        <p>Resuelve <em>Leer también es hacking</em> o <em>Fuente principal</em>. El objetivo es confirmar que sabes encontrar una respuesta en la propia plataforma y enviarla en formato <code>CUH{...}</code>.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Paso 2</h3>
+        <p>Pasa a <em>Comandos Linux - búsqueda básica</em> o a un material como <em>Logo en observación</em> para practicar navegación, <code>find</code>, <code>grep</code> y lectura de adjuntos.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Paso 3</h3>
+        <p>Aborda <em>Puertas abiertas</em>, <em>Cabeceras del laboratorio</em> o <em>JSON de prueba</em> para practicar enumeración, banners y respuestas HTTP reales del evento.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Paso 4</h3>
+        <p>Cuando ya domines el flujo, ve a <em>Cookie de rol</em>, <em>Registro sin servidor</em>, <em>Invitado privilegiado</em> o <em>Hash filtrado</em>. Ahí la dificultad está en distinguir qué valida el servidor, qué aporta el adjunto y qué solo aparenta el cliente.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Si te bloqueas</h3>
+        <p>Antes de pedir ayuda, responde estas preguntas:</p>
+        <ul class="cuhv-list">
+          <li>¿Entendí si el reto es de red, archivo o navegador?</li>
+          <li>¿Estoy en la carpeta correcta?</li>
+          <li>¿Ya enumeré antes de interpretar?</li>
+          <li>¿Ya revisé si la pista está en texto visible, HTML, consola o headers?</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué no hacer</h3>
+        <ul class="cuhv-list">
+          <li>No pruebes herramientas al azar solo porque suenan avanzadas.</li>
+          <li>No asumas que todo reto usa el formato de flag que viste antes.</li>
+          <li>No abandones un reto solo porque no viste la pista en la primera pantalla.</li>
+          <li>No salgas del alcance autorizado intentando acceder al servidor del evento.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

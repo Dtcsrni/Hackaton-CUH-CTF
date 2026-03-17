@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Cifrado por bloques</span>
+      <h1>CBC sin integridad</h1>
+      <p>Un cifrado puede ocultar contenido y seguir siendo insuficiente si no protege la integridad del mensaje. Este reto se centra en distinguir confidencialidad de autenticación.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué modo de operación se menciona o se deduce del contexto.</li><li>Qué indica la nota sobre la ausencia de una etiqueta o verificación extra.</li><li>Qué significa que el backend acepte ciphertext alterado sin detectarlo.</li><li>Qué mitigación moderna cubre cifrado e integridad al mismo tiempo.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li><li><code>notes</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Responder solo 'cifrado débil' sin explicar la falta de integridad.</li><li>Confundir CBC con un problema de IV repetido.</li><li>Proponer cambiar de clave como única mitigación.</li><li>Olvidar mencionar autenticación o AEAD.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con modo, riesgo y mitigación.</li><li>Usa exactamente las claves del template del bundle.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la explicación criptográfica es precisa.</li></ul></article>
+    </div>
+  </section>
+</div>

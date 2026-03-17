@@ -1,0 +1,3 @@
+herramienta=foremost
+archivo=credencial_turno_b.txt
+detalle=turno_b_habilita_revision_nocturna

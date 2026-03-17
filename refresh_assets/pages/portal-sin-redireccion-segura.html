@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Transporte seguro</span>
+      <h1>Portal sin redirección segura</h1>
+      <p>Un portal no queda realmente protegido por tener certificado si el borde sigue aceptando el sitio en HTTP plano. Este reto te pide cerrar esa brecha en la configuración y dejar el acceso web claramente forzado hacia HTTPS.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué puerto está sirviendo hoy el portal principal.</li><li>Si existe una redirección clara desde 80 hacia HTTPS.</li><li>Si el listener seguro ya está declarado con certificado y llave.</li><li>Qué cabecera debe reflejar el proxy una vez que el acceso ya es HTTPS.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>curl</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Mantener el sitio operativo en 80 sin una redirección inmediata.</li><li>Añadir solo el bloque 443 y olvidar la entrada desde HTTP.</li><li>No declarar certificado y llave en el listener seguro.</li><li>Seguir enviando `X-Forwarded-Proto http` después del cambio.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Revisa que exista una redirección explícita a `https://$host$request_uri`.</li><li>Confirma que el bloque seguro escuche en 443 con SSL declarado.</li><li>Ejecuta el validador local del bundle.</li><li>Si aparece la flag, el borde ya fuerza transporte cifrado de forma consistente.</li></ul></article>
+    </div>
+  </section>
+</div>

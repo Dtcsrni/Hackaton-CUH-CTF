@@ -1,0 +1,53 @@
+id,nombre,categoria,valor,flag,archivo_o_servicio
+01,Puertas abiertas,Reconocimiento,300,CUH{escanear_antes_de_interpretar},servicio TCP 31337
+02,Comandos Linux - búsqueda básica,Linux,150,CUH{linux_tambien_se_investiga},reto_archivos_linux.zip
+03,Consulta concatenada,Web,360,CUH{consulta_concatenada_corregida},consulta_concatenada_bundle.zip
+04,Reportes sin parámetros,Web,380,CUH{reportes_filtrados_con_parametros},reportes_sin_parametros_bundle.zip
+05,Portal PHP heredado,Web,400,CUH{portal_php_heredado_endurecido},portal_php_heredado_bundle.zip
+06,Incidente en formularios,Forense,420,CUH{incidente_de_formularios_reconstruido},incidente_en_formularios_bundle.zip
+07,Sesión que confía demasiado,Auth,400,CUH{rol_de_sesion_validado_en_backend},sesion_que_confia_demasiado_bundle.zip
+08,Cookie de rol heredada,Auth,430,CUH{cookie_de_rol_endurecida},cookie_de_rol_heredada_bundle.zip
+09,JWT sin audiencia,Auth,450,CUH{jwt_con_validacion_completa},jwt_sin_audiencia_bundle.zip
+10,Restablecimiento abierto,Auth,470,CUH{token_de_reset_endurecido},restablecimiento_abierto_bundle.zip
+11,Subida de archivos ansiosa,Web,440,CUH{subida_de_archivos_endurecida},subida_de_archivos_ansiosa_bundle.zip
+12,Traversal en miniatura,Web,470,CUH{rutas_normalizadas_y_resueltas},traversal_en_miniatura_bundle.zip
+13,Portal defaceado en PHP,Forense,480,CUH{deface_reconstruido_y_contenido},portal_defaceado_en_php_bundle.zip
+14,Cabeceras que revelan de más,Web,420,CUH{cabeceras_endurecidas},cabeceras_que_revelan_de_mas_bundle.zip
+15,Prompt de soporte indiscreto,IA defensiva,500,CUH{prompt_de_soporte_endurecido},prompt_de_soporte_indiscreto_bundle.zip
+16,Recuperación de contexto,IA defensiva,520,CUH{contexto_filtrado_y_mitigado},recuperacion_de_contexto_bundle.zip
+17,Linux expuesto: sudoers heredado,Linux,500,CUH{sudoers_heredado_corregido},linux_expuesto_sudoers_heredado_bundle.zip
+18,Linux expuesto: servicio olvidado,Linux,520,CUH{servicio_olvidado_documentado_y_limitado},linux_expuesto_servicio_olvidado_bundle.zip
+19,Windows expuesto: share legado,Windows,540,CUH{share_legado_reducido},windows_expuesto_share_legado_bundle.zip
+20,Windows expuesto: tareas persistentes,Windows,560,CUH{persistencia_en_tareas_reconstruida},windows_expuesto_tareas_persistentes_bundle.zip
+21,Binario de despacho,Reversing,580,CUH{clave_de_despacho_recuperada},binario_de_despacho_bundle.zip
+22,Licencia bajo revisión,Reversing,620,CUH{licencia_reconstruida_sin_parche},licencia_bajo_revision_bundle.zip
+23,Perfil disperso,OSINT,360,CUH{perfil_disperso_correlacionado},perfil_disperso_bundle.zip
+24,Agenda filtrada,OSINT,390,CUH{agenda_filtrada_reconstruida},agenda_filtrada_bundle.zip
+25,Foto del laboratorio,OSINT,420,CUH{foto_del_laboratorio_interpretada},foto_del_laboratorio_bundle.zip
+26,Proveedor fantasma,OSINT,450,CUH{proveedor_fantasma_correlacionado},proveedor_fantasma_bundle.zip
+27,Huella de publicación,OSINT,480,CUH{huella_de_publicacion_reconstruida},huella_de_publicacion_bundle.zip
+28,XOR de respaldo,Criptografía,380,CUH{xor_reutilizado_identificado},xor_de_respaldo_bundle.zip
+29,Firma reciclada,Criptografía,420,CUH{firma_con_nonce_repetido_detectada},firma_reciclada_bundle.zip
+30,RSA sin OAEP,Criptografía,460,CUH{rsa_con_oaep_y_sha256},rsa_sin_oaep_bundle.zip
+31,Derivación lenta,Criptografía,500,CUH{kdf_endurecida_con_pbkdf2},derivacion_lenta_bundle.zip
+32,Bloques repetidos,Criptografía,540,CUH{bloques_repetidos_interpretados},bloques_repetidos_bundle.zip
+33,CBC sin integridad,Criptografía,580,CUH{cbc_sin_integridad_identificada},cbc_sin_integridad_bundle.zip
+34,IV reciclado en reportes,Criptografía,600,CUH{iv_reciclado_detectado_en_reportes},iv_reciclado_en_reportes_bundle.zip
+35,HMAC truncado en gateway,Criptografía,620,CUH{gateway_hmac_verificado_completo},hmac_truncado_en_gateway_bundle.zip
+36,Semilla predecible,Criptografía,640,CUH{entropia_fuerte_para_llaves},semilla_predecible_bundle.zip
+37,Certificados a ciegas,Criptografía,660,CUH{tls_validado_con_ca_y_hostname},certificados_a_ciegas_bundle.zip
+38,Cronología cruzada,OSINT,520,CUH{cronologia_cruzada_reconstruida},cronologia_cruzada_bundle.zip
+39,Repositorio fantasma,OSINT,560,CUH{repositorio_fantasma_atribuido},repositorio_fantasma_bundle.zip
+40,Credencial en ponencia,OSINT,600,CUH{credencial_en_ponencia_correlacionada},credencial_en_ponencia_bundle.zip
+41,Red de proveedores,OSINT,640,CUH{red_de_proveedores_mapeada},red_de_proveedores_bundle.zip
+42,Trazas de convocatoria,OSINT,680,CUH{convocatoria_atribuida_y_validada},trazas_de_convocatoria_bundle.zip
+43,Traza en PCAP,Forense,560,CUH{tshark_reconstruye_la_pista},traza_en_pcap_bundle.zip
+44,Firmware en capas,Forense,600,CUH{binwalk_descubre_el_resto_olvidado},firmware_en_capas_bundle.zip
+45,Metadatos en cascada,OSINT,620,CUH{exiftool_enlaza_la_historia},metadatos_en_cascada_bundle.zip
+46,Carving de evidencias,Forense,640,CUH{foremost_recupera_la_pieza_util},carving_de_evidencias_bundle.zip
+47,Diccionario de laboratorio,Cracking,680,CUH{john_prioriza_el_contexto},diccionario_de_laboratorio_bundle.zip
+48,Portal sin redirección segura,Web,520,CUH{https_obligatorio_desde_el_borde},portal_sin_redireccion_segura_bundle.zip
+49,HSTS pendiente,Web,540,CUH{hsts_define_la_politica_de_transporte},hsts_pendiente_bundle.zip
+50,Cookie de sesión sin Secure,Auth,560,CUH{cookies_de_sesion_solo_por_https},cookie_de_sesion_sin_secure_bundle.zip
+51,Contenido mixto heredado,Web,580,CUH{todos_los_recursos_van_por_https},contenido_mixto_heredado_bundle.zip
+52,Credenciales expuestas en tránsito,Forense,600,CUH{credenciales_expuestas_por_http_reconstruidas},credenciales_expuestas_en_transito_bundle.zip

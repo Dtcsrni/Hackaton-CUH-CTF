@@ -1,0 +1,1 @@
+El archivo cifrado mantiene zonas repetitivas del diseño como si varios bloques fueran fotocopias entre sí.

@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Padding y migración segura</span>
+      <h1>RSA sin OAEP</h1>
+      <p>El reto se centra en política criptográfica defensiva: revisar un descifrado heredado y migrarlo a un padding moderno con parámetros explícitos y auditables.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué padding usa actualmente el módulo.</li><li>Qué política fija la nota de seguridad.</li><li>Si MGF1 y el algoritmo principal quedan alineados.</li><li>Si el parche hace la migración de forma legible y directa.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Cambiar el nombre del padding sin importar la función hash.</li><li>Usar OAEP con hashes distintos en cada parte.</li><li>Mantener el esquema anterior comentado o mezclado.</li><li>Parchear el archivo sin dejar clara la política final.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Comprueba que aparezca OAEP con MGF1 y SHA-256.</li><li>Asegúrate de que PKCS1v15 ya no quede en el flujo activo.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando el módulo queda migrado correctamente.</li></ul></article>
+    </div>
+  </section>
+</div>

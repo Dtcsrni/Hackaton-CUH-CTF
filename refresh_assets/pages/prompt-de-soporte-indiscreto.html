@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">IA defensiva</span>
+      <h1>Prompt de soporte indiscreto</h1>
+      <p>No se trata de 'ganarle' al modelo, sino de diseñar un borde razonable para un asistente interno. Este reto pide separar alcance, contexto permitido y datos que nunca deberían salir en una respuesta.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se mezclan system prompt, contexto y mensaje del usuario.</li><li>Si existe una política clara de alcance permitido.</li><li>Qué campos del contexto deberían redactarse antes de llegar al modelo.</li><li>Cómo se rechazan solicitudes fuera de política.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Agregar una advertencia textual sin cambiar el flujo real.</li><li>Mantener contexto sensible completo y solo confiar en el modelo.</li><li>No definir patrones de denegación.</li><li>No separar alcance permitido del resto del contexto.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca políticas de denegación y redacción de contexto.</li><li>Comprueba que el prompt final no incluya secretos sin filtrar.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando la capa de defensa deja de ser solo decorativa.</li></ul></article>
+    </div>
+  </section>
+</div>

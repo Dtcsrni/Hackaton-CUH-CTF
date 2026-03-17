@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Firmas y validación</span>
+      <h1>HMAC truncado en gateway</h1>
+      <p>Una firma fuerte puede volverse casi inútil si la verificación acepta prefijos o compara de forma ingenua. Este reto trabaja ese error de implementación.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se calcula la firma esperada.</li><li>Qué parte de la firma se compara realmente.</li><li>Por qué un prefijo corto debilita el control de integridad.</li><li>Qué función ofrece comparación resistente a diferencias temporales.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Cambiar el algoritmo aunque el problema no esté ahí.</li><li>Mantener una comparación parcial de la firma.</li><li>Usar `==` sobre la firma completa en vez de una comparación constante.</li><li>Olvidar validar longitud del valor recibido.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Corrige `app/verifier.py`.</li><li>Asegúrate de comparar la firma completa en hexadecimal.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la verificación queda completa y constante.</li></ul></article>
+    </div>
+  </section>
+</div>

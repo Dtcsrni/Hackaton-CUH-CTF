@@ -1,0 +1,1 @@
+Se dejó CBC porque ya estaba implementado. Para ahorrar bytes en el gateway móvil no se añadió etiqueta adicional al mensaje.

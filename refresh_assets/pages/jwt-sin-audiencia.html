@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">JWT defensivo</span>
+      <h1>JWT sin audiencia</h1>
+      <p>Un token firmado no es suficiente si el backend no define qué emisor, audiencia y algoritmo son aceptables. Este reto pide cerrar esas decisiones de forma explícita.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué controles ya existen y cuáles faltan.</li><li>Si el algoritmo queda abierto o restringido.</li><li>Qué claims deberían ser obligatorios para este contexto.</li><li>Si el retorno final ocurre solo después de validar todos los elementos relevantes.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Validar audience sin validar issuer, o viceversa.</li><li>Comprobar alg sin definir un conjunto permitido.</li><li>Devolver payload antes de terminar la validación.</li><li>Asumir que expiación basta para endurecer un token.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca algoritmo permitido, issuer esperado y audience esperada.</li><li>Comprueba que exp se siga validando.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando el token deja de aceptarse de forma ambigua.</li></ul></article>
+    </div>
+  </section>
+</div>

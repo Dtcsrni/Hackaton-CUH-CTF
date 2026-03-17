@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{token_de_reset_endurecido}",
+  "checks": [
+    {
+      "path": "app/reset_flow.py",
+      "required": [
+        "secrets.token_urlsafe(",
+        "expires_at",
+        "if token_record['username'] != username",
+        "if token_record['expires_at'] < now"
+      ],
+      "forbidden": [
+        "return f\"reset-{username}\"",
+        "return token == f\"reset-{username}\""
+      ]
+    }
+  ]
+}

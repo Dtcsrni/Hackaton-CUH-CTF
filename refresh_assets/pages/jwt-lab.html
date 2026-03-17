@@ -1,0 +1,38 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">JWT</span>
+      <h1>Qué revisar exactamente en los retos de token del laboratorio</h1>
+      <p>Esta guía acompaña <em>Invitado privilegiado</em> y <em>Secreto compartido debil</em>. En ambos casos el error no está en “tener un JWT”, sino en cómo el backend toma decisiones con el header, el payload y la firma. Si no distingues esas tres capas, vas a perder tiempo editando el token equivocado.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Invitado privilegiado</h3>
+        <p>Antes de tocar nada, separa el token en header, payload y firma. Revisa el campo <code>alg</code>, observa qué claim usa el servicio para decidir privilegios y confirma si el servidor realmente valida la firma o si solo confía en lo que el cliente afirma ser.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Secreto compartido debil</h3>
+        <p>En este reto el adjunto <code>jwt_materiales.zip</code> acota la búsqueda. La clave no es inventar un secreto gigantesco, sino probar el conjunto pequeño de candidatos hasta firmar un token que el backend acepte de verdad.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Comandos que sí te sirven</h3>
+        <pre class="cuhv-codeblock">curl http://45.55.49.111:8086/
+curl -H "Authorization: Bearer TOKEN" http://45.55.49.111:8086/panel
+curl http://45.55.49.111:8087/
+curl -H "Authorization: Bearer TOKEN" http://45.55.49.111:8087/admin</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Preguntas correctas</h3>
+        <ul class="cuhv-list">
+          <li>¿El backend autoriza por <code>role</code>, por <code>user</code> o por otro claim?</li>
+          <li>¿El algoritmo declarado coincide con el comportamiento del servidor?</li>
+          <li>¿La firma se verifica de verdad o basta con alterar el contenido?</li>
+          <li>¿El material adjunto ya reduce el espacio de búsqueda del secreto?</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

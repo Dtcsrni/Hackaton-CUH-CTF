@@ -1,0 +1,1 @@
+La derivación nueva debe usar PBKDF2-HMAC-SHA256, sal aleatoria de 16 bytes e iteraciones explícitas.

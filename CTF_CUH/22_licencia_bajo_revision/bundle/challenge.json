@@ -1,0 +1,7 @@
+{
+  "flag": "CUH{licencia_reconstruida_sin_parche}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "licencia=CUH26-REV7-1142-LOCK"
+  ]
+}

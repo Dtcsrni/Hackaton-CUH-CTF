@@ -1,0 +1,1 @@
+La versión nueva debe incluir payload JSON y firma HMAC validada en backend.

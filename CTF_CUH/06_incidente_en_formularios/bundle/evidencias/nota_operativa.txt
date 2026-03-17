@@ -1,0 +1,1 @@
+El portal de formularios no alcanzó a migrar a consultas parametrizadas antes del cierre del sprint.

@@ -1,0 +1,3446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel Interno</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/files/dc28fffbad863c3067291fa5e4bc54d7/favicon-32x32.png" type="image/x-icon">
+
+  
+
+  
+    <link rel="stylesheet" href="/themes/core/static/assets/main.e9ec7884.css">
+  
+
+  
+
+  <script  src="/themes/core/static/assets/color_mode_switcher.52334129.js"></script>
+
+  <script type="text/javascript">
+      window.init = {
+          'urlRoot': "",
+          'csrfNonce': "f1f4961e105aaff7208dcedcc715c91ffd299a82b79548eed32bf358bb4f860b",
+          'userMode': "users",
+          'userId': 0,
+          'userName': null,
+          'userEmail': null,
+          'userVerified': null,
+          'teamId': null,
+          'teamName': null,
+          'start': 1773162000,
+          'end': 1773637200,
+          'themeSettings': null,
+          'eventSounds': [
+            "/themes/core/static/sounds/notification.webm",
+            "/themes/core/static/sounds/notification.mp3",
+          ],
+      }
+  </script>
+
+  <!-- cuh_main_html_flag=CUH{el_codigo_fuente_tambien_orienta} -->
+
+<style id="ctfcu-solved-challenge-fix">
+  @keyframes ctfcuSolvedPulse {
+    0% {
+      box-shadow:
+        0 14px 30px rgba(3, 18, 11, 0.24),
+        0 0 0 0 rgba(63, 255, 132, 0.26),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+    70% {
+      box-shadow:
+        0 18px 38px rgba(3, 18, 11, 0.30),
+        0 0 0 14px rgba(63, 255, 132, 0),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+    100% {
+      box-shadow:
+        0 14px 30px rgba(3, 18, 11, 0.24),
+        0 0 0 0 rgba(63, 255, 132, 0),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+  }
+
+  @keyframes ctfcuSolvedSweep {
+    0% {
+      transform: translateX(-135%) skewX(-18deg);
+      opacity: 0;
+    }
+    18% { opacity: 0.22; }
+    42% { opacity: 0.34; }
+    100% {
+      transform: translateX(245%) skewX(-18deg);
+      opacity: 0;
+    }
+  }
+
+  .challenge-button.challenge-solved,
+  .challenge-button.challenge-solved.btn,
+  .challenge-button.challenge-solved.btn-dark,
+  .challenge-button.challenge-solved:hover,
+  .challenge-button.challenge-solved:focus,
+  .challenge-button.challenge-solved:active {
+    position: relative !important;
+    overflow: hidden !important;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(110, 255, 170, 0.18), transparent 34%),
+      linear-gradient(180deg, rgba(13, 58, 31, 0.96), rgba(6, 31, 18, 0.98)) !important;
+    border: 1px solid rgba(110, 255, 170, 0.34) !important;
+    color: #f3fff8 !important;
+    box-shadow:
+      0 14px 30px rgba(3, 18, 11, 0.24),
+      0 0 0 0 rgba(63, 255, 132, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+    transform: none !important;
+    filter: none !important;
+    animation: ctfcuSolvedPulse 2.8s ease-in-out infinite !important;
+  }
+
+  .challenge-button.challenge-solved::before {
+    content: "";
+    position: absolute;
+    inset: -20% auto -20% -30%;
+    width: 42%;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(210,255,228,0.20), rgba(255,255,255,0));
+    pointer-events: none;
+    animation: ctfcuSolvedSweep 4.4s ease-in-out infinite;
+  }
+
+  .challenge-button.challenge-solved .challenge-inner,
+  .challenge-button.challenge-solved .challenge-inner p,
+  .challenge-button.challenge-solved .challenge-inner span {
+    color: inherit !important;
+    opacity: 1 !important;
+  }
+
+  .challenge-button.challenge-solved::after {
+    content: "Derrotada";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(124, 255, 177, 0.16);
+    border: 1px solid rgba(151, 255, 196, 0.32);
+    color: #effff6;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+
+  .challenge-button.challenge-solved .challenge-inner p {
+    color: #ebfff2 !important;
+  }
+
+  .challenge-button.challenge-solved .challenge-inner span {
+    color: #d5ffe4 !important;
+  }
+
+  .challenge-button.challenge-solved .challenge-inner {
+    transform: translateZ(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .challenge-button.challenge-solved,
+    .challenge-button.challenge-solved::before {
+      animation: none !important;
+    }
+  }
+</style>
+<style id="ctfcu-challenge-notification-fix">
+  .notification-row .alert {
+    border-radius: 18px !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18) !important;
+    padding: 18px 18px 16px !important;
+    line-height: 1.6 !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .notification-row .alert strong,
+  .notification-row .alert small,
+  .notification-row .alert p,
+  .notification-row .alert span,
+  .notification-row .alert div {
+    color: inherit !important;
+    opacity: 1 !important;
+  }
+
+  .notification-row .alert strong {
+    display: block !important;
+    font-size: 1.08rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.01em;
+  }
+
+  .notification-row .alert-success {
+    color: #effff5 !important;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(132, 255, 184, 0.18), transparent 34%),
+      linear-gradient(180deg, rgba(11, 58, 31, 0.96), rgba(6, 33, 19, 0.98)) !important;
+    border-color: rgba(135, 255, 187, 0.34) !important;
+  }
+
+  .notification-row .alert-info {
+    color: #eef7ff !important;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(122, 205, 255, 0.18), transparent 34%),
+      linear-gradient(180deg, rgba(15, 50, 78, 0.96), rgba(8, 28, 45, 0.98)) !important;
+    border-color: rgba(122, 205, 255, 0.30) !important;
+  }
+
+  .notification-row .alert-danger {
+    color: #fff0f2 !important;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255, 136, 158, 0.18), transparent 34%),
+      linear-gradient(180deg, rgba(78, 20, 31, 0.96), rgba(43, 10, 18, 0.98)) !important;
+    border-color: rgba(255, 136, 158, 0.30) !important;
+  }
+
+  .notification-row .alert-warning {
+    color: #fff7ea !important;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(255, 204, 117, 0.18), transparent 34%),
+      linear-gradient(180deg, rgba(84, 53, 14, 0.96), rgba(49, 31, 8, 0.98)) !important;
+    border-color: rgba(255, 204, 117, 0.28) !important;
+  }
+
+  .notification-row .alert .btn,
+  .notification-row .alert .btn-outline-info,
+  .notification-row .alert .btn-outline-secondary,
+  .notification-row .alert .btn-primary {
+    color: #f6fffb !important;
+    border-color: rgba(230, 255, 241, 0.26) !important;
+  }
+
+  .notification-row .alert .btn-outline-info:hover,
+  .notification-row .alert .btn-outline-secondary:hover,
+  .notification-row .alert .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+</style>
+<style id="ctfcu-success-celebration-style">
+  @keyframes ctfcuCelebratePop {
+    0% { transform: translateY(10px) scale(0.96); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+  @keyframes ctfcuCelebrateFloat {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+  }
+  @keyframes ctfcuCelebrateShine {
+    0% { transform: translateX(-140%) skewX(-18deg); opacity: 0; }
+    25% { opacity: 0.22; }
+    100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+  }
+  @keyframes ctfcuCelebrateConfetti {
+    0% { transform: translateY(-6px) rotate(0deg); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(18px) rotate(18deg); opacity: 0; }
+  }
+  .notification-row .alert-success.ctfcu-success-upgraded { position: relative; overflow: hidden; }
+  .notification-row .alert-success.ctfcu-success-upgraded::before {
+    content: ""; position: absolute; inset: 0 auto 0 -18%; width: 28%;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(227,255,238,0.18), rgba(255,255,255,0));
+    pointer-events: none; animation: ctfcuCelebrateShine 3.6s ease-in-out infinite;
+  }
+  .ctfcu-success-card {
+    margin: 14px auto 10px; max-width: 440px; padding: 16px 16px 14px; border-radius: 20px;
+    border: 1px solid rgba(162,255,201,0.30);
+    background: radial-gradient(circle at 50% 16%, rgba(175,255,209,0.16), transparent 28%), linear-gradient(180deg, rgba(14,71,39,0.86), rgba(8,39,23,0.92));
+    box-shadow: 0 20px 44px rgba(0,0,0,0.26), inset 0 0 0 1px rgba(255,255,255,0.04);
+    animation: ctfcuCelebratePop .42s ease-out both;
+  }
+  .ctfcu-success-card-media { position: relative; overflow: hidden; border-radius: 18px; border: 1px solid rgba(191,255,217,0.22); background: linear-gradient(180deg, rgba(4,20,12,.66), rgba(4,20,12,.94)); }
+  .ctfcu-success-card-media img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center; animation: ctfcuCelebrateFloat 4.4s ease-in-out infinite; }
+  .ctfcu-success-card-media::after {
+    content: "Tigrillo victorioso"; position: absolute; left: 12px; bottom: 12px; padding: 6px 10px; border-radius: 999px;
+    background: rgba(5,25,14,0.74); border: 1px solid rgba(179,255,213,0.24); color: #effff5; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase;
+  }
+  .ctfcu-success-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .ctfcu-success-confetti span { position: absolute; top: 8px; width: 8px; height: 18px; border-radius: 999px; animation: ctfcuCelebrateConfetti 2.2s ease-in-out infinite; }
+  .ctfcu-success-confetti span:nth-child(1) { left: 14%; background: #72f7b2; animation-delay: 0s; }
+  .ctfcu-success-confetti span:nth-child(2) { left: 28%; background: #ffd166; animation-delay: .35s; }
+  .ctfcu-success-confetti span:nth-child(3) { left: 47%; background: #7ccfff; animation-delay: .7s; }
+  .ctfcu-success-confetti span:nth-child(4) { left: 66%; background: #ff8fb0; animation-delay: 1.05s; }
+  .ctfcu-success-confetti span:nth-child(5) { left: 83%; background: #9bff7e; animation-delay: 1.4s; }
+  .ctfcu-success-copy { margin-top: 14px; text-align: center; }
+  .ctfcu-success-copy strong, .ctfcu-success-copy span { display: block; }
+  .ctfcu-success-copy strong { color: #f4fff8; font-size: 1.02rem; line-height: 1.25; }
+  .ctfcu-success-copy span { margin-top: 6px; color: rgba(238,255,245,0.86); line-height: 1.6; font-size: 0.94rem; }
+  .notification-row .alert-success.ctfcu-success-upgraded > strong { text-transform: none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .notification-row .alert-success.ctfcu-success-upgraded::before,
+    .ctfcu-success-card,
+    .ctfcu-success-card-media img,
+    .ctfcu-success-confetti span { animation: none !important; }
+  }
+</style>
+<script id="ctfcu-success-celebration-script">
+(() => {
+  const TIGRILLO_URL = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ocelot.jpg";
+  function upgradeSuccessAlert(alert) {
+    if (!alert || alert.dataset.ctfcuSuccessDone === "1") return;
+    const strong = alert.querySelector("strong");
+    if (strong) strong.textContent = "Bandera correcta";
+    alert.classList.add("ctfcu-success-upgraded");
+    const shareTrigger = Array.from(alert.querySelectorAll("button, a")).find((el) => {
+      const txt = (el.textContent || "").trim().toLowerCase();
+      return txt === "share" || txt === "compartir";
+    });
+    if (shareTrigger) shareTrigger.textContent = "Compartir logro";
+    Array.from(alert.querySelectorAll("*")).forEach((node) => {
+      if (!node || !node.textContent) return;
+      const txt = node.textContent.trim();
+      if (txt === "Rate this challenge:") node.textContent = "¿Qué te pareció este reto?";
+      if (txt === "Write a review (optional)") node.textContent = "Escribe una reseña breve (opcional)";
+      if (txt === "Submit") node.textContent = "Enviar opinión";
+      if (txt === "Thank you for your rating!") node.textContent = "Gracias por calificar este reto";
+      if (txt === "Next Challenge") node.textContent = "Siguiente reto";
+    });
+    const review = alert.querySelector('textarea[placeholder="Write a review (optional)"]');
+    if (review) review.placeholder = "Escribe una reseña breve (opcional)";
+    const existingNote = alert.querySelector(".ctfcu-share-note");
+    if (existingNote) existingNote.textContent = "En esta instancia del laboratorio, Facebook y LinkedIn no generan una vista previa fiable con enlaces sobre IP pública. Usa Copiar enlace, Compartir desde el navegador o X.";
+    if (!alert.querySelector(".ctfcu-success-card")) {
+      const card = document.createElement("div");
+      card.className = "ctfcu-success-card";
+      card.innerHTML = `
+        <div class="ctfcu-success-card-media">
+          <img src="${TIGRILLO_URL}" alt="Tigrillo hacker victorioso del laboratorio">
+          <div class="ctfcu-success-confetti"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="ctfcu-success-copy">
+          <strong>Reto derrotado y puntos acreditados</strong>
+          <span>Tu bandera fue validada correctamente. Sigue con el siguiente desafío o comparte el logro usando las opciones del laboratorio.</span>
+        </div>`;
+      const firstHr = alert.querySelector("hr");
+      if (firstHr) firstHr.parentNode.insertBefore(card, firstHr); else alert.appendChild(card);
+    }
+    alert.dataset.ctfcuSuccessDone = "1";
+  }
+  function scan() { document.querySelectorAll('.notification-row .alert-success').forEach(upgradeSuccessAlert); }
+  function observeBodyReady(callback) {
+    const start = () => {
+      if (!(document.body instanceof Node)) {
+        return;
+      }
+      new MutationObserver(callback).observe(document.body, { childList: true, subtree: true });
+    };
+    if (document.body instanceof Node) {
+      start();
+      return;
+    }
+    window.addEventListener('DOMContentLoaded', start, { once: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', scan);
+  observeBodyReady(scan);
+})();
+</script>
+
+<!-- CTFCU_RESPONSIVE_SAFETY_START --><style id="ctfcu-responsive-safety">
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  main,
+  .jumbotron,
+  .container,
+  .container-fluid,
+  .row,
+  [class*="col-"] {
+    min-width: 0;
+  }
+
+  img,
+  video,
+  canvas,
+  svg,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .cuhv-page,
+  .ctfcu-scoreboard-page {
+    width: 100%;
+    max-width: min(100%, 1680px);
+  }
+
+  .challenge-window .modal-dialog,
+  .modal-dialog {
+    max-width: min(980px, calc(100vw - 24px));
+  }
+
+  .challenge-window.modal .modal-content,
+  .modal .modal-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #base-navbars {
+    min-width: 0 !important;
+  }
+
+  .navbar .navbar-nav {
+    min-width: 0 !important;
+  }
+
+  @media (max-width: 991.98px) {
+    .table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .jumbotron {
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+    }
+
+    .jumbotron h1 {
+      font-size: clamp(1.8rem, 7.8vw, 2.7rem) !important;
+      line-height: 1.04 !important;
+      margin: 0 !important;
+    }
+
+    .cuhv-page,
+    .ctfcu-scoreboard-page {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    :root {
+      --nav-height: 88px;
+    }
+
+    body {
+      padding-top: 102px !important;
+    }
+
+    .navbar {
+      min-height: var(--nav-height) !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+    }
+
+    .navbar > .container.ctfcu-navbar-shell {
+      max-width: calc(100vw - 8px) !important;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+
+    .navbar-brand {
+      height: 60px !important;
+    }
+
+    .navbar-brand img {
+      height: 52px !important;
+    }
+
+    .navbar-toggler {
+      min-width: 64px;
+      min-height: 52px;
+    }
+
+    #base-navbars {
+      max-height: calc(100vh - var(--nav-height) - 18px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-radius: 18px;
+    }
+
+    .jumbotron .container,
+    main > .container {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+
+    .cuhv-page,
+    .ctfcu-scoreboard-page {
+      padding: 14px 10px 52px !important;
+    }
+
+    .cuhv-hero,
+    .ctfcu-score-shell,
+    .ctfcu-score-hero,
+    .ctfcu-score-status,
+    .card,
+    .challenge-button,
+    .ctfcu-guest-challenge-overlay,
+    .ctfcu-score-row,
+    .ctfcu-podium-card {
+      border-radius: 18px !important;
+    }
+
+    .challenge-button {
+      min-height: 106px !important;
+    }
+
+    .challenge-inner p {
+      margin-bottom: 8px !important;
+      line-height: 1.2 !important;
+      word-break: break-word;
+    }
+
+    .ctfcu-guest-challenge-overlay {
+      position: relative !important;
+      top: 0 !important;
+      width: calc(100% - 6px) !important;
+      margin-top: 14px !important;
+      padding: 18px !important;
+    }
+
+    .ctfcu-login-arrow {
+      max-width: calc(100vw - 20px);
+      z-index: 10080 !important;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    body {
+      padding-top: 96px !important;
+    }
+
+    .navbar {
+      min-height: 82px !important;
+    }
+
+    .navbar-brand {
+      height: 54px !important;
+    }
+
+    .navbar-brand img {
+      height: 46px !important;
+    }
+
+    .navbar-toggler {
+      min-width: 58px;
+      min-height: 48px;
+      padding: 8px 10px !important;
+    }
+
+    .cuhv-page,
+    .ctfcu-scoreboard-page {
+      padding: 12px 8px 44px !important;
+    }
+
+    .cuhv-hero h1,
+    .ctfcu-score-hero h1 {
+      font-size: clamp(1.9rem, 11vw, 2.8rem) !important;
+      line-height: 1.02 !important;
+    }
+
+    .cuhv-actions,
+    .ctfcu-overlay-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .cuhv-button,
+    .ctfcu-overlay-login,
+    .ctfcu-overlay-note {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .cuhv-hero-mini-grid,
+    .ctfcu-score-summary,
+    .ctfcu-score-status-grid,
+    .ctfcu-podium {
+      grid-template-columns: 1fr !important;
+    }
+
+    .ctfcu-user-stats {
+      margin-left: 0 !important;
+    }
+
+    .cuhv-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+<script id="ctfcu-responsive-safety-script">
+(() => {
+  function forceVisible() {
+    document.querySelectorAll('.cuhv-reveal').forEach((node) => node.classList.add('is-visible'));
+  }
+  document.addEventListener('DOMContentLoaded', forceVisible);
+  window.addEventListener('load', forceVisible);
+  setTimeout(forceVisible, 1200);
+})();
+</script><!-- CTFCU_RESPONSIVE_SAFETY_END -->
+
+<style id="ctfcu-guest-submission-gate">
+  .ctfcu-guest-submit-note {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(122, 205, 255, 0.20);
+    background: linear-gradient(180deg, rgba(12, 39, 66, 0.92), rgba(7, 24, 42, 0.96));
+    color: #eef7ff;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+  }
+
+  .ctfcu-guest-submit-note strong,
+  .ctfcu-guest-submit-note span {
+    display: block;
+    color: inherit;
+  }
+
+  .ctfcu-guest-submit-note strong {
+    font-size: 0.98rem;
+    font-weight: 800;
+  }
+
+  .ctfcu-guest-submit-note span {
+    margin-top: 4px;
+    line-height: 1.6;
+    color: rgba(238, 247, 255, 0.88);
+    font-size: 0.92rem;
+  }
+
+  .challenge-window .challenge-input.ctfcu-guest-disabled {
+    opacity: 0.72 !important;
+    cursor: not-allowed !important;
+  }
+
+  .challenge-window .challenge-submit.ctfcu-login-cta {
+    color: #eef7ff !important;
+    border-color: rgba(122, 205, 255, 0.30) !important;
+    background: linear-gradient(180deg, rgba(17, 76, 123, 0.92), rgba(11, 49, 82, 0.98)) !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16) !important;
+  }
+
+  .challenge-window .challenge-submit.ctfcu-login-cta:hover {
+    background: linear-gradient(180deg, rgba(22, 91, 145, 0.96), rgba(13, 57, 95, 1)) !important;
+  }
+</style>
+<script id="ctfcu-guest-submission-gate-script">
+(() => {
+  function isGuest() {
+    return !window.init || !window.init.userId || Number(window.init.userId) === 0;
+  }
+
+  function loginTarget() {
+    const next = encodeURIComponent('/challenges');
+    return `/login?next=${next}`;
+  }
+
+  function upgradeGuestModal(modal) {
+    if (!modal || modal.dataset.ctfcuGuestGate === '1' || !isGuest()) {
+      return;
+    }
+
+    const input = modal.querySelector('.challenge-input');
+    const button = modal.querySelector('.challenge-submit');
+    const submitRow = modal.querySelector('.submit-row');
+    if (!input || !button || !submitRow) {
+      return;
+    }
+
+    input.value = '';
+    input.disabled = true;
+    input.placeholder = 'Inicia sesión para enviar banderas';
+    input.classList.add('ctfcu-guest-disabled');
+
+    button.textContent = 'Iniciar sesión';
+    button.classList.add('ctfcu-login-cta');
+    button.disabled = false;
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.href = loginTarget();
+    }, true);
+
+    if (!modal.querySelector('.ctfcu-guest-submit-note')) {
+      const note = document.createElement('div');
+      note.className = 'ctfcu-guest-submit-note';
+      note.innerHTML = `
+        <strong>Debes iniciar sesión para enviar una bandera</strong>
+        <span>Puedes explorar retos y leer descripciones sin sesión, pero el envío de flags y la acreditación de puntos solo se habilitan para participantes autenticados.</span>
+      `;
+      submitRow.insertAdjacentElement('afterend', note);
+    }
+
+    modal.dataset.ctfcuGuestGate = '1';
+  }
+
+  function scan() {
+    if (!isGuest()) return;
+    document.querySelectorAll('.challenge-window, [x-data="Challenge"]').forEach(upgradeGuestModal);
+  }
+
+  function observeBodyReady(callback) {
+    const start = () => new MutationObserver(callback).observe(document.body, { childList: true, subtree: true });
+    if (document.body) {
+      start();
+      return;
+    }
+    window.addEventListener('DOMContentLoaded', start, { once: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', scan);
+  observeBodyReady(scan);
+})();
+</script>
+<!-- CTFCU_GUEST_CHALLENGES_START --><style id="ctfcu-guest-challenges-style">
+  body.ctfcu-guest-challenges-view [x-data="ChallengeBoard"] {
+    position: relative;
+    isolation: isolate;
+  }
+
+  body.ctfcu-guest-challenges-view [x-data="ChallengeBoard"] .challenges-row,
+  body.ctfcu-guest-challenges-view [x-data="ChallengeBoard"] .challenge-button,
+  body.ctfcu-guest-challenges-view [x-data="ChallengeBoard"] .challenge-inner {
+    filter: blur(8px) saturate(0.72);
+    pointer-events: none !important;
+    user-select: none;
+  }
+
+  body.ctfcu-guest-challenges-view [x-data="ChallengeBoard"] .category-header {
+    opacity: 0.74;
+  }
+
+  body.ctfcu-guest-challenges-view [x-data="ChallengeBoard"] .challenge-button {
+    transform: none !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24) !important;
+  }
+
+  .ctfcu-guest-challenge-overlay {
+    position: sticky;
+    top: calc(var(--nav-height) + 18px);
+    z-index: 8;
+    width: min(760px, calc(100% - 20px));
+    margin: 24px auto 0;
+    padding: 22px 24px;
+    border-radius: 26px;
+    border: 1px solid rgba(114, 244, 255, 0.18);
+    background:
+      radial-gradient(circle at 18% 18%, rgba(114, 244, 255, 0.16), transparent 24%),
+      linear-gradient(180deg, rgba(17, 31, 60, 0.94), rgba(6, 12, 25, 0.97));
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(12px);
+    animation: ctfcuGuestOverlayFloat 3.8s ease-in-out infinite;
+  }
+
+  .ctfcu-guest-challenge-overlay h2 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: clamp(1.35rem, 2.8vw, 2rem);
+    line-height: 1.12;
+  }
+
+  .ctfcu-guest-challenge-overlay p {
+    margin: 0;
+    color: rgba(217, 232, 251, 0.84);
+    line-height: 1.8;
+    font-size: 0.98rem;
+  }
+
+  .ctfcu-guest-challenge-overlay .ctfcu-overlay-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .ctfcu-overlay-login,
+  .ctfcu-overlay-login:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: 16px;
+    color: #04121f;
+    text-decoration: none;
+    font-weight: 800;
+    background: linear-gradient(135deg, #72f4ff, #73ffb3);
+    box-shadow: 0 14px 32px rgba(114, 244, 255, 0.20);
+  }
+
+  .ctfcu-overlay-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 16px;
+    border-radius: 16px;
+    color: #eef6ff;
+    font-weight: 700;
+    background: linear-gradient(180deg, rgba(17, 30, 58, 0.88), rgba(7, 14, 28, 0.96));
+    border: 1px solid rgba(177, 224, 255, 0.14);
+  }
+
+  .ctfcu-login-arrow {
+    position: fixed;
+    top: calc(var(--nav-height) + 8px);
+    left: 16px;
+    z-index: 10060;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    color: #04131f;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    background: linear-gradient(135deg, #73ffb3, #72f4ff);
+    box-shadow:
+      0 14px 36px rgba(115, 255, 179, 0.22),
+      0 0 0 1px rgba(255, 255, 255, 0.10);
+    transform-origin: center;
+    animation: ctfcuArrowBounce 1.45s ease-in-out infinite;
+  }
+
+  .ctfcu-login-arrow::after {
+    content: "";
+    position: absolute;
+    left: 26px;
+    top: -18px;
+    width: 2px;
+    height: 22px;
+    background: linear-gradient(180deg, rgba(115,255,179,0), rgba(115,255,179,0.94));
+  }
+
+  .ctfcu-login-arrow .ctfcu-arrow-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(4, 19, 31, 0.12);
+    font-size: 0.95rem;
+  }
+
+  .ctfcu-login-arrow[data-target="toggler"] {
+    background: linear-gradient(135deg, #ffe271, #73ffb3);
+  }
+
+  @keyframes ctfcuGuestOverlayFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  @keyframes ctfcuArrowBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-6px) scale(1.04); }
+  }
+
+  @media (max-width: 1399.98px) {
+    .ctfcu-guest-challenge-overlay {
+      top: calc(var(--nav-height) + 8px);
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .ctfcu-guest-challenge-overlay {
+      width: calc(100% - 8px);
+      padding: 18px;
+    }
+
+    .ctfcu-login-arrow {
+      max-width: calc(100vw - 20px);
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ctfcu-guest-challenge-overlay,
+    .ctfcu-login-arrow {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+<script id="ctfcu-guest-challenges-script">
+(() => {
+  function isGuestChallengesView() {
+    const nav = document.querySelector('.navbar[data-auth="0"]');
+    if (!nav) return false;
+    return window.location.pathname === '/challenges';
+  }
+
+  function ensureOverlay(board) {
+    if (!board || board.querySelector(':scope > .ctfcu-guest-challenge-overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'ctfcu-guest-challenge-overlay';
+    overlay.innerHTML = `
+      <h2>Primero inicia sesión; después se desbloquea el tablero completo de misiones.</h2>
+      <p>En esta vista de invitado los desafíos aparecen difuminados a propósito. El objetivo es que el participante entre con su cuenta para registrar solves, ver progreso, desbloquear interacción completa y acreditar puntos dentro del laboratorio controlado.</p>
+      <div class="ctfcu-overlay-actions">
+        <a class="ctfcu-overlay-login" href="/login?next=/challenges"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Ir a Inicio de sesión</a>
+        <span class="ctfcu-overlay-note"><i class="fa-solid fa-circle-info"></i> El marcador, los envíos de bandera y el progreso solo se registran con sesión activa.</span>
+      </div>
+    `;
+    board.prepend(overlay);
+  }
+
+  function ensureArrow() {
+    let arrow = document.querySelector('.ctfcu-login-arrow');
+    if (!arrow) {
+      arrow = document.createElement('div');
+      arrow.className = 'ctfcu-login-arrow';
+      arrow.innerHTML = `<span class="ctfcu-arrow-icon"><i class="fa-solid fa-arrow-up"></i></span><span class="ctfcu-arrow-label">Inicia sesión para entrar al laboratorio</span>`;
+      document.body.appendChild(arrow);
+    }
+    return arrow;
+  }
+
+  function positionArrow() {
+    const arrow = ensureArrow();
+    const login = document.querySelector('.ctfcu-login-link');
+    const toggler = document.querySelector('.navbar-toggler');
+    const loginRect = login ? login.getBoundingClientRect() : null;
+    const loginVisible = loginRect && loginRect.width > 0 && loginRect.height > 0;
+    const target = loginVisible ? login : toggler;
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    const left = Math.max(12, Math.min(window.innerWidth - arrow.offsetWidth - 12, rect.left + (rect.width / 2) - (arrow.offsetWidth / 2)));
+    const top = Math.max(10, rect.bottom + 10);
+    arrow.style.left = `${left}px`;
+    arrow.style.top = `${top}px`;
+    arrow.dataset.target = loginVisible ? 'login' : 'toggler';
+    const label = arrow.querySelector('.ctfcu-arrow-label');
+    if (label) {
+      label.textContent = loginVisible
+        ? 'Inicia sesión para entrar al laboratorio'
+        : 'Abre el menú y entra a Inicio de sesión';
+    }
+  }
+
+  function mount() {
+    if (!isGuestChallengesView()) return;
+    document.body.classList.add('ctfcu-guest-challenges-view');
+    const board = document.querySelector('[x-data="ChallengeBoard"]');
+    if (board) ensureOverlay(board);
+    positionArrow();
+  }
+
+  function observeBodyReady(callback) {
+    const start = () => new MutationObserver(callback).observe(document.body, { childList: true, subtree: true });
+    if (document.body) {
+      start();
+      return;
+    }
+    window.addEventListener('DOMContentLoaded', start, { once: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', mount);
+  window.addEventListener('resize', () => {
+    if (document.body.classList.contains('ctfcu-guest-challenges-view')) {
+      positionArrow();
+    }
+  });
+  window.addEventListener('scroll', () => {
+    if (document.body.classList.contains('ctfcu-guest-challenges-view')) {
+      positionArrow();
+    }
+  }, { passive: true });
+  observeBodyReady(() => {
+    if (document.body.classList.contains('ctfcu-guest-challenges-view')) {
+      const board = document.querySelector('[x-data="ChallengeBoard"]');
+      if (board) ensureOverlay(board);
+      positionArrow();
+    } else {
+      mount();
+    }
+  });
+})();
+</script><!-- CTFCU_GUEST_CHALLENGES_END -->
+
+
+
+<!-- CTFCU_VISUAL_REFRESH_START --><style id="ctfcu-visual-refresh">:root{--cuhv-bg:#24313e;--cuhv-bg-deep:#18212b;--cuhv-text:#eef1f3;--cuhv-soft:rgba(222,229,235,.78);--cuhv-line:rgba(172,185,198,.16);--cuhv-line-strong:rgba(198,209,220,.26);--cuhv-accent:#46627f;--cuhv-accent-soft:#7b92ac;--cuhv-highlight:#b4c2cf;--cuhv-shadow:0 18px 50px rgba(0,0,0,.28)}html,body{background:radial-gradient(circle at 12% 18%,rgba(70,98,127,.15) 0%,transparent 24%),radial-gradient(circle at 86% 12%,rgba(123,146,172,.12) 0%,transparent 20%),linear-gradient(180deg,var(--cuhv-bg) 0%,var(--cuhv-bg-deep) 100%)!important;color:var(--cuhv-text)!important}body::before{background-image:linear-gradient(rgba(180,194,207,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(180,194,207,.04) 1px,transparent 1px)!important;opacity:.18!important}.challenge-button,.card,.cuhv-card,.cuh-item{border:1px solid var(--cuhv-line)!important;background:linear-gradient(180deg,rgba(72,86,101,.92),rgba(35,43,52,.97))!important;box-shadow:var(--cuhv-shadow)!important}.challenge-button:hover,.card:hover{border-color:var(--cuhv-line-strong)!important;box-shadow:0 20px 55px rgba(0,0,0,.34)!important}.btn-primary,.btn-info{background:linear-gradient(135deg,var(--cuhv-accent),var(--cuhv-accent-soft))!important;border:0!important;color:#eef1f3!important;box-shadow:0 10px 30px rgba(70,98,127,.22)!important}.btn-outline-secondary,.btn-outline-info{border-color:rgba(198,209,220,.22)!important;color:var(--cuhv-text)!important}.modal-content,.challenge-window .modal-content{background:linear-gradient(180deg,rgba(67,78,91,.98),rgba(28,34,41,.99))!important;border:1px solid rgba(172,185,198,.18)!important}.form-control,.custom-select,textarea{background:rgba(248,250,252,.05)!important;color:var(--cuhv-text)!important;border-color:rgba(172,185,198,.16)!important}.form-control:focus,textarea:focus{border-color:rgba(70,98,127,.42)!important;box-shadow:0 0 0 .2rem rgba(70,98,127,.12)!important}.cuhv-kicker,.cuhv-button,.cuhv-button:visited{background:linear-gradient(135deg,var(--cuhv-accent),var(--cuhv-accent-soft))!important;color:#eef1f3!important}</style><!-- CTFCU_VISUAL_REFRESH_END -->
+<!-- CTFCU_NAVBAR_EXPERIENCE_START --><style id="ctfcu-navbar-experience">
+  :root {
+    --ctfcu-nav-auth-top: #4a5561;
+    --ctfcu-nav-auth-mid: #353c45;
+    --ctfcu-nav-auth-bottom: #1f2328;
+    --ctfcu-nav-guest-top: #55525b;
+    --ctfcu-nav-guest-mid: #3e4048;
+    --ctfcu-nav-guest-bottom: #282a30;
+    --ctfcu-login-a: #46627f;
+    --ctfcu-login-b: #7b92ac;
+    --ctfcu-rank-a: rgba(70, 98, 127, 0.18);
+    --ctfcu-rank-b: rgba(123, 146, 172, 0.18);
+    --ctfcu-nav-line: rgba(172, 185, 198, 0.18);
+    --ctfcu-nav-line-strong: rgba(198, 209, 220, 0.30);
+    --ctfcu-nav-text: #eef1f3;
+    --ctfcu-nav-text-soft: rgba(222, 229, 235, 0.76);
+  }
+
+  body {
+    padding-top: 112px !important;
+  }
+
+  .navbar {
+    overflow: visible !important;
+    min-height: 100px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1030 !important;
+    backdrop-filter: blur(18px) saturate(1.14);
+    box-shadow:
+      0 20px 44px rgba(0, 0, 0, 0.34),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .navbar::before,
+  .navbar::after {
+    content: "" !important;
+    position: absolute !important;
+    pointer-events: none !important;
+  }
+
+  .navbar::before {
+    inset: 0 !important;
+    background:
+      radial-gradient(circle at 12% 28%, rgba(70, 98, 127, 0.15), transparent 24%),
+      radial-gradient(circle at 84% 18%, rgba(123, 146, 172, 0.12), transparent 20%),
+      linear-gradient(90deg, rgba(28, 36, 46, 0.22), rgba(28, 36, 46, 0)) !important;
+    opacity: 0.98 !important;
+  }
+
+  .navbar::after {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, rgba(70, 98, 127, 0.0), rgba(70, 98, 127, 0.82), rgba(123, 146, 172, 0.74), rgba(180, 194, 207, 0.44), rgba(70, 98, 127, 0.0)) !important;
+    box-shadow: 0 0 20px rgba(70, 98, 127, 0.24) !important;
+  }
+
+  .navbar > * {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  .navbar.ctfcu-navbar-auth {
+    background: linear-gradient(180deg, var(--ctfcu-nav-auth-top) 0%, var(--ctfcu-nav-auth-mid) 54%, var(--ctfcu-nav-auth-bottom) 100%) !important;
+  }
+
+  .navbar.ctfcu-navbar-guest {
+    background: linear-gradient(180deg, var(--ctfcu-nav-guest-top) 0%, var(--ctfcu-nav-guest-mid) 54%, var(--ctfcu-nav-guest-bottom) 100%) !important;
+  }
+
+  .navbar > .container.ctfcu-navbar-shell {
+    width: 100% !important;
+    max-width: calc(100vw - 8px) !important;
+    padding-left: clamp(18px, 1.9vw, 38px) !important;
+    padding-right: clamp(18px, 1.9vw, 38px) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .navbar-brand {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ctfcu-brand-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+  }
+
+  .ctfcu-brand-frame {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    animation: ctfcuBrandFloat 7.2s ease-in-out infinite !important;
+  }
+
+  .ctfcu-brand-image {
+    display: block !important;
+    width: auto !important;
+    height: 70px !important;
+    max-width: min(8vw, 88px) !important;
+    filter:
+      drop-shadow(0 0 18px rgba(255, 255, 255, 0.18))
+      drop-shadow(0 0 24px rgba(114, 244, 255, 0.16)) !important;
+  }
+
+  #base-navbars.ctfcu-navbar-panel {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .navbar .navbar-nav {
+    min-width: 0 !important;
+    gap: 6px !important;
+  }
+
+  .navbar .ctfcu-navbar-links,
+  .navbar .ctfcu-navbar-actions {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .navbar .ctfcu-navbar-links {
+    flex: 1 1 auto !important;
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+    row-gap: 4px !important;
+  }
+
+  .navbar .ctfcu-navbar-actions {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+    margin-left: auto !important;
+  }
+
+  .navbar .nav-item {
+    margin-right: 0 !important;
+  }
+
+  .navbar .nav-link,
+  .navbar .dropdown-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    font-size: clamp(0.86rem, 0.18vw + 0.82rem, 0.94rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1 !important;
+    color: var(--ctfcu-nav-text) !important;
+    padding: 8px 10px !important;
+    min-height: 40px !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(182, 222, 255, 0.12) !important;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
+      rgba(6, 14, 28, 0.12) !important;
+    box-shadow:
+      0 14px 26px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+    white-space: nowrap !important;
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease,
+      background 0.18s ease,
+      box-shadow 0.18s ease !important;
+  }
+
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus,
+  .navbar .dropdown-toggle:hover,
+  .navbar .dropdown-toggle:focus,
+  .navbar .dropdown-toggle.show,
+  .navbar .nav-item.show > .nav-link {
+    transform: translateY(-3px) !important;
+    border-color: rgba(114, 244, 255, 0.34) !important;
+    background:
+      linear-gradient(180deg, rgba(114, 244, 255, 0.14), rgba(114, 244, 255, 0.04)),
+      rgba(10, 20, 38, 0.34) !important;
+    box-shadow:
+      0 18px 34px rgba(0, 0, 0, 0.24),
+      0 0 0 1px rgba(114, 244, 255, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .navbar .dropdown-toggle::after {
+    display: none !important;
+  }
+
+  .ctfcu-nav-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 26px !important;
+    height: 26px !important;
+    flex: 0 0 26px !important;
+    border-radius: 9px !important;
+    background:
+      linear-gradient(180deg, rgba(114, 244, 255, 0.20), rgba(114, 244, 255, 0.06)),
+      rgba(6, 16, 28, 0.44) !important;
+    color: #ffffff !important;
+    box-shadow:
+      0 10px 22px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    animation: ctfcuIconDrift 5.2s ease-in-out infinite !important;
+  }
+
+  .ctfcu-nav-icon i {
+    font-size: 0.76rem !important;
+  }
+
+  .ctfcu-nav-icon-guias,
+  .ctfcu-nav-icon-language,
+  .ctfcu-nav-icon-theme {
+    animation-delay: 0.55s !important;
+  }
+
+  .ctfcu-nav-icon-users,
+  .ctfcu-nav-icon-scoreboard,
+  .ctfcu-nav-icon-account {
+    animation-delay: 1.1s !important;
+  }
+
+  .ctfcu-nav-icon-challenges,
+  .ctfcu-nav-icon-login,
+  .ctfcu-nav-icon-register,
+  .ctfcu-nav-icon-mas {
+    animation-delay: 1.65s !important;
+  }
+
+  .navbar .nav-link:hover .ctfcu-nav-icon,
+  .navbar .nav-link:focus .ctfcu-nav-icon,
+  .navbar .dropdown-toggle:hover .ctfcu-nav-icon,
+  .navbar .dropdown-toggle:focus .ctfcu-nav-icon,
+  .navbar .dropdown-toggle.show .ctfcu-nav-icon {
+    transform: translateY(-2px) scale(1.08) rotate(6deg) !important;
+  }
+
+  .ctfcu-nav-text {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .ctfcu-challenges-link {
+    position: relative !important;
+    gap: 9px !important;
+  }
+
+  .ctfcu-nav-badge {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 20px !important;
+    padding: 0 10px !important;
+    border-radius: 999px !important;
+    font-size: 0.58rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .ctfcu-nav-badge-new {
+    color: #f8f2eb !important;
+    background: linear-gradient(135deg, rgba(143, 48, 65, 0.98), rgba(102, 119, 137, 0.96)) !important;
+    box-shadow:
+      0 8px 18px rgba(143, 48, 65, 0.24),
+      0 0 0 1px rgba(241, 236, 228, 0.18),
+      inset 0 1px 0 rgba(241, 236, 228, 0.20) !important;
+    animation: ctfcuNewBadgePulse 2.3s ease-in-out infinite !important;
+  }
+
+  .ctfcu-nav-badge-new::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px !important;
+    border-radius: inherit !important;
+    background: radial-gradient(circle, rgba(184, 169, 154, 0.26) 0, rgba(184, 169, 154, 0) 72%) !important;
+    opacity: 0.8 !important;
+    z-index: -1 !important;
+    animation: ctfcuNewBadgeGlow 2.3s ease-in-out infinite !important;
+  }
+
+  @keyframes ctfcuNewBadgePulse {
+    0%, 100% {
+      transform: translateY(0) scale(1) !important;
+    }
+    50% {
+      transform: translateY(-1px) scale(1.04) !important;
+    }
+  }
+
+  @keyframes ctfcuNewBadgeGlow {
+    0%, 100% {
+      transform: scale(0.94) !important;
+      opacity: 0.42 !important;
+    }
+    50% {
+      transform: scale(1.08) !important;
+      opacity: 0.82 !important;
+    }
+  }
+
+  .ctfcu-nav-arrow {
+    width: 11px !important;
+    height: 11px !important;
+    flex: 0 0 11px !important;
+    margin-left: 2px !important;
+    border-right: 2px solid currentColor !important;
+    border-bottom: 2px solid currentColor !important;
+    transform: rotate(45deg) translateY(-1px) !important;
+    transform-origin: center !important;
+    opacity: 0.72 !important;
+    transition: transform 0.18s ease, opacity 0.18s ease !important;
+  }
+
+  .navbar .nav-item.show .ctfcu-nav-arrow,
+  .navbar .dropdown-toggle.show .ctfcu-nav-arrow {
+    transform: rotate(225deg) translateY(-1px) !important;
+    opacity: 1 !important;
+  }
+
+  .navbar-toggler {
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    min-width: 50px !important;
+    min-height: 40px !important;
+    border-radius: 14px !important;
+    border-color: rgba(177, 224, 255, 0.16) !important;
+    background: rgba(8, 18, 34, 0.28) !important;
+    box-shadow:
+      0 10px 22px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .navbar .dropdown-menu {
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    left: 0 !important;
+    display: none;
+    border-radius: 22px !important;
+    border: 1px solid rgba(173, 216, 255, 0.20) !important;
+    background:
+      radial-gradient(circle at top left, rgba(114, 244, 255, 0.14), transparent 36%),
+      linear-gradient(180deg, rgba(8, 18, 34, 0.98), rgba(6, 12, 24, 0.98)) !important;
+    box-shadow:
+      0 26px 56px rgba(0, 0, 0, 0.42),
+      0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+    padding: 10px !important;
+    min-width: 210px !important;
+    margin-top: 0 !important;
+    z-index: 1085 !important;
+  }
+
+  .navbar .dropdown-menu.show {
+    display: block !important;
+  }
+
+  .navbar .dropdown-toggle.show + .dropdown-menu,
+  .navbar .dropdown-toggle[aria-expanded="true"] + .dropdown-menu,
+  .navbar .nav-item.show > .dropdown-menu,
+  .navbar .dropdown.show > .dropdown-menu,
+  .navbar .nav-item:focus-within > .dropdown-menu,
+  .navbar .dropdown:focus-within > .dropdown-menu {
+    display: block !important;
+  }
+
+  .navbar .dropdown-menu.dropdown-menu-end {
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  .navbar .dropdown-item,
+  .navbar .dropdown-item:visited {
+    color: #eef6ff !important;
+    border-radius: 16px !important;
+    padding: 12px 14px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    white-space: normal !important;
+    transition: transform 0.16s ease, background 0.16s ease !important;
+  }
+
+  .navbar .dropdown-item:hover,
+  .navbar .dropdown-item:focus {
+    background: rgba(114, 244, 255, 0.14) !important;
+    color: #ffffff !important;
+    transform: translateX(4px) !important;
+  }
+
+  .navbar .dropdown-divider {
+    border-top-color: rgba(255, 255, 255, 0.10) !important;
+  }
+
+  .navbar .ctfcu-user-link {
+    min-width: 236px !important;
+    justify-content: flex-start !important;
+    padding: 7px 10px !important;
+    gap: 8px !important;
+    background:
+      radial-gradient(circle at 14% 18%, rgba(115, 255, 179, 0.18), transparent 26%),
+      linear-gradient(180deg, rgba(14, 32, 62, 0.94), rgba(9, 20, 41, 0.94)) !important;
+    border-color: rgba(115, 255, 179, 0.22) !important;
+    box-shadow:
+      0 18px 34px rgba(0, 0, 0, 0.22),
+      0 0 28px rgba(115, 255, 179, 0.08) !important;
+  }
+
+  .ctfcu-login-item .ctfcu-login-link {
+    color: #04131f !important;
+    background: linear-gradient(135deg, var(--ctfcu-login-a), var(--ctfcu-login-b)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.26) !important;
+    box-shadow:
+      0 16px 32px rgba(114, 244, 255, 0.24),
+      0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+    animation: ctfcuLoginPulse 2.8s ease-in-out infinite !important;
+  }
+
+  .ctfcu-login-item .ctfcu-login-link .ctfcu-nav-icon {
+    background:
+      linear-gradient(180deg, rgba(4, 19, 31, 0.20), rgba(4, 19, 31, 0.08)),
+      rgba(255, 255, 255, 0.32) !important;
+    color: #04131f !important;
+  }
+
+  .ctfcu-navbar-guest .ctfcu-register-link {
+    border: 1px solid rgba(114, 244, 255, 0.22) !important;
+    background:
+      linear-gradient(180deg, rgba(114, 244, 255, 0.10), rgba(114, 244, 255, 0.03)),
+      rgba(255, 255, 255, 0.03) !important;
+  }
+
+  .ctfcu-avatar-shell {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+    overflow: hidden !important;
+    border-radius: 999px !important;
+    background:
+      radial-gradient(circle at 50% 32%, rgba(255, 255, 255, 0.22), transparent 42%),
+      linear-gradient(180deg, rgba(114, 244, 255, 0.36), rgba(115, 255, 179, 0.14)) !important;
+    border: 1px solid rgba(196, 236, 255, 0.22) !important;
+    box-shadow:
+      0 18px 34px rgba(0, 0, 0, 0.28),
+      0 0 24px rgba(114, 244, 255, 0.16) !important;
+  }
+
+  .ctfcu-avatar-shell::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: -32% !important;
+    background: conic-gradient(from 180deg, rgba(114, 244, 255, 0.0), rgba(114, 244, 255, 0.32), rgba(115, 255, 179, 0.0), rgba(114, 244, 255, 0.0)) !important;
+    animation: ctfcuAvatarAura 4.8s linear infinite !important;
+  }
+
+  .ctfcu-user-avatar {
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 50% 60% !important;
+    transform: scale(1.46) !important;
+    border-radius: 999px !important;
+  }
+
+  .ctfcu-user-meta {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    gap: 4px !important;
+  }
+
+  .ctfcu-user-label {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+    max-width: 14ch !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+  }
+
+  .ctfcu-user-caption {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: rgba(218, 240, 255, 0.66) !important;
+  }
+
+  .ctfcu-user-stats {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-left: auto !important;
+  }
+
+  .ctfcu-user-score,
+  .ctfcu-user-rank {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 24px !important;
+    padding: 0 8px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(177, 224, 255, 0.16) !important;
+    font-size: 0.72rem !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .ctfcu-user-score {
+    color: #03131f !important;
+    background: linear-gradient(135deg, #7bf6ff, #7dffc7) !important;
+    animation: ctfcuChipPulse 3s ease-in-out infinite !important;
+  }
+
+  .ctfcu-user-rank {
+    color: #eff7ff !important;
+    background: linear-gradient(180deg, rgba(30, 55, 97, 0.92), rgba(14, 27, 53, 0.96)) !important;
+    animation: ctfcuRankGlow 3.6s ease-in-out infinite !important;
+  }
+
+  .ctfcu-account-menu > .nav-link,
+  .ctfcu-language-item > .nav-link,
+  .theme-switch {
+    min-width: 0 !important;
+  }
+
+  .theme-switch:hover .ctfcu-nav-icon,
+  .theme-switch:focus .ctfcu-nav-icon {
+    transform: translateY(-2px) rotate(18deg) scale(1.08) !important;
+  }
+
+  .ctfcu-profile-mascot {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto 22px !important;
+  }
+
+  .ctfcu-profile-mascot-badge {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 156px !important;
+    height: 156px !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    padding: 10px !important;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.28), transparent 30%),
+      linear-gradient(180deg, rgba(17, 37, 71, 0.88), rgba(8, 18, 37, 0.94)) !important;
+    border: 1px solid rgba(190, 232, 255, 0.22) !important;
+    box-shadow:
+      0 24px 44px rgba(0, 0, 0, 0.24),
+      0 0 32px rgba(114, 244, 255, 0.16) !important;
+    animation: ctfcuBrandFloat 7.2s ease-in-out infinite !important;
+  }
+
+  .ctfcu-profile-mascot-badge img,
+  img.ctfcu-mascot-avatar {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: 50% 60% !important;
+    border-radius: 999px !important;
+  }
+
+  .ctfcu-profile-mascot-badge img {
+    transform: scale(1.48) !important;
+  }
+
+  img.ctfcu-mascot-avatar {
+    transform: scale(1.22) !important;
+  }
+
+  @keyframes ctfcuBrandFloat {
+    0%, 100% { transform: translateY(0); box-shadow: 0 24px 44px rgba(0, 0, 0, 0.32), 0 0 36px rgba(114, 244, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12); }
+    50% { transform: translateY(-4px); box-shadow: 0 28px 48px rgba(0, 0, 0, 0.36), 0 0 40px rgba(114, 244, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.14); }
+  }
+
+  @keyframes ctfcuIconDrift {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-2px) rotate(4deg); }
+  }
+
+  @keyframes ctfcuAvatarAura {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes ctfcuLoginPulse {
+    0%, 100% {
+      box-shadow:
+        0 16px 32px rgba(114, 244, 255, 0.20),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    50% {
+      box-shadow:
+        0 22px 40px rgba(114, 244, 255, 0.30),
+        0 0 0 1px rgba(255, 255, 255, 0.14);
+    }
+  }
+
+  @keyframes ctfcuChipPulse {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-1px) scale(1.05); }
+  }
+
+  @keyframes ctfcuRankGlow {
+    0%, 100% {
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      border-color: rgba(177, 224, 255, 0.16);
+    }
+    50% {
+      box-shadow: 0 12px 28px rgba(114, 244, 255, 0.16);
+      border-color: rgba(114, 244, 255, 0.30);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-toggler {
+      display: none !important;
+    }
+
+    .navbar-expand-lg .navbar-collapse.ctfcu-navbar-panel {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 18px !important;
+    }
+
+    .navbar-expand-lg .navbar-nav {
+      flex-direction: row !important;
+      align-items: center !important;
+    }
+
+    .navbar-expand-lg .ctfcu-navbar-panel {
+      margin-top: 0 !important;
+      padding: 0 !important;
+      border-top: 0 !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+
+    .navbar-expand-lg .ctfcu-account-menu .dropdown-menu,
+    .navbar-expand-lg .ctfcu-language-item .dropdown-menu {
+      right: 0 !important;
+      left: auto !important;
+    }
+  }
+
+  @media (max-width: 1399.98px) {
+    body {
+      padding-top: 104px !important;
+    }
+
+    .navbar {
+      min-height: 94px !important;
+    }
+
+    .ctfcu-brand-image {
+      height: 60px !important;
+      max-width: min(8vw, 74px) !important;
+    }
+
+    .ctfcu-user-item .ctfcu-user-link {
+      min-width: 220px !important;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    body {
+      padding-top: 88px !important;
+    }
+
+    .navbar {
+      min-height: 82px !important;
+      padding-top: 7px !important;
+      padding-bottom: 7px !important;
+    }
+
+    .navbar > .container.ctfcu-navbar-shell {
+      flex-wrap: wrap !important;
+      gap: 12px !important;
+    }
+
+    .ctfcu-brand-frame {
+      min-width: 0 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    .ctfcu-brand-image {
+      height: 52px !important;
+      max-width: 62px !important;
+    }
+
+    .navbar-collapse.ctfcu-navbar-panel:not(.show) {
+      display: none !important;
+    }
+
+    .navbar-collapse.ctfcu-navbar-panel.show,
+    .navbar-collapse.ctfcu-navbar-panel.collapsing {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+
+    .navbar-collapse.ctfcu-navbar-panel.collapsing {
+      height: auto !important;
+      overflow: hidden !important;
+    }
+
+    #base-navbars.ctfcu-navbar-panel {
+      width: 100% !important;
+      flex-basis: 100% !important;
+      margin-top: 6px !important;
+      padding: 10px 0 4px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      background: linear-gradient(180deg, rgba(8, 16, 31, 0.96), rgba(8, 16, 31, 0.90)) !important;
+      border-radius: 18px !important;
+      max-height: calc(100vh - 96px) !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+    }
+
+    .navbar .navbar-nav,
+    .navbar .ctfcu-navbar-links,
+    .navbar .ctfcu-navbar-actions,
+    .navbar .ms-md-auto,
+    .navbar .ctfcu-navbar-user {
+      width: 100% !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+
+    .navbar .nav-item {
+      width: 100% !important;
+    }
+
+    .navbar .nav-link,
+    .navbar .dropdown-toggle {
+      display: flex !important;
+      width: 100% !important;
+      justify-content: flex-start !important;
+      font-size: 0.9rem !important;
+      padding: 9px 10px !important;
+      min-height: 42px !important;
+      white-space: normal !important;
+    }
+
+    .ctfcu-challenges-link {
+      flex-wrap: wrap !important;
+      row-gap: 6px !important;
+    }
+
+    .ctfcu-nav-badge {
+      margin-left: 34px !important;
+    }
+
+    .navbar .dropdown-menu {
+      position: static !important;
+      inset: auto !important;
+      transform: none !important;
+      float: none !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      margin-top: 6px !important;
+    }
+
+    .ctfcu-user-item .ctfcu-user-link {
+      min-width: 0 !important;
+      flex-wrap: wrap !important;
+      row-gap: 6px !important;
+    }
+
+    .ctfcu-user-stats {
+      width: 100% !important;
+      margin-left: 0 !important;
+      gap: 8px !important;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    body {
+      padding-top: 80px !important;
+    }
+
+    .navbar > .container.ctfcu-navbar-shell {
+      max-width: calc(100vw - 10px) !important;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+
+    .ctfcu-brand-image {
+      height: 44px !important;
+      max-width: 52px !important;
+    }
+
+    .ctfcu-nav-icon {
+      width: 24px !important;
+      height: 24px !important;
+      flex-basis: 24px !important;
+    }
+
+    .ctfcu-avatar-shell {
+      width: 36px !important;
+      height: 36px !important;
+      flex-basis: 36px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ctfcu-brand-frame,
+    .ctfcu-nav-icon,
+    .ctfcu-avatar-shell::after,
+    .ctfcu-profile-mascot-badge,
+    .ctfcu-login-item .ctfcu-login-link,
+    .ctfcu-user-score,
+    .ctfcu-user-rank {
+      animation: none !important;
+    }
+  }
+  .navbar,
+  .navbar.ctfcu-navbar-auth,
+  .navbar.ctfcu-navbar-guest {
+    box-shadow:
+      0 20px 44px rgba(18, 12, 10, 0.24),
+      inset 0 -1px 0 rgba(255, 245, 232, 0.05) !important;
+  }
+
+  .navbar::before {
+    background:
+      radial-gradient(circle at 12% 28%, rgba(79, 101, 125, 0.14), transparent 24%),
+      radial-gradient(circle at 84% 18%, rgba(127, 147, 168, 0.12), transparent 20%),
+      linear-gradient(90deg, rgba(52, 57, 64, 0.20), rgba(52, 57, 64, 0)) !important;
+  }
+
+  .navbar::after {
+    height: 2px !important;
+    background: linear-gradient(90deg, rgba(183, 197, 211, 0), rgba(183, 197, 211, 0.72), rgba(79, 101, 125, 0.64), rgba(127, 147, 168, 0.58), rgba(183, 197, 211, 0)) !important;
+    box-shadow: 0 0 14px rgba(79, 101, 125, 0.18) !important;
+  }
+
+  .navbar .nav-link,
+  .navbar .dropdown-toggle,
+  .navbar-toggler,
+  .navbar .dropdown-menu,
+  .ctfcu-user-link,
+  .ctfcu-login-link,
+  .ctfcu-user-score,
+  .ctfcu-user-rank {
+    border-color: rgba(194, 173, 145, 0.14) !important;
+  }
+
+  .navbar .nav-link,
+  .navbar .dropdown-toggle {
+    background:
+      linear-gradient(180deg, rgba(255, 248, 240, 0.04), rgba(255, 248, 240, 0.012)),
+      rgba(53, 41, 34, 0.22) !important;
+    box-shadow:
+      0 14px 26px rgba(18, 12, 10, 0.14),
+      inset 0 1px 0 rgba(255, 248, 240, 0.04) !important;
+  }
+
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus,
+  .navbar .dropdown-toggle:hover,
+  .navbar .dropdown-toggle:focus,
+  .navbar .dropdown-toggle.show,
+  .navbar .nav-item.show > .nav-link {
+    border-color: rgba(195, 163, 110, 0.28) !important;
+    background:
+      linear-gradient(180deg, rgba(79, 101, 125, 0.14), rgba(127, 147, 168, 0.07)),
+      rgba(68, 76, 86, 0.42) !important;
+    box-shadow:
+      0 18px 34px rgba(18, 12, 10, 0.18),
+      0 0 0 1px rgba(195, 163, 110, 0.08),
+      inset 0 1px 0 rgba(255, 248, 240, 0.06) !important;
+  }
+
+  .ctfcu-nav-icon {
+    background:
+      linear-gradient(180deg, rgba(79, 101, 125, 0.18), rgba(127, 147, 168, 0.08)),
+      rgba(58, 63, 72, 0.44) !important;
+    box-shadow:
+      0 10px 22px rgba(18, 12, 10, 0.2),
+      inset 0 1px 0 rgba(255, 248, 240, 0.10) !important;
+  }
+
+  .ctfcu-nav-badge-new {
+    color: #231711 !important;
+    background: linear-gradient(135deg, rgba(79, 101, 125, 0.98), rgba(127, 147, 168, 0.96)) !important;
+    box-shadow:
+      0 8px 18px rgba(79, 101, 125, 0.18),
+      0 0 0 1px rgba(255, 245, 232, 0.12),
+      inset 0 1px 0 rgba(255, 245, 232, 0.28) !important;
+  }
+
+  .ctfcu-nav-badge-new::before {
+    background: radial-gradient(circle, rgba(184, 169, 154, 0.26) 0, rgba(184, 169, 154, 0) 72%) !important;
+  }
+
+  .navbar .dropdown-menu {
+    background:
+      radial-gradient(circle at top left, rgba(143, 48, 65, 0.12), transparent 36%),
+      linear-gradient(180deg, rgba(68, 76, 86, 0.98), rgba(31, 35, 40, 0.98)) !important;
+    box-shadow:
+      0 26px 56px rgba(16, 18, 22, 0.32),
+      0 0 0 1px rgba(241, 236, 228, 0.03) !important;
+  }
+
+  .navbar .dropdown-item:hover,
+  .navbar .dropdown-item:focus {
+    background: rgba(79, 101, 125, 0.14) !important;
+    color: #f8f2eb !important;
+  }
+</style><script id="ctfcu-navbar-experience-script">
+(() => {
+  let raf = 0;
+  const dropdownSelector = ".navbar .dropdown-toggle[data-bs-toggle='dropdown']";
+
+  function resolveDropdownParts(toggle) {
+    const item = toggle ? toggle.closest(".dropdown, .nav-item") : null;
+    const menu = item
+      ? Array.from(item.children).find((child) => child.classList && child.classList.contains("dropdown-menu"))
+      : null;
+    return { item, menu };
+  }
+
+  function closeNavbarMenus(exceptItem = null) {
+    document.querySelectorAll(".navbar .dropdown.show, .navbar .nav-item.show").forEach((node) => {
+      if (node !== exceptItem) node.classList.remove("show");
+    });
+    document.querySelectorAll(".navbar .dropdown-menu.show").forEach((node) => {
+      if (!exceptItem || !exceptItem.contains(node)) node.classList.remove("show");
+    });
+    document.querySelectorAll(dropdownSelector).forEach((node) => {
+      if (!exceptItem || node.closest(".dropdown, .nav-item") !== exceptItem) {
+        node.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  function toggleNavbarMenu(toggle) {
+    const { item, menu } = resolveDropdownParts(toggle);
+    if (!item || !menu) return;
+    const willOpen = !menu.classList.contains("show");
+    closeNavbarMenus(item);
+    item.classList.toggle("show", willOpen);
+    menu.classList.toggle("show", willOpen);
+    toggle.classList.toggle("show", willOpen);
+    toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  }
+
+  function getMascotSrc() {
+    const brand = document.querySelector(".ctfcu-brand-image, .navbar-brand img");
+    return brand ? (brand.currentSrc || brand.src || "") : "";
+  }
+
+  function injectProfileMascot(src) {
+    const path = window.location.pathname || "";
+    const isProfile = /^\/(?:users|teams)(?:\/|$)/.test(path);
+    if (!isProfile) return;
+
+    document.querySelectorAll(".jumbotron .container").forEach((container) => {
+      const title = container.querySelector(":scope > h1");
+      if (!title || container.querySelector(".ctfcu-profile-mascot")) return;
+      const hero = document.createElement("div");
+      hero.className = "ctfcu-profile-mascot";
+      hero.innerHTML = '<span class="ctfcu-profile-mascot-badge"><img src="' + src + '" alt="Tigrillo mascota del hackatón"></span>';
+      container.insertBefore(hero, title);
+    });
+  }
+
+  function replaceGenericAvatars(src) {
+    document.querySelectorAll('img[src*="gravatar"], img[src*="avatar"], img[src*="identicon"]').forEach((img) => {
+      if (img.closest(".ctfcu-brand-frame")) return;
+      if (img.dataset.ctfcuMascotApplied === "1") return;
+      img.src = src;
+      img.removeAttribute("srcset");
+      img.classList.add("ctfcu-mascot-avatar");
+      img.dataset.ctfcuMascotApplied = "1";
+      if (!img.alt) img.alt = "Tigrillo mascota";
+    });
+  }
+
+  function applyMascotBranding() {
+    const src = getMascotSrc();
+    if (!src) return;
+    injectProfileMascot(src);
+    replaceGenericAvatars(src);
+  }
+
+  function scheduleApply() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(() => {
+      raf = 0;
+      applyMascotBranding();
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    const toggle = event.target.closest(dropdownSelector);
+    if (toggle) {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleNavbarMenu(toggle);
+      return;
+    }
+
+    if (!event.target.closest(".navbar .dropdown-menu")) {
+      closeNavbarMenus();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNavbarMenus();
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", scheduleApply);
+  if (document.body) {
+    new MutationObserver(scheduleApply).observe(document.body, { childList: true, subtree: true });
+  } else {
+    window.addEventListener("load", scheduleApply, { once: true });
+  }
+})();
+</script><!-- CTFCU_NAVBAR_EXPERIENCE_END -->
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg ctfcu-navbar-adaptive navbar-dark bg-dark fixed-top ctfcu-navbar-guest" data-auth="0">
+  <div class="container ctfcu-navbar-shell">
+    
+    
+    
+    <a href="/" class="navbar-brand ctfcu-brand-link">
+      
+        <span class="ctfcu-brand-frame">
+          <img
+              class="img-responsive ctf_logo ctfcu-brand-image"
+              src="/files/d9eba859f48c5dfd456d35c2f61e339d/logo_hackaton_cuh.png"
+              alt="Hackatón CTF CUH 2026"
+              height="25"
+          >
+        </span>
+      
+    </a>
+
+    <button
+        class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars"
+        aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse ctfcu-navbar-panel" id="base-navbars">
+      <ul class="navbar-nav me-auto ctfcu-navbar-links">
+        <li class="nav-item dropdown ctfcu-nav-group">
+          <button class="nav-link dropdown-toggle ctfcu-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="ctfcu-nav-icon ctfcu-nav-icon-evento"><i class="fas fa-satellite-dish"></i></span>
+            <span class="ctfcu-nav-text">Evento</span>
+            <span class="ctfcu-nav-arrow" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu">
+            
+              <li>
+                <a class="dropdown-item" href="/reglas" >
+                  Reglas
+                </a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item" href="/faq" >
+                  Preguntas Frecuentes
+                </a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item" href="/cronograma" >
+                  Cronograma
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown ctfcu-nav-group">
+          <button class="nav-link dropdown-toggle ctfcu-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="ctfcu-nav-icon ctfcu-nav-icon-guias"><i class="fas fa-compass"></i></span>
+            <span class="ctfcu-nav-text">Guías y Recursos</span>
+            <span class="ctfcu-nav-arrow" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu">
+            
+              <li>
+                <a class="dropdown-item" href="/inicio-rapido" >
+                  Inicio rápido
+                </a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item" href="/guia-herramientas" >
+                  Guía de herramientas
+                </a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item" href="/laboratorio-visual" >
+                  Laboratorio visual
+                </a>
+              </li>
+            
+              <li>
+                <a class="dropdown-item" href="/mapa-retos" >
+                  Mapa de retos
+                </a>
+              </li>
+            
+          </ul>
+        </li>
+
+        
+        
+
+        
+
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/users">
+              <span class="ctfcu-nav-icon ctfcu-nav-icon-users"><i class="fas fa-users"></i></span>
+              <span class="ctfcu-nav-text">Usuarios</span>
+            </a>
+          </li>
+
+          
+        
+
+        
+          <li class="nav-item">
+            <a class="nav-link" href="/scoreboard">
+              <span class="ctfcu-nav-icon ctfcu-nav-icon-scoreboard"><i class="fas fa-trophy"></i></span>
+              <span class="ctfcu-nav-text">Marcador</span>
+            </a>
+          </li>
+        
+
+        <li class="nav-item">
+          <a class="nav-link ctfcu-challenges-link" href="/challenges">
+            <span class="ctfcu-nav-icon ctfcu-nav-icon-challenges"><i class="fas fa-flag-checkered"></i></span>
+            <span class="ctfcu-nav-text">Desafíos</span>
+            <span class="ctfcu-nav-badge ctfcu-nav-badge-new">¡Nuevos desafíos!</span>
+          </a>
+        </li>
+      </ul>
+
+      <hr class="d-sm-flex d-md-flex d-lg-none">
+
+      <ul class="navbar-nav ms-md-auto d-block d-sm-flex d-md-flex ctfcu-navbar-user ctfcu-navbar-actions">
+        
+
+          
+
+          <li class="nav-item ctfcu-login-item">
+            <a class="nav-link ctfcu-login-link" href="/login">
+              <span class="ctfcu-nav-icon ctfcu-nav-icon-login"><i class="fas fa-sign-in-alt"></i></span>
+              <span class="ctfcu-nav-text ctfcu-login-label">Inicio de sesión</span>
+            </a>
+          </li>
+        
+
+        <li class="nav-item dropdown ctfcu-language-item">
+          <button class="nav-link dropdown-toggle ctfcu-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="ctfcu-nav-icon ctfcu-nav-icon-language"><i class="fas fa-language"></i></span>
+            <span class="ctfcu-nav-text">Idioma</span>
+            <span class="ctfcu-nav-arrow" aria-hidden="true"></span>
+          </button>
+          <form x-data="LanguageForm">
+            <ul class="dropdown-menu dropdown-menu-end">
+              
+              <li>
+                  <span class="dropdown-item " @click="set" value="en">
+                    English
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="de">
+                    Deutsch
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pl">
+                    Polski
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item bg-primary text-white" @click="set" value="es">
+                    Español
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ar">
+                    اَلْعَرَبِيَّةُ
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_CN">
+                    简体中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_TW">
+                    繁體中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fr">
+                    Français
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ko">
+                    한국어
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ru">
+                    русский язык
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pt_BR">
+                    Português do Brasil
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sk">
+                    Slovenský jazyk
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ja">
+                    日本語
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="it">
+                    Italiano
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="vi">
+                    tiếng Việt
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ca">
+                    Català
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="el">
+                    Ελληνικά
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fi">
+                    Suomi
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ro">
+                    Română
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sl">
+                    Slovenščina
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sv">
+                    Svenska
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="he">
+                    עברית
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="uz">
+                    oʻzbekcha
+                  </span>
+              </li>
+            </ul>
+          </form>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link theme-switch" type="button">
+            <span class="ctfcu-nav-icon ctfcu-nav-icon-theme"><i class="fas fa-moon"></i></span>
+            <span class="ctfcu-nav-text">Tema</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<style id="ctfcu-navbar-click-fix">
+  .navbar,
+  .ctfcu-navbar-shell,
+  .ctfcu-navbar-panel,
+  .ctfcu-navbar-links,
+  .ctfcu-navbar-user,
+  .navbar .nav-item.dropdown,
+  .navbar .ctfcu-nav-group,
+  .navbar .ctfcu-account-menu,
+  .navbar .ctfcu-language-item {
+    overflow: visible !important;
+  }
+
+  .navbar .dropdown,
+  .navbar .ctfcu-nav-group,
+  .navbar .ctfcu-account-menu,
+  .navbar .ctfcu-language-item {
+    position: relative !important;
+  }
+
+  .ctfcu-dropdown-toggle,
+  .ctfcu-dropdown-toggle:hover,
+  .ctfcu-dropdown-toggle:focus,
+  .ctfcu-dropdown-toggle.show,
+  .navbar .nav-item.show > .ctfcu-dropdown-toggle {
+    transform: none !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .ctfcu-dropdown-toggle .ctfcu-nav-icon,
+  .ctfcu-dropdown-toggle .ctfcu-nav-text,
+  .ctfcu-dropdown-toggle .ctfcu-nav-arrow,
+  .ctfcu-challenges-link .ctfcu-nav-icon,
+  .ctfcu-challenges-link .ctfcu-nav-text,
+  .ctfcu-challenges-link .ctfcu-nav-badge {
+    pointer-events: none !important;
+  }
+
+  .navbar .dropdown-menu {
+    position: absolute !important;
+    inset: calc(100% + 10px) auto auto 0 !important;
+    display: none;
+    min-width: 220px;
+    margin: 0 !important;
+    padding: 10px;
+    border: 1px solid rgba(177, 190, 204, 0.18) !important;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(79, 88, 100, 0.98), rgba(34, 38, 43, 0.99)) !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.34);
+    transform: none !important;
+    z-index: 1085 !important;
+  }
+
+  .navbar .dropdown-menu.show {
+    display: block !important;
+  }
+
+  .navbar .dropdown-toggle.show + .dropdown-menu,
+  .navbar .dropdown-toggle[aria-expanded="true"] + .dropdown-menu,
+  .navbar .nav-item.show > .dropdown-menu,
+  .navbar .dropdown.show > .dropdown-menu,
+  .navbar .nav-item:focus-within > .dropdown-menu,
+  .navbar .dropdown:focus-within > .dropdown-menu {
+    display: block !important;
+  }
+
+  .navbar .dropdown-menu.dropdown-menu-end {
+    inset: calc(100% + 10px) 0 auto auto !important;
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  .navbar .dropdown-item {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    color: #eef1f3 !important;
+    white-space: normal;
+  }
+
+  .navbar .dropdown-item:hover,
+  .navbar .dropdown-item:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+  }
+</style>
+<style id="ctfcu-navbar-notifications">
+  .ctfcu-notifications-item {
+    margin-inline: 10px 4px;
+  }
+
+  .ctfcu-notifications-link {
+    position: relative;
+    overflow: hidden;
+    min-height: 52px;
+    padding-inline: 16px 18px !important;
+    border-radius: 18px;
+    border: 1px solid rgba(177, 190, 204, 0.14);
+    background: linear-gradient(180deg, rgba(79, 88, 100, 0.84), rgba(34, 38, 43, 0.96));
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  .ctfcu-notifications-link:hover,
+  .ctfcu-notifications-link:focus {
+    border-color: rgba(189, 74, 74, 0.36);
+    color: #fff;
+  }
+
+  .ctfcu-notifications-link.ctfcu-notifications-link--alert {
+    border-color: rgba(235, 92, 92, 0.5);
+    background:
+      radial-gradient(circle at 86% 18%, rgba(255, 92, 92, 0.32), transparent 28%),
+      linear-gradient(180deg, rgba(123, 35, 35, 0.92), rgba(62, 15, 15, 0.98));
+    box-shadow: 0 0 0 1px rgba(255, 120, 120, 0.12), 0 16px 36px rgba(92, 10, 10, 0.34);
+    animation: ctfcu-notifications-alert-pulse 1.45s ease-in-out infinite;
+  }
+
+  .ctfcu-notifications-count {
+    position: relative;
+    z-index: 2;
+  }
+
+  .ctfcu-notifications-pulse {
+    position: absolute;
+    inset: auto 12px 10px auto;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: #ff5d5d;
+    box-shadow: 0 0 0 0 rgba(255, 93, 93, 0.55);
+    animation: ctfcu-notifications-dot 1.2s ease-out infinite;
+  }
+
+  .ctfcu-notification-ack-inline {
+    margin-top: 16px;
+    padding: 16px 18px;
+    border-radius: 22px;
+    border: 1px solid rgba(235, 92, 92, 0.28);
+    background:
+      radial-gradient(circle at top right, rgba(255, 92, 92, 0.22), transparent 34%),
+      linear-gradient(135deg, rgba(92, 18, 18, 0.96), rgba(46, 11, 11, 0.98));
+    color: #fff4f4;
+    box-shadow: 0 12px 28px rgba(66, 8, 8, 0.22);
+  }
+
+  .ctfcu-notification-ack-inline h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  .ctfcu-notification-ack-inline p {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 236, 236, 0.9);
+  }
+
+  .ctfcu-notification-ack-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .ctfcu-notification-ack-button {
+    min-height: 46px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff7a7a, #e13a3a);
+    color: #2b0808;
+    font-weight: 900;
+  }
+
+  .ctfcu-notification-ack-status {
+    color: rgba(255, 228, 228, 0.84);
+    font-size: 0.92rem;
+  }
+
+  .ctfcu-notification-card--pending {
+    border-color: rgba(235, 92, 92, 0.32) !important;
+    box-shadow: 0 0 0 1px rgba(255, 120, 120, 0.08), 0 18px 38px rgba(66, 8, 8, 0.24) !important;
+  }
+
+  @keyframes ctfcu-notifications-alert-pulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-1px); box-shadow: 0 0 0 4px rgba(255, 93, 93, 0.08), 0 18px 38px rgba(92, 10, 10, 0.42); }
+  }
+
+  @keyframes ctfcu-notifications-dot {
+    0% { box-shadow: 0 0 0 0 rgba(255, 93, 93, 0.55); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 93, 93, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 93, 93, 0); }
+  }
+</style>
+<script id="ctfcu-navbar-click-fix-script">
+  (() => {
+    const dropdownSelector = ".ctfcu-dropdown-toggle[data-bs-toggle='dropdown']";
+
+    const resolveDropdownParts = (toggle) => {
+      const item = toggle?.closest(".dropdown, .nav-item");
+      const menu = item
+        ? Array.from(item.children).find((child) => child.classList?.contains("dropdown-menu"))
+        : null;
+      return { item, menu };
+    };
+
+    const closeOpenMenus = ({ exceptItem = null, exceptMenu = null } = {}) => {
+      document.querySelectorAll(".navbar .dropdown.show, .navbar .nav-item.show").forEach((node) => {
+        if (node !== exceptItem) node.classList.remove("show");
+      });
+      document.querySelectorAll(".navbar .dropdown-menu.show").forEach((node) => {
+        if (node !== exceptMenu) node.classList.remove("show");
+      });
+      document.querySelectorAll(dropdownSelector).forEach((node) => {
+        if (!exceptItem || node.closest(".dropdown, .nav-item") !== exceptItem) {
+          node.setAttribute("aria-expanded", "false");
+        }
+      });
+    };
+
+    const initNavbarDropdowns = () => {
+      if (!window.bootstrap || !window.bootstrap.Dropdown) return;
+      document.querySelectorAll(dropdownSelector).forEach((toggle) => {
+        window.bootstrap.Dropdown.getOrCreateInstance(toggle);
+      });
+    };
+
+    const manualToggleFallback = (toggle) => {
+      const { item, menu } = resolveDropdownParts(toggle);
+      if (!item || !menu) return;
+      const isOpen = item.classList.contains("show") || menu.classList.contains("show");
+      closeOpenMenus({ exceptItem: item, exceptMenu: menu });
+      if (isOpen) {
+        item.classList.remove("show");
+        menu.classList.remove("show");
+        toggle.setAttribute("aria-expanded", "false");
+        return;
+      }
+      item.classList.add("show");
+      menu.classList.add("show");
+      toggle.setAttribute("aria-expanded", "true");
+    };
+
+    document.addEventListener("click", (event) => {
+      const toggle = event.target.closest(dropdownSelector);
+      if (!toggle) {
+        closeOpenMenus();
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      if (window.bootstrap && window.bootstrap.Dropdown) {
+        const instance = window.bootstrap.Dropdown.getOrCreateInstance(toggle, {
+          autoClose: true,
+        });
+        instance.toggle();
+        return;
+      }
+
+      manualToggleFallback(toggle);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeOpenMenus();
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", initNavbarDropdowns);
+    window.addEventListener("load", initNavbarDropdowns, { once: true });
+  })();
+</script>
+<script id="ctfcu-navbar-notifications-script">
+  (() => {
+    const link = document.getElementById("ctfcu-notifications-link");
+    const pulse = document.getElementById("ctfcu-notifications-pulse");
+    if (!link) return;
+
+    const endpoint = "/plugins/admin_notifications_console/api/pending-ack";
+    const csrfNonce = window.init?.csrfNonce || "";
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function applyPendingState(notification) {
+      const pending = Boolean(notification?.requires_ack && !notification?.accepted_at);
+      link.classList.toggle("ctfcu-notifications-link--alert", pending);
+      link.setAttribute("data-ctfcu-pending-ack", pending ? "1" : "0");
+      if (pulse) {
+        pulse.hidden = !pending;
+      }
+      renderNotificationsPrompt(notification, pending);
+    }
+
+    function pendingNotificationCard(notificationId) {
+      if (window.location.pathname !== "/notifications" || !notificationId) return null;
+      return document.querySelector(`.ctfcu-notification-card[data-notification-id="${notificationId}"]`);
+    }
+
+    function removeInlineAck() {
+      document.querySelectorAll(".ctfcu-notification-card--pending").forEach((card) => {
+        card.classList.remove("ctfcu-notification-card--pending");
+      });
+      document.querySelectorAll(".ctfcu-notification-ack-inline").forEach((node) => node.remove());
+    }
+
+    function renderNotificationsPrompt(notification, pending) {
+      removeInlineAck();
+      const card = pendingNotificationCard(notification?.notification_id);
+      if (!pending || !notification || !card) return;
+
+      card.classList.add("ctfcu-notification-card--pending");
+
+      const body = card.querySelector(".card-body");
+      if (!body) return;
+
+      const inline = document.createElement("section");
+      inline.className = "ctfcu-notification-ack-inline";
+      inline.innerHTML = `
+        <h4>Confirmación requerida</h4>
+        <p>Mientras no confirmes esta notificación, no podrás completar más misiones.</p>
+        <div class="ctfcu-notification-ack-actions">
+          <button type="button" class="ctfcu-notification-ack-button">
+            ${escapeHtml(notification.ack_label || "Acepto")}
+          </button>
+          <span class="ctfcu-notification-ack-status">
+            Pulsa el botón para desbloquear el flujo.
+          </span>
+        </div>
+      `;
+      body.appendChild(inline);
+
+      const button = inline.querySelector(".ctfcu-notification-ack-button");
+      const status = inline.querySelector(".ctfcu-notification-ack-status");
+      button?.addEventListener("click", async () => {
+        if (!notification.notification_id) return;
+        button.disabled = true;
+        if (status) status.textContent = "Registrando confirmación...";
+        try {
+          const response = await fetch(`/plugins/admin_notifications_console/api/acknowledge/${notification.notification_id}`, {
+            method: "POST",
+            credentials: "same-origin",
+            headers: { "CSRF-Token": csrfNonce },
+          });
+          const payload = await response.json();
+          if (!response.ok || !payload?.success) {
+            throw new Error(payload?.message || "No se pudo registrar la confirmación.");
+          }
+          if (status) status.textContent = "Confirmación registrada.";
+          applyPendingState(null);
+        } catch (error) {
+          button.disabled = false;
+          if (status) status.textContent = error.message || "No se pudo registrar la confirmación.";
+        }
+      });
+    }
+
+    fetch(endpoint, { credentials: "same-origin" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("notification ack lookup failed");
+        }
+        return response.json();
+      })
+      .then((payload) => applyPendingState(payload?.data?.notification || null))
+      .catch(() => applyPendingState(null));
+  })();
+</script>
+
+<main role="main">
+  
+  <div class="container">
+    <div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Panel interno</span>
+      <h1>Referencia cruzada de superficies donde el cliente aparenta decidir demasiado</h1>
+      <p>Esta página agrupa categorías donde la interfaz sugiere una cosa y el servidor decide otra: formularios con campos ocultos, cookies de rol, JWT manipulables y paneles con autenticación débil. Si ya estás en retos donde una simple vista del HTML no basta, usa esta hoja para recordar qué capa estás auditando.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Cliente</h3>
+        <p>HTML, inputs, JavaScript, consola, cookies visibles, localStorage, claims de un JWT y respuestas que el navegador muestra. Todo eso se puede observar desde DevTools.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Servidor</h3>
+        <p>La parte que realmente acepta o rechaza privilegios, tokens, cookies y formularios. Tus pruebas deben ayudarte a distinguir lo que el cliente promete de lo que el backend valida.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Retos que encajan aquí</h3>
+        <ul class="cuhv-list">
+          <li>Registro sin servidor</li>
+          <li>Encuesta confiada</li>
+          <li>Cookie de rol</li>
+          <li>Cookie firmada debil</li>
+          <li>Invitado privilegiado</li>
+          <li>Secreto compartido debil</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Pregunta útil antes de seguir</h3>
+        <p>¿Estoy viendo solo un dato que el navegador muestra, o ya confirmé que el backend toma decisiones a partir de ese dato? Esa diferencia separa una pista estética de una vulnerabilidad del laboratorio.</p>
+      </article>
+    </div>
+  </section>
+</div>
+<style id="ctfcu-page-shared">
+.cuhv-page{width:min(1680px,calc(100vw - 32px))!important;max-width:min(1680px,calc(100vw - 32px))!important;margin:0 auto!important;padding:32px 0 88px!important;display:grid!important;gap:28px!important;color:#eef1f5!important}
+.cuhv-page>*{margin:0!important}
+.cuhv-page a{color:#d7e4ef!important;text-decoration:none}
+.cuhv-page a:hover,.cuhv-page a:focus{color:#fff!important}
+.cuhv-hero,.cuhv-section,.cuhv-reader-reward,.cuhv-final-cover{position:relative!important;overflow:hidden!important;padding:28px!important;border:1px solid rgba(172,185,198,.16)!important;border-radius:30px!important;background:radial-gradient(circle at top right,rgba(127,147,168,.12),transparent 28%),linear-gradient(180deg,rgba(78,92,108,.96),rgba(29,36,43,.99))!important;box-shadow:0 26px 60px rgba(0,0,0,.28)!important}
+.cuhv-hero::before,.cuhv-section::before{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,0) 24%),repeating-linear-gradient(90deg,rgba(183,197,211,.04) 0,rgba(183,197,211,.04) 1px,transparent 1px,transparent 56px)!important;opacity:.4!important}
+.cuhv-hero>*,.cuhv-section>*{position:relative!important;z-index:1!important}
+.cuhv-hero{display:grid!important;grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr)!important;gap:22px!important;align-items:stretch!important}
+.cuhv-hero-compact,.cuhv-hero-index{display:block!important}
+.cuhv-hero-stage{display:grid!important;grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr)!important;grid-template-areas:"copy side"!important;gap:22px!important;align-items:stretch!important}
+.cuhv-hero-copy,.cuhv-hero-side,.cuhv-card,.cuhv-step{min-width:0!important}
+.cuhv-kicker{display:inline-flex!important;align-items:center!important;min-height:34px!important;padding:0 14px!important;border-radius:999px!important;background:linear-gradient(135deg,#46627f,#7b92ac)!important;color:#eef2f6!important;font-size:.78rem!important;font-weight:900!important;letter-spacing:.11em!important;text-transform:uppercase!important;box-shadow:0 12px 26px rgba(70,98,127,.2)!important}
+.cuhv-hero h1,.cuhv-section-head h2{margin:12px 0 0!important;color:#f7fbff!important;letter-spacing:-.04em!important}
+.cuhv-hero h1{font-size:clamp(2.5rem,5vw,5rem)!important;line-height:.95!important;max-width:14ch!important}
+.cuhv-section-head{display:grid!important;gap:10px!important;max-width:72ch!important;margin-bottom:18px!important}
+.cuhv-hero p,.cuhv-section-head p,.cuhv-card p,.cuhv-step p,.cuhv-note,.cuhv-note p,.cuhv-list li,.cuhv-photo-card figcaption{color:rgba(223,232,240,.82)!important;line-height:1.72!important}
+.cuhv-actions{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:20px!important}
+.cuhv-button,.cuhv-button:visited{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:50px!important;padding:0 18px!important;border-radius:16px!important;border:1px solid rgba(172,185,198,.14)!important;background:linear-gradient(135deg,#46627f,#7b92ac)!important;color:#eef1f3!important;font-weight:900!important;box-shadow:0 14px 28px rgba(70,98,127,.22)!important}
+.cuhv-button-alt,.cuhv-button-alt:visited{background:linear-gradient(180deg,rgba(76,90,105,.88),rgba(34,42,50,.96))!important}
+.cuhv-grid{display:grid!important;gap:18px!important}
+.cuhv-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.cuhv-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.cuhv-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.cuhv-card,.cuhv-step,.cuhv-note,.cuhv-photo-card,.cuhv-hero-mini,.cuhv-hero-side-card,.cuhv-hero-side-note{position:relative!important;overflow:hidden!important;padding:22px!important;border:1px solid rgba(172,185,198,.14)!important;border-radius:24px!important;background:linear-gradient(180deg,rgba(84,99,116,.92),rgba(34,42,50,.98))!important;box-shadow:0 16px 36px rgba(0,0,0,.22)!important}
+.cuhv-card h3,.cuhv-step strong,.cuhv-note strong,.cuhv-hero-mini strong,.cuhv-hero-side-card strong{display:block!important;margin:0 0 10px!important;color:#f7fbff!important;font-size:clamp(1.05rem,1.4vw,1.4rem)!important;line-height:1.2!important}
+.cuhv-card>:last-child,.cuhv-step>:last-child,.cuhv-note>:last-child{margin-bottom:0!important}
+.cuhv-list{margin:0!important;padding-left:18px!important}
+.cuhv-list li+li{margin-top:8px!important}
+.cuhv-codeblock{margin:0!important;padding:16px 18px!important;border:1px solid rgba(172,185,198,.14)!important;border-radius:18px!important;background:linear-gradient(180deg,rgba(16,27,44,.88),rgba(8,14,24,.96))!important;color:#edf4fb!important;font-size:.9rem!important;line-height:1.65!important;overflow:auto!important;white-space:pre-wrap!important;word-break:break-word!important}
+.cuhv-timeline{display:grid!important;gap:16px!important}
+.cuhv-step{padding-left:28px!important}
+.cuhv-step::before{content:""!important;position:absolute!important;left:0!important;top:18px!important;bottom:18px!important;width:4px!important;border-radius:999px!important;background:linear-gradient(180deg,#7b92ac,rgba(180,194,207,.28))!important}
+.cuhv-hero-mini-grid,.cuhv-hero-side-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+.cuhv-photo-card{display:grid!important;gap:12px!important;align-content:start!important}
+.cuhv-photo-card img,.cuhv-final-cover img{display:block!important;width:100%!important;border-radius:20px!important;object-fit:cover!important;border:1px solid rgba(172,185,198,.14)!important}
+.cuhv-final-cover figure{margin:0!important}
+@media (max-width:1320px){.cuhv-page{width:min(100vw - 24px,1680px)!important;max-width:min(100vw - 24px,1680px)!important}.cuhv-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}.cuhv-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:1100px){.cuhv-hero,.cuhv-hero-stage{grid-template-columns:1fr!important}}
+@media (max-width:760px){.cuhv-page{width:min(100vw - 16px,1680px)!important;max-width:min(100vw - 16px,1680px)!important;padding:18px 0 56px!important;gap:18px!important}.cuhv-hero,.cuhv-section,.cuhv-reader-reward,.cuhv-final-cover{padding:18px!important;border-radius:22px!important}.cuhv-hero h1{font-size:clamp(2rem,10vw,3.3rem)!important}.cuhv-grid-2,.cuhv-grid-3,.cuhv-grid-4,.cuhv-hero-mini-grid,.cuhv-hero-side-grid{grid-template-columns:1fr!important}.cuhv-card,.cuhv-step,.cuhv-note,.cuhv-photo-card,.cuhv-hero-mini,.cuhv-hero-side-card,.cuhv-hero-side-note{padding:16px!important;border-radius:18px!important}.cuhv-actions{flex-direction:column!important}.cuhv-button,.cuhv-button:visited{width:100%!important}}
+</style>
+  </div>
+
+</main>
+
+
+<div 
+    id="ctfdio-snackbar-email-nudge"
+    x-data 
+    x-show="window.init.userId && !window.init.userVerified && localStorage.getItem('remind_email_verify') != window.init.userId && (!['/team', '/teams/join', '/teams/new'].includes(window.location.pathname) || window.init.teamId != null)"
+    class="alert alert-info alert-dismissible col-md-4 col-10 position-fixed text-center m-0 ctfdio-email-nudge" 
+    style="bottom: 45px; left: 50%; transform: translateX(-50%); z-index: 1040; display: none;" 
+    role="alert"
+>
+  <small>
+    <strong>Email Unconfirmed</strong><br>
+    <span>To confirm your email address please <a href="/confirm?flow=init">click here</a>.</span>
+  </small>
+  <button type="button" class="btn-close" @click="localStorage.setItem('remind_email_verify', window.init.userId); $el.parentElement.style.display = 'none';" aria-label="Close"></button>
+</div>
+
+
+<footer class="footer">
+  <div class="container text-center">
+    <a href="https://ctfd.io" class="text-secondary">
+      <small class="text-muted">
+        Desarrollado por CTFd
+      </small>
+    </a>
+  </div>
+</footer>
+
+<div x-data>
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+      <div class="toast-header">
+        <strong class="me-auto" x-text="$store.toast.title"></strong>
+        <small>just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" x-html="$store.toast.html">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data>
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script type="module"  src="/themes/core/static/assets/index.9b9a8697.js"></script><script type="module"  src="/themes/core/static/assets/page.94550e0c.js"></script>
+
+
+
+
+<style id="ctfcu-footer-style">
+  #ctfcu-footer {
+    margin-top: 64px;
+    background: linear-gradient(180deg, #0f2347 0%, #0b1830 100%);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.18);
+    color: #eef4ff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ctfcu-footer::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0,255,120,0.0), rgba(0,255,120,0.7), rgba(255,0,0,0.45), rgba(0,255,120,0.0));
+    animation: footerGlow 4s linear infinite;
+  }
+
+  @keyframes footerGlow {
+    0% { transform: translateX(-30%); opacity: 0.75; }
+    50% { transform: translateX(0%); opacity: 1; }
+    100% { transform: translateX(30%); opacity: 0.75; }
+  }
+
+  #ctfcu-footer .footer-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 24px 22px 24px;
+  }
+
+  #ctfcu-footer .footer-grid {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  #ctfcu-footer .footer-title {
+    margin: 0 0 10px 0;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+  }
+
+  #ctfcu-footer .footer-subtitle {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #d9e8ff;
+  }
+
+  #ctfcu-footer p,
+  #ctfcu-footer li,
+  #ctfcu-footer a,
+  #ctfcu-footer small {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  #ctfcu-footer .footer-text {
+    color: #dce7f8;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  #ctfcu-footer .footer-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #ctfcu-footer .footer-list li {
+    margin: 0 0 8px 0;
+  }
+
+  #ctfcu-footer .footer-link {
+    color: #eef4ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+    display: inline-block;
+  }
+
+  #ctfcu-footer .footer-link:hover {
+    color: #ffffff;
+    transform: translateX(3px);
+    text-shadow: 0 0 10px rgba(120,180,255,0.22);
+    text-decoration: none;
+  }
+
+  #ctfcu-footer .footer-note {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: #c7d7f3;
+  }
+
+  #ctfcu-footer .footer-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #f4f8ff;
+    margin-top: 10px;
+  }
+
+  #ctfcu-footer .footer-col h4 {
+    margin: 0 0 12px 0;
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  #ctfcu-footer .footer-mini {
+    color: #b8c9e6;
+  }
+
+  @media (max-width: 992px) {
+    #ctfcu-footer .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    #ctfcu-footer .footer-wrap {
+      padding: 28px 18px 20px 18px;
+    }
+
+    #ctfcu-footer .footer-title {
+      font-size: 1.25rem;
+    }
+
+    #ctfcu-footer .footer-note {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #ctfcu-footer::before,
+    #ctfcu-footer .footer-link {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<footer id="ctfcu-footer">
+  <div class="footer-wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="footer-title">Hackatón OSINT + CTF CUH 2026</h3>
+        <p class="footer-text">
+          Plataforma oficial del evento académico orientado al desarrollo de habilidades en
+          <strong>OSINT</strong>, análisis técnico, documentación de evidencias y resolución de retos
+          <strong>Capture The Flag (CTF)</strong> en un entorno controlado, ético y autorizado.
+        </p>
+        <span class="footer-chip">Modalidad individual</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Acceso rápido</h4>
+        <ul class="footer-list">
+          <li><a class="footer-link" href="/login">Iniciar sesión</a></li>
+          <li><a class="footer-link" href="/challenges">Desafíos</a></li>
+          <li><a class="footer-link" href="/scoreboard">Marcador</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Información del evento</h4>
+        <ul class="footer-list">
+          <li><a class="footer-link" href="/reglas">Reglas</a></li>
+          <li><a class="footer-link" href="/faq">Preguntas frecuentes</a></li>
+          <li><a class="footer-link" href="/cronograma">Cronograma</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <small>Centro Universitario Hidalguense · Hackatón CTF 2026</small>
+      <small class="footer-mini">Uso académico controlado · Acceso restringido a participantes autorizados</small>
+    </div>
+  </div>
+</footer>
+<script>console.info('[CUH-LAB] Observa tambien la consola del navegador en este entorno autorizado.');console.log('flag=CUH{la_consola_tambien_revela_pistas}');</script>
+<style id="ctfcu-social-share-fix">
+  .ctfcu-share-note {
+    margin-top: 0.55rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  .ctfcu-native-share {
+    border-left: 0 !important;
+  }
+</style>
+<script id="ctfcu-social-share-fix-script">
+(() => {
+  function isIpv4Host(hostname) {
+    return /^\d{1,3}(?:\.\d{1,3}){3}$/.test(hostname || "");
+  }
+
+  function decodeShareUrl(anchor) {
+    if (!anchor) {
+      return "";
+    }
+    try {
+      const href = anchor.getAttribute("href") || "";
+      const parsed = new URL(href, window.location.origin);
+      return parsed.searchParams.get("url") || "";
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function copyText(text) {
+    if (!text) {
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(() => {});
+      return;
+    }
+    const input = document.createElement("textarea");
+    input.value = text;
+    input.setAttribute("readonly", "readonly");
+    input.style.position = "absolute";
+    input.style.left = "-9999px";
+    document.body.appendChild(input);
+    input.select();
+    try {
+      document.execCommand("copy");
+    } catch (error) {
+      console.warn("No se pudo copiar el enlace de compartir", error);
+    }
+    document.body.removeChild(input);
+  }
+
+  function createButton(className, title, iconClass, handler) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "btn btn-sm btn-outline-secondary " + className;
+    button.title = title;
+    button.innerHTML = `<i class="${iconClass}"></i>`;
+    button.addEventListener("click", handler);
+    return button;
+  }
+
+  function enhanceShareGroup(group) {
+    if (!group || group.dataset.ctfcuShareEnhanced === "1") {
+      return;
+    }
+
+    const twitter = group.querySelector('a[href*="twitter.com/intent/tweet"]');
+    const facebook = group.querySelector('a[href*="facebook.com/sharer"]');
+    const linkedin = group.querySelector('a[href*="linkedin.com/shareArticle"]');
+
+    if (!twitter && !facebook && !linkedin) {
+      return;
+    }
+
+    const shareUrl = decodeURIComponent(decodeShareUrl(twitter || facebook || linkedin));
+    const limitedPreviewEnv = window.location.protocol !== "https:" || isIpv4Host(window.location.hostname);
+
+    if (limitedPreviewEnv) {
+      [facebook, linkedin].forEach((link) => {
+        if (link) {
+          link.style.display = "none";
+          link.setAttribute("aria-hidden", "true");
+          link.setAttribute("tabindex", "-1");
+        }
+      });
+
+      if (twitter && shareUrl) {
+        twitter.href = "https://twitter.com/intent/tweet?text=" +
+          encodeURIComponent("Reto resuelto en el laboratorio CTF CUH") +
+          "&url=" + encodeURIComponent(shareUrl);
+        twitter.title = "Compartir en X";
+      }
+
+      if (!group.querySelector(".ctfcu-web-share")) {
+        const shareButton = createButton(
+          "ctfcu-web-share ctfcu-native-share",
+          "Compartir enlace",
+          "fa-solid fa-share-nodes",
+          async () => {
+            if (!shareUrl) {
+              return;
+            }
+            if (navigator.share) {
+              try {
+                await navigator.share({
+                  title: document.title || "CTF CUH",
+                  text: "Reto resuelto en el laboratorio CTF CUH",
+                  url: shareUrl,
+                });
+                return;
+              } catch (error) {
+                if (error && error.name === "AbortError") {
+                  return;
+                }
+              }
+            }
+            copyText(shareUrl);
+          }
+        );
+        group.appendChild(shareButton);
+      }
+
+      const parent = group.parentElement || group.closest("div");
+      if (parent && !parent.querySelector(".ctfcu-share-note")) {
+        const note = document.createElement("div");
+        note.className = "ctfcu-share-note";
+        note.textContent = "En esta instancia de laboratorio, Facebook y LinkedIn no generan una vista previa fiable con enlaces HTTP sobre IP pública. Usa copiar enlace, compartir desde el navegador o X.";
+        parent.appendChild(note);
+      }
+    }
+
+    group.dataset.ctfcuShareEnhanced = "1";
+  }
+
+  function scanShareGroups() {
+    document.querySelectorAll(".challenge-window .btn-group, .alert .btn-group").forEach(enhanceShareGroup);
+  }
+
+  function observeBodyReady(callback) {
+    const start = () => {
+      if (!(document.body instanceof Node)) {
+        return;
+      }
+      new MutationObserver(callback).observe(document.body, { childList: true, subtree: true });
+    };
+    if (document.body instanceof Node) {
+      start();
+      return;
+    }
+    window.addEventListener("DOMContentLoaded", start, { once: true });
+  }
+
+  document.addEventListener("DOMContentLoaded", scanShareGroups);
+  observeBodyReady(scanShareGroups);
+})();
+</script>
+
+<!-- CTFCU_VISUAL_REFRESH_SCRIPT_START --><script id="ctfcu-visual-refresh-script">(()=>{const nodes=()=>Array.from(document.querySelectorAll('.cuhv-reveal,.challenge-button,.card'));const boot=()=>{const list=nodes();list.forEach((n,i)=>{if(!n.dataset.ctfcuDelay){n.style.transitionDelay=`${Math.min(i*50,260)}ms`;n.dataset.ctfcuDelay='1';}});if(!('IntersectionObserver'in window)){list.forEach(n=>n.classList.add('is-visible'));return;}const io=new IntersectionObserver((entries)=>{entries.forEach((e)=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}})},{threshold:.12});list.forEach(n=>io.observe(n));};document.addEventListener('DOMContentLoaded',boot);})();</script><!-- CTFCU_VISUAL_REFRESH_SCRIPT_END -->
+<style id="ctfcu-success-celebration-style">
+  @keyframes ctfcuCelebratePop {
+    0% { transform: translateY(10px) scale(0.96); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  @keyframes ctfcuCelebrateFloat {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  @keyframes ctfcuCelebrateShine {
+    0% { transform: translateX(-140%) skewX(-18deg); opacity: 0; }
+    25% { opacity: 0.22; }
+    100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+  }
+
+  @keyframes ctfcuCelebrateConfetti {
+    0% { transform: translateY(-6px) rotate(0deg); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(18px) rotate(18deg); opacity: 0; }
+  }
+
+  .notification-row .alert-success.ctfcu-success-upgraded {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .notification-row .alert-success.ctfcu-success-upgraded::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -18%;
+    width: 28%;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(227,255,238,0.18), rgba(255,255,255,0));
+    pointer-events: none;
+    animation: ctfcuCelebrateShine 3.6s ease-in-out infinite;
+  }
+
+  .ctfcu-success-card {
+    margin: 14px auto 10px;
+    max-width: 440px;
+    padding: 16px 16px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(162, 255, 201, 0.30);
+    background:
+      radial-gradient(circle at 50% 16%, rgba(175, 255, 209, 0.16), transparent 28%),
+      linear-gradient(180deg, rgba(14, 71, 39, 0.86), rgba(8, 39, 23, 0.92));
+    box-shadow:
+      0 20px 44px rgba(0, 0, 0, 0.26),
+      inset 0 0 0 1px rgba(255,255,255,0.04);
+    animation: ctfcuCelebratePop .42s ease-out both;
+  }
+
+  .ctfcu-success-card-media {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(191, 255, 217, 0.22);
+    background: linear-gradient(180deg, rgba(4,20,12,.66), rgba(4,20,12,.94));
+  }
+
+  .ctfcu-success-card-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
+    animation: ctfcuCelebrateFloat 4.4s ease-in-out infinite;
+  }
+
+  .ctfcu-success-card-media::after {
+    content: "Tigrillo victorioso";
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(5, 25, 14, 0.74);
+    border: 1px solid rgba(179, 255, 213, 0.24);
+    color: #effff5;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .ctfcu-success-confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .ctfcu-success-confetti span {
+    position: absolute;
+    top: 8px;
+    width: 8px;
+    height: 18px;
+    border-radius: 999px;
+    animation: ctfcuCelebrateConfetti 2.2s ease-in-out infinite;
+  }
+
+  .ctfcu-success-confetti span:nth-child(1) { left: 14%; background: #72f7b2; animation-delay: 0s; }
+  .ctfcu-success-confetti span:nth-child(2) { left: 28%; background: #ffd166; animation-delay: .35s; }
+  .ctfcu-success-confetti span:nth-child(3) { left: 47%; background: #7ccfff; animation-delay: .7s; }
+  .ctfcu-success-confetti span:nth-child(4) { left: 66%; background: #ff8fb0; animation-delay: 1.05s; }
+  .ctfcu-success-confetti span:nth-child(5) { left: 83%; background: #9bff7e; animation-delay: 1.4s; }
+
+  .ctfcu-success-copy {
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .ctfcu-success-copy strong,
+  .ctfcu-success-copy span {
+    display: block;
+  }
+
+  .ctfcu-success-copy strong {
+    color: #f4fff8;
+    font-size: 1.02rem;
+    line-height: 1.25;
+  }
+
+  .ctfcu-success-copy span {
+    margin-top: 6px;
+    color: rgba(238, 255, 245, 0.86);
+    line-height: 1.6;
+    font-size: 0.94rem;
+  }
+
+  .notification-row .alert-success.ctfcu-success-upgraded > strong {
+    text-transform: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .notification-row .alert-success.ctfcu-success-upgraded::before,
+    .ctfcu-success-card,
+    .ctfcu-success-card-media img,
+    .ctfcu-success-confetti span {
+      animation: none !important;
+    }
+  }
+</style>
+<script id="ctfcu-success-celebration-script">
+(() => {
+  const TIGRILLO_URL = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ocelot.jpg";
+
+  function upgradeSuccessAlert(alert) {
+    if (!alert || alert.dataset.ctfcuSuccessDone === "1") {
+      return;
+    }
+
+    const strong = alert.querySelector("strong");
+    if (strong) {
+      strong.textContent = "Bandera correcta";
+    }
+
+    alert.classList.add("ctfcu-success-upgraded");
+
+    const shareTrigger = Array.from(alert.querySelectorAll("button, a")).find((el) => {
+      const txt = (el.textContent || "").trim().toLowerCase();
+      return txt === "share" || txt === "compartir";
+    });
+    if (shareTrigger) {
+      shareTrigger.textContent = "Compartir logro";
+    }
+
+    Array.from(alert.querySelectorAll("*")).forEach((node) => {
+      if (!node || !node.textContent) return;
+      const txt = node.textContent.trim();
+      if (txt === "Rate this challenge:") node.textContent = "¿Qué te pareció este reto?";
+      if (txt === "Write a review (optional)") node.textContent = "Escribe una reseña breve (opcional)";
+      if (txt === "Submit") node.textContent = "Enviar opinión";
+      if (txt === "Thank you for your rating!") node.textContent = "Gracias por calificar este reto";
+      if (txt === "Next Challenge") node.textContent = "Siguiente reto";
+    });
+
+    const review = alert.querySelector('textarea[placeholder="Write a review (optional)"]');
+    if (review) {
+      review.placeholder = "Escribe una reseña breve (opcional)";
+    }
+
+    const existingNote = alert.querySelector(".ctfcu-share-note");
+    if (existingNote) {
+      existingNote.textContent = "En esta instancia del laboratorio, Facebook y LinkedIn no generan una vista previa fiable con enlaces sobre IP pública. Usa Copiar enlace, Compartir desde el navegador o X.";
+    }
+
+    if (!alert.querySelector(".ctfcu-success-card")) {
+      const card = document.createElement("div");
+      card.className = "ctfcu-success-card";
+      card.innerHTML = `
+        <div class="ctfcu-success-card-media">
+          <img src="${TIGRILLO_URL}" alt="Tigrillo hacker victorioso del laboratorio">
+          <div class="ctfcu-success-confetti">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="ctfcu-success-copy">
+          <strong>Reto derrotado y puntos acreditados</strong>
+          <span>Tu bandera fue validada correctamente. Sigue con el siguiente desafío o comparte el logro usando las opciones del laboratorio.</span>
+        </div>`;
+
+      const firstHr = alert.querySelector("hr");
+      if (firstHr) {
+        firstHr.parentNode.insertBefore(card, firstHr);
+      } else {
+        alert.appendChild(card);
+      }
+    }
+
+    alert.dataset.ctfcuSuccessDone = "1";
+  }
+
+  function scan() {
+    document.querySelectorAll(".notification-row .alert-success").forEach(upgradeSuccessAlert);
+  }
+
+  function observeBodyReady(callback) {
+    const start = () => {
+      if (!(document.body instanceof Node)) {
+        return;
+      }
+      new MutationObserver(callback).observe(document.body, { childList: true, subtree: true });
+    };
+    if (document.body instanceof Node) {
+      start();
+      return;
+    }
+    window.addEventListener("DOMContentLoaded", start, { once: true });
+  }
+
+  document.addEventListener("DOMContentLoaded", scan);
+  observeBodyReady(scan);
+})();
+</script>
+
+</body>
+</html>

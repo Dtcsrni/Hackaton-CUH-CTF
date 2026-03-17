@@ -1,0 +1,185 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Reglas</span>
+      <h1>Alcance, conducta y criterio técnico del hackatón</h1>
+      <p>Estas reglas aterrizan el alcance real del paquete CUH: puedes trabajar sobre la plataforma, los adjuntos y los servicios publicados en <code>45.55.49.111</code>, pero no sobre SSH, Docker, la base de datos ni nada fuera de los puertos y rutas que usan retos como <em>Puertas abiertas</em>, <em>Cookie de rol</em> o <em>Formulario de acceso</em>.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Principio central</span>
+      <h2>Todo lo que hagas debe permanecer dentro del laboratorio</h2>
+    </div>
+    <article class="cuhv-quote">
+      <p>El criterio correcto no es “probar todo”, sino elegir bien la superficie: <em>Puertas abiertas</em> pide enumeración, <em>Comandos Linux - búsqueda básica</em> pide lectura de estructura, <em>Cookie firmada debil</em> pide entender integridad, y <em>Acceso por defecto</em> pide fuerza bruta solo en el servicio que el reto publica.</p>
+    </article>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Permitido</span>
+      <h2>Lo que sí puedes hacer</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Herramientas y flujo normal</h3>
+        <ul class="cuhv-list">
+          <li>Usar Kali Linux, navegador y herramientas estándar como <code>nmap</code>, <code>curl</code>, <code>nc</code>, <code>find</code>, <code>grep</code> y <code>hydra</code> cuando el reto sí lo justifica.</li>
+          <li>Resolver retos mediante observación, enumeración, lectura, análisis local y validación de hipótesis sobre los recursos del evento.</li>
+          <li>Consultar hints, páginas de ayuda y documentación visible del evento.</li>
+          <li>Descargar y analizar archivos entregados por la plataforma.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Servicios del laboratorio</h3>
+        <ul class="cuhv-list">
+          <li>Inspeccionar la IP pública y los servicios expresamente publicados por el evento, como <code>31337</code>, <code>8081</code> o <code>8091</code>.</li>
+          <li>Conectarte a banners TCP, endpoints HTTP, formularios, cookies y páginas asociados a retos concretos.</li>
+          <li>Usar fuerza bruta solo contra los retos diseñados para ese objetivo y con el alcance que indican sus enunciados.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">No permitido</span>
+      <h2>Lo que debes evitar por completo</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Infraestructura fuera de alcance</h3>
+        <ul class="cuhv-list">
+          <li>No intentes acceder por SSH, RDP o shell al droplet del evento.</li>
+          <li>No pruebes acceso a Docker, base de datos, sistema operativo o paneles no publicados.</li>
+          <li>No escanees objetivos distintos a la IP y puertos que forman parte del laboratorio.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Comportamiento riesgoso o ruidoso</h3>
+        <ul class="cuhv-list">
+          <li>No hagas denegación de servicio ni automatización masiva fuera de los retos planteados para eso.</li>
+          <li>No ataques sistemas reales, dominios externos o infraestructura que no pertenezca al evento.</li>
+          <li>No intentes degradar la experiencia de otros participantes con pruebas excesivas o abuso de recursos.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Trabajo académico</span>
+      <h2>Cómo se espera que resuelvas</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3>Observa antes de actuar</h3>
+        <p>No corras herramientas porque “podrían servir”. Primero identifica si el reto es de red, archivo, navegador, token, cookie o cracking.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Enumera antes de interpretar</h3>
+        <p>Si trabajas con IP, puertos, archivos o rutas, enumera primero la superficie real. Muchas respuestas salen de esa etapa, no del ataque.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Valida antes de enviar</h3>
+        <p>Comprueba que la respuesta que encontraste coincide con lo que realmente pide el reto. No toda cadena con formato bonito es necesariamente la flag correcta.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Fuerza bruta y cracking</span>
+      <h2>Reglas específicas para retos con credenciales o secretos débiles</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Qué sí está permitido</h3>
+        <p>Usar diccionarios pequeños, <code>hydra</code> o cracking local cuando el propio reto esté diseñado para ello, por ejemplo en <em>Hash filtrado</em>, <em>ZIP bajo llave</em>, <em>Acceso por defecto</em> o <em>Formulario de acceso</em>.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué no está permitido</h3>
+        <p>Escalar el volumen de pruebas fuera de contexto, repetir ataques ciegos contra puertos que no pertenecen al reto abierto o intentar credenciales fuera de los servicios publicados por el evento.</p>
+      </article>
+    </div>
+    <div class="cuhv-note">
+      <strong>Regla de oro:</strong> si un reto no menciona o no sugiere cracking, no asumas que la solución es lanzar fuerza bruta.
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Ética y colaboración</span>
+      <h2>Cómo convivir durante el evento</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Comparte aprendizaje, no respuestas directas</h3>
+        <p>Está bien discutir herramientas, interpretación de errores o conceptos técnicos. No está bien publicar flags o soluciones completas a otros participantes en tiempo real.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Cuando reportes un problema</h3>
+        <p>Describe el reto, el síntoma, el momento aproximado y el comando o acción que ejecutaste. Eso ayuda a diferenciar un bug real de una pista no interpretada todavía.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Integridad del evento</span>
+      <h2>Reglas específicas para evitar trampas</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Lo que se considera trampa</h3>
+        <ul class="cuhv-list">
+          <li>Resolver retos usando cuentas ajenas, sesiones compartidas o material generado por otra persona como si fuera trabajo propio cuando eso altere la trazabilidad real del solve.</li>
+          <li>Automatizar envíos de flags o apoyarte en scripts externos para probar respuestas en masa cuando el reto no está diseñado para ese flujo.</li>
+          <li>Aprovechar bugs de la plataforma, cachés, APIs internas o desincronizaciones del marcador para sumar puntos sin resolver realmente el reto.</li>
+          <li>Fabricar evidencias, subir material reciclado para justificar solves rápidos o manipular el proceso de revisión académica.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué vigila la plataforma</h3>
+        <ul class="cuhv-list">
+          <li>Se registran aperturas de retos, tiempos de resolución, actividad reciente y patrones de solves anómalos para auditoría académica.</li>
+          <li>Los retos de más de <code>200 puntos</code> pueden quedar bajo revisión adicional si se resuelven demasiado rápido.</li>
+          <li>Cuando eso ocurra, el participante deberá subir al menos <code>4 evidencias</code> del proceso antes de poder enviar nuevas flags.</li>
+          <li>Las evidencias no sustituyen la revisión humana: el equipo organizador puede pedir aclaraciones técnicas adicionales si algo no cuadra.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Qué debes conservar si resuelves muy rápido</h3>
+        <p>Capturas, comandos, notas intermedias, archivos generados, trazas del navegador o salidas de terminal que permitan reconstruir cómo llegaste a la flag. La revisión busca confirmar que el solve tiene trazabilidad técnica suficiente y no depende de abuso de plataforma o evidencia inventada.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Consecuencias</h3>
+        <p>Si se detecta trampa o no se puede justificar una resolución anómala, la organización puede retirar solves, descontar puntos, bloquear nuevos envíos, reiniciar retos concretos o invalidar la participación completa según la gravedad del caso.</p>
+      </article>
+    </div>
+    <div class="cuhv-note">
+      <strong>Regla práctica:</strong> en este evento compartir o intercambiar banderas puede formar parte de la dinámica entre participantes; lo que sigue prohibido es falsear autoría, abusar de la plataforma, usar multi-cuenta o presentar evidencias falsas para sostener un solve.
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Consecuencias prácticas</span>
+      <h2>Qué pasa si sales del alcance</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Conducta fuera de reglas</h3>
+        <p>Las acciones fuera de alcance pueden invalidar tu participación, hacerte perder tiempo y afectar la estabilidad del evento.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Conducta correcta</h3>
+        <p>Si tienes duda sobre si algo está permitido, detente, consulta las páginas de ayuda y pregunta antes de ejecutar pruebas de las que no estés seguro.</p>
+      </article>
+    </div>
+  </section>
+</div>

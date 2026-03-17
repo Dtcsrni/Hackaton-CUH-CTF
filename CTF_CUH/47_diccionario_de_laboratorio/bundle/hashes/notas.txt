@@ -1,0 +1,2 @@
+Wordlists candidatas vistas en el entorno: top-10000.txt, laboratorio-2026.txt, nombres-cuh.txt
+La cuenta de backup heredó hábitos del equipo de operaciones.

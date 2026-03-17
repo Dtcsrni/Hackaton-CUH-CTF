@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Reversing intermedio</span>
+      <h1>Licencia bajo revisión</h1>
+      <p>Aquí el binario reparte la validación entre varios segmentos. Sigue siendo un reto de análisis, pero exige más atención que el primero para reconstruir la licencia completa sin tocar el ejecutable.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se divide la licencia en bloques.</li><li>Qué partes son literales y cuáles obedecen a relaciones simples.</li><li>En qué orden falla la validación cuando algo no coincide.</li><li>Qué segmento conviene reconstruir primero para evitar prueba y error innecesaria.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>strings</code></li><li><code>ghidra</code></li><li><code>cutter</code></li><li><code>radare2</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Intentar parchear el flujo de aceptación.</li><li>Quedarse solo con el prefijo y no reconstruir los segmentos restantes.</li><li>Ignorar la suma o relación interna del bloque numérico.</li><li>No verificar la licencia final completa antes de entregarla.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Completa `respuesta.txt` con la licencia final.</li><li>Ejecuta el validador del bundle.</li><li>Opcionalmente ejecuta el binario con la licencia reconstruida.</li><li>La flag aparece cuando la licencia coincide exactamente con la lógica interna.</li></ul></article>
+    </div>
+  </section>
+</div>

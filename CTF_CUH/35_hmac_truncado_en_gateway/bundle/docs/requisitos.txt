@@ -1,0 +1,1 @@
+La firma debe seguir siendo HMAC-SHA256 en hexadecimal completo. El gateway espera una comparación de tiempo constante y longitud fija.

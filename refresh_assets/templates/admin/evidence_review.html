@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revisión de evidencias</title>
+  <style>
+    :root{
+      --bg:#1f2328;
+      --panel:#313941;
+      --panel-strong:#3d4751;
+      --stroke:rgba(177,190,204,.16);
+      --soft:rgba(221,229,236,.74);
+      --text:#eef1f3;
+      --accent:#46627f;
+      --accent-soft:#7b92ac;
+      --ok:#6f907c;
+      --warn:#8f6f3f;
+      --danger:#8d5353;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(145deg,#424b55,#1f2328);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .page{max-width:1580px;margin:0 auto;padding:28px 20px 48px}
+    .hero,.summary,.participant,.requirement,.empty{border:1px solid var(--stroke);border-radius:28px;background:linear-gradient(180deg,rgba(77,92,108,.9),rgba(34,42,50,.96));box-shadow:0 16px 42px rgba(0,0,0,.24)}
+    .hero{display:flex;justify-content:space-between;gap:18px;align-items:end;padding:24px}
+    .hero h1{margin:0;font-size:clamp(2rem,3vw,3rem);letter-spacing:-.04em}
+    .hero p{margin:10px 0 0;color:var(--soft);max-width:74ch;line-height:1.65}
+    .hero a{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg,var(--accent),var(--accent-soft));color:var(--text);text-decoration:none;font-weight:800}
+    .summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px;padding:18px}
+    .summary-card{padding:16px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .summary-card span{display:block;color:var(--soft);font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .summary-card strong{display:block;margin-top:8px;font-size:1.9rem}
+    .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0}
+    .toolbar input,.toolbar select,.toolbar button,.review-form textarea,.review-form select{border-radius:16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:var(--text);font:inherit}
+    .toolbar input,.toolbar select{min-height:46px;padding:0 14px}
+    .toolbar input{min-width:280px;flex:1 1 280px}
+    .toolbar button{min-height:46px;padding:0 18px;background:linear-gradient(135deg,var(--accent),var(--accent-soft));font-weight:800;cursor:pointer}
+    .participants{display:grid;gap:18px}
+    .participant{padding:22px}
+    .participant-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .participant-head h2{margin:0;font-size:1.35rem}
+    .participant-head p{margin:6px 0 0;color:var(--soft)}
+    .participant-meta,.meta-grid{display:flex;flex-wrap:wrap;gap:8px}
+    .pill,.state{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05);font-size:.8rem;font-weight:800;color:var(--text)}
+    .requirements{display:grid;gap:14px;margin-top:16px}
+    .requirement{padding:18px}
+    .requirement-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .requirement-head h3{margin:0;font-size:1.12rem}
+    .requirement-head p{margin:8px 0 0;color:var(--soft);line-height:1.55}
+    .requirement-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:14px}
+    .files{display:grid;gap:10px}
+    .file{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+    .file strong{display:block}
+    .file span{display:block;margin-top:4px;color:var(--soft);font-size:.82rem}
+    .file a{display:inline-flex;align-items:center;min-height:38px;padding:0 12px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-soft));color:var(--text);text-decoration:none;font-size:.8rem;font-weight:800;white-space:nowrap}
+    .review-form{display:grid;gap:10px}
+    .review-form textarea{min-height:110px;padding:12px 14px;resize:vertical}
+    .review-form select{min-height:44px;padding:0 12px}
+    .review-form button{min-height:44px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-soft));color:var(--text);font:inherit;font-weight:800;cursor:pointer}
+    .review-feedback{min-height:22px;color:var(--soft);font-size:.84rem}
+    .state[data-state="reviewed"]{background:rgba(111,144,124,.18);border-color:rgba(111,144,124,.28)}
+    .state[data-state="needs_follow_up"]{background:rgba(143,111,63,.18);border-color:rgba(143,111,63,.28)}
+    .state[data-state="rejected"]{background:rgba(141,83,83,.18);border-color:rgba(141,83,83,.28)}
+    .empty{padding:36px;text-align:center}
+    .empty h2{margin:0;font-size:1.6rem}
+    .empty p{margin:10px auto 0;max-width:62ch;color:var(--soft);line-height:1.65}
+    @media (max-width:1100px){.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.requirement-grid{grid-template-columns:1fr}}
+    @media (max-width:760px){.page{padding:20px 14px 36px}.hero,.participant,.requirement,.summary{padding:16px}.summary{grid-template-columns:1fr}.participant-head,.requirement-head{display:block}.toolbar input{min-width:100%}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <h1>Revisión de evidencias</h1>
+        <p>Este panel agrupa por participante todas las evidencias cargadas para retos de más de {{ threshold }} puntos. Desde aquí puedes abrir archivos, dejar notas y registrar un dictamen administrativo por expediente.</p>
+      </div>
+      <a href="/admin/notifications">Volver al administrador</a>
+    </section>
+
+    <section class="summary" id="summary">
+      <article class="summary-card"><span>Participantes</span><strong id="sum-users">0</strong></article>
+      <article class="summary-card"><span>Expedientes</span><strong id="sum-reqs">0</strong></article>
+      <article class="summary-card"><span>Pendientes</span><strong id="sum-pending">0</strong></article>
+      <article class="summary-card"><span>Sin revisar</span><strong id="sum-review">0</strong></article>
+    </section>
+
+    <section class="toolbar">
+      <input id="filter-input" type="search" placeholder="Filtrar por participante, reto o equipo">
+      <select id="review-filter">
+        <option value="all">Todos los dictámenes</option>
+        <option value="unreviewed">Sin revisar</option>
+        <option value="reviewed">Revisados</option>
+        <option value="needs_follow_up">Requieren seguimiento</option>
+        <option value="rejected">Rechazados</option>
+      </select>
+      <select id="upload-filter">
+        <option value="all">Cualquier carga</option>
+        <option value="pending">Pendientes de archivos</option>
+        <option value="fulfilled">Con evidencias completas</option>
+      </select>
+      <button id="reload-btn" type="button">Recargar</button>
+    </section>
+
+    <section class="participants" id="participants"></section>
+  </main>
+
+  <script>
+    (() => {
+      const stateLabels = {
+        unreviewed: "Sin revisar",
+        reviewed: "Revisado",
+        needs_follow_up: "Requiere seguimiento",
+        rejected: "Rechazado",
+      };
+      const uploadLabels = { pending: "Carga incompleta", fulfilled: "Carga completa" };
+      const participantsNode = document.getElementById("participants");
+      const filterInput = document.getElementById("filter-input");
+      const reviewFilter = document.getElementById("review-filter");
+      const uploadFilter = document.getElementById("upload-filter");
+      const reloadBtn = document.getElementById("reload-btn");
+      let payload = [];
+
+      function escapeHtml(value) {
+        return String(value || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function timeLabel(value) {
+        if (!value) return "sin fecha";
+        try {
+          return new Intl.DateTimeFormat("es-MX", { dateStyle: "medium", timeStyle: "short" }).format(new Date(value));
+        } catch (error) {
+          return value;
+        }
+      }
+
+      function updateSummary(participants) {
+        const requirements = participants.flatMap((item) => item.requirements || []);
+        document.getElementById("sum-users").textContent = participants.length;
+        document.getElementById("sum-reqs").textContent = requirements.length;
+        document.getElementById("sum-pending").textContent = requirements.filter((item) => item.status === "pending").length;
+        document.getElementById("sum-review").textContent = requirements.filter((item) => item.review_status === "unreviewed").length;
+      }
+
+      function requirementMatches(requirement, search, reviewState, uploadState) {
+        if (reviewState !== "all" && requirement.review_status !== reviewState) return false;
+        if (uploadState !== "all" && requirement.status !== uploadState) return false;
+        if (!search) return true;
+        const haystack = [requirement.challenge_name, requirement.challenge_value, requirement.reason_label, requirement.review_notes].join(" ").toLowerCase();
+        return haystack.includes(search);
+      }
+
+      function participantMatches(participant, search, reviewState, uploadState) {
+        const visible = (participant.requirements || []).filter((item) => requirementMatches(item, search, reviewState, uploadState));
+        if (visible.length) {
+          participant._visibleRequirements = visible;
+          return true;
+        }
+        const haystack = [participant.user_name, participant.team_name || ""].join(" ").toLowerCase();
+        return !!search && haystack.includes(search);
+      }
+
+      function renderFiles(files) {
+        if (!files.length) {
+          return '<div class="file"><div><strong>Aún sin archivos</strong><span>Este expediente sigue bloqueado hasta reunir el mínimo requerido.</span></div></div>';
+        }
+        return files.map((file) => `
+          <div class="file">
+            <div>
+              <strong>${escapeHtml(file.original_name)}</strong>
+              <span>${escapeHtml(file.mime_type || "archivo")} · ${file.size_label} · ${escapeHtml(file.sha1_prefix)}</span>
+            </div>
+            <a href="${file.download_url}" target="_blank" rel="noopener">Abrir</a>
+          </div>
+        `).join("");
+      }
+
+      function renderRequirement(requirement) {
+        return `
+          <article class="requirement">
+            <div class="requirement-head">
+              <div>
+                <h3>${escapeHtml(requirement.challenge_name)} · ${requirement.challenge_value} pts</h3>
+                <p>${escapeHtml(requirement.reason_label)}. Resuelto el ${timeLabel(requirement.solved_at)}. ${requirement.uploaded_files}/${requirement.minimum_files} evidencias cargadas.</p>
+              </div>
+              <div class="meta-grid">
+                <span class="pill">${uploadLabels[requirement.status] || requirement.status}</span>
+                <span class="state" data-state="${requirement.review_status}">${stateLabels[requirement.review_status] || requirement.review_status}</span>
+              </div>
+            </div>
+            <div class="requirement-grid">
+              <div class="files">${renderFiles(requirement.files || [])}</div>
+              <form class="review-form" data-requirement-id="${requirement.id}">
+                <select name="review_status">
+                  <option value="unreviewed"${requirement.review_status === "unreviewed" ? " selected" : ""}>Sin revisar</option>
+                  <option value="reviewed"${requirement.review_status === "reviewed" ? " selected" : ""}>Revisado</option>
+                  <option value="needs_follow_up"${requirement.review_status === "needs_follow_up" ? " selected" : ""}>Requiere seguimiento</option>
+                  <option value="rejected"${requirement.review_status === "rejected" ? " selected" : ""}>Rechazado</option>
+                </select>
+                <textarea name="review_notes" placeholder="Notas del análisis, dudas o conclusión administrativa">${escapeHtml(requirement.review_notes || "")}</textarea>
+                <button type="submit">Guardar dictamen</button>
+                <div class="review-feedback">${requirement.reviewed_at ? `Última revisión: ${timeLabel(requirement.reviewed_at)}${requirement.reviewed_by_name ? ` · ${escapeHtml(requirement.reviewed_by_name)}` : ""}` : "Aún sin dictamen registrado."}</div>
+              </form>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderParticipants() {
+        const search = (filterInput.value || "").trim().toLowerCase();
+        const reviewState = reviewFilter.value;
+        const uploadState = uploadFilter.value;
+        const visible = payload.map((item) => ({ ...item, _visibleRequirements: [] })).filter((item) => participantMatches(item, search, reviewState, uploadState));
+        updateSummary(visible);
+        if (!visible.length) {
+          participantsNode.innerHTML = '<section class="empty"><h2>Sin expedientes para esta vista</h2><p>No hay participantes o evidencias que coincidan con el filtro actual. Prueba otra combinación o recarga el panel.</p></section>';
+          return;
+        }
+        participantsNode.innerHTML = visible.map((participant) => `
+          <article class="participant">
+            <div class="participant-head">
+              <div>
+                <h2>${escapeHtml(participant.user_name)}</h2>
+                <p>${escapeHtml(participant.team_name || "Sin equipo")} · ${participant.requirements.length} expediente(s) total(es)</p>
+              </div>
+              <div class="participant-meta">
+                <span class="pill">Pendientes: ${participant.pending_count}</span>
+                <span class="pill">Completos: ${participant.fulfilled_count}</span>
+                <span class="pill">Sin revisar: ${participant.unreviewed_count}</span>
+              </div>
+            </div>
+            <div class="requirements">${(participant._visibleRequirements.length ? participant._visibleRequirements : participant.requirements).map((requirement) => renderRequirement(requirement)).join("")}</div>
+          </article>
+        `).join("");
+      }
+
+      async function loadData() {
+        reloadBtn.disabled = true;
+        try {
+          const response = await fetch("/admin/evidence-review/data", { credentials: "same-origin" });
+          const body = await response.json();
+          payload = body?.data || [];
+          renderParticipants();
+        } finally {
+          reloadBtn.disabled = false;
+        }
+      }
+
+      participantsNode.addEventListener("submit", async (event) => {
+        const form = event.target.closest("form[data-requirement-id]");
+        if (!form) return;
+        event.preventDefault();
+        const requirementId = form.getAttribute("data-requirement-id");
+        const feedback = form.querySelector(".review-feedback");
+        const button = form.querySelector("button");
+        const body = {
+          review_status: form.querySelector('select[name="review_status"]').value,
+          review_notes: form.querySelector('textarea[name="review_notes"]').value,
+        };
+        button.disabled = true;
+        feedback.textContent = "Guardando dictamen...";
+        try {
+          const response = await fetch(`/admin/evidence-review/requirements/${requirementId}/review`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
+            body: JSON.stringify(body),
+          });
+          const payload = await response.json();
+          if (!response.ok || !payload?.success) {
+            feedback.textContent = payload?.message || "No se pudo guardar el dictamen.";
+            return;
+          }
+          feedback.textContent = payload.message || "Dictamen guardado.";
+          await loadData();
+        } catch (error) {
+          feedback.textContent = "No se pudo guardar el dictamen.";
+        } finally {
+          button.disabled = false;
+        }
+      });
+
+      [filterInput, reviewFilter, uploadFilter].forEach((node) => node.addEventListener("input", renderParticipants));
+      reloadBtn.addEventListener("click", loadData);
+      loadData();
+    })();
+  </script>
+</body>
+</html>

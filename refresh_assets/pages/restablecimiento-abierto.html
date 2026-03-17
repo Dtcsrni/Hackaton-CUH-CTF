@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Recuperación de acceso</span>
+      <h1>Restablecimiento abierto</h1>
+      <p>Un flujo de restablecimiento mal diseñado termina siendo tan frágil como la autenticación original. Aquí el problema está en tokens previsibles y sin ligadura suficiente al contexto del usuario.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Cómo se genera el token de reset.</li><li>Qué relación existe entre token, usuario y tiempo.</li><li>Si el backend conserva o no el contexto mínimo para validar la solicitud.</li><li>Qué comprobaciones deberían ocurrir antes de aceptar el restablecimiento.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Hacer el token más largo pero mantenerlo predecible.</li><li>Verificar solo el usuario o solo la expiración.</li><li>No conservar estado mínimo del token emitido.</li><li>Tratar el reset como una simple comparación de strings.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca token aleatorio, expiración y validación asociada al usuario.</li><li>Comprueba que el backend rechace tokens inexistentes.</li><li>Ejecuta el validador.</li><li>La flag aparece cuando el flujo deja de aceptar restablecimientos triviales.</li></ul></article>
+    </div>
+  </section>
+</div>

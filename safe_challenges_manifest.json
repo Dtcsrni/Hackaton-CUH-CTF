@@ -1,0 +1,1304 @@
+{
+  "challenges": [
+    {
+      "name": "Consulta concatenada",
+      "category": "Web",
+      "value": 360,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un login heredado en PHP que sigue armando la consulta SQL mediante concatenación directa de usuario y clave. El objetivo del reto es corregir el archivo para que la autenticación use parámetros en lugar de mezclar datos del cliente con la consulta.\n\nMaterial de apoyo relacionado: [Guía interna: Consulta concatenada](/consulta-concatenada).",
+      "flag": "CUH{consulta_concatenada_corregida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Busca el archivo que realmente construye la consulta. El problema no está en el HTML."
+        },
+        {
+          "cost": 35,
+          "content": "Si todavía ves comillas mezcladas con variables dentro del SQL, la corrección sigue incompleta."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera una consulta preparada y una ejecución separada de los valores."
+        }
+      ],
+      "attachment": "CTF_CUH/03_consulta_concatenada/consulta_concatenada_bundle.zip",
+      "page_route": "consulta-concatenada",
+      "page_label": "Guía interna: Consulta concatenada"
+    },
+    {
+      "name": "Reportes sin parámetros",
+      "category": "Web",
+      "value": 380,
+      "type": "standard",
+      "state": "visible",
+      "description": "El buscador de reportes de un portal interno sigue concatenando el término de búsqueda dentro de la cláusula WHERE. Debes revisar el backend, parametrizar el filtro y dejar el archivo listo para una consulta mantenible.\n\nMaterial de apoyo relacionado: [Guía interna: Reportes sin parámetros](/reportes-sin-parametros).",
+      "flag": "CUH{reportes_filtrados_con_parametros}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No hace falta tocar la interfaz. El problema está en cómo se forma el filtro del lado del servidor."
+        },
+        {
+          "cost": 35,
+          "content": "Un LIKE también puede parametrizarse; prepara primero la consulta y construye después el valor de búsqueda."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera placeholder, bind y ausencia de concatenación directa en el SQL."
+        }
+      ],
+      "attachment": "CTF_CUH/04_reportes_sin_parametros/reportes_sin_parametros_bundle.zip",
+      "page_route": "reportes-sin-parametros",
+      "page_label": "Guía interna: Reportes sin parámetros"
+    },
+    {
+      "name": "Portal PHP heredado",
+      "category": "Web",
+      "value": 400,
+      "type": "standard",
+      "state": "visible",
+      "description": "El portal mezcla una consulta concatenada con una verificación de contraseñas ya obsoleta. Debes dejar el acceso en un formato más sano: consulta preparada y verificación de hash adecuada.\n\nMaterial de apoyo relacionado: [Guía interna: Portal PHP heredado](/portal-php-heredado).",
+      "flag": "CUH{portal_php_heredado_endurecido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Hay dos problemas: uno en la consulta y otro en la comparación de contraseñas."
+        },
+        {
+          "cost": 35,
+          "content": "Si todavía dependes de md5, la corrección sigue incompleta."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada usa prepare para consultar y password_verify para validar el hash."
+        }
+      ],
+      "attachment": "CTF_CUH/05_portal_php_heredado/portal_php_heredado_bundle.zip",
+      "page_route": "portal-php-heredado",
+      "page_label": "Guía interna: Portal PHP heredado"
+    },
+    {
+      "name": "Incidente en formularios",
+      "category": "Forense",
+      "value": 420,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un conjunto de logs del portal, un extracto de la traza SQL y una nota operativa interna. Debes reconstruir el incidente, identificar la cuenta afectada y describir el fallo de diseño que lo permitió.\n\nMaterial de apoyo relacionado: [Guía interna: Incidente en formularios](/incidente-en-formularios).",
+      "flag": "CUH{incidente_de_formularios_reconstruido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Empieza por correlacionar hora, ruta y resultado en los logs de aplicación."
+        },
+        {
+          "cost": 35,
+          "content": "La traza SQL te dice más sobre el fallo que el mensaje visible del formulario."
+        },
+        {
+          "cost": 50,
+          "content": "No te piden un payload: te piden el vector lógico, la cuenta afectada y el impacto observado."
+        }
+      ],
+      "attachment": "CTF_CUH/06_incidente_en_formularios/incidente_en_formularios_bundle.zip",
+      "page_route": "incidente-en-formularios",
+      "page_label": "Guía interna: Incidente en formularios"
+    },
+    {
+      "name": "Sesión que confía demasiado",
+      "category": "Auth",
+      "value": 400,
+      "type": "standard",
+      "state": "visible",
+      "description": "La aplicación acepta el rol efectivo de la sesión a partir de datos entregados por el cliente. Debes mover la decisión sensible al backend y dejar la sesión en un formato más defensivo.\n\nMaterial de apoyo relacionado: [Guía interna: Sesión que confía demasiado](/sesion-que-confia-demasiado).",
+      "flag": "CUH{rol_de_sesion_validado_en_backend}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Busca dónde se forma la sesión y de dónde sale el rol."
+        },
+        {
+          "cost": 35,
+          "content": "Si el backend sigue creyendo cualquier valor enviado por el cliente, el problema sigue ahí."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera una lista cerrada de roles y una asignación basada en datos internos."
+        }
+      ],
+      "attachment": "CTF_CUH/07_sesion_que_confia_demasiado/sesion_que_confia_demasiado_bundle.zip",
+      "page_route": "sesion-que-confia-demasiado",
+      "page_label": "Guía interna: Sesión que confía demasiado"
+    },
+    {
+      "name": "Cookie de rol heredada",
+      "category": "Auth",
+      "value": 430,
+      "type": "standard",
+      "state": "visible",
+      "description": "Una cookie de rol heredada sigue aceptando contenido sin verificación robusta. Debes endurecer la validación y limitar el rol efectivo a un conjunto de valores permitidos.\n\nMaterial de apoyo relacionado: [Guía interna: Cookie de rol heredada](/cookie-de-rol-heredada).",
+      "flag": "CUH{cookie_de_rol_endurecida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "La cookie entra al backend ya deserializada; el problema es qué hace luego el código con ella."
+        },
+        {
+          "cost": 35,
+          "content": "Si cualquier valor llega a convertirse en rol efectivo, la corrección sigue incompleta."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera firma HMAC, comparación segura y lista cerrada de roles."
+        }
+      ],
+      "attachment": "CTF_CUH/08_cookie_de_rol_heredada/cookie_de_rol_heredada_bundle.zip",
+      "page_route": "cookie-de-rol-heredada",
+      "page_label": "Guía interna: Cookie de rol heredada"
+    },
+    {
+      "name": "JWT sin audiencia",
+      "category": "Auth",
+      "value": 450,
+      "type": "standard",
+      "state": "visible",
+      "description": "El validador de tokens del portal solo revisa firma y expiación. Debes endurecerlo para que también controle algoritmo permitido, issuer y audience esperados.\n\nMaterial de apoyo relacionado: [Guía interna: JWT sin audiencia](/jwt-sin-audiencia).",
+      "flag": "CUH{jwt_con_validacion_completa}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Lee el archivo completo antes de cambiar nada; faltan varias validaciones, no una sola."
+        },
+        {
+          "cost": 35,
+          "content": "Si no defines issuer y audience esperados, el token sigue siendo ambiguo."
+        },
+        {
+          "cost": 50,
+          "content": "La corrección esperada restringe algoritmo, issuer, audience y expiración."
+        }
+      ],
+      "attachment": "CTF_CUH/09_jwt_sin_audiencia/jwt_sin_audiencia_bundle.zip",
+      "page_route": "jwt-sin-audiencia",
+      "page_label": "Guía interna: JWT sin audiencia"
+    },
+    {
+      "name": "Restablecimiento abierto",
+      "category": "Auth",
+      "value": 470,
+      "type": "standard",
+      "state": "visible",
+      "description": "El flujo de restablecimiento genera tokens previsibles y no revisa vigencia ni usuario vinculado con suficiente rigor. Debes cerrar ese diseño y dejar una validación mínima seria.\n\nMaterial de apoyo relacionado: [Guía interna: Restablecimiento abierto](/restablecimiento-abierto).",
+      "flag": "CUH{token_de_reset_endurecido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Observa cómo se genera el token y qué datos usa."
+        },
+        {
+          "cost": 35,
+          "content": "Si el token no está ligado al usuario y al tiempo, sigue siendo demasiado débil."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera secreto, expiración y comprobación explícita del usuario al que pertenece el token."
+        }
+      ],
+      "attachment": "CTF_CUH/10_restablecimiento_abierto/restablecimiento_abierto_bundle.zip",
+      "page_route": "restablecimiento-abierto",
+      "page_label": "Guía interna: Restablecimiento abierto"
+    },
+    {
+      "name": "Subida de archivos ansiosa",
+      "category": "Web",
+      "value": 440,
+      "type": "standard",
+      "state": "visible",
+      "description": "El backend acepta prácticamente cualquier archivo y decide el destino solo por la extensión visible. Debes endurecer tamaño, tipo permitido, nombre generado y directorio final.\n\nMaterial de apoyo relacionado: [Guía interna: Subida de archivos ansiosa](/subida-de-archivos-ansiosa).",
+      "flag": "CUH{subida_de_archivos_endurecida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "El problema no es solo la extensión; revisa qué hace el código con el nombre y el destino."
+        },
+        {
+          "cost": 35,
+          "content": "Una validación razonable necesita lista permitida, tamaño máximo y nombre controlado por el servidor."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera validación de MIME/extensión, nombre aleatorio y almacenamiento fuera de la ruta pública por defecto."
+        }
+      ],
+      "attachment": "CTF_CUH/11_subida_de_archivos_ansiosa/subida_de_archivos_ansiosa_bundle.zip",
+      "page_route": "subida-de-archivos-ansiosa",
+      "page_label": "Guía interna: Subida de archivos ansiosa"
+    },
+    {
+      "name": "Traversal en miniatura",
+      "category": "Web",
+      "value": 470,
+      "type": "standard",
+      "state": "visible",
+      "description": "El pequeño servidor de archivos resuelve rutas a partir del parámetro pedido sin comprobar si el destino sigue dentro del directorio autorizado. Debes normalizar y forzar el alcance.\n\nMaterial de apoyo relacionado: [Guía interna: Traversal en miniatura](/traversal-en-miniatura).",
+      "flag": "CUH{rutas_normalizadas_y_resueltas}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Observa cómo se compone el path final a partir del nombre recibido."
+        },
+        {
+          "cost": 35,
+          "content": "Un join no basta si luego no compruebas dónde termina apuntando el path resuelto."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada usa resolve y verifica que el destino permanezca dentro de la raíz permitida."
+        }
+      ],
+      "attachment": "CTF_CUH/12_traversal_en_miniatura/traversal_en_miniatura_bundle.zip",
+      "page_route": "traversal-en-miniatura",
+      "page_label": "Guía interna: Traversal en miniatura"
+    },
+    {
+      "name": "Portal defaceado en PHP",
+      "category": "Forense",
+      "value": 480,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un portal defaceado ya capturado, junto con un diff parcial y una nota de despliegue. Debes reconstruir qué archivo cambió, qué tecnología quedó expuesta y cuál es la versión segura a restaurar.\n\nMaterial de apoyo relacionado: [Guía interna: Portal defaceado en PHP](/portal-defaceado-en-php).",
+      "flag": "CUH{deface_reconstruido_y_contenido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Empieza por comparar el diff con la versión actualmente servida."
+        },
+        {
+          "cost": 35,
+          "content": "La nota de despliegue indica qué stack estaba detrás del portal."
+        },
+        {
+          "cost": 50,
+          "content": "No se pide explotar ni restaurar el sitio real: solo reconstruir el archivo, la tecnología y la acción correcta."
+        }
+      ],
+      "attachment": "CTF_CUH/13_portal_defaceado_en_php/portal_defaceado_en_php_bundle.zip",
+      "page_route": "portal-defaceado-en-php",
+      "page_label": "Guía interna: Portal defaceado en PHP"
+    },
+    {
+      "name": "Cabeceras que revelan de más",
+      "category": "Web",
+      "value": 420,
+      "type": "standard",
+      "state": "visible",
+      "description": "La configuración web entrega información innecesaria, deja una política CSP demasiado abierta y no controla caché para contenido sensible. Debes endurecer el bloque de cabeceras.\n\nMaterial de apoyo relacionado: [Guía interna: Cabeceras que revelan de más](/cabeceras-que-revelan-de-mas).",
+      "flag": "CUH{cabeceras_endurecidas}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Revisa más de una cabecera: el problema no es aislado."
+        },
+        {
+          "cost": 35,
+          "content": "Una CSP útil no puede quedarse en wildcard si quieres proteger la aplicación."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera eliminación de información expuesta y políticas explícitas para CSP, caché y framing."
+        }
+      ],
+      "attachment": "CTF_CUH/14_cabeceras_que_revelan_de_mas/cabeceras_que_revelan_de_mas_bundle.zip",
+      "page_route": "cabeceras-que-revelan-de-mas",
+      "page_label": "Guía interna: Cabeceras que revelan de más"
+    },
+    {
+      "name": "Prompt de soporte indiscreto",
+      "category": "IA defensiva",
+      "value": 500,
+      "type": "standard",
+      "state": "visible",
+      "description": "El asistente interno de soporte mezcla instrucciones del sistema, contexto sensible y mensajes del usuario sin defensas suficientes. Debes rediseñar el prompt y la capa de filtrado para que pase una batería defensiva.\n\nMaterial de apoyo relacionado: [Guía interna: Prompt de soporte indiscreto](/prompt-de-soporte-indiscreto).",
+      "flag": "CUH{prompt_de_soporte_endurecido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No basta con decir 'ignora el prompt del usuario'; la mitigación debe ser estructural."
+        },
+        {
+          "cost": 35,
+          "content": "Separa claramente instrucciones del sistema, contexto permitido y datos que nunca deben salir."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera reglas explícitas de denegación, reducción de contexto y rechazo a peticiones fuera de alcance."
+        }
+      ],
+      "attachment": "CTF_CUH/15_prompt_de_soporte_indiscreto/prompt_de_soporte_indiscreto_bundle.zip",
+      "page_route": "prompt-de-soporte-indiscreto",
+      "page_label": "Guía interna: Prompt de soporte indiscreto"
+    },
+    {
+      "name": "Recuperación de contexto",
+      "category": "IA defensiva",
+      "value": 520,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un lote de trazas de un asistente que terminó exponiendo contexto interno. Debes identificar la causa inmediata, el dato sensible filtrado y la mitigación de mayor impacto.\n\nMaterial de apoyo relacionado: [Guía interna: Recuperación de contexto](/recuperacion-de-contexto).",
+      "flag": "CUH{contexto_filtrado_y_mitigado}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Primero revisa el orden de ensamblado de mensajes en la traza."
+        },
+        {
+          "cost": 35,
+          "content": "No busques un exploit; busca la razón por la que el contexto terminó mezclado con la respuesta."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final debe nombrar causa, dato filtrado y mitigación concreta."
+        }
+      ],
+      "attachment": "CTF_CUH/16_recuperacion_de_contexto/recuperacion_de_contexto_bundle.zip",
+      "page_route": "recuperacion-de-contexto",
+      "page_label": "Guía interna: Recuperación de contexto"
+    },
+    {
+      "name": "Linux expuesto: sudoers heredado",
+      "category": "Linux",
+      "value": 500,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega una configuración de `sudoers` heredada que permite más de lo que debería a usuarios operativos. Debes reducir el alcance y dejar reglas mínimas y legibles.\n\nMaterial de apoyo relacionado: [Guía interna: Linux expuesto sudoers heredado](/linux-expuesto-sudoers-heredado).",
+      "flag": "CUH{sudoers_heredado_corregido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Revisa qué usuarios y qué comandos tienen permisos amplios."
+        },
+        {
+          "cost": 35,
+          "content": "Un ALL demasiado abierto casi nunca es necesario en una cuenta operativa."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera reglas concretas, `NOPASSWD` restringido y ausencia de privilegios globales innecesarios."
+        }
+      ],
+      "attachment": "CTF_CUH/17_linux_expuesto_sudoers_heredado/linux_expuesto_sudoers_heredado_bundle.zip",
+      "page_route": "linux-expuesto-sudoers-heredado",
+      "page_label": "Guía interna: Linux expuesto sudoers heredado"
+    },
+    {
+      "name": "Linux expuesto: servicio olvidado",
+      "category": "Linux",
+      "value": 520,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un inventario de servicio y un archivo `.service` demasiado permisivo. Debes dejarlo limitado, con usuario dedicado, binding local y sin capacidades innecesarias.\n\nMaterial de apoyo relacionado: [Guía interna: Linux expuesto servicio olvidado](/linux-expuesto-servicio-olvidado).",
+      "flag": "CUH{servicio_olvidado_documentado_y_limitado}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Revisa usuario de ejecución, interfaz de escucha y capacidades."
+        },
+        {
+          "cost": 35,
+          "content": "Si sigue ejecutando como root y escuchando en todas las interfaces, el problema principal continúa."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada define usuario dedicado, binding local y restricciones básicas del servicio."
+        }
+      ],
+      "attachment": "CTF_CUH/18_linux_expuesto_servicio_olvidado/linux_expuesto_servicio_olvidado_bundle.zip",
+      "page_route": "linux-expuesto-servicio-olvidado",
+      "page_label": "Guía interna: Linux expuesto servicio olvidado"
+    },
+    {
+      "name": "Windows expuesto: share legado",
+      "category": "Windows",
+      "value": 540,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entregan exportes de permisos, política local y una nota de operación de un share heredado. Debes identificar la exposición principal y proponer la corrección mínima con mayor impacto.\n\nMaterial de apoyo relacionado: [Guía interna: Windows expuesto share legado](/windows-expuesto-share-legado).",
+      "flag": "CUH{share_legado_reducido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Mira primero qué grupo conserva permisos amplios sobre el share."
+        },
+        {
+          "cost": 35,
+          "content": "El problema no es solo compartir la carpeta, sino quién puede modificarla y desde dónde."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta debe nombrar grupo expuesto, permiso dominante y acción correctiva principal."
+        }
+      ],
+      "attachment": "CTF_CUH/19_windows_expuesto_share_legado/windows_expuesto_share_legado_bundle.zip",
+      "page_route": "windows-expuesto-share-legado",
+      "page_label": "Guía interna: Windows expuesto share legado"
+    },
+    {
+      "name": "Windows expuesto: tareas persistentes",
+      "category": "Windows",
+      "value": 560,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entregan eventos exportados y la definición XML de una tarea programada persistente. Debes reconstruir qué ejecutaba, con qué cuenta corría y cuál es la primera acción de contención.\n\nMaterial de apoyo relacionado: [Guía interna: Windows expuesto tareas persistentes](/windows-expuesto-tareas-persistentes).",
+      "flag": "CUH{persistencia_en_tareas_reconstruida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "La definición XML de la tarea te da más contexto que el visor de eventos."
+        },
+        {
+          "cost": 35,
+          "content": "No te piden el vector inicial, sino la persistencia y la contención inmediata."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final debe nombrar binario, cuenta y acción de contención principal."
+        }
+      ],
+      "attachment": "CTF_CUH/20_windows_expuesto_tareas_persistentes/windows_expuesto_tareas_persistentes_bundle.zip",
+      "page_route": "windows-expuesto-tareas-persistentes",
+      "page_label": "Guía interna: Windows expuesto tareas persistentes"
+    },
+    {
+      "name": "Binario de despacho",
+      "category": "Reversing",
+      "value": 580,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un binario de escritorio usado en el laboratorio para validar un código interno. Debes analizarlo y recuperar la clave correcta que el binario espera.\n\nMaterial de apoyo relacionado: [Guía interna: Binario de despacho](/binario-de-despacho).",
+      "flag": "CUH{clave_de_despacho_recuperada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Empieza por strings y por el flujo principal de validación."
+        },
+        {
+          "cost": 35,
+          "content": "No necesitas parchear el binario; solo entender qué formato espera."
+        },
+        {
+          "cost": 50,
+          "content": "La clave final se puede reconstruir observando comparaciones simples y el formato completo."
+        }
+      ],
+      "attachment": "CTF_CUH/21_binario_de_despacho/binario_de_despacho_bundle.zip",
+      "page_route": "binario-de-despacho",
+      "page_label": "Guía interna: Binario de despacho"
+    },
+    {
+      "name": "Licencia bajo revisión",
+      "category": "Reversing",
+      "value": 620,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega un binario un poco más complejo que valida una licencia por segmentos. Debes entender la lógica y reconstruir la licencia correcta sin alterar el ejecutable.\n\nMaterial de apoyo relacionado: [Guía interna: Licencia bajo revisión](/licencia-bajo-revision).",
+      "flag": "CUH{licencia_reconstruida_sin_parche}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Empieza por identificar cómo se divide la licencia en bloques."
+        },
+        {
+          "cost": 35,
+          "content": "No todas las comprobaciones son directas: algunas relaciones se apoyan entre segmentos."
+        },
+        {
+          "cost": 50,
+          "content": "La licencia final se puede reconstruir sin fuerza bruta si sigues el orden de validación del binario."
+        }
+      ],
+      "attachment": "CTF_CUH/22_licencia_bajo_revision/licencia_bajo_revision_bundle.zip",
+      "page_route": "licencia-bajo-revision",
+      "page_label": "Guía interna: Licencia bajo revisión"
+    },
+    {
+      "name": "Perfil disperso",
+      "category": "OSINT",
+      "value": 360,
+      "type": "standard",
+      "state": "visible",
+      "description": "Recibes varias capturas y textos breves de un perfil académico repartido entre distintas plataformas del evento. Debes correlacionarlos para identificar alias, correo institucional y la pista que conecta todo el conjunto.\n\nMaterial de apoyo relacionado: [Guía interna: Perfil disperso](/perfil-disperso).",
+      "flag": "CUH{perfil_disperso_correlacionado}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Empieza por lo repetido: alias, dominio de correo o misma frase en más de un artefacto."
+        },
+        {
+          "cost": 35,
+          "content": "No busques una sola fuente perfecta; el reto está en unir detalles parciales."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide alias, correo y palabra de enlace, no una biografía completa."
+        }
+      ],
+      "attachment": "CTF_CUH/23_perfil_disperso/perfil_disperso_bundle.zip",
+      "page_route": "perfil-disperso",
+      "page_label": "Guía interna: Perfil disperso"
+    },
+    {
+      "name": "Agenda filtrada",
+      "category": "OSINT",
+      "value": 390,
+      "type": "standard",
+      "state": "visible",
+      "description": "El material incluye una agenda parcial, una nota de sala y un extracto de convocatoria. Debes reconstruir qué taller coincide con las tres piezas, en qué sala ocurrirá y a qué hora arranca.\n\nMaterial de apoyo relacionado: [Guía interna: Agenda filtrada](/agenda-filtrada).",
+      "flag": "CUH{agenda_filtrada_reconstruida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "La sala no aparece igual en todos los documentos; busca abreviaturas y equivalencias."
+        },
+        {
+          "cost": 35,
+          "content": "El taller correcto es el único que cuadra a la vez con tema, franja y nota de sala."
+        },
+        {
+          "cost": 50,
+          "content": "No entregues todo el horario: solo taller, sala y hora de inicio."
+        }
+      ],
+      "attachment": "CTF_CUH/24_agenda_filtrada/agenda_filtrada_bundle.zip",
+      "page_route": "agenda-filtrada",
+      "page_label": "Guía interna: Agenda filtrada"
+    },
+    {
+      "name": "Foto del laboratorio",
+      "category": "OSINT",
+      "value": 420,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega una imagen del laboratorio, una exportación de metadatos y una nota de inventario. Debes determinar qué equipo aparece identificado, en qué ala fue tomada la foto y qué detalle visual confirma la ubicación.\n\nMaterial de apoyo relacionado: [Guía interna: Foto del laboratorio](/foto-del-laboratorio).",
+      "flag": "CUH{foto_del_laboratorio_interpretada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No te quedes solo con la foto: los metadatos reducen mucho el espacio de búsqueda."
+        },
+        {
+          "cost": 35,
+          "content": "La nota de inventario usa la misma nomenclatura que aparece en la imagen."
+        },
+        {
+          "cost": 50,
+          "content": "La tercera respuesta debe ser un detalle visible, no una interpretación general."
+        }
+      ],
+      "attachment": "CTF_CUH/25_foto_del_laboratorio/foto_del_laboratorio_bundle.zip",
+      "page_route": "foto-del-laboratorio",
+      "page_label": "Guía interna: Foto del laboratorio"
+    },
+    {
+      "name": "Proveedor fantasma",
+      "category": "OSINT",
+      "value": 450,
+      "type": "standard",
+      "state": "visible",
+      "description": "Se entrega una factura simulada, un extracto de registro de dominio y una nota de compras. Debes identificar el proveedor real detrás de un nombre comercial ambiguo, el dominio asociado y la inconsistencia que levantó la alerta.\n\nMaterial de apoyo relacionado: [Guía interna: Proveedor fantasma](/proveedor-fantasma).",
+      "flag": "CUH{proveedor_fantasma_correlacionado}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "El nombre comercial y la razón social no coinciden exactamente."
+        },
+        {
+          "cost": 35,
+          "content": "La inconsistencia importante no está en el monto, sino en la presencia digital del proveedor."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide entidad, dominio y alerta principal."
+        }
+      ],
+      "attachment": "CTF_CUH/26_proveedor_fantasma/proveedor_fantasma_bundle.zip",
+      "page_route": "proveedor-fantasma",
+      "page_label": "Guía interna: Proveedor fantasma"
+    },
+    {
+      "name": "Huella de publicación",
+      "category": "OSINT",
+      "value": 480,
+      "type": "standard",
+      "state": "visible",
+      "description": "Recibes un recorte de changelog, un espejo de caché y una nota editorial. Debes reconstruir qué contenido se publicó, en qué versión apareció por primera vez y cuál fue la ruta exacta afectada.\n\nMaterial de apoyo relacionado: [Guía interna: Huella de publicación](/huella-de-publicacion).",
+      "flag": "CUH{huella_de_publicacion_reconstruida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "La nota editorial no da la respuesta, pero sí te dice qué buscar en el changelog."
+        },
+        {
+          "cost": 35,
+          "content": "La primera aparición no es la versión más nueva, sino la primera que menciona el bloque exacto."
+        },
+        {
+          "cost": 50,
+          "content": "La ruta final debe salir del espejo de caché, no de una suposición editorial."
+        }
+      ],
+      "attachment": "CTF_CUH/27_huella_de_publicacion/huella_de_publicacion_bundle.zip",
+      "page_route": "huella-de-publicacion",
+      "page_label": "Guía interna: Huella de publicación"
+    },
+    {
+      "name": "XOR de respaldo",
+      "category": "Criptografía",
+      "value": 380,
+      "type": "standard",
+      "state": "visible",
+      "description": "Recibes dos salidas cifradas del sistema de respaldo y una nota operativa sobre el encabezado común de los mensajes. Debes identificar el problema criptográfico, recuperar la frase relevante y explicar qué lo delata.\n\nMaterial de apoyo relacionado: [Guía interna: XOR de respaldo](/xor-de-respaldo).",
+      "flag": "CUH{xor_reutilizado_identificado}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Si dos mensajes comparten estructura y material de cifrado, la fuga no depende de romper un algoritmo fuerte."
+        },
+        {
+          "cost": 35,
+          "content": "La pista útil está en el encabezado repetido de los respaldos."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide problema, frase recuperada e indicador técnico, no todo el texto completo."
+        }
+      ],
+      "attachment": "CTF_CUH/28_xor_de_respaldo/xor_de_respaldo_bundle.zip",
+      "page_route": "xor-de-respaldo",
+      "page_label": "Guía interna: XOR de respaldo"
+    },
+    {
+      "name": "Firma reciclada",
+      "category": "Criptografía",
+      "value": 420,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un servicio de firma dejó trazas suficientes para ver que dos firmas distintas comparten el mismo componente crítico. Debes identificar la causa, la clave afectada y la mitigación inmediata.\n\nMaterial de apoyo relacionado: [Guía interna: Firma reciclada](/firma-reciclada).",
+      "flag": "CUH{firma_con_nonce_repetido_detectada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Mira si algún valor aparentemente aleatorio se repite donde no debería."
+        },
+        {
+          "cost": 35,
+          "content": "El problema no es que la firma falle, sino que se repite un componente demasiado sensible."
+        },
+        {
+          "cost": 50,
+          "content": "La salida final debe nombrar causa, clave afectada y mitigación, no un exploit."
+        }
+      ],
+      "attachment": "CTF_CUH/29_firma_reciclada/firma_reciclada_bundle.zip",
+      "page_route": "firma-reciclada",
+      "page_label": "Guía interna: Firma reciclada"
+    },
+    {
+      "name": "RSA sin OAEP",
+      "category": "Criptografía",
+      "value": 460,
+      "type": "standard",
+      "state": "visible",
+      "description": "El módulo de descifrado del portal sigue usando un padding heredado que ya no debería quedarse en producción. Debes migrarlo a OAEP con parámetros explícitos y coherentes.\n\nMaterial de apoyo relacionado: [Guía interna: RSA sin OAEP](/rsa-sin-oaep).",
+      "flag": "CUH{rsa_con_oaep_y_sha256}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "El archivo ya importa la librería correcta; el problema está en la política de padding."
+        },
+        {
+          "cost": 35,
+          "content": "La corrección no es solo cambiar un nombre: también importa la función hash usada en OAEP."
+        },
+        {
+          "cost": 50,
+          "content": "La validación espera OAEP con MGF1 y SHA-256 en ambos componentes."
+        }
+      ],
+      "attachment": "CTF_CUH/30_rsa_sin_oaep/rsa_sin_oaep_bundle.zip",
+      "page_route": "rsa-sin-oaep",
+      "page_label": "Guía interna: RSA sin OAEP"
+    },
+    {
+      "name": "Derivación lenta",
+      "category": "Criptografía",
+      "value": 500,
+      "type": "standard",
+      "state": "visible",
+      "description": "La derivación de credenciales del sistema batch sigue usando un hash rápido y una sal fija. Debes reemplazarla por una KDF más adecuada con sal aleatoria e iteraciones explícitas.\n\nMaterial de apoyo relacionado: [Guía interna: Derivación lenta](/derivacion-lenta).",
+      "flag": "CUH{kdf_endurecida_con_pbkdf2}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Busca la función que genera la derivación, no la que compara resultados."
+        },
+        {
+          "cost": 35,
+          "content": "Si la sal sigue siendo constante, el problema central permanece."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada usa PBKDF2-HMAC-SHA256, sal aleatoria e iteraciones altas y legibles."
+        }
+      ],
+      "attachment": "CTF_CUH/31_derivacion_lenta/derivacion_lenta_bundle.zip",
+      "page_route": "derivacion-lenta",
+      "page_label": "Guía interna: Derivación lenta"
+    },
+    {
+      "name": "Bloques repetidos",
+      "category": "Criptografía",
+      "value": 540,
+      "type": "standard",
+      "state": "visible",
+      "description": "Recibes una captura hexadecimal de un archivo cifrado y una nota del equipo visual sobre patrones que sobreviven al proceso. Debes identificar el modo implicado, el hallazgo observable y la mitigación prioritaria.\n\nMaterial de apoyo relacionado: [Guía interna: Bloques repetidos](/bloques-repetidos).",
+      "flag": "CUH{bloques_repetidos_interpretados}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Cuenta bloques repetidos antes de pensar en la clave."
+        },
+        {
+          "cost": 35,
+          "content": "Cuando el patrón visual sobrevive en muchos bloques iguales, el problema suele estar en el modo de operación."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide modo, hallazgo y mitigación, no un descifrado del archivo."
+        }
+      ],
+      "attachment": "CTF_CUH/32_bloques_repetidos/bloques_repetidos_bundle.zip",
+      "page_route": "bloques-repetidos",
+      "page_label": "Guía interna: Bloques repetidos"
+    },
+    {
+      "name": "CBC sin integridad",
+      "category": "Criptografía",
+      "value": 580,
+      "type": "standard",
+      "state": "visible",
+      "description": "Recibes una captura de un mensaje cifrado en bloques, una nota del equipo de integración y una observación del área de monitoreo. Debes identificar el modo, explicar el riesgo principal y proponer la mitigación adecuada.\n\nMaterial de apoyo relacionado: [Guía interna: CBC sin integridad](/cbc-sin-integridad).",
+      "flag": "CUH{cbc_sin_integridad_identificada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "El problema no está en el IV aleatorio, sino en lo que falta alrededor del cifrado."
+        },
+        {
+          "cost": 35,
+          "content": "Si un atacante puede alterar el ciphertext y el sistema no detecta el cambio, falta una propiedad importante."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide modo, riesgo y mitigación, no un descifrado del mensaje."
+        }
+      ],
+      "attachment": "CTF_CUH/33_cbc_sin_integridad/cbc_sin_integridad_bundle.zip",
+      "page_route": "cbc-sin-integridad",
+      "page_label": "Guía interna: CBC sin integridad"
+    },
+    {
+      "name": "IV reciclado en reportes",
+      "category": "Criptografía",
+      "value": 600,
+      "type": "standard",
+      "state": "visible",
+      "description": "Dos reportes cifrados del mismo lote comparten demasiada estructura y una nota del equipo revela cómo se están generando sus parámetros. Debes identificar el problema, describir el hallazgo observable y proponer una mitigación operativa correcta.\n\nMaterial de apoyo relacionado: [Guía interna: IV reciclado en reportes](/iv-reciclado-en-reportes).",
+      "flag": "CUH{iv_reciclado_detectado_en_reportes}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Compara los primeros bloques antes de mirar el resto del material."
+        },
+        {
+          "cost": 35,
+          "content": "Si dos mensajes con el mismo prefijo producen el mismo primer bloque, revisa cómo se está manejando el IV."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide problema, hallazgo y mitigación, no solo el nombre del algoritmo."
+        }
+      ],
+      "attachment": "CTF_CUH/34_iv_reciclado_en_reportes/iv_reciclado_en_reportes_bundle.zip",
+      "page_route": "iv-reciclado-en-reportes",
+      "page_label": "Guía interna: IV reciclado en reportes"
+    },
+    {
+      "name": "HMAC truncado en gateway",
+      "category": "Criptografía",
+      "value": 620,
+      "type": "standard",
+      "state": "visible",
+      "description": "El gateway firma mensajes con HMAC, pero el verificador compara solo una parte de la firma y lo hace de forma insegura. Debes endurecer la verificación sin romper el formato del servicio.\n\nMaterial de apoyo relacionado: [Guía interna: HMAC truncado en gateway](/hmac-truncado-en-gateway).",
+      "flag": "CUH{gateway_hmac_verificado_completo}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "La clave no está rota; el problema está en cómo se compara la firma recibida."
+        },
+        {
+          "cost": 35,
+          "content": "Si el código acepta solo un prefijo de la firma, la validación sigue siendo débil."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada usa comparación completa y constante sobre una firma hexadecimal de longitud fija."
+        }
+      ],
+      "attachment": "CTF_CUH/35_hmac_truncado_en_gateway/hmac_truncado_en_gateway_bundle.zip",
+      "page_route": "hmac-truncado-en-gateway",
+      "page_label": "Guía interna: HMAC truncado en gateway"
+    },
+    {
+      "name": "Semilla predecible",
+      "category": "Criptografía",
+      "value": 640,
+      "type": "standard",
+      "state": "visible",
+      "description": "El módulo de generación de llaves internas sigue usando un PRNG generalista inicializado con una semilla derivada del tiempo. Debes reemplazar ese patrón por una fuente de entropía adecuada y mantener una salida simple para el sistema.\n\nMaterial de apoyo relacionado: [Guía interna: Semilla predecible](/semilla-predecible).",
+      "flag": "CUH{entropia_fuerte_para_llaves}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Busca cómo se inicializa el generador antes de producir la llave."
+        },
+        {
+          "cost": 35,
+          "content": "Si la misma ventana de tiempo puede repetir la salida, la fuente de entropía no es aceptable."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada usa el módulo `secrets` y elimina la semilla derivada de la hora."
+        }
+      ],
+      "attachment": "CTF_CUH/36_semilla_predecible/semilla_predecible_bundle.zip",
+      "page_route": "semilla-predecible",
+      "page_label": "Guía interna: Semilla predecible"
+    },
+    {
+      "name": "Certificados a ciegas",
+      "category": "Criptografía",
+      "value": 660,
+      "type": "standard",
+      "state": "visible",
+      "description": "El cliente interno de sincronización TLS sigue aceptando certificados sin verificar la cadena ni el nombre del host. Debes endurecer el contexto SSL para que confíe solo en la CA correcta y exija validación completa.\n\nMaterial de apoyo relacionado: [Guía interna: Certificados a ciegas](/certificados-a-ciegas).",
+      "flag": "CUH{tls_validado_con_ca_y_hostname}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "El problema está en el contexto SSL, no en la petición HTTP."
+        },
+        {
+          "cost": 35,
+          "content": "Si el cliente sigue usando un contexto no verificado o `CERT_NONE`, la corrección es insuficiente."
+        },
+        {
+          "cost": 50,
+          "content": "La solución esperada crea un contexto verificado con la CA entregada y hostname checking activo."
+        }
+      ],
+      "attachment": "CTF_CUH/37_certificados_a_ciegas/certificados_a_ciegas_bundle.zip",
+      "page_route": "certificados-a-ciegas",
+      "page_label": "Guía interna: Certificados a ciegas"
+    },
+    {
+      "name": "Cronología cruzada",
+      "category": "OSINT",
+      "value": 520,
+      "type": "standard",
+      "state": "visible",
+      "description": "Recibes capturas de publicaciones, notas de agenda y un extracto de comentarios públicos. Debes reconstruir la secuencia correcta del incidente, identificar el evento pivote y extraer la pista final a partir de esa cronología.\n\nMaterial de apoyo relacionado: [Guía interna: Cronología cruzada](/cronologia-cruzada).",
+      "flag": "CUH{cronologia_cruzada_reconstruida}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No resuelvas fuente por fuente. Ordena primero por tiempo y luego por relación entre eventos."
+        },
+        {
+          "cost": 35,
+          "content": "Hay una publicación que parece secundaria pero cambia el significado de las otras dos."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide fecha pivote, actor relacionado y artefacto asociado; necesitas una cronología consistente, no solo intuiciones."
+        }
+      ],
+      "attachment": "CTF_CUH/38_cronologia_cruzada/cronologia_cruzada_bundle.zip",
+      "page_route": "cronologia-cruzada",
+      "page_label": "Guía interna: Cronología cruzada"
+    },
+    {
+      "name": "Repositorio fantasma",
+      "category": "OSINT",
+      "value": 560,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un proyecto fue retirado del perfil principal, pero dejó rastros en capturas, issues exportados y referencias cruzadas. Debes atribuir correctamente el repositorio, identificar la organización vinculada y el tag de versión que todavía lo delata.\n\nMaterial de apoyo relacionado: [Guía interna: Repositorio fantasma](/repositorio-fantasma).",
+      "flag": "CUH{repositorio_fantasma_atribuido}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Aunque el repositorio ya no esté visible, su nombre sigue apareciendo de forma indirecta en varias piezas."
+        },
+        {
+          "cost": 35,
+          "content": "Cruza issue, captura y changelog exportado; ninguna evidencia por sí sola te da la atribución completa."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide repo, organización y tag exacto. Si te falta uno, todavía no cerraste la correlación."
+        }
+      ],
+      "attachment": "CTF_CUH/39_repositorio_fantasma/repositorio_fantasma_bundle.zip",
+      "page_route": "repositorio-fantasma",
+      "page_label": "Guía interna: Repositorio fantasma"
+    },
+    {
+      "name": "Credencial en ponencia",
+      "category": "OSINT",
+      "value": 600,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un gafete visible en una grabación de ponencia, una lista parcial de asistentes y una foto de backstage contienen la información suficiente para reconstruir la identidad correcta del participante y el código del track en que apareció.\n\nMaterial de apoyo relacionado: [Guía interna: Credencial en ponencia](/credencial-en-ponencia).",
+      "flag": "CUH{credencial_en_ponencia_correlacionada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No intentes leer el gafete completo desde una sola evidencia; combina fragmentos entre fuentes."
+        },
+        {
+          "cost": 35,
+          "content": "La lista de asistentes reduce el espacio de candidatos, pero la clave está en validar iniciales y track."
+        },
+        {
+          "cost": 50,
+          "content": "Necesitas nombre completo, alias de la acreditación y código del track. El bundle está pensado para que ninguno salga de una sola pieza."
+        }
+      ],
+      "attachment": "CTF_CUH/40_credencial_en_ponencia/credencial_en_ponencia_bundle.zip",
+      "page_route": "credencial-en-ponencia",
+      "page_label": "Guía interna: Credencial en ponencia"
+    },
+    {
+      "name": "Red de proveedores",
+      "category": "OSINT",
+      "value": 640,
+      "type": "standard",
+      "state": "visible",
+      "description": "Varios documentos públicos, una invitación a licitación y una firma en un PDF apuntan a una red de proveedores conectados. Debes identificar la empresa pivote, el dominio compartido y el documento que enlaza el conjunto.\n\nMaterial de apoyo relacionado: [Guía interna: Red de proveedores](/red-de-proveedores).",
+      "flag": "CUH{red_de_proveedores_mapeada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No todos los proveedores importan igual; busca cuál de ellos conecta con más de una fuente."
+        },
+        {
+          "cost": 35,
+          "content": "El dominio compartido es más útil que el nombre comercial abreviado en los PDFs."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide empresa pivote, dominio y documento conector. Prioriza la pieza que une a dos o más entidades."
+        }
+      ],
+      "attachment": "CTF_CUH/41_red_de_proveedores/red_de_proveedores_bundle.zip",
+      "page_route": "red-de-proveedores",
+      "page_label": "Guía interna: Red de proveedores"
+    },
+    {
+      "name": "Trazas de convocatoria",
+      "category": "OSINT",
+      "value": 680,
+      "type": "standard",
+      "state": "visible",
+      "description": "Una convocatoria aparentemente limpia fue republicada varias veces y dejó una huella dispersa entre PDFs, propiedades de documento y versiones archivadas. Debes atribuir la versión maestra, el editor responsable y la clave interna usada para nombrar el lote.\n\nMaterial de apoyo relacionado: [Guía interna: Trazas de convocatoria](/trazas-de-convocatoria).",
+      "flag": "CUH{convocatoria_atribuida_y_validada}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Las versiones no solo cambian en el texto visible; también cambian en propiedades y nombres internos."
+        },
+        {
+          "cost": 35,
+          "content": "Cruza PDF, versión archivada y nota de distribución. La atribución correcta sale de esa intersección."
+        },
+        {
+          "cost": 50,
+          "content": "Necesitas documento maestro, editor y clave de lote. Si uno depende solo de una fuente débil, vuelve a correlacionar."
+        }
+      ],
+      "attachment": "CTF_CUH/42_trazas_de_convocatoria/trazas_de_convocatoria_bundle.zip",
+      "page_route": "trazas-de-convocatoria",
+      "page_label": "Guía interna: Trazas de convocatoria"
+    },
+    {
+      "name": "Traza en PCAP",
+      "category": "Forense",
+      "value": 560,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un recorte de tráfico de laboratorio y una nota del SOC esconden una pista operativa entre consultas y respuestas aparentemente rutinarias. Debes identificar el host que importa, el recurso solicitado y la herramienta de Kali más útil para reconstruirlo rápido.\n\nMaterial de apoyo relacionado: [Guía interna: Traza en PCAP](/traza-en-pcap).",
+      "flag": "CUH{tshark_reconstruye_la_pista}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No revises el tráfico como texto plano primero. Este reto recompensa filtrar por host y recurso."
+        },
+        {
+          "cost": 35,
+          "content": "La pista no está en todas las peticiones, sino en una descarga concreta que rompe el patrón del resto."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide herramienta, host y recurso. Piensa en el flujo de análisis típico de un PCAP en Kali."
+        }
+      ],
+      "attachment": "CTF_CUH/43_traza_en_pcap/traza_en_pcap_bundle.zip",
+      "page_route": "traza-en-pcap",
+      "page_label": "Guía interna: Traza en PCAP"
+    },
+    {
+      "name": "Firmware en capas",
+      "category": "Forense",
+      "value": 600,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un firmware sintético del laboratorio deja restos de una configuración anterior y una nota de extracción parcial. Debes identificar la herramienta de Kali que conviene usar, el artefacto embebido relevante y el hallazgo operativo que justifica revisarlo.\n\nMaterial de apoyo relacionado: [Guía interna: Firmware en capas](/firmware-en-capas).",
+      "flag": "CUH{binwalk_descubre_el_resto_olvidado}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Este reto no se resuelve leyendo el archivo como texto normal. Piensa en análisis por capas."
+        },
+        {
+          "cost": 35,
+          "content": "La salida útil no es el firmware en sí, sino un artefacto interno detectado en la extracción."
+        },
+        {
+          "cost": 50,
+          "content": "Necesitas herramienta, artefacto y hallazgo. La pista fuerte del bundle apunta a cómo se descubren componentes embebidos."
+        }
+      ],
+      "attachment": "CTF_CUH/44_firmware_en_capas/firmware_en_capas_bundle.zip",
+      "page_route": "firmware-en-capas",
+      "page_label": "Guía interna: Firmware en capas"
+    },
+    {
+      "name": "Metadatos en cascada",
+      "category": "OSINT",
+      "value": 620,
+      "type": "standard",
+      "state": "visible",
+      "description": "Una serie de imágenes del laboratorio fue exportada varias veces y dejó una cadena de metadatos más útil de lo que parece. Debes identificar la herramienta de Kali adecuada, el editor responsable y la pista de ubicación que se repite entre archivos.\n\nMaterial de apoyo relacionado: [Guía interna: Metadatos en cascada](/metadatos-en-cascada).",
+      "flag": "CUH{exiftool_enlaza_la_historia}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Este reto no va de observar solo la imagen, sino lo que el archivo cuenta sobre sí mismo."
+        },
+        {
+          "cost": 35,
+          "content": "Busca campos que sobreviven entre exportaciones: autor, software, comentarios o ubicación interna."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide herramienta, editor y pista de ubicación. La correlación sale de varios metadatos, no de uno solo."
+        }
+      ],
+      "attachment": "CTF_CUH/45_metadatos_en_cascada/metadatos_en_cascada_bundle.zip",
+      "page_route": "metadatos-en-cascada",
+      "page_label": "Guía interna: Metadatos en cascada"
+    },
+    {
+      "name": "Carving de evidencias",
+      "category": "Forense",
+      "value": 640,
+      "type": "standard",
+      "state": "visible",
+      "description": "Una imagen de evidencia mezcló varios archivos y el equipo dejó una nota con los tipos recuperables más probables. Debes identificar qué herramienta de Kali usarías, qué archivo recuperado importa y qué detalle del contenido lo vuelve relevante para el caso.\n\nMaterial de apoyo relacionado: [Guía interna: Carving de evidencias](/carving-de-evidencias).",
+      "flag": "CUH{foremost_recupera_la_pieza_util}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No pienses en un visor general; piensa en carving por tipos de archivo."
+        },
+        {
+          "cost": 35,
+          "content": "El artefacto útil no es el archivo más grande, sino el que contiene la pista de operación del laboratorio."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide herramienta, archivo y detalle clave. El bundle ya sugiere que no todo lo recuperado vale igual."
+        }
+      ],
+      "attachment": "CTF_CUH/46_carving_de_evidencias/carving_de_evidencias_bundle.zip",
+      "page_route": "carving-de-evidencias",
+      "page_label": "Guía interna: Carving de evidencias"
+    },
+    {
+      "name": "Diccionario de laboratorio",
+      "category": "Cracking",
+      "value": 680,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un pequeño lote de hashes y una política de nomenclatura interna sugieren que el contexto del laboratorio vale más que un diccionario genérico gigantesco. Debes identificar la herramienta de Kali adecuada, la cuenta más prometedora y el diccionario temático que mejor encaja con el caso.\n\nMaterial de apoyo relacionado: [Guía interna: Diccionario de laboratorio](/diccionario-de-laboratorio).",
+      "flag": "CUH{john_prioriza_el_contexto}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "La fuerza aquí no está en un ataque enorme, sino en elegir bien el material de apoyo."
+        },
+        {
+          "cost": 35,
+          "content": "Lee primero la política de nombres internos; ahí está la pista para priorizar cuenta y diccionario."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide herramienta, cuenta y diccionario. No te centres en romper todos los hashes, sino en justificar el mejor punto de partida."
+        }
+      ],
+      "attachment": "CTF_CUH/47_diccionario_de_laboratorio/diccionario_de_laboratorio_bundle.zip",
+      "page_route": "diccionario-de-laboratorio",
+      "page_label": "Guía interna: Diccionario de laboratorio"
+    },
+    {
+      "name": "Portal sin redirección segura",
+      "category": "Web",
+      "value": 520,
+      "type": "standard",
+      "state": "visible",
+      "description": "El portal del laboratorio ya tiene certificado interno disponible, pero la configuración de borde sigue atendiendo el sitio principal en HTTP y no obliga a redirigir al canal cifrado. Debes corregir la configuración para que todo acceso al puerto 80 termine inmediatamente en HTTPS y el listener seguro quede preparado para servir la aplicación.\n\nMaterial de apoyo relacionado: [Guía interna: Portal sin redirección segura](/portal-sin-redireccion-segura).",
+      "flag": "CUH{https_obligatorio_desde_el_borde}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "El problema no está en la app Python, sino en la configuración del reverse proxy."
+        },
+        {
+          "cost": 35,
+          "content": "La corrección debe cubrir dos cosas: redirección desde 80 y un bloque HTTPS explícito del lado seguro."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera `return 301 https://$host$request_uri;`, `listen 443 ssl;` y referencias al certificado configurado."
+        }
+      ],
+      "attachment": "CTF_CUH/48_portal_sin_redireccion_segura/portal_sin_redireccion_segura_bundle.zip",
+      "page_route": "portal-sin-redireccion-segura",
+      "page_label": "Guía interna: Portal sin redirección segura"
+    },
+    {
+      "name": "HSTS pendiente",
+      "category": "Web",
+      "value": 540,
+      "type": "standard",
+      "state": "visible",
+      "description": "El sitio ya responde por HTTPS, pero todavía no comunica al navegador una política estricta de transporte. Eso deja margen para que clientes nuevos vuelvan a tocar HTTP antes de quedar fijados al canal seguro. Debes completar la configuración del virtual host para anunciar HSTS de forma clara y mantenible.\n\nMaterial de apoyo relacionado: [Guía interna: HSTS pendiente](/hsts-pendiente).",
+      "flag": "CUH{hsts_define_la_politica_de_transporte}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Aquí no falta el certificado; falta la política que le dice al navegador que no vuelva a bajar a HTTP."
+        },
+        {
+          "cost": 35,
+          "content": "La respuesta fuerte no es un comentario ni un redirect adicional, sino una cabecera `Strict-Transport-Security` bien construida."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera `max-age`, `includeSubDomains` y el modificador `always` dentro del bloque HTTPS."
+        }
+      ],
+      "attachment": "CTF_CUH/49_hsts_pendiente/hsts_pendiente_bundle.zip",
+      "page_route": "hsts-pendiente",
+      "page_label": "Guía interna: HSTS pendiente"
+    },
+    {
+      "name": "Cookie de sesión sin Secure",
+      "category": "Auth",
+      "value": 560,
+      "type": "standard",
+      "state": "visible",
+      "description": "La plataforma ya se sirve por HTTPS, pero la configuración de sesión sigue permitiendo que la cookie viaje sin la marca correcta de transporte. Debes endurecer la configuración del framework para que la sesión solo se entregue por HTTPS y además mantenga atributos básicos de protección para navegación real.\n\nMaterial de apoyo relacionado: [Guía interna: Cookie de sesión sin Secure](/cookie-de-sesion-sin-secure).",
+      "flag": "CUH{cookies_de_sesion_solo_por_https}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Aquí no se parchea el HTML ni el reverse proxy. El problema vive en la configuración de sesión de la aplicación."
+        },
+        {
+          "cost": 35,
+          "content": "Si la cookie sigue saliendo sin `Secure`, el cambio todavía no protege el tránsito; aprovecha también para revisar `HttpOnly` y `SameSite`."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera `SESSION_COOKIE_SECURE = True`, `SESSION_COOKIE_HTTPONLY = True` y `SESSION_COOKIE_SAMESITE = \"Lax\"`."
+        }
+      ],
+      "attachment": "CTF_CUH/50_cookie_de_sesion_sin_secure/cookie_de_sesion_sin_secure_bundle.zip",
+      "page_route": "cookie-de-sesion-sin-secure",
+      "page_label": "Guía interna: Cookie de sesión sin Secure"
+    },
+    {
+      "name": "Contenido mixto heredado",
+      "category": "Web",
+      "value": 580,
+      "type": "standard",
+      "state": "visible",
+      "description": "La portada principal ya entra por HTTPS, pero aún arrastra referencias duras a scripts, imágenes y llamadas API sobre HTTP plano. Debes limpiar ese contenido mixto para que el navegador no tenga que decidir entre bloquear recursos o degradar la confianza del sitio.\n\nMaterial de apoyo relacionado: [Guía interna: Contenido mixto heredado](/contenido-mixto-heredado).",
+      "flag": "CUH{todos_los_recursos_van_por_https}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "Revisa tanto la plantilla HTML como el JavaScript cliente; el problema no vive solo en una etiqueta `<script>`."
+        },
+        {
+          "cost": 35,
+          "content": "Si queda una sola referencia `http://` al dominio del laboratorio, la corrección sigue incompleta."
+        },
+        {
+          "cost": 50,
+          "content": "El validador espera que `dashboard.html` y `app.js` usen URLs `https://` y que desaparezcan las referencias heredadas en texto plano."
+        }
+      ],
+      "attachment": "CTF_CUH/51_contenido_mixto_heredado/contenido_mixto_heredado_bundle.zip",
+      "page_route": "contenido-mixto-heredado",
+      "page_label": "Guía interna: Contenido mixto heredado"
+    },
+    {
+      "name": "Credenciales expuestas en tránsito",
+      "category": "Forense",
+      "value": 600,
+      "type": "standard",
+      "state": "visible",
+      "description": "Un extracto de captura, un log del proxy y una nota del SOC muestran un inicio de sesión enviado por HTTP antes de que el equipo cerrara el canal seguro. Debes reconstruir qué portal estuvo implicado, qué ruta recibió las credenciales y cuál fue el impacto principal de haber dejado ese flujo sin HTTPS.\n\nMaterial de apoyo relacionado: [Guía interna: Credenciales expuestas en tránsito](/credenciales-expuestas-en-transito).",
+      "flag": "CUH{credenciales_expuestas_por_http_reconstruidas}",
+      "hints": [
+        {
+          "cost": 20,
+          "content": "No busques un payload extraño. Aquí la pista fuerte es que la autenticación viajó por un canal que no debería usarse ya."
+        },
+        {
+          "cost": 35,
+          "content": "Cruza host, método y ruta entre la traza y el proxy hasta detectar el login que todavía salía por HTTP."
+        },
+        {
+          "cost": 50,
+          "content": "La respuesta final pide portal, ruta e impacto. El impacto se describe como exposición de credenciales en texto plano durante el tránsito."
+        }
+      ],
+      "attachment": "CTF_CUH/52_credenciales_expuestas_en_transito/credenciales_expuestas_en_transito_bundle.zip",
+      "page_route": "credenciales-expuestas-en-transito",
+      "page_label": "Guía interna: Credenciales expuestas en tránsito"
+    }
+  ]
+}

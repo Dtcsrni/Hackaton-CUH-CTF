@@ -1,0 +1,1 @@
+Todos los respaldos del lote empiezan con el mismo encabezado: CUH-BKP:. La frase sensible cambió a rotar_claves_abril.

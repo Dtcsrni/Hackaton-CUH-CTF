@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{reportes_filtrados_con_parametros}",
+  "checks": [
+    {
+      "path": "app/reportes.php",
+      "required": [
+        "prepare(",
+        "bindValue(",
+        ":termino"
+      ],
+      "forbidden": [
+        "LIKE '%$termino%'",
+        ".$termino.",
+        "query($sql)"
+      ]
+    }
+  ]
+}

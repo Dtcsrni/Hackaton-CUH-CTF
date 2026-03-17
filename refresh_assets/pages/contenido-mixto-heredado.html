@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Contenido mixto</span>
+      <h1>Contenido mixto heredado</h1>
+      <p>Un sitio puede anunciar HTTPS y aun así romper la experiencia o la seguridad si sigue pidiendo recursos en HTTP. Este reto trabaja precisamente esa clase de deuda: referencias heredadas que conviene limpiar de raíz.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué recursos de la plantilla siguen pidiendo contenido por HTTP.</li><li>Si el frontend también consulta APIs en texto plano.</li><li>Qué dominios del laboratorio aparecen repetidos en esas referencias heredadas.</li><li>Cómo se ve una corrección consistente entre HTML y JavaScript cliente.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>code</code></li><li><code>grep</code></li><li><code>browser devtools</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Corregir solo las etiquetas HTML y olvidar el JavaScript.</li><li>Cambiar una ruta y dejar otra referencia HTTP viva.</li><li>Suponer que el navegador arreglará automáticamente todas las URLs.</li><li>Responder con rutas relativas cuando el reto pide limpiar referencias explícitas heredadas.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca y elimina todas las referencias `http://` del bundle.</li><li>Confirma que la plantilla y el frontend apunten a `https://`.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando ya no queda contenido mixto en los archivos relevantes.</li></ul></article>
+    </div>
+  </section>
+</div>

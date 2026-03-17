@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{perfil_disperso_correlacionado}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "alias=miranda.osint",
+    "correo=miranda.ortiz@cuh.edu.mx",
+    "enlace=cartografia"
+  ]
+}

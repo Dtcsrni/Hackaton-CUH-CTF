@@ -1,0 +1,1 @@
+El portal ya responde por HTTPS, pero algunos recursos siguen apuntando a endpoints antiguos en HTTP.

@@ -1,0 +1,54 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">SQL Injection</span>
+      <h1>Consultas inseguras, autenticación y lectura de reportes internos</h1>
+      <p>Esta guía acompaña retos donde una aplicación arma consultas SQL a partir de datos entregados por el cliente. La meta no es memorizar payloads, sino entender cómo se comporta una consulta cuando mezcla texto controlado por el usuario con lógica de autenticación o con filtros de búsqueda.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Qué observar primero</h3>
+        <ul class="cuhv-list">
+          <li>Si la aplicación recibe usuario y contraseña o un campo de búsqueda libre.</li>
+          <li>Qué cambia entre un fallo normal y una respuesta anómala.</li>
+          <li>Si el formulario hace <code>POST</code> y hacia qué ruta exacta envía los datos.</li>
+          <li>Si hay diferencias entre mensajes, tiempos o contenido renderizado.</li>
+        </ul>
+      </article>
+
+      <article class="cuhv-card">
+        <h3>Señales típicas</h3>
+        <ul class="cuhv-list">
+          <li>Autenticación que parece demasiado frágil ante entradas con comillas.</li>
+          <li>Mensajes distintos cuando la consulta queda mal construida.</li>
+          <li>Respuestas que revelan registros que normalmente no deberían aparecer.</li>
+          <li>Necesidad de cerrar una cadena y comentar el resto de la consulta.</li>
+        </ul>
+      </article>
+
+      <article class="cuhv-card">
+        <h3>Flujo mínimo de revisión</h3>
+        <pre class="cuhv-codeblock">curl -fsS http://45.55.49.111:8092/
+
+curl -fsS -X POST http://45.55.49.111:8092/login \
+  -d 'username=visitante&password=temporal'
+
+# Después repite la misma solicitud modificando solo
+# los campos enviados por el formulario.</pre>
+      </article>
+
+      <article class="cuhv-card">
+        <h3>Qué no asumir</h3>
+        <ul class="cuhv-list">
+          <li>No todos los casos usan exactamente la misma sintaxis.</li>
+          <li>No siempre conviene tocar ambos campos a la vez.</li>
+          <li>El objetivo no es romper la app, sino conseguir una respuesta válida dentro del laboratorio.</li>
+          <li>Si una entrada altera la consulta, observa qué parte de la lógica quedó anulada.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

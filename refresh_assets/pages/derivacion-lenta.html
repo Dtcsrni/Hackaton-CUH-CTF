@@ -1,0 +1,17 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">KDF y endurecimiento</span>
+      <h1>Derivación lenta</h1>
+      <p>No toda función hash sirve para almacenar o derivar secretos. Este reto trabaja una migración básica desde un esquema rápido y predecible hacia una KDF razonable para el contexto.</p>
+    </div>
+  </section>
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card"><h3>Qué revisar</h3><ul class="cuhv-list"><li>Qué algoritmo usa actualmente la derivación.</li><li>Si la sal cambia por usuario o por derivación.</li><li>Qué número de iteraciones deja explícita la política.</li><li>Cómo se conserva un formato simple para almacenar el resultado.</li></ul></article>
+      <article class="cuhv-card"><h3>Herramientas sugeridas</h3><ul class="cuhv-list"><li><code>python</code></li><li><code>code</code></li></ul></article>
+      <article class="cuhv-card"><h3>Errores comunes</h3><ul class="cuhv-list"><li>Cambiar SHA-1 por SHA-256 sin introducir KDF.</li><li>Mantener una sal fija aunque cambie el algoritmo.</li><li>No dejar explícitas las iteraciones.</li><li>Hacer el parche tan complejo que pierda legibilidad.</li></ul></article>
+      <article class="cuhv-card"><h3>Cómo validar el avance</h3><ul class="cuhv-list"><li>Busca PBKDF2-HMAC-SHA256, sal aleatoria e iteraciones visibles.</li><li>Asegúrate de que la sal fija desaparezca del flujo activo.</li><li>Ejecuta el validador local.</li><li>La flag aparece cuando la derivación queda endurecida correctamente.</li></ul></article>
+    </div>
+  </section>
+</div>

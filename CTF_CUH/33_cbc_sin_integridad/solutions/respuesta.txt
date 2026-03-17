@@ -1,0 +1,3 @@
+modo=aes_cbc
+riesgo=alteracion_silenciosa_del_ciphertext_sin_autenticacion
+mitigacion=agregar_integridad_con_mac_o_usar_modo_aead

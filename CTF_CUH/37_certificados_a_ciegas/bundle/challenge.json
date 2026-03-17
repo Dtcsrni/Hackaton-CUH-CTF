@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{tls_validado_con_ca_y_hostname}",
+  "checks": [
+    {
+      "path": "app/client_tls.py",
+      "required": [
+        "ssl.create_default_context(cafile='certs/cuh_root_ca.pem')",
+        "context.check_hostname = True",
+        "context.verify_mode = ssl.CERT_REQUIRED"
+      ],
+      "forbidden": [
+        "ssl._create_unverified_context(",
+        "ssl.CERT_NONE",
+        "context.check_hostname = False"
+      ]
+    }
+  ]
+}

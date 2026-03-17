@@ -1,0 +1,51 @@
+services:
+  ctfd:
+    image: ctfd/ctfd:3.8.2
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      UPLOAD_FOLDER: /var/uploads
+      LOG_FOLDER: /var/log/CTFd
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@db/${MYSQL_DATABASE}
+      REDIS_URL: redis://cache:6379
+      WORKERS: 4
+      REVERSE_PROXY: "true"
+      PERMANENT_SESSION_LIFETIME: 172800
+      SESSION_COOKIE_SECURE: "true"
+      REMEMBER_COOKIE_SECURE: "true"
+      PREFERRED_URL_SCHEME: https
+      ACCESS_LOG: "-"
+      ERROR_LOG: "-"
+    depends_on:
+      - db
+      - cache
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ctfd.config.ini:/opt/CTFd/CTFd/config.ini:ro
+      - ./data/uploads:/var/uploads
+      - ./logs:/var/log/CTFd
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+  cache:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - ./data/redis:/data

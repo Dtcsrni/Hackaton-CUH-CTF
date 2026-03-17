@@ -1,0 +1,3 @@
+taller=cartografia_de_evidencias
+sala=laboratorio_b3
+hora=16:30

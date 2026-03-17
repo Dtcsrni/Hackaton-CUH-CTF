@@ -1,0 +1,11 @@
+[Unit]
+Description=CUH reportes legado
+
+[Service]
+User=cuh-reportes
+ExecStart=/usr/bin/python3 /opt/cuh/reportes/server.py --host 127.0.0.1
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

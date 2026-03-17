@@ -1,0 +1,9 @@
+{
+  "flag": "CUH{proveedor_fantasma_correlacionado}",
+  "answer_file": "respuesta.txt",
+  "expected_lines": [
+    "proveedor=delta_applied_metrics",
+    "dominio=delta-applied.example",
+    "alerta=dominio_creado_despues_de_la_factura"
+  ]
+}

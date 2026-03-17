@@ -1,0 +1,580 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set solves = user.solves %}
+{% set awards = user.awards %}
+{% set solve_count = solves | length %}
+{% set award_count = awards | length %}
+{% set score = account.get_score(admin=True) if account else 0 %}
+{% set place = account.place if account and account.place else None %}
+{% set sorted_solves = solves | sort(attribute='date', reverse=True) %}
+{% set sorted_awards = awards | sort(attribute='date', reverse=True) %}
+{% set hidden_mission_name = 'Rompe el sistema' %}
+{% set insight = namespace(hint_awards=[], category_stats=[]) %}
+{% for award in sorted_awards %}
+  {% if award.name and award.name.startswith('Hint for ') %}
+    {% set insight.hint_awards = insight.hint_awards + [award] %}
+  {% endif %}
+{% endfor %}
+{% for bucket in solves | groupby('challenge.category') %}
+  {% set insight.category_stats = insight.category_stats + [{'name': bucket.grouper, 'count': bucket.list | length, 'points': bucket.list | sum(attribute='challenge.value')}] %}
+{% endfor %}
+{% set hint_count = insight.hint_awards | length %}
+{% set top_categories = insight.category_stats | sort(attribute='count', reverse=True) %}
+<style id="ctfcu-user-radical">
+.ctfcu-user-page{max-width:1680px;margin:0 auto;padding:30px 20px 82px;color:var(--cuhv-text,#eef1f3)}
+.ctfcu-user-shell{position:relative;overflow:hidden;padding:28px;border-radius:32px;border:1px solid rgba(172,185,198,.16);background:radial-gradient(circle at 14% 16%,rgba(70,98,127,.14),transparent 24%),radial-gradient(circle at 85% 12%,rgba(123,146,172,.10),transparent 22%),linear-gradient(145deg,rgba(73,87,102,.97),rgba(27,34,42,.99));box-shadow:0 26px 72px rgba(0,0,0,.34)}
+.ctfcu-user-shell:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(180,194,207,.04),rgba(180,194,207,0) 22%,rgba(255,255,255,0) 100%),repeating-linear-gradient(90deg,rgba(180,194,207,.05) 0,rgba(180,194,207,.05) 1px,transparent 1px,transparent 56px);opacity:.42;pointer-events:none}
+.ctfcu-user-hero,.ctfcu-user-section,.ctfcu-user-analytics{position:relative;z-index:1}
+.ctfcu-user-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr);gap:20px;align-items:stretch}
+.ctfcu-user-card,.ctfcu-user-stat-card,.ctfcu-user-chart-card,.ctfcu-user-chart-wide,.ctfcu-user-empty,.ctfcu-user-award-card,.ctfcu-user-solves-card,.ctfcu-user-insight-card{border-radius:28px;border:1px solid rgba(172,185,198,.14);background:linear-gradient(180deg,rgba(77,92,108,.90),rgba(34,42,50,.96));box-shadow:0 16px 42px rgba(0,0,0,.24)}
+.ctfcu-user-card{padding:26px}
+.ctfcu-user-identity{display:grid;grid-template-columns:116px minmax(0,1fr);gap:22px;align-items:center}
+.ctfcu-user-avatar-shell{position:relative;width:116px;height:116px;border-radius:32px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(74,88,104,.98),rgba(33,41,50,.94));border:1px solid rgba(172,185,198,.22);box-shadow:0 18px 42px rgba(0,0,0,.30)}
+.ctfcu-user-avatar-shell:before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(140deg,rgba(180,194,207,.18),rgba(123,146,172,.10),rgba(255,255,255,0) 58%);opacity:.75;pointer-events:none}
+.ctfcu-user-avatar{position:relative;z-index:1;max-width:88px;max-height:88px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(255,255,255,.16)) drop-shadow(0 0 18px rgba(70,98,127,.14))}
+.ctfcu-user-avatar-fallback{position:relative;z-index:1;font-size:2.5rem;font-weight:900;color:#fff;letter-spacing:-.04em}
+.ctfcu-user-kicker,.ctfcu-user-badge,.ctfcu-user-field,.ctfcu-user-solve-chip,.ctfcu-user-stat-eyebrow{display:inline-flex;align-items:center;gap:8px;border-radius:999px}
+.ctfcu-user-kicker{padding:7px 13px;background:linear-gradient(135deg,rgba(70,98,127,.94),rgba(123,146,172,.90));color:#eef1f3;font-weight:800;font-size:.82rem;letter-spacing:.11em;text-transform:uppercase}
+.ctfcu-user-title h1{margin:14px 0 10px;color:#fff;font-size:clamp(2.4rem,4.2vw,4.5rem);line-height:.96;letter-spacing:-.05em}
+.ctfcu-user-title p{max-width:64ch;margin:0;color:rgba(222,229,235,.82);line-height:1.72}
+.ctfcu-user-badge-row,.ctfcu-user-field-grid,.ctfcu-user-meta-grid,.ctfcu-user-solve-chip-row,.ctfcu-user-legend{display:flex;flex-wrap:wrap;gap:10px}
+.ctfcu-user-badge-row{margin-top:16px}
+.ctfcu-user-badge{padding:8px 13px;border:1px solid rgba(172,185,198,.14);background:linear-gradient(180deg,rgba(77,92,108,.84),rgba(34,42,50,.96));color:#eef1f3;font-size:.82rem;font-weight:800}
+.ctfcu-user-badge i{color:#d7e1ea}
+.ctfcu-user-field-grid{margin-top:18px}
+.ctfcu-user-field{padding:10px 14px;border:1px solid rgba(172,185,198,.12);background:rgba(248,250,252,.04);color:#eef1f3;font-size:.82rem}
+.ctfcu-user-field strong{color:#fff}
+.ctfcu-user-hero-side{display:grid;gap:16px}
+.ctfcu-user-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ctfcu-user-stat-card{padding:18px 18px 16px;position:relative;overflow:hidden}
+.ctfcu-user-stat-card:before{content:"";position:absolute;inset:auto -16% -24% auto;width:120px;height:120px;border-radius:999px;filter:blur(10px);opacity:.3;pointer-events:none}
+.ctfcu-user-stat-card.place:before{background:radial-gradient(circle,rgba(180,194,207,.40) 0,rgba(180,194,207,0) 72%)}
+.ctfcu-user-stat-card.score:before{background:radial-gradient(circle,rgba(70,98,127,.40) 0,rgba(70,98,127,0) 72%)}
+.ctfcu-user-stat-card.solves:before{background:radial-gradient(circle,rgba(123,146,172,.34) 0,rgba(123,146,172,0) 72%)}
+.ctfcu-user-stat-card.awards:before{background:radial-gradient(circle,rgba(145,165,184,.32) 0,rgba(145,165,184,0) 72%)}
+.ctfcu-user-stat-eyebrow{padding:6px 11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.78rem;font-weight:800;color:rgba(214,228,246,.86)}
+.ctfcu-user-stat-value{margin-top:12px;color:#fff;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:1}
+.ctfcu-user-stat-copy{margin-top:8px;color:rgba(204,221,242,.76);font-size:.88rem;line-height:1.55}
+.ctfcu-user-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 18px;border-radius:18px;border:1px solid rgba(172,185,198,.18);background:linear-gradient(135deg,rgba(73,87,102,.96),rgba(33,41,50,.98));color:#eef1f3;text-decoration:none;font-weight:800;box-shadow:0 16px 30px rgba(0,0,0,.22)}
+.ctfcu-user-link:hover{color:#d7e1ea;border-color:rgba(123,146,172,.28)}
+.ctfcu-user-section{margin-top:24px}
+.ctfcu-user-section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:14px}
+.ctfcu-user-section-head h2{margin:0;color:#fff;font-size:clamp(1.55rem,2.2vw,2.2rem);letter-spacing:-.03em}
+.ctfcu-user-section-head p{margin:0;color:rgba(222,229,235,.72);max-width:62ch}
+.ctfcu-user-insights-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ctfcu-user-insight-card{padding:20px;display:flex;flex-direction:column;gap:16px}
+.ctfcu-user-insight-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ctfcu-user-insight-head h3{margin:0;color:#fff;font-size:1.08rem}
+.ctfcu-user-insight-head p{margin:6px 0 0;color:rgba(205,221,241,.72);font-size:.88rem;line-height:1.5}
+.ctfcu-user-insight-count{display:inline-flex;align-items:center;justify-content:center;min-width:52px;height:52px;padding:0 14px;border-radius:18px;background:linear-gradient(135deg,#46627f,#7b92ac);color:#eef1f3;font-size:1.1rem;font-weight:900}
+.ctfcu-user-insight-list{display:grid;gap:10px}
+.ctfcu-user-insight-item{padding:14px 15px;border-radius:18px;border:1px solid rgba(181,222,255,.12);background:linear-gradient(180deg,rgba(18,31,58,.84),rgba(8,15,30,.96))}
+.ctfcu-user-insight-item strong{display:block;color:#fff;font-size:.94rem}
+.ctfcu-user-insight-item span{display:block;margin-top:5px;color:rgba(205,221,241,.78);font-size:.84rem;line-height:1.5}
+.ctfcu-user-insight-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.ctfcu-user-pill{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border-radius:999px;border:1px solid rgba(181,222,255,.12);background:rgba(255,255,255,.05);color:#eef6ff;font-size:.78rem;font-weight:800}
+.ctfcu-user-category-track{height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);margin-top:12px}
+.ctfcu-user-category-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#46627f,#7b92ac)}
+.ctfcu-user-activity-list{display:grid;gap:10px}
+.ctfcu-user-activity-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 15px;border-radius:18px;border:1px solid rgba(181,222,255,.12);background:linear-gradient(180deg,rgba(18,31,58,.84),rgba(8,15,30,.96))}
+.ctfcu-user-activity-copy strong{display:block;color:#fff;font-size:.94rem}
+.ctfcu-user-activity-copy span{display:block;margin-top:5px;color:rgba(205,221,241,.78);font-size:.84rem;line-height:1.5}
+.ctfcu-user-activity-time{color:#d7e1ea;font-size:.8rem;font-weight:800;text-align:right}
+.ctfcu-user-secret-badge{display:inline-flex;align-items:center;gap:8px;min-height:28px;padding:0 10px;border-radius:999px;border:1px solid rgba(172,185,198,.30);background:linear-gradient(135deg,rgba(70,98,127,.96),rgba(45,59,73,.98));box-shadow:0 10px 24px rgba(0,0,0,.24),0 0 0 1px rgba(180,194,207,.05) inset;color:#eef1f3;font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.ctfcu-user-secret-badge i{color:#d7e1ea}
+.ctfcu-user-solve-secret{border-color:rgba(172,185,198,.28)!important;background:radial-gradient(circle at 15% 18%,rgba(180,194,207,.10),transparent 24%),linear-gradient(180deg,rgba(72,86,101,.96),rgba(33,41,50,.98))!important}
+.ctfcu-user-solve-secret strong,.ctfcu-user-solve-secret span,.ctfcu-user-solve-secret em{color:#eef1f3!important}
+.ctfcu-user-solves-table tr.ctfcu-user-secret-row td{background:radial-gradient(circle at 14% 18%,rgba(180,194,207,.08),transparent 26%),linear-gradient(180deg,rgba(74,88,104,.92),rgba(33,41,50,.98))!important;border-top:1px solid rgba(172,185,198,.18)}
+.ctfcu-user-solves-table tr.ctfcu-user-secret-row a{color:#dce5ed!important}
+.ctfcu-user-activity-item.ctfcu-user-secret-activity{border-color:rgba(172,185,198,.24);background:radial-gradient(circle at 14% 16%,rgba(180,194,207,.10),transparent 24%),linear-gradient(180deg,rgba(74,88,104,.92),rgba(33,41,50,.98))}
+.ctfcu-user-evidence-shell[hidden]{display:none!important}
+.ctfcu-user-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ctfcu-user-evidence-card{padding:20px;border-radius:24px;border:1px solid rgba(181,222,255,.12);background:linear-gradient(180deg,rgba(18,31,58,.84),rgba(8,15,30,.96))}
+.ctfcu-user-evidence-card h3{margin:0;color:#fff;font-size:1.14rem}
+.ctfcu-user-evidence-card p{margin:8px 0 0;color:rgba(204,221,242,.78);line-height:1.6}
+.ctfcu-user-evidence-list{display:grid;gap:10px;margin-top:16px}
+.ctfcu-user-evidence-item{padding:14px 15px;border-radius:18px;border:1px solid rgba(181,222,255,.12);background:rgba(255,255,255,.04)}
+.ctfcu-user-evidence-item strong{display:block;color:#fff;font-size:.95rem}
+.ctfcu-user-evidence-item span{display:block;margin-top:5px;color:rgba(205,221,241,.78);font-size:.84rem;line-height:1.5}
+.ctfcu-user-evidence-form{display:grid;gap:12px;margin-top:16px}
+.ctfcu-user-evidence-input{min-height:52px;padding:12px 14px;border-radius:16px;border:1px solid rgba(181,222,255,.14);background:rgba(255,255,255,.05);color:#eef6ff}
+.ctfcu-user-evidence-button{min-height:48px;padding:0 16px;border:none;border-radius:16px;background:linear-gradient(135deg,#46627f,#7b92ac);color:#eef1f3;font-weight:900}
+.ctfcu-user-evidence-button:disabled{opacity:.6;cursor:not-allowed}
+.ctfcu-user-evidence-feedback{min-height:22px;color:rgba(205,221,241,.82);font-size:.84rem}
+.ctfcu-user-evidence-badge{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.78rem;font-weight:800;color:#eef6ff}
+.ctfcu-user-awards-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ctfcu-user-award-card{padding:18px;display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:start}
+.ctfcu-user-award-icon{width:64px;height:64px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(70,98,127,.20),rgba(123,146,172,.16));border:1px solid rgba(172,185,198,.14);color:#fff;font-size:1.45rem}
+.ctfcu-user-award-copy strong{display:block;color:#fff;font-size:1rem}
+.ctfcu-user-award-copy span{display:block;margin-top:3px;color:#d7e1ea;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.ctfcu-user-award-copy p{margin:10px 0 0;color:rgba(205,221,241,.76);line-height:1.55;font-size:.9rem}
+.ctfcu-user-award-value{align-self:center;min-width:74px;height:44px;padding:0 14px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#46627f,#7b92ac);color:#eef1f3;font-size:1rem;font-weight:900}
+.ctfcu-user-solves-card{padding:20px}
+.ctfcu-user-solve-chip-row{margin-bottom:16px}
+.ctfcu-user-solve-chip{min-height:42px;padding:0 14px;border:1px solid rgba(181,222,255,.12);background:linear-gradient(180deg,rgba(18,31,58,.84),rgba(8,15,30,.96));color:#eef6ff;text-decoration:none;font-size:.82rem;font-weight:800;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.ctfcu-user-solve-chip:hover{color:#d7e1ea;border-color:rgba(70,98,127,.24)}
+.ctfcu-user-solve-chip em{font-style:normal;color:#d7e1ea}
+.ctfcu-user-solves-table{margin:0;border-collapse:separate;border-spacing:0 10px}
+.ctfcu-user-solves-table thead th{border:none;color:rgba(203,220,241,.72);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.ctfcu-user-solves-table tbody td{border:none;background:linear-gradient(180deg,rgba(77,92,108,.88),rgba(34,42,50,.96));color:#eef1f3;vertical-align:middle;padding:16px 14px}
+.ctfcu-user-solves-table tbody td:first-child{border-radius:16px 0 0 16px}
+.ctfcu-user-solves-table tbody td:last-child{border-radius:0 16px 16px 0}
+.ctfcu-user-solves-table a{color:#d4dee8;text-decoration:none;font-weight:800}
+.ctfcu-user-solves-table a:hover{color:#eef1f3}
+.ctfcu-user-category{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.8rem;font-weight:800;color:#eef6ff}
+.ctfcu-user-value{display:inline-flex;align-items:center;justify-content:center;min-width:78px;min-height:38px;padding:0 12px;border-radius:14px;background:linear-gradient(135deg,#46627f,#7b92ac);color:#eef1f3;font-weight:900}
+.ctfcu-user-time span{color:rgba(222,229,235,.84)}
+.ctfcu-user-analytics{margin-top:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ctfcu-user-chart-card,.ctfcu-user-chart-wide{padding:20px}
+.ctfcu-user-chart-card h3,.ctfcu-user-chart-wide h3{margin:0;color:#fff;font-size:1.15rem}
+.ctfcu-user-chart-card p,.ctfcu-user-chart-wide p{margin:8px 0 16px;color:rgba(222,229,235,.74)}
+.ctfcu-user-chart-card .progress{height:14px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06)}
+.ctfcu-user-legend{margin-top:12px}
+.ctfcu-user-legend-item{display:inline-flex;align-items:center;gap:8px;color:#eef6ff;font-size:.84rem}
+.ctfcu-user-chart-wide{grid-column:1/-1;min-height:420px}
+.ctfcu-user-chart-surface{min-height:320px;border-radius:22px;border:1px solid rgba(181,222,255,.12);background:linear-gradient(180deg,rgba(10,23,45,.82),rgba(6,12,24,.96));padding:10px}
+.ctfcu-user-empty{padding:36px;text-align:center}
+.ctfcu-user-empty h3{margin:0;color:#fff;font-size:1.8rem}
+.ctfcu-user-empty p{margin:10px auto 0;max-width:56ch;color:rgba(204,221,242,.76);line-height:1.65}
+.ctfcu-user-mini-note{color:rgba(204,221,242,.72);font-size:.88rem}
+@media (max-width:1260px){.ctfcu-user-hero,.ctfcu-user-analytics,.ctfcu-user-awards-grid,.ctfcu-user-insights-grid,.ctfcu-user-evidence-grid{grid-template-columns:1fr}.ctfcu-user-chart-wide{grid-column:auto}.ctfcu-user-award-card{grid-template-columns:64px minmax(0,1fr)}.ctfcu-user-award-value{justify-self:start}}
+@media (max-width:860px){.ctfcu-user-page{padding:22px 14px 70px}.ctfcu-user-shell{padding:18px}.ctfcu-user-identity{grid-template-columns:1fr;justify-items:start}.ctfcu-user-avatar-shell{width:94px;height:94px;border-radius:26px}.ctfcu-user-avatar{max-width:70px;max-height:70px}.ctfcu-user-stat-grid{grid-template-columns:1fr}.ctfcu-user-solves-table thead{display:none}.ctfcu-user-solves-table tbody,.ctfcu-user-solves-table tr,.ctfcu-user-solves-table td{display:block;width:100%}.ctfcu-user-solves-table tbody td{border-radius:0!important;padding:12px 14px}.ctfcu-user-solves-table tbody tr{display:grid;gap:1px;margin-bottom:12px}.ctfcu-user-solves-table tbody td:first-child{border-radius:16px 16px 0 0!important}.ctfcu-user-solves-table tbody td:last-child{border-radius:0 0 16px 16px!important}.ctfcu-user-section-head{display:block}.ctfcu-user-section-head p{margin-top:8px}}
+@media (prefers-reduced-motion:reduce){.ctfcu-user-shell:before{animation:none!important}}
+</style>
+<style id="ctfcu-user-palette-reset">
+.ctfcu-user-page{color:#eef1f3!important}
+.ctfcu-user-shell{border-color:rgba(177,190,204,.16)!important;background:radial-gradient(circle at 14% 16%,rgba(79,101,125,.12),transparent 24%),radial-gradient(circle at 85% 12%,rgba(127,147,168,.10),transparent 22%),linear-gradient(145deg,rgba(68,76,86,.97),rgba(31,35,40,.99))!important}
+.ctfcu-user-shell:before{background:linear-gradient(90deg,rgba(183,197,211,.04),rgba(183,197,211,0) 24%,rgba(255,255,255,0) 100%),repeating-linear-gradient(90deg,rgba(183,197,211,.05) 0,rgba(183,197,211,.05) 1px,transparent 1px,transparent 56px)!important}
+.ctfcu-user-card,.ctfcu-user-stat-card,.ctfcu-user-chart-card,.ctfcu-user-chart-wide,.ctfcu-user-empty,.ctfcu-user-award-card,.ctfcu-user-solves-card,.ctfcu-user-insight-card{border-color:rgba(172,185,198,.14)!important;background:linear-gradient(180deg,rgba(79,92,108,.9),rgba(34,42,50,.96))!important}
+.ctfcu-user-avatar-shell{background:linear-gradient(145deg,rgba(74,88,104,.98),rgba(34,42,50,.95))!important;border-color:rgba(172,185,198,.22)!important}
+.ctfcu-user-kicker,.ctfcu-user-award-value,.ctfcu-user-value,.ctfcu-user-insight-count{background:linear-gradient(135deg,rgba(79,101,125,.94),rgba(127,147,168,.9))!important;color:#eef2f6!important}
+.ctfcu-user-badge,.ctfcu-user-field,.ctfcu-user-solve-chip,.ctfcu-user-category,.ctfcu-user-stat-eyebrow,.ctfcu-user-pill,.ctfcu-user-insight-item,.ctfcu-user-activity-item,.ctfcu-user-evidence-card,.ctfcu-user-evidence-item,.ctfcu-user-evidence-badge{border-color:rgba(172,185,198,.12)!important;background:linear-gradient(180deg,rgba(77,92,108,.84),rgba(34,42,50,.96))!important;color:#eef1f3!important}
+.ctfcu-user-badge i,.ctfcu-user-award-copy span,.ctfcu-user-solve-chip em,.ctfcu-user-solves-table a:hover,.ctfcu-user-link:hover,.ctfcu-user-activity-time{color:#d9e4ef!important}
+.ctfcu-user-title p,.ctfcu-user-stat-copy,.ctfcu-user-section-head p,.ctfcu-user-award-copy p,.ctfcu-user-chart-card p,.ctfcu-user-chart-wide p,.ctfcu-user-empty p,.ctfcu-user-mini-note,.ctfcu-user-insight-head p,.ctfcu-user-insight-item span,.ctfcu-user-activity-copy span,.ctfcu-user-evidence-card p,.ctfcu-user-evidence-item span,.ctfcu-user-evidence-feedback{color:rgba(222,229,235,.78)!important}
+.ctfcu-user-link{border-color:rgba(172,185,198,.18)!important;background:linear-gradient(135deg,rgba(73,87,102,.96),rgba(34,42,50,.98))!important;color:#eef1f3!important}
+.ctfcu-user-award-icon{background:linear-gradient(135deg,rgba(79,101,125,.18),rgba(127,147,168,.16))!important;border-color:rgba(177,190,204,.14)!important}
+.ctfcu-user-solves-table tbody td,.ctfcu-user-chart-surface{border-color:rgba(172,185,198,.12)!important;background:linear-gradient(180deg,rgba(77,92,108,.88),rgba(34,42,50,.96))!important;color:#eef1f3!important}
+.ctfcu-user-category-fill{background:linear-gradient(90deg,rgba(79,101,125,.96),rgba(127,147,168,.92))!important}
+.ctfcu-user-evidence-button{background:linear-gradient(135deg,rgba(79,101,125,.94),rgba(127,147,168,.9))!important;color:#eef2f6!important}
+.ctfcu-user-evidence-input{border-color:rgba(172,185,198,.12)!important;background:rgba(248,250,252,.05)!important;color:#eef1f3!important}
+</style>
+
+<div class="ctfcu-user-page">
+  <section class="ctfcu-user-shell">
+    <div class="ctfcu-user-hero">
+      <article class="ctfcu-user-card">
+        <div class="ctfcu-user-identity">
+          <div class="ctfcu-user-avatar-shell">
+            {% if Configs.ctf_logo %}
+              <img class="ctfcu-user-avatar" src="{{ url_for('views.files', path=Configs.ctf_logo) }}" alt="{{ Configs.ctf_name }}">
+            {% else %}
+              <span class="ctfcu-user-avatar-fallback">{{ user.name[:1] }}</span>
+            {% endif %}
+          </div>
+          <div class="ctfcu-user-title">
+            <span class="ctfcu-user-kicker"><i class="fa-solid fa-user-shield"></i> Perfil del laboratorio</span>
+            <h1>{{ user.name }}</h1>
+            <p>Este panel concentra lo que de verdad ayuda a orientarte durante el evento: posicion, puntaje, retos ya cerrados, hints consumidos, categorias donde mas avanzaste y actividad reciente con contexto suficiente para decidir tu siguiente paso.</p>
+            <div class="ctfcu-user-badge-row">
+              {% if user.team_id %}
+                <a class="ctfcu-user-badge" href="{{ url_for('teams.public', team_id=user.team_id) }}"><i class="fa-solid fa-people-group"></i> {{ user.team.name }}</a>
+              {% endif %}
+              {% if user.affiliation %}
+                <span class="ctfcu-user-badge"><i class="fa-solid fa-building-columns"></i> {{ user.affiliation }}</span>
+              {% endif %}
+              {% if user.country %}
+                <span class="ctfcu-user-badge"><i class="flag-{{ user.country.lower() }}"></i> {{ lookup_country_code(user.country) }}</span>
+              {% endif %}
+              {% if user.bracket_id %}
+                <span class="ctfcu-user-badge"><i class="fa-solid fa-layer-group"></i> {{ user.bracket.name }}</span>
+              {% endif %}
+              {% if user.oauth_id %}
+                <a class="ctfcu-user-badge" href="https://majorleaguecyber.org/u/{{ user.name }}" target="_blank" rel="noopener"><i class="fa-solid fa-badge-check"></i> Oficial</a>
+              {% endif %}
+            </div>
+            {% if user.fields %}
+              <div class="ctfcu-user-field-grid">
+                {% for field in user.fields %}
+                  <span class="ctfcu-user-field"><strong>{{ field.name }}</strong>: {{ field.value }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+
+      <aside class="ctfcu-user-hero-side">
+        <div class="ctfcu-user-stat-grid">
+          <article class="ctfcu-user-stat-card place">
+            <span class="ctfcu-user-stat-eyebrow"><i class="fa-solid fa-ranking-star"></i> Posicion</span>
+            <div class="ctfcu-user-stat-value">{% if place %}#{{ place }}{% else %}--{% endif %}</div>
+            <div class="ctfcu-user-stat-copy">Lugar actual dentro del marcador general.</div>
+          </article>
+          <article class="ctfcu-user-stat-card score">
+            <span class="ctfcu-user-stat-eyebrow"><i class="fa-solid fa-bolt"></i> Puntaje</span>
+            <div class="ctfcu-user-stat-value">{{ score }}</div>
+            <div class="ctfcu-user-stat-copy">Puntos acumulados entre solves validados y bonos ya consolidados.</div>
+          </article>
+          <article class="ctfcu-user-stat-card solves">
+            <span class="ctfcu-user-stat-eyebrow"><i class="fa-solid fa-flag-checkered"></i> Solves</span>
+            <div class="ctfcu-user-stat-value">{{ solve_count }}</div>
+            <div class="ctfcu-user-stat-copy">Retos que ya quedaron validados en tu cuenta.</div>
+          </article>
+          <article class="ctfcu-user-stat-card awards">
+            <span class="ctfcu-user-stat-eyebrow"><i class="fa-solid fa-lightbulb"></i> Hints comprados</span>
+            <div class="ctfcu-user-stat-value">{{ hint_count }}</div>
+            <div class="ctfcu-user-stat-copy">Pistas desbloqueadas para avanzar cuando el reto exige otra mirada.</div>
+          </article>
+        </div>
+        {% if user.website %}
+          <a class="ctfcu-user-link" href="{{ user.website }}" target="_blank" rel="noopener">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            Abrir sitio o referencia
+          </a>
+        {% else %}
+          <div class="ctfcu-user-mini-note">Este panel se actualiza con tus solves, hints comprados, categorias dominadas y el comportamiento del score en el tiempo.</div>
+        {% endif %}
+      </aside>
+    </div>
+
+    {% include "components/errors.html" %}
+
+    <section class="ctfcu-user-section ctfcu-user-evidence-shell" id="ctfcu-user-evidence-guard" hidden>
+      <div class="ctfcu-user-section-head">
+        <div>
+          <h2>Evidencias pendientes</h2>
+          <p>Si cerraste un reto de más de 300 puntos, aquí tendrás que cargar al menos cuatro evidencias antes de volver a enviar flags en otros desafíos.</p>
+        </div>
+      </div>
+      <div class="ctfcu-user-evidence-grid" id="ctfcu-user-evidence-grid"></div>
+    </section>
+
+    <section class="ctfcu-user-section">
+      <div class="ctfcu-user-section-head">
+        <div>
+          <h2>Resumen util del recorrido</h2>
+          <p>En lugar de mostrar premios tecnicos poco claros, esta zona resume consumo de hints, categorias donde realmente acumulaste solves y la actividad mas reciente de la cuenta.</p>
+        </div>
+      </div>
+      <div class="ctfcu-user-insights-grid">
+        <article class="ctfcu-user-insight-card">
+          <div class="ctfcu-user-insight-head">
+            <div>
+              <h3>Hints comprados</h3>
+              <p>Que pistas ya consumiste y en que retos te hicieron falta.</p>
+            </div>
+            <span class="ctfcu-user-insight-count">{{ hint_count }}</span>
+          </div>
+          {% if hint_count %}
+            <div class="ctfcu-user-insight-list">
+              {% for award in insight.hint_awards[:6] %}
+                <div class="ctfcu-user-insight-item">
+                  <strong>{{ award.name | replace('Hint for ', '') }}</strong>
+                  <span>Pista desbloqueada para ese reto{% if award.date %} · <span data-time="{{ award.date | isoformat }}"></span>{% endif %}</span>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="ctfcu-user-empty">
+              <h3>Sin hints por ahora</h3>
+              <p>Todavia no has comprado pistas. Cuando lo hagas, aqui quedara claro en que retos necesitaste apoyo adicional.</p>
+            </div>
+          {% endif %}
+        </article>
+
+        <article class="ctfcu-user-insight-card">
+          <div class="ctfcu-user-insight-head">
+            <div>
+              <h3>Categorias dominadas</h3>
+              <p>Las areas donde mas solves ya consolidaste dentro del evento.</p>
+            </div>
+            <span class="ctfcu-user-insight-count">{{ top_categories[:3] | length }}</span>
+          </div>
+          {% if solve_count %}
+            <div class="ctfcu-user-insight-list">
+              {% for category in top_categories[:5] %}
+                {% set percent = ((category.count * 100) / solve_count) | round(0, 'common') | int %}
+                <div class="ctfcu-user-insight-item">
+                  <strong>{{ category.name }}</strong>
+                  <span>{{ category.count }} solves · {{ category.points }} pts acumulados</span>
+                  <div class="ctfcu-user-insight-meta">
+                    <span class="ctfcu-user-pill"><i class="fa-solid fa-layer-group"></i> {{ percent }}% del total</span>
+                  </div>
+                  <div class="ctfcu-user-category-track">
+                    <div class="ctfcu-user-category-fill" style="width: {{ percent }}%"></div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="ctfcu-user-empty">
+              <h3>Aun sin categorias activas</h3>
+              <p>Cuando empieces a cerrar retos, aqui se vera rapido que areas estas trabajando con mas consistencia.</p>
+            </div>
+          {% endif %}
+        </article>
+
+        <article class="ctfcu-user-insight-card">
+          <div class="ctfcu-user-insight-head">
+            <div>
+              <h3>Actividad reciente</h3>
+              <p>Ultimos movimientos visibles para recordar en que estabas avanzando.</p>
+            </div>
+            <span class="ctfcu-user-insight-count">{{ sorted_solves[:5] | length }}</span>
+          </div>
+          {% if solve_count %}
+            <div class="ctfcu-user-activity-list">
+              {% for solve in sorted_solves[:5] %}
+                <div class="ctfcu-user-activity-item{% if solve.challenge.name == hidden_mission_name %} ctfcu-user-secret-activity{% endif %}">
+                  <div class="ctfcu-user-activity-copy">
+                    <strong>
+                      {{ solve.challenge.name }}
+                      {% if solve.challenge.name == hidden_mission_name %}
+                        <span class="ctfcu-user-secret-badge"><i class="fa-solid fa-bug"></i> Misión oculta</span>
+                      {% endif %}
+                    </strong>
+                    <span>{{ solve.challenge.category }} · {{ solve.challenge.value }} pts</span>
+                  </div>
+                  <div class="ctfcu-user-activity-time"><span data-time="{{ solve.date | isoformat }}"></span></div>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="ctfcu-user-empty">
+              <h3>Sin actividad reciente</h3>
+              <p>En cuanto registres solves, esta columna te ayudara a retomar el hilo de trabajo sin perder contexto.</p>
+            </div>
+          {% endif %}
+        </article>
+      </div>
+    </section>
+
+    {% if solves %}
+      <section class="ctfcu-user-section">
+        <div class="ctfcu-user-section-head">
+          <div>
+            <h2>Retos resueltos</h2>
+            <p>Una vista mas clara de tus solves recientes, con categoria, valor y acceso directo al reto.</p>
+          </div>
+        </div>
+        <article class="ctfcu-user-solves-card">
+          <div class="ctfcu-user-solve-chip-row">
+            {% for solve in solves[:6] %}
+              <a class="ctfcu-user-solve-chip{% if solve.challenge.name == hidden_mission_name %} ctfcu-user-solve-secret{% endif %}" href="{{ url_for('challenges.listing') }}#{{ solve.challenge.name }}-{{ solve.challenge.id }}">
+                <span>{{ solve.challenge.category }}</span>
+                <strong>{{ solve.challenge.name }}</strong>
+                {% if solve.challenge.name == hidden_mission_name %}
+                  <span class="ctfcu-user-secret-badge"><i class="fa-solid fa-bug"></i> Misión oculta</span>
+                {% endif %}
+                <em>{{ solve.challenge.value }} pts</em>
+              </a>
+            {% endfor %}
+            {% if solve_count > 6 %}
+              <span class="ctfcu-user-solve-chip">+{{ solve_count - 6 }} mas</span>
+            {% endif %}
+          </div>
+
+          <table class="table align-middle ctfcu-user-solves-table">
+            <thead>
+              <tr>
+                <th>Desafio</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+                <th>Tiempo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for solve in solves %}
+                <tr{% if solve.challenge.name == hidden_mission_name %} class="ctfcu-user-secret-row"{% endif %}>
+                  <td>
+                    <a href="{{ url_for('challenges.listing') }}#{{ solve.challenge.name }}-{{ solve.challenge.id }}">
+                      {{ solve.challenge.name }}
+                    </a>
+                    {% if solve.challenge.name == hidden_mission_name %}
+                      <span class="ctfcu-user-secret-badge"><i class="fa-solid fa-bug"></i> Misión oculta</span>
+                    {% endif %}
+                  </td>
+                  <td><span class="ctfcu-user-category">{{ solve.challenge.category }}</span></td>
+                  <td><span class="ctfcu-user-value">{{ solve.challenge.value }}</span></td>
+                  <td class="ctfcu-user-time"><span data-time="{{ solve.date | isoformat }}"></span></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="ctfcu-user-analytics" x-data="UserGraphs">
+        <article class="ctfcu-user-chart-card">
+          <h3>Ritmo de aciertos</h3>
+          <p>Relacion entre solves y fails para medir que tan limpia va tu progresion.</p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" :style="{ width: `${getSolvePercentage()}%`, 'background-color': 'rgb(0, 209, 64)' }"></div>
+            <div class="progress-bar" role="progressbar" :style="{ width: `${getFailPercentage()}%`, 'background-color': 'rgb(207, 38, 0)' }"></div>
+          </div>
+          <div class="ctfcu-user-legend">
+            <div class="ctfcu-user-legend-item">
+              <svg height="16" width="16"><circle cx="8" cy="8" r="5" fill="rgb(0, 209, 64)"></circle></svg>
+              <small x-text="`Solves (${getSolvePercentage()}%)`"></small>
+            </div>
+            <div class="ctfcu-user-legend-item">
+              <svg height="16" width="16"><circle cx="8" cy="8" r="5" fill="rgb(207, 38, 0)"></circle></svg>
+              <small x-text="`Fails (${getFailPercentage()}%)`"></small>
+            </div>
+          </div>
+        </article>
+
+        <article class="ctfcu-user-chart-card">
+          <h3>Distribucion por categoria</h3>
+          <p>Que areas estan aportando la mayor parte de tus solves validados.</p>
+          <div class="progress">
+            <template x-for="category in getCategoryBreakdown()" :key="category.name">
+              <div class="progress-bar" role="progressbar" :style="{ width: `${category.percent}%`, 'background-color': category.color }"></div>
+            </template>
+          </div>
+          <div class="ctfcu-user-legend">
+            <template x-for="category in getCategoryBreakdown()" :key="category.name">
+              <div class="ctfcu-user-legend-item">
+                <svg height="16" width="16"><circle cx="8" cy="8" r="5" :fill="category.color"></circle></svg>
+                <small x-text="`${category.name} (${category.percent}%)`"></small>
+              </div>
+            </template>
+          </div>
+        </article>
+
+        <article class="ctfcu-user-chart-wide">
+          <h3>Evolucion del score</h3>
+          <p>La grafica conserva el seguimiento temporal de solves y premios sobre tu cuenta.</p>
+          <div id="score-graph" x-ref="scoregraph" class="w-100 d-flex align-items-center ctfcu-user-chart-surface">
+            <div class="text-center w-100">
+              <i class="fas fa-circle-notch fa-spin fa-3x fa-fw spinner"></i>
+            </div>
+          </div>
+        </article>
+      </section>
+    {% elif awards %}
+      <section class="ctfcu-user-section">
+        <div class="ctfcu-user-empty">
+          <h3>Aun no hay solves registrados</h3>
+          <p>Ya hay movimiento en la cuenta, pero todavia no aparecen solves validados. Cuando lleguen, aqui se mostraran la tabla detallada y las graficas.</p>
+        </div>
+      </section>
+    {% else %}
+      <section class="ctfcu-user-section">
+        <div class="ctfcu-user-empty">
+          <h3>Tu perfil todavia esta vacio</h3>
+          <p>En cuanto empieces a resolver retos, este panel mostrara puntaje, progreso, categorias trabajadas y evolucion del score con una vista mucho mas util.</p>
+        </div>
+      </section>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/users/private.js") }}
+  <script id="ctfcu-evidence-guard-user">
+    (() => {
+      const root = document.getElementById("ctfcu-user-evidence-guard");
+      const grid = document.getElementById("ctfcu-user-evidence-grid");
+      if (!root || !grid) return;
+
+      const endpoint = "/plugins/solve_evidence_guard/api/status";
+
+      function fileSize(bytes) {
+        const value = Number(bytes || 0);
+        if (value >= 1024 * 1024) return `${(value / (1024 * 1024)).toFixed(1)} MB`;
+        if (value >= 1024) return `${Math.round(value / 1024)} KB`;
+        return `${value} B`;
+      }
+
+      function requirementCard(requirement) {
+        const files = (requirement.files || [])
+          .map(
+            (file) => `
+              <div class="ctfcu-user-evidence-item">
+                <strong>${file.original_name}</strong>
+                <span>${fileSize(file.size_bytes)} · referencia ${file.sha1_prefix}</span>
+              </div>
+            `
+          )
+          .join("");
+
+        return `
+          <article class="ctfcu-user-evidence-card" data-requirement-id="${requirement.id}">
+            <h3>${requirement.challenge_name}</h3>
+            <p>Este reto supera 300 puntos. Debes reunir ${requirement.minimum_files} evidencias antes de seguir enviando flags.</p>
+            <div class="ctfcu-user-insight-meta">
+              <span class="ctfcu-user-evidence-badge"><i class="fa-solid fa-paperclip"></i> ${requirement.uploaded_files}/${requirement.minimum_files} cargadas</span>
+              <span class="ctfcu-user-evidence-badge"><i class="fa-solid fa-shield-check"></i> ${requirement.reason_label || "revisión documental"}</span>
+            </div>
+            <div class="ctfcu-user-evidence-list">${files || '<div class="ctfcu-user-evidence-item"><strong>Aún sin archivos</strong><span>Sube capturas, PDF o notas de trabajo para liberar el bloqueo.</span></div>'}</div>
+            <form class="ctfcu-user-evidence-form" data-upload-form="${requirement.id}">
+              <input class="ctfcu-user-evidence-input" type="file" name="evidence" multiple accept=".png,.jpg,.jpeg,.webp,.pdf,.txt,.log,.md" required>
+              <button class="ctfcu-user-evidence-button" type="submit">Subir evidencias</button>
+              <div class="ctfcu-user-evidence-feedback" data-feedback="${requirement.id}"></div>
+            </form>
+          </article>
+        `;
+      }
+
+      async function loadRequirements() {
+        const response = await fetch(endpoint, { credentials: "same-origin" });
+        if (!response.ok) return;
+        const payload = await response.json();
+        const pending = payload?.data?.pending_requirements || [];
+        if (!pending.length) {
+          root.hidden = true;
+          grid.innerHTML = "";
+          return;
+        }
+        root.hidden = false;
+        grid.innerHTML = pending.map(requirementCard).join("");
+      }
+
+      async function submitEvidence(form) {
+        const requirementId = form.getAttribute("data-upload-form");
+        const feedback = form.querySelector(`[data-feedback="${requirementId}"]`);
+        const fileInput = form.querySelector('input[type="file"]');
+        if (!fileInput?.files?.length) {
+          if (feedback) feedback.textContent = "Selecciona al menos un archivo.";
+          return;
+        }
+
+        const body = new FormData();
+        Array.from(fileInput.files).forEach((file) => body.append("evidence", file));
+        const button = form.querySelector("button");
+        if (button) button.disabled = true;
+        if (feedback) feedback.textContent = "Subiendo evidencias...";
+
+        try {
+          const response = await fetch(`/plugins/solve_evidence_guard/api/requirements/${requirementId}/upload`, {
+            method: "POST",
+            credentials: "same-origin",
+            body,
+          });
+          const payload = await response.json();
+          if (feedback) {
+            feedback.textContent = payload?.message || "No se pudo guardar la evidencia.";
+          }
+          await loadRequirements();
+        } catch (error) {
+          if (feedback) feedback.textContent = "No se pudo subir la evidencia. Revisa tu conexión e inténtalo otra vez.";
+        } finally {
+          if (button) button.disabled = false;
+          form.reset();
+        }
+      }
+
+      grid.addEventListener("submit", (event) => {
+        const form = event.target.closest("form[data-upload-form]");
+        if (!form) return;
+        event.preventDefault();
+        submitEvidence(form);
+      });
+
+      loadRequirements();
+    })();
+  </script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{cookies_de_sesion_solo_por_https}",
+  "checks": [
+    {
+      "path": "app/settings.py",
+      "required": [
+        "SESSION_COOKIE_SECURE = True",
+        "SESSION_COOKIE_HTTPONLY = True",
+        "SESSION_COOKIE_SAMESITE = \"Lax\""
+      ],
+      "forbidden": [
+        "SESSION_COOKIE_SECURE = False",
+        "SESSION_COOKIE_HTTPONLY = False",
+        "SESSION_COOKIE_SAMESITE = \"None\""
+      ]
+    }
+  ]
+}

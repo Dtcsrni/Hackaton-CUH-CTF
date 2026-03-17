@@ -1,0 +1,3 @@
+problema=keystream_reutilizado_en_xor
+frase=rotar_claves_abril
+indicador=encabezado_comun_y_xor_de_cifrados_revelan_patrones

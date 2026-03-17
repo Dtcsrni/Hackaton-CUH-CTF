@@ -1,0 +1,18 @@
+{
+  "flag": "CUH{rsa_con_oaep_y_sha256}",
+  "checks": [
+    {
+      "path": "app/rsa_guard.py",
+      "required": [
+        "padding.OAEP(",
+        "padding.MGF1(algorithm=hashes.SHA256())",
+        "algorithm=hashes.SHA256()",
+        "label=None"
+      ],
+      "forbidden": [
+        "padding.PKCS1v15()",
+        "decrypt(ciphertext, padding_scheme)"
+      ]
+    }
+  ]
+}

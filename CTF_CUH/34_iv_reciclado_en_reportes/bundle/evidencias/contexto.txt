@@ -1,0 +1,1 @@
+Los dos reportes del lote comienzan con el mismo encabezado: estado=pendiente; y salen de la misma tarea automatizada.

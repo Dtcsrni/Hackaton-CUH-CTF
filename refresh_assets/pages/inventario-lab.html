@@ -1,0 +1,32 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Inventario técnico</span>
+      <h1>Servicios reales que forman parte del laboratorio CUH</h1>
+      <p>Esta referencia cruza puertos y rutas con retos concretos. Si un enunciado menciona la IP <code>45.55.49.111</code> pero no sabes si debes usar <code>nmap</code>, <code>curl</code> o <code>nc</code>, aquí puedes ubicar qué tipo de servicio existe y qué reto lo usa.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>TCP y HTTP de reconocimiento</h3>
+        <ul class="cuhv-list">
+          <li><code>45.55.49.111:31337</code> -> <strong>Puertas abiertas</strong>, banner TCP accesible con <code>nc</code>.</li>
+          <li><code>http://45.55.49.111:8081</code> -> <strong>Cabeceras del laboratorio</strong>, la pista vive en headers HTTP.</li>
+          <li><code>http://45.55.49.111:8082</code> -> <strong>JSON de prueba</strong>, conviene revisar <code>/</code> y <code>/api/status</code>.</li>
+          <li><code>http://45.55.49.111:8083/panel</code> -> <strong>Acceso heredado</strong>, servicio web con credenciales débiles dentro del alcance.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué debes concluir a partir de esto</h3>
+        <ul class="cuhv-list">
+          <li>Si el reto solo da una IP, primero enumera.</li>
+          <li>Si el reto ya da una URL exacta, no necesitas escanear a ciegas todo el host.</li>
+          <li>Los puertos altos del evento no son ruido: suelen existir porque el objetivo es aprender a enumerar antes de interpretar.</li>
+          <li>Este inventario no reemplaza el enunciado; solo evita que confundas un reto de red con uno de navegador o con un adjunto local.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>

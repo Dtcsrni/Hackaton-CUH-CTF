@@ -1,0 +1,42 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero cuhv-hero-compact">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Fuerza bruta</span>
+      <h1>Hydra con contexto: usuario, ruta, modo y texto de fallo correctos</h1>
+      <p>Esta guía acompaña <em>Acceso por defecto</em> y <em>Formulario de acceso</em>. Ninguno de los dos se resuelve con una ejecución ciega. En ambos debes identificar primero el tipo exacto de autenticación, el usuario, la ruta y el criterio que distingue un intento fallido de uno válido.</p>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Acceso por defecto</h3>
+        <p>El objetivo está en <code>http://45.55.49.111:8090/panel</code> y usa Basic Auth. Si lo tratas como formulario POST, <code>hydra</code> no va a hablar el protocolo correcto.</p>
+        <pre class="cuhv-codeblock">hydra -l operador -P claves.txt 45.55.49.111 http-get /panel</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Formulario de acceso</h3>
+        <p>El objetivo está en <code>http://45.55.49.111:8091/</code> y sí depende de un POST con parámetros. Aquí debes observar nombres de campos y el texto exacto que marca un fallo.</p>
+        <pre class="cuhv-codeblock">hydra -l analista -P claves.txt 45.55.49.111 http-post-form "/login:username=^USER^&password=^PASS^:Credenciales invalidas"</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Errores que te hacen perder media hora</h3>
+        <ul class="cuhv-list">
+          <li>Usar el usuario equivocado.</li>
+          <li>Apuntar a <code>/</code> cuando el formulario real publica en <code>/login</code>.</li>
+          <li>Copiar mal el texto de fallo.</li>
+          <li>Tratar Basic Auth como si fuera HTML o tratar HTML como si fuera Basic Auth.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué debes comprobar antes de lanzar Hydra</h3>
+        <ol class="cuhv-list">
+          <li>La ruta exacta que responde.</li>
+          <li>El usuario esperado por el reto.</li>
+          <li>El diccionario que el propio reto entrega.</li>
+          <li>Qué aspecto tiene una respuesta fallida.</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+</div>

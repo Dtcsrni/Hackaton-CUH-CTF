@@ -1,0 +1,15 @@
+{
+  "flag": "CUH{hsts_define_la_politica_de_transporte}",
+  "checks": [
+    {
+      "path": "infra/site.conf",
+      "required": [
+        "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;"
+      ],
+      "forbidden": [
+        "add_header Strict-Transport-Security \"max-age=0\";",
+        "# TODO: activar HSTS"
+      ]
+    }
+  ]
+}

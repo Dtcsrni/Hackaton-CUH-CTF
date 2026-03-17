@@ -1,0 +1,316 @@
+<div class="cuhv-page cuhv-reveal">
+  <section class="cuhv-hero">
+    <div class="cuhv-hero-copy">
+      <span class="cuhv-kicker">Preguntas frecuentes</span>
+      <h1>Manual de operación para resolver el hackatón desde cero</h1>
+      <p>Esta guía está escrita para que puedas resolver el paquete CUH sin depender de explicación oral. Aquí se cruzan plataforma, puertos, adjuntos, nombres de retos y comandos reales: desde <em>Puertas abiertas</em> y <em>Comandos Linux - búsqueda básica</em> hasta <em>Cookie firmada debil</em>, <em>Invitado privilegiado</em> y <em>Formulario de acceso</em>.</p>
+      <div class="cuhv-actions">
+        <a class="cuhv-button" href="/inicio-rapido">Ir a inicio rápido</a>
+        <a class="cuhv-button cuhv-button-alt" href="/guia-herramientas">Abrir guía de herramientas</a>
+      </div>
+    </div>
+    <figure class="cuhv-photo-card">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/ISO-model-threats-network-protection.png" alt="Diagrama de red y protección">
+      <figcaption>Referencia visual para pensar en servicios, observación técnica y flujo de validación. Fuente externa: Wikimedia Commons.</figcaption>
+    </figure>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Acceso</span>
+      <h2>Cómo entrar y qué recursos forman parte del evento</h2>
+      <p>Antes de abrir un reto conviene ubicar exactamente qué piezas existen: la plataforma HTTPS, los adjuntos publicados y los servicios concretos del host <code>45.55.49.111</code>.</p>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>¿Dónde está la plataforma?</h3>
+        <p>La plataforma oficial del evento está en <code>https://45.55.49.111</code>. Ahí debes iniciar sesión, leer retos, descargar archivos, consultar hints y enviar flags.</p>
+        <p>La plataforma no requiere VPN. Si no carga, el problema no suele ser de permisos del evento, sino de conectividad local, caché del navegador o bloqueo de tu red.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>¿Qué sí forma parte del laboratorio?</h3>
+        <ul class="cuhv-list">
+          <li>La propia plataforma CTFd.</li>
+          <li>Los archivos adjuntos publicados dentro de los retos.</li>
+          <li>Los servicios TCP y HTTP expresamente expuestos por el laboratorio.</li>
+          <li>Tu máquina Kali Linux, tu navegador y tus herramientas locales.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>¿Qué no forma parte del laboratorio?</h3>
+        <ul class="cuhv-list">
+          <li>No tienes acceso SSH al servidor del evento.</li>
+          <li>No tienes acceso a Docker, base de datos, consola, escritorio ni panel del droplet.</li>
+          <li>No debes escanear objetivos fuera de la IP y puertos publicados por el evento.</li>
+          <li>No debes redirigir pruebas a servicios reales o externos.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>¿Qué es una flag?</h3>
+        <p>La flag es la respuesta que el sistema acepta como correcta. En este evento todas las flags usan el formato <code>CUH{...}</code>. Aun así, no debes adivinar contenido: primero resuelve el reto y luego envía la respuesta en el formato correcto.</p>
+        <p>Una flag no se adivina: se obtiene a partir de observación, lectura, enumeración o validación de hipótesis dentro del entorno controlado.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Primeros pasos</span>
+      <h2>Qué debes hacer antes de intentar resolver nada</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Checklist inicial</h3>
+        <ol class="cuhv-list">
+          <li>Entrar a <code>https://45.55.49.111</code> y comprobar que puedes iniciar sesión.</li>
+          <li>Abrir <a href="/reglas">Reglas</a> y <a href="/inicio-rapido">Inicio rápido</a>.</li>
+          <li>Verificar que tu Kali Linux tiene terminal, navegador y carpeta de descargas accesibles.</li>
+          <li>Identificar si el reto objetivo usa IP, URL, archivo adjunto, navegador o credenciales débiles.</li>
+          <li>Elegir la herramienta mínima adecuada antes de lanzar comandos al azar.</li>
+        </ol>
+      </article>
+      <article class="cuhv-card">
+        <h3>Cómo decidir por dónde empezar</h3>
+        <p>Si eres principiante, empieza por <em>Leer también es hacking</em>, <em>Fuente principal</em>, <em>Comandos Linux - búsqueda básica</em>, <em>Puertas abiertas</em> o <em>Cabeceras del laboratorio</em>. Evita saltar de inmediato a <em>Invitado privilegiado</em>, <em>Cookie firmada debil</em> o <em>Formulario de acceso</em> si aún no distingues bien rutas, respuestas y formatos.</p>
+        <div class="cuhv-note"><strong>Regla de progreso:</strong> primero comprende qué superficie estás analizando, luego enumera, después interpreta y al final valida.</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Servicios</span>
+      <h2>Inventario de servicios autorizados del laboratorio</h2>
+      <p>No todos los retos requieren todos estos endpoints. La lista existe para que identifiques cuándo el enunciado apunta a un banner TCP, a un header HTTP, a un JSON, a un formulario o a una autenticación web concreta.</p>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Servicios base y observación</h3>
+        <ul class="cuhv-list">
+          <li><code>45.55.49.111:31337</code></li>
+          <li><code>http://45.55.49.111:8081</code></li>
+          <li><code>http://45.55.49.111:8082</code></li>
+          <li><code>http://45.55.49.111:8083/panel</code></li>
+          <li><code>http://45.55.49.111:8084</code></li>
+          <li><code>http://45.55.49.111:8085</code></li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Servicios web intermedios</h3>
+        <ul class="cuhv-list">
+          <li><code>http://45.55.49.111:8086</code></li>
+          <li><code>http://45.55.49.111:8087</code></li>
+          <li><code>http://45.55.49.111:8088</code></li>
+          <li><code>http://45.55.49.111:8089</code></li>
+          <li><code>http://45.55.49.111:8090</code></li>
+          <li><code>http://45.55.49.111:8091</code></li>
+        </ul>
+      </article>
+    </div>
+    <div class="cuhv-note">
+      <strong>Importante:</strong> algunos retos te dirán explícitamente la URL o el puerto. Otros solo te darán una IP o una pista general; en esos casos la enumeración es parte del objetivo didáctico.
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Kali Linux</span>
+      <h2>Orientación mínima para no perderte en tu propia máquina</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3>¿Dónde abro la terminal?</h3>
+        <p>Abre la terminal desde el menú de aplicaciones o con el atajo normal de tu entorno gráfico. La terminal será tu centro de trabajo para casi todo el evento.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>¿Dónde quedan las descargas?</h3>
+        <p>Normalmente en <code>~/Descargas</code> o <code>~/Downloads</code>. Si no sabes cuál existe, prueba:</p>
+        <pre class="cuhv-codeblock">pwd
+ls -la ~
+cd ~/Descargas || cd ~/Downloads
+pwd
+ls -la</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3>Comandos para orientarte</h3>
+        <pre class="cuhv-codeblock">pwd
+ls -la
+cd carpeta
+find . -type f
+cat archivo.txt
+grep -R "CUH{" .
+file nombre_de_archivo
+strings archivo.bin | head</pre>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Herramientas</span>
+      <h2>Qué herramienta elegir según el tipo de evidencia</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-3">
+      <article class="cuhv-card">
+        <h3><code>nmap</code></h3>
+        <p>Úsalo cuando el reto te dé una IP o cuando sospeches que un servicio está escuchando en un puerto no estándar.</p>
+        <pre class="cuhv-codeblock">nmap -sS -Pn 45.55.49.111
+nmap -sV -p 31337 45.55.49.111</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>nc</code></h3>
+        <p>Te permite conectarte manualmente a un puerto TCP y leer banners, respuestas o líneas de texto devueltas por un servicio.</p>
+        <pre class="cuhv-codeblock">nc 45.55.49.111 31337</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>curl</code></h3>
+        <p>Sirve para revisar páginas web, respuestas JSON, cabeceras, cookies y formularios HTTP.</p>
+        <pre class="cuhv-codeblock">curl http://45.55.49.111:8082/
+curl -i http://45.55.49.111:8088/
+curl -X POST http://45.55.49.111:8085/evaluacion -d 'campo=valor'</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>unzip</code></h3>
+        <p>Extrae ZIP publicados por los retos. Siempre revisa la estructura interna antes de buscar contenido específico.</p>
+        <pre class="cuhv-codeblock">unzip reto_archivos_linux.zip
+cd reto_linux
+find . -type f</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>find</code>, <code>grep</code>, <code>cat</code>, <code>strings</code></h3>
+        <p>Son suficientes para muchos retos introductorios. Antes de probar herramientas complejas, confirma si estas ya te dan la respuesta.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>hydra</code></h3>
+        <p>Solo para los retos de fuerza bruta dentro del laboratorio. Antes de usarlo debes identificar si el objetivo usa Basic Auth o formulario.</p>
+        <pre class="cuhv-codeblock">hydra -l operador -P claves.txt 45.55.49.111 http-get /panel
+hydra -l analista -P claves.txt 45.55.49.111 http-post-form "/login:username=^USER^&password=^PASS^:Credenciales invalidas"</pre>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Por tipo de reto</span>
+      <h2>Qué hacer según la superficie que estés viendo</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Reto con IP o servicio</h3>
+        <ol class="cuhv-list">
+          <li>Verifica que la IP responde.</li>
+          <li>Enumera puertos con <code>nmap</code>.</li>
+          <li>Conéctate manualmente al puerto relevante o revisa la respuesta web.</li>
+          <li>Guarda el hallazgo y compáralo con la descripción del reto.</li>
+        </ol>
+      </article>
+      <article class="cuhv-card">
+        <h3>Reto con ZIP o archivo</h3>
+        <ol class="cuhv-list">
+          <li>Descarga y localiza el archivo.</li>
+          <li>Extrae el contenido si es ZIP.</li>
+          <li>Lista rutas y tipos de archivo.</li>
+          <li>Busca nombres, textos, patrones y relaciones entre archivos.</li>
+        </ol>
+      </article>
+      <article class="cuhv-card">
+        <h3>Reto web y navegador</h3>
+        <ol class="cuhv-list">
+          <li>Abre la página normal.</li>
+          <li>Revisa código fuente renderizado, HTML, consola y network.</li>
+          <li>Observa formularios, cookies, parámetros ocultos y respuestas.</li>
+          <li>Confirma si el comportamiento depende del cliente o del servidor.</li>
+        </ol>
+      </article>
+      <article class="cuhv-card">
+        <h3>Reto de cracking o fuerza bruta</h3>
+        <ol class="cuhv-list">
+          <li>Identifica el formato: hash, ZIP, Basic Auth, formulario, cookie firmada o JWT.</li>
+          <li>Determina usuario, ruta, texto de fallo y diccionario útil.</li>
+          <li>Prueba con volumen razonable dentro del alcance del reto.</li>
+          <li>Valida que la respuesta obtenida sea la que pide el enunciado.</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">DevTools</span>
+      <h2>Cómo usar el navegador como herramienta técnica</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Qué revisar en DevTools</h3>
+        <ul class="cuhv-list">
+          <li><strong>Elements:</strong> HTML renderizado, atributos, comentarios y campos ocultos.</li>
+          <li><strong>Console:</strong> mensajes, variables, pistas y errores.</li>
+          <li><strong>Network:</strong> rutas, respuestas, códigos HTTP, cabeceras y cookies.</li>
+          <li><strong>Application/Storage:</strong> cookies, localStorage y sessionStorage.</li>
+        </ul>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué preguntas debes hacerte</h3>
+        <ul class="cuhv-list">
+          <li>¿Lo que veo en pantalla es todo lo que el navegador recibió?</li>
+          <li>¿Hay campos ocultos o cookies influyendo en la respuesta?</li>
+          <li>¿El servidor valida realmente lo que el cliente envía?</li>
+          <li>¿Hay pistas en comentarios, consola, JWT, cabeceras o scripts?</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-section-head">
+      <span class="cuhv-kicker">Errores comunes</span>
+      <h2>Problemas frecuentes y cómo resolverlos sin detenerte</h2>
+    </div>
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>La flag no valida</h3>
+        <p>Comprueba mayúsculas, llaves, espacios, guiones bajos, comillas y formato exacto. No asumas que toda respuesta sigue el mismo patrón.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>No encuentro el archivo descargado</h3>
+        <pre class="cuhv-codeblock">find ~ -maxdepth 3 -type f -name "*.zip"
+find ~ -maxdepth 3 -type f | grep reto</pre>
+      </article>
+      <article class="cuhv-card">
+        <h3><code>501 Unsupported method ('HEAD')</code></h3>
+        <p>Algunos servicios de laboratorio no implementan <code>HEAD</code>. Usa <code>curl</code> normal con <code>GET</code> o accede desde el navegador.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>No sé si debo usar <code>nmap</code> o abrir un archivo</h3>
+        <p>Si el reto te da una IP o una URL, piensa en servicio. Si te da un adjunto, piensa primero en análisis local. Si te da ambas cosas, empieza por entender qué pide realmente la descripción.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Hydra no devuelve resultados</h3>
+        <p>Revisa usuario, ruta, parámetros, método correcto y cadena de fallo. Si el servicio usa Basic Auth, no debes tratarlo como formulario. Si usa formulario, no debes tratarlo como Basic Auth.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>El navegador muestra algo distinto a <code>curl</code></h3>
+        <p>Eso puede significar redirecciones, cookies, JavaScript, cabeceras o comportamiento del cliente. En ese caso revisa Network y compara cada petición.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cuhv-section cuhv-reveal">
+    <div class="cuhv-grid cuhv-grid-2">
+      <article class="cuhv-card">
+        <h3>Cuándo pedir ayuda al organizador</h3>
+        <p>Pide ayuda cuando el bloqueo sea operativo: la plataforma no abre, un archivo no descarga, un servicio no responde, una página pública desapareció o la plataforma rechaza una flag que ya validaste con certeza.</p>
+      </article>
+      <article class="cuhv-card">
+        <h3>Qué información debes reportar</h3>
+        <ul class="cuhv-list">
+          <li>Nombre exacto del reto.</li>
+          <li>Hora aproximada del problema.</li>
+          <li>Comando, URL o acción que ejecutaste.</li>
+          <li>Mensaje exacto de error o captura de pantalla.</li>
+          <li>Si el problema ocurre en Kali, navegador o ambos.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+</div>
