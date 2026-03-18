@@ -1,0 +1,14 @@
+--- SYSTEM ---
+ 12:00:40 up 8 days, 11:41,  1 user,  load average: 0.06, 0.05, 0.00
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.6Gi       299Mi       4.5Mi       2.2Gi       2.2Gi
+Swap:             0B          0B          0B
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        77G  5.4G   72G   8% /
+--- DOCKER ---
+NAME           CPU %     MEM USAGE / LIMIT     NET I/O
+ctfd-ctfd-1    0.10%     413.1MiB / 3.824GiB   2.01GB / 1.02GB
+ctfd-cache-1   0.83%     9.586MiB / 3.824GiB   978MB / 9.1GB
+ctfd-db-1      1.14%     473.2MiB / 3.824GiB   1.04GB / 2.75GB
+--- DB SIZE ---
+230M	/var/lib/mysql

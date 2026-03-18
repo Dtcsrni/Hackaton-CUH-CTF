@@ -1,0 +1,128 @@
+ * Loaded module, <module 'CTFd.plugins.admin_notifications_console' from '/opt/CTFd/CTFd/plugins/admin_notifications_console/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.challenges' from '/opt/CTFd/CTFd/plugins/challenges/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.dynamic_challenges' from '/opt/CTFd/CTFd/plugins/dynamic_challenges/__init__.py'>
+first blood awards backfilled 0 removed=0
+ * Loaded module, <module 'CTFd.plugins.first_blood_bonus' from '/opt/CTFd/CTFd/plugins/first_blood_bonus/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.flags' from '/opt/CTFd/CTFd/plugins/flags/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.solve_evidence_guard' from '/opt/CTFd/CTFd/plugins/solve_evidence_guard/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.user_presence_board' from '/opt/CTFd/CTFd/plugins/user_presence_board/__init__.py'>
+{
+    "general": {
+        "total_users": 5,
+        "total_solves": 132,
+        "total_submissions": 322
+    },
+    "curious": {
+        "hourly_activity": {
+            "17": 40,
+            "18": 67,
+            "19": 2,
+            "20": 8,
+            "21": 12,
+            "22": 7,
+            "23": 20,
+            "1": 15,
+            "3": 3,
+            "4": 6,
+            "5": 28,
+            "6": 15,
+            "7": 65,
+            "8": 8,
+            "13": 4,
+            "14": 2,
+            "15": 4,
+            "16": 3,
+            "2": 1,
+            "0": 12
+        },
+        "most_persistent": [
+            {
+                "user": "Jose Manuel Lopez",
+                "challenge": "Acceso heredado",
+                "fails": 42
+            },
+            {
+                "user": "Jose Manuel Lopez",
+                "challenge": "Hash filtrado",
+                "fails": 20
+            },
+            {
+                "user": "Jose Manuel Lopez",
+                "challenge": "Puertas abiertas",
+                "fails": 14
+            },
+            {
+                "user": "Jose Manuel Carpio",
+                "challenge": "Leer tambi\u00e9n es hacking",
+                "fails": 11
+            },
+            {
+                "user": "Jose Manuel Lopez",
+                "challenge": "Registro sin servidor",
+                "fails": 11
+            }
+        ],
+        "frustrating_challenges": [
+            {
+                "name": "Acceso heredado",
+                "fails": 42
+            },
+            {
+                "name": "Hash filtrado",
+                "fails": 20
+            },
+            {
+                "name": "Leer tambi\u00e9n es hacking",
+                "fails": 18
+            },
+            {
+                "name": "Puertas abiertas",
+                "fails": 14
+            },
+            {
+                "name": "Robots curiosos",
+                "fails": 12
+            }
+        ],
+        "category_diversity": [
+            {
+                "name": "Fabian Escalante",
+                "count": 10
+            },
+            {
+                "name": "Jose Manuel Lopez",
+                "count": 10
+            },
+            {
+                "name": "Jose Manuel Carpio",
+                "count": 8
+            },
+            {
+                "name": "Miguel Angel Miranda",
+                "count": 8
+            },
+            {
+                "name": "Omar Zadkiel Garcia",
+                "count": 2
+            }
+        ],
+        "top_blood_hunters": [
+            {
+                "name": "Jose Manuel Lopez",
+                "count": 22
+            },
+            {
+                "name": "Fabian Escalante",
+                "count": 18
+            },
+            {
+                "name": "Jose Manuel Carpio",
+                "count": 10
+            },
+            {
+                "name": "Miguel Angel Miranda",
+                "count": 7
+            }
+        ]
+    }
+}

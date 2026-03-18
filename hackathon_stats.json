@@ -1,0 +1,1033 @@
+ * Loaded module, <module 'CTFd.plugins.admin_notifications_console' from '/opt/CTFd/CTFd/plugins/admin_notifications_console/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.challenges' from '/opt/CTFd/CTFd/plugins/challenges/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.dynamic_challenges' from '/opt/CTFd/CTFd/plugins/dynamic_challenges/__init__.py'>
+first blood awards backfilled 0 removed=0
+ * Loaded module, <module 'CTFd.plugins.first_blood_bonus' from '/opt/CTFd/CTFd/plugins/first_blood_bonus/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.flags' from '/opt/CTFd/CTFd/plugins/flags/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.solve_evidence_guard' from '/opt/CTFd/CTFd/plugins/solve_evidence_guard/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.user_presence_board' from '/opt/CTFd/CTFd/plugins/user_presence_board/__init__.py'>
+{
+    "general": {
+        "total_users": 5,
+        "total_teams": 0,
+        "total_challenges": 77,
+        "total_solves": 132,
+        "total_submissions": 322,
+        "total_points": 36500.0,
+        "avg_solves_per_user": 26.4,
+        "avg_points_per_user": 7300.0
+    },
+    "categories": {
+        "Calentamiento": {
+            "solves": 9,
+            "challenges": 2
+        },
+        "Web": {
+            "solves": 55,
+            "challenges": 20
+        },
+        "Criptograf\u00eda": {
+            "solves": 14,
+            "challenges": 12
+        },
+        "Reconocimiento": {
+            "solves": 2,
+            "challenges": 2
+        },
+        "OSINT": {
+            "solves": 12,
+            "challenges": 13
+        },
+        "Linux": {
+            "solves": 4,
+            "challenges": 3
+        },
+        "Forense": {
+            "solves": 10,
+            "challenges": 8
+        },
+        "Cracking": {
+            "solves": 15,
+            "challenges": 6
+        },
+        "Auth": {
+            "solves": 3,
+            "challenges": 5
+        },
+        "IA defensiva": {
+            "solves": 2,
+            "challenges": 2
+        },
+        "Windows": {
+            "solves": 3,
+            "challenges": 2
+        },
+        "Reversing": {
+            "solves": 3,
+            "challenges": 2
+        }
+    },
+    "top_users": [
+        {
+            "id": 3,
+            "name": "Jose Manuel Lopez",
+            "points": 13110,
+            "solve_count": 40,
+            "submission_count": 176,
+            "efficiency": 0.22727272727272727
+        },
+        {
+            "id": 4,
+            "name": "Fabian Escalante",
+            "points": 11420,
+            "solve_count": 37,
+            "submission_count": 51,
+            "efficiency": 0.7254901960784313
+        },
+        {
+            "id": 2,
+            "name": "Miguel Angel Miranda",
+            "points": 6050,
+            "solve_count": 24,
+            "submission_count": 29,
+            "efficiency": 0.8275862068965517
+        },
+        {
+            "id": 5,
+            "name": "Jose Manuel Carpio",
+            "points": 5200,
+            "solve_count": 26,
+            "submission_count": 51,
+            "efficiency": 0.5098039215686274
+        },
+        {
+            "id": 6,
+            "name": "Omar Zadkiel Garcia",
+            "points": 720,
+            "solve_count": 5,
+            "submission_count": 15,
+            "efficiency": 0.3333333333333333
+        }
+    ],
+    "most_solved": [
+        {
+            "id": 1,
+            "name": "Calentamiento - Bienvenida",
+            "category": "Calentamiento",
+            "value": 100,
+            "solves": 5,
+            "submissions": 9,
+            "solve_rate": 0.5555555555555556
+        },
+        {
+            "id": 12,
+            "name": "JSON de prueba",
+            "category": "Web",
+            "value": 200,
+            "solves": 5,
+            "submissions": 10,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 21,
+            "name": "Fuente principal",
+            "category": "Web",
+            "value": 90,
+            "solves": 5,
+            "submissions": 13,
+            "solve_rate": 0.38461538461538464
+        },
+        {
+            "id": 22,
+            "name": "Consola curiosa",
+            "category": "Web",
+            "value": 120,
+            "solves": 5,
+            "submissions": 14,
+            "solve_rate": 0.35714285714285715
+        },
+        {
+            "id": 23,
+            "name": "Cookie de rol",
+            "category": "Web",
+            "value": 210,
+            "solves": 5,
+            "submissions": 7,
+            "solve_rate": 0.7142857142857143
+        },
+        {
+            "id": 2,
+            "name": "Leer tambi\u00e9n es hacking",
+            "category": "Calentamiento",
+            "value": 100,
+            "solves": 4,
+            "submissions": 22,
+            "solve_rate": 0.18181818181818182
+        },
+        {
+            "id": 3,
+            "name": "Robots curiosos",
+            "category": "Web",
+            "value": 200,
+            "solves": 4,
+            "submissions": 16,
+            "solve_rate": 0.25
+        },
+        {
+            "id": 4,
+            "name": "Base64 no es cifrado",
+            "category": "Criptograf\u00eda",
+            "value": 100,
+            "solves": 4,
+            "submissions": 4,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 5,
+            "name": "C\u00e9sar escolar",
+            "category": "Criptograf\u00eda",
+            "value": 100,
+            "solves": 4,
+            "submissions": 4,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 7,
+            "name": "Metadatos indiscretos",
+            "category": "OSINT",
+            "value": 150,
+            "solves": 4,
+            "submissions": 5,
+            "solve_rate": 0.8
+        }
+    ],
+    "least_solved": [
+        {
+            "id": 6,
+            "name": "Puertas abiertas",
+            "category": "Reconocimiento",
+            "value": 300,
+            "solves": 1,
+            "submissions": 15,
+            "solve_rate": 0.06666666666666667
+        },
+        {
+            "id": 32,
+            "name": "Portal PHP heredado",
+            "category": "Web",
+            "value": 400,
+            "solves": 1,
+            "submissions": 2,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 33,
+            "name": "Incidente en formularios",
+            "category": "Forense",
+            "value": 420,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 34,
+            "name": "Sesi\u00f3n que conf\u00eda demasiado",
+            "category": "Auth",
+            "value": 400,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 35,
+            "name": "Cookie de rol heredada",
+            "category": "Auth",
+            "value": 430,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 36,
+            "name": "JWT sin audiencia",
+            "category": "Auth",
+            "value": 450,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 38,
+            "name": "Subida de archivos ansiosa",
+            "category": "Web",
+            "value": 440,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 41,
+            "name": "Cabeceras que revelan de m\u00e1s",
+            "category": "Web",
+            "value": 420,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 42,
+            "name": "Prompt de soporte indiscreto",
+            "category": "IA defensiva",
+            "value": 500,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 43,
+            "name": "Recuperaci\u00f3n de contexto",
+            "category": "IA defensiva",
+            "value": 520,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        }
+    ],
+    "challenges": [
+        {
+            "id": 1,
+            "name": "Calentamiento - Bienvenida",
+            "category": "Calentamiento",
+            "value": 100,
+            "solves": 5,
+            "submissions": 9,
+            "solve_rate": 0.5555555555555556
+        },
+        {
+            "id": 2,
+            "name": "Leer tambi\u00e9n es hacking",
+            "category": "Calentamiento",
+            "value": 100,
+            "solves": 4,
+            "submissions": 22,
+            "solve_rate": 0.18181818181818182
+        },
+        {
+            "id": 3,
+            "name": "Robots curiosos",
+            "category": "Web",
+            "value": 200,
+            "solves": 4,
+            "submissions": 16,
+            "solve_rate": 0.25
+        },
+        {
+            "id": 4,
+            "name": "Base64 no es cifrado",
+            "category": "Criptograf\u00eda",
+            "value": 100,
+            "solves": 4,
+            "submissions": 4,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 5,
+            "name": "C\u00e9sar escolar",
+            "category": "Criptograf\u00eda",
+            "value": 100,
+            "solves": 4,
+            "submissions": 4,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 6,
+            "name": "Puertas abiertas",
+            "category": "Reconocimiento",
+            "value": 300,
+            "solves": 1,
+            "submissions": 15,
+            "solve_rate": 0.06666666666666667
+        },
+        {
+            "id": 7,
+            "name": "Metadatos indiscretos",
+            "category": "OSINT",
+            "value": 150,
+            "solves": 4,
+            "submissions": 5,
+            "solve_rate": 0.8
+        },
+        {
+            "id": 8,
+            "name": "Comandos Linux - b\u00fasqueda b\u00e1sica",
+            "category": "Linux",
+            "value": 150,
+            "solves": 4,
+            "submissions": 4,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 9,
+            "name": "Logo en observaci\u00f3n",
+            "category": "Forense",
+            "value": 120,
+            "solves": 4,
+            "submissions": 5,
+            "solve_rate": 0.8
+        },
+        {
+            "id": 10,
+            "name": "Portada con pista",
+            "category": "OSINT",
+            "value": 140,
+            "solves": 4,
+            "submissions": 13,
+            "solve_rate": 0.3076923076923077
+        },
+        {
+            "id": 11,
+            "name": "Cabeceras del laboratorio",
+            "category": "Web",
+            "value": 180,
+            "solves": 4,
+            "submissions": 9,
+            "solve_rate": 0.4444444444444444
+        },
+        {
+            "id": 12,
+            "name": "JSON de prueba",
+            "category": "Web",
+            "value": 200,
+            "solves": 5,
+            "submissions": 10,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 13,
+            "name": "Bit\u00e1cora del proxy",
+            "category": "Forense",
+            "value": 170,
+            "solves": 3,
+            "submissions": 3,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 14,
+            "name": "Hash filtrado",
+            "category": "Cracking",
+            "value": 160,
+            "solves": 4,
+            "submissions": 24,
+            "solve_rate": 0.16666666666666666
+        },
+        {
+            "id": 15,
+            "name": "ZIP bajo llave",
+            "category": "Cracking",
+            "value": 220,
+            "solves": 3,
+            "submissions": 3,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 16,
+            "name": "Acceso heredado",
+            "category": "Cracking",
+            "value": 280,
+            "solves": 2,
+            "submissions": 44,
+            "solve_rate": 0.045454545454545456
+        },
+        {
+            "id": 17,
+            "name": "Registro sin servidor",
+            "category": "Web",
+            "value": 230,
+            "solves": 4,
+            "submissions": 15,
+            "solve_rate": 0.26666666666666666
+        },
+        {
+            "id": 18,
+            "name": "Encuesta confiada",
+            "category": "Web",
+            "value": 260,
+            "solves": 3,
+            "submissions": 6,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 19,
+            "name": "Invitado privilegiado",
+            "category": "Web",
+            "value": 340,
+            "solves": 4,
+            "submissions": 6,
+            "solve_rate": 0.6666666666666666
+        },
+        {
+            "id": 20,
+            "name": "Secreto compartido debil",
+            "category": "Web",
+            "value": 380,
+            "solves": 3,
+            "submissions": 14,
+            "solve_rate": 0.21428571428571427
+        },
+        {
+            "id": 21,
+            "name": "Fuente principal",
+            "category": "Web",
+            "value": 90,
+            "solves": 5,
+            "submissions": 13,
+            "solve_rate": 0.38461538461538464
+        },
+        {
+            "id": 22,
+            "name": "Consola curiosa",
+            "category": "Web",
+            "value": 120,
+            "solves": 5,
+            "submissions": 14,
+            "solve_rate": 0.35714285714285715
+        },
+        {
+            "id": 23,
+            "name": "Cookie de rol",
+            "category": "Web",
+            "value": 210,
+            "solves": 5,
+            "submissions": 7,
+            "solve_rate": 0.7142857142857143
+        },
+        {
+            "id": 24,
+            "name": "Cookie firmada debil",
+            "category": "Web",
+            "value": 320,
+            "solves": 4,
+            "submissions": 10,
+            "solve_rate": 0.4
+        },
+        {
+            "id": 25,
+            "name": "Acceso por defecto",
+            "category": "Cracking",
+            "value": 260,
+            "solves": 2,
+            "submissions": 3,
+            "solve_rate": 0.6666666666666666
+        },
+        {
+            "id": 29,
+            "name": "Formulario de acceso",
+            "category": "Cracking",
+            "value": 320,
+            "solves": 3,
+            "submissions": 3,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 30,
+            "name": "Consulta concatenada",
+            "category": "Web",
+            "value": 360,
+            "solves": 2,
+            "submissions": 2,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 31,
+            "name": "Reportes sin par\u00e1metros",
+            "category": "Web",
+            "value": 380,
+            "solves": 2,
+            "submissions": 2,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 32,
+            "name": "Portal PHP heredado",
+            "category": "Web",
+            "value": 400,
+            "solves": 1,
+            "submissions": 2,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 33,
+            "name": "Incidente en formularios",
+            "category": "Forense",
+            "value": 420,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 34,
+            "name": "Sesi\u00f3n que conf\u00eda demasiado",
+            "category": "Auth",
+            "value": 400,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 35,
+            "name": "Cookie de rol heredada",
+            "category": "Auth",
+            "value": 430,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 36,
+            "name": "JWT sin audiencia",
+            "category": "Auth",
+            "value": 450,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 37,
+            "name": "Restablecimiento abierto",
+            "category": "Auth",
+            "value": 470,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 38,
+            "name": "Subida de archivos ansiosa",
+            "category": "Web",
+            "value": 440,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 39,
+            "name": "Traversal en miniatura",
+            "category": "Web",
+            "value": 470,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 40,
+            "name": "Portal defaceado en PHP",
+            "category": "Forense",
+            "value": 480,
+            "solves": 0,
+            "submissions": 1,
+            "solve_rate": 0.0
+        },
+        {
+            "id": 41,
+            "name": "Cabeceras que revelan de m\u00e1s",
+            "category": "Web",
+            "value": 420,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 42,
+            "name": "Prompt de soporte indiscreto",
+            "category": "IA defensiva",
+            "value": 500,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 43,
+            "name": "Recuperaci\u00f3n de contexto",
+            "category": "IA defensiva",
+            "value": 520,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 44,
+            "name": "Linux expuesto: sudoers heredado",
+            "category": "Linux",
+            "value": 500,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 45,
+            "name": "Linux expuesto: servicio olvidado",
+            "category": "Linux",
+            "value": 520,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 46,
+            "name": "Windows expuesto: share legado",
+            "category": "Windows",
+            "value": 540,
+            "solves": 2,
+            "submissions": 2,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 47,
+            "name": "Windows expuesto: tareas persistentes",
+            "category": "Windows",
+            "value": 560,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 48,
+            "name": "Binario de despacho",
+            "category": "Reversing",
+            "value": 580,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 49,
+            "name": "Licencia bajo revisi\u00f3n",
+            "category": "Reversing",
+            "value": 620,
+            "solves": 2,
+            "submissions": 2,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 50,
+            "name": "Perfil disperso",
+            "category": "OSINT",
+            "value": 360,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 51,
+            "name": "Agenda filtrada",
+            "category": "OSINT",
+            "value": 390,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 52,
+            "name": "Foto del laboratorio",
+            "category": "OSINT",
+            "value": 420,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 53,
+            "name": "Proveedor fantasma",
+            "category": "OSINT",
+            "value": 450,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 54,
+            "name": "Huella de publicaci\u00f3n",
+            "category": "OSINT",
+            "value": 480,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 55,
+            "name": "XOR de respaldo",
+            "category": "Criptograf\u00eda",
+            "value": 380,
+            "solves": 1,
+            "submissions": 2,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 56,
+            "name": "Firma reciclada",
+            "category": "Criptograf\u00eda",
+            "value": 420,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 57,
+            "name": "RSA sin OAEP",
+            "category": "Criptograf\u00eda",
+            "value": 460,
+            "solves": 1,
+            "submissions": 2,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 58,
+            "name": "Derivaci\u00f3n lenta",
+            "category": "Criptograf\u00eda",
+            "value": 500,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 59,
+            "name": "Bloques repetidos",
+            "category": "Criptograf\u00eda",
+            "value": 540,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 60,
+            "name": "CBC sin integridad",
+            "category": "Criptograf\u00eda",
+            "value": 580,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 61,
+            "name": "IV reciclado en reportes",
+            "category": "Criptograf\u00eda",
+            "value": 600,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 62,
+            "name": "HMAC truncado en gateway",
+            "category": "Criptograf\u00eda",
+            "value": 620,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 63,
+            "name": "Semilla predecible",
+            "category": "Criptograf\u00eda",
+            "value": 640,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 64,
+            "name": "Certificados a ciegas",
+            "category": "Criptograf\u00eda",
+            "value": 660,
+            "solves": 1,
+            "submissions": 2,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 65,
+            "name": "Cronolog\u00eda cruzada",
+            "category": "OSINT",
+            "value": 520,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 66,
+            "name": "Repositorio fantasma",
+            "category": "OSINT",
+            "value": 560,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 67,
+            "name": "Credencial en ponencia",
+            "category": "OSINT",
+            "value": 600,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 68,
+            "name": "Red de proveedores",
+            "category": "OSINT",
+            "value": 640,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 69,
+            "name": "Trazas de convocatoria",
+            "category": "OSINT",
+            "value": 680,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 70,
+            "name": "Traza en PCAP",
+            "category": "Forense",
+            "value": 560,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 71,
+            "name": "Firmware en capas",
+            "category": "Forense",
+            "value": 600,
+            "solves": 1,
+            "submissions": 2,
+            "solve_rate": 0.5
+        },
+        {
+            "id": 72,
+            "name": "Metadatos en cascada",
+            "category": "OSINT",
+            "value": 620,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 73,
+            "name": "Carving de evidencias",
+            "category": "Forense",
+            "value": 640,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 74,
+            "name": "Diccionario de laboratorio",
+            "category": "Cracking",
+            "value": 680,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 75,
+            "name": "Portal sin redirecci\u00f3n segura",
+            "category": "Web",
+            "value": 520,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 76,
+            "name": "HSTS pendiente",
+            "category": "Web",
+            "value": 540,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 77,
+            "name": "Cookie de sesi\u00f3n sin Secure",
+            "category": "Auth",
+            "value": 560,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 78,
+            "name": "Contenido mixto heredado",
+            "category": "Web",
+            "value": 580,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        },
+        {
+            "id": 79,
+            "name": "Credenciales expuestas en tr\u00e1nsito",
+            "category": "Forense",
+            "value": 600,
+            "solves": 0,
+            "submissions": 0,
+            "solve_rate": 0
+        },
+        {
+            "id": 80,
+            "name": "Rompe el sistema",
+            "category": "Reconocimiento",
+            "value": 1500,
+            "solves": 1,
+            "submissions": 1,
+            "solve_rate": 1.0
+        }
+    ],
+    "users": [
+        {
+            "id": 2,
+            "name": "Miguel Angel Miranda",
+            "points": 6050,
+            "solve_count": 24,
+            "submission_count": 29,
+            "efficiency": 0.8275862068965517
+        },
+        {
+            "id": 3,
+            "name": "Jose Manuel Lopez",
+            "points": 13110,
+            "solve_count": 40,
+            "submission_count": 176,
+            "efficiency": 0.22727272727272727
+        },
+        {
+            "id": 4,
+            "name": "Fabian Escalante",
+            "points": 11420,
+            "solve_count": 37,
+            "submission_count": 51,
+            "efficiency": 0.7254901960784313
+        },
+        {
+            "id": 5,
+            "name": "Jose Manuel Carpio",
+            "points": 5200,
+            "solve_count": 26,
+            "submission_count": 51,
+            "efficiency": 0.5098039215686274
+        },
+        {
+            "id": 6,
+            "name": "Omar Zadkiel Garcia",
+            "points": 720,
+            "solve_count": 5,
+            "submission_count": 15,
+            "efficiency": 0.3333333333333333
+        }
+    ]
+}

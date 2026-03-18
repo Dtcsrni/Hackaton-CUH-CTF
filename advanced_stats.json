@@ -1,0 +1,67 @@
+{
+    "streaks": {
+        "Miguel Angel Miranda": 9,
+        "Jose Manuel Lopez": 5,
+        "Fabian Escalante": 11,
+        "Jose Manuel Carpio": 7,
+        "Omar Zadkiel Garcia": 4
+    },
+    "category_dominance": {
+        "Calentamiento": {
+            "user": "Miguel Angel Miranda",
+            "solves": 2
+        },
+        "Web": {
+            "user": "Fabian Escalante",
+            "solves": 15
+        },
+        "Criptograf\u00eda": {
+            "user": "Jose Manuel Lopez",
+            "solves": 7
+        },
+        "Reconocimiento": {
+            "user": "Jose Manuel Carpio",
+            "solves": 1
+        },
+        "OSINT": {
+            "user": "Jose Manuel Lopez",
+            "solves": 5
+        },
+        "Linux": {
+            "user": "Miguel Angel Miranda",
+            "solves": 1
+        },
+        "Forense": {
+            "user": "Miguel Angel Miranda",
+            "solves": 3
+        },
+        "Cracking": {
+            "user": "Fabian Escalante",
+            "solves": 6
+        },
+        "Auth": {
+            "user": "Jose Manuel Lopez",
+            "solves": 3
+        },
+        "IA defensiva": {
+            "user": "Fabian Escalante",
+            "solves": 2
+        },
+        "Windows": {
+            "user": "Fabian Escalante",
+            "solves": 2
+        },
+        "Reversing": {
+            "user": "Fabian Escalante",
+            "solves": 2
+        }
+    },
+    "abandoned_challenges": [],
+    "solving_speeds": {
+        "Miguel Angel Miranda": 370.5778702083333,
+        "Jose Manuel Lopez": 32999.68916162501,
+        "Fabian Escalante": 7489.589182324324,
+        "Jose Manuel Carpio": 352.8441143076923,
+        "Omar Zadkiel Garcia": 17273.957256
+    }
+}

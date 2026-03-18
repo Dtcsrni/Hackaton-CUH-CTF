@@ -1,0 +1,40 @@
+ * Loaded module, <module 'CTFd.plugins.admin_notifications_console' from '/opt/CTFd/CTFd/plugins/admin_notifications_console/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.challenges' from '/opt/CTFd/CTFd/plugins/challenges/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.dynamic_challenges' from '/opt/CTFd/CTFd/plugins/dynamic_challenges/__init__.py'>
+first blood awards backfilled 0 removed=0
+ * Loaded module, <module 'CTFd.plugins.first_blood_bonus' from '/opt/CTFd/CTFd/plugins/first_blood_bonus/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.flags' from '/opt/CTFd/CTFd/plugins/flags/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.solve_evidence_guard' from '/opt/CTFd/CTFd/plugins/solve_evidence_guard/__init__.py'>
+ * Loaded module, <module 'CTFd.plugins.user_presence_board' from '/opt/CTFd/CTFd/plugins/user_presence_board/__init__.py'>
+[
+    {
+        "id": 1,
+        "name": "Erick Vega",
+        "type": "admin"
+    },
+    {
+        "id": 2,
+        "name": "Miguel Angel Miranda",
+        "type": "user"
+    },
+    {
+        "id": 3,
+        "name": "Jose Manuel Lopez",
+        "type": "user"
+    },
+    {
+        "id": 4,
+        "name": "Fabian Escalante",
+        "type": "user"
+    },
+    {
+        "id": 5,
+        "name": "Jose Manuel Carpio",
+        "type": "user"
+    },
+    {
+        "id": 6,
+        "name": "Omar Zadkiel Garcia",
+        "type": "user"
+    }
+]
